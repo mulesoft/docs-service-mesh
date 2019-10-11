@@ -64,8 +64,11 @@ For more information, see...
 +
 [source,text,linenums]
 ----
-./service-mesh adapter create \--name=anypoint-service-mesh-adapter \--namespace=marketing \
---size=medium \--clientId=<replace_with_clientId> \
+./service-mesh adapter create \
+--name=anypoint-service-mesh-adapter \
+--namespace=marketing \
+--size=medium \
+--clientId=<replace_with_clientId> \
 --clientSecret=<replace_with_clientSecret> \
 --platformUri=https://anypoint.mulesoft.com
 ----
