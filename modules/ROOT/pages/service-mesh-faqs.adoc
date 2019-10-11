@@ -45,7 +45,6 @@ The following section addresses common questions regarding the features availabl
 . What capabilities will be added for GA release? 
 * API Discovery: users will be able to deploy their applications on their kubernetes cluster and their instance will be automatically discovered and managed by Anypoint Platform.
 * HTTP Metrics will be available on Monitoring Center
-* Autoscaling capabilities for what
 
 . What will appear in Anypoint Exchange when I discover a microservice with Anypoint Service Mesh?
 After installing Anypoint Service Mesh, services specified for discovery within the your Kubernetes cluster will automatically be added to Anypoint Exchange as an HTTP API. This looks similar to any other HTTP API in Exchange. From here, the customer can add further documentation and specifications against the HTTP API. 

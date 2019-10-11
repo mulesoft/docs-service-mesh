@@ -76,11 +76,11 @@ Where:
 |===
 | Parameter Name | Description | Required/Optional | Default Value
 | name | The name of the adapter that you want to create, for example, “service-mesh-test-adapter”. For the Beta exercise, use “anypoint-service-mesh-adapter” for this parameter. | Required | N/A
-| namespace | The namespace in which you want to create the adapter, for example, “mulesoft-apps”. For the Beta exercise, use “marketing” for this parameter | Required | Namespace
-| size | The size of the adapter based on the number of CPUs and memory to use | Required | Medium
+| namespace | The namespace in which you want to create the adapter, for example, “mulesoft-apps”. For the Beta exercise, use “marketing” for this parameter | Optional | default
+| size | The size of the adapter based on the number of CPUs and memory to use | Optional | Medium
 | clientId | The client ID of the application | Required | 100
 | clientSecret | The client secret of the application | Required | 100
-| platformUri | The URL of the host where Anypoint Platform is installed | Required | https://anypoint.mulesoft.com
+| platformUri | The URL of the host where Anypoint Platform is installed | Optional | https://anypoint.mulesoft.com
 |===
 +
 . Verify the adapter status:
