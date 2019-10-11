@@ -1,4 +1,4 @@
-= Anypoint Service Mesh
+= Anypoint Service Mesh Overview
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
@@ -29,8 +29,19 @@ Most importantly, the Anypoint Service Mesh can perform these tasks across all s
 == Anypoint Service Mesh Architecture
 A service mesh is an independent architecture layer, which is encapsulated in a Kubernetes cluster. In a service mesh architecture, instead of the services communicating with one another, a sidecar proxy is used to perform the same job. The manner in which these sidecars interact is governed by an overall mixer, where a user can apply different policies and security.
 
+image::anypoint-service-mesh-architecture.png[Anypoint Service Mesh Architecture]
+
 As illustrated in the diagram, at the top of the architecture is Anypoint Platform, which brings complete lifecycle API management capabilities to the microservices built with Mule Runtime engine. These Mule Runtimes might be deployed within CloudHub, or a Runtime Fabric at your location. 
 
+Istio, which is installed on a Kubernentes cluster, uses Envoy to manage the services using a sidecar proxy. The sidecar is responsible for any communication with the service, and resides within the same container as your service. With the Service Mesh enabled, you can easily apply any of Istio’s native policies for traffic control and security. These policies help ensure reliable and secure service-to-service communication.
+
+The MuleSoft adapter and broker, which reside within the Istio mixer, connect components to Anypoint Platform. The adapter and broker enable sharing of metadata about all the services that are managed by the mesh. This allows for discovery of your existing microservices within the Kubernetes cluster into Anypoint Platform. 
+
+Anypoint Exchange then uses the metadata to automatically discover and create HTTP APIs for each service. These APIs can then be managed within API Manager. Similarly, Anypoint Monitoring uses the metadata to get information from the sidecar proxy and makes it available for API Analytics. 
+
+== Service Discovery using Service Mesh
+
+image::service-mesh-service-discovery-flow.png[Service Discovery Flow using Service Mesh]
 
 == See Also
 

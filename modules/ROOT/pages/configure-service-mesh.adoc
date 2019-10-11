@@ -1,0 +1,140 @@
+= Configure Service Mesh
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+:keywords: service mesh, microservices, downloading, installing
+
+image::configure-service-mesh-breadcrumb.png[]
+
+The following topics are covered in this section:
+
+* Provision Service Mesh Adapter
+* Bind Service Mesh Adapter
+
+== Service Mesh Adapter Overview
+
+After you install Service Mesh, you must provision the Service Mesh adapter and bind it with a specific namespace. When you provision the adapter, you must specify the size of the adapter based on the number of CPUs and memory of the system that will be managed in Service Mesh.
+
+=== Adapter Plan
+Anypoint Service Mesh currently supports three plans for the adapter:
+
+[%header%autowidth.spread]
+|===
+| Plan | CPU (cores) | Memory (GiB) | API Limit
+| Small | 500 | 1 | 25
+| Medium | 1 | 1.5 | 50
+| Large | 2 | 2 | 100
+|===
+
+You can also modify the size of an adapter after it has been provisioned. If you update the plan to change the plan size or any other parameter, the adapter deployment is updated appropriately. Kubernetes then creates a pod with new information. However, the old adapter continues handling requests until the new pod is ready.
+
+After the new adapter is ready, the old pod is terminated and all requests are routed to the new adapter. If the update fails due to insufficient space  to start up a new pod, or if the pod is not ready, an error message is recorded in Kubernetes event. In such a scenario, the old adapter continues to handle requests because the new pod is not yet available. 
+
+=== Adapter Status
+
+When you provision an adapter, or bind the adapter to an application, a status is displayed after you successfully execute an adapter command. This status indicates whether the adapter was created or modified successfully. The status values include:
+
+* Ready--The adapter is now ready to be used. 
+* Failed--The adapter was not created successfully. An error occurred. For more information about the error, see the adapter logs.
+* Provisioning--The adapter is in the process of being provisioned.
+* Binding--The adapter is in the process of being associated with specific application.
+
+The following screenshot shows that the “test” adapter of type “anypoint-service-mesh-adapter”, which was created in the “Namespace” namespace, is associated to the application with 1234 as its ID, and service name as “hello-world”.
+
+image::service-mesh-adapter-binding.png[]
+
+=== CLI Help for Adapter Commands
+
+The command line interface (CLI) tool for Service Mesh provides help for various commands. You can issue help commands at any time after you complete installing Service Mesh. 
+
+To use the help, type the following command:
+`./service mesh help`
+
+image::service-mesh-cli-adapter-help.png[CLI Help for Adapter Commands]
+
+== Provision Service Mesh Adapter
+
+Before	you can start managing your API using Service Mesh, you must prepare your namespace by provisioning a Service Mesh Adapter. Provisioning prepares the namespace for the Service Mesh configuration.
+
+To provision the Anypoint Service Mesh adapter:
+ 
+. Determine the adapter size based on the plan.
+For more information, see...
+. From the Service Mesh installer download location in the Command window, type the following command to create the adapter:
++
+[source,text,linenums]
+----
+./service-mesh adapter create \--name=anypoint-service-mesh-adapter \--namespace=marketing \
+--size=medium \--clientId=<replace_with_clientId> \
+--clientSecret=<replace_with_clientSecret> \
+--platformUri=https://anypoint.mulesoft.com
+----
++	
+Where:
++
+[%header%autowidth.spread]
+|===
+| Parameter Name | Description | Required/Optional | Default Value
+| name | The name of the adapter that you want to create, for example, “service-mesh-test-adapter”. For the Beta exercise, use “anypoint-service-mesh-adapter” for this parameter. | Required | N/A
+| namespace | The namespace in which you want to create the adapter, for example, “mulesoft-apps”. For the Beta exercise, use “marketing” for this parameter | Required | Namespace
+| size | The size of the adapter based on the number of CPUs and memory to use | Required | Medium
+| clientId | The client ID of the application | Required | 100
+| clientSecret | The client secret of the application | Required | 100
+| platformUri | The URL of the host where Anypoint Platform is installed | Required | https://anypoint.mulesoft.com
+|===
++
+. Verify the adapter status:
+`./service-mesh adapter list`
++
+image::provision-service-mesh-adapter-output.png[Example Output]
++
+. Review adapter logs to see detailed information about Kubernetes events and adapter transactions.
+`./service-mesh adapter logs --name=<adapter_name> --namespace=<namespace>`
+
+
+== Bind your service to an API on API Manager
+After you set up your namespace, you must bind the service with an existing API to the adapter that you created.
+
+To bind the service with an API, perform the following steps:
+
+. If not exists, create your API in API Manager.
+For more information, see https://docs.mulesoft.com/api-manager/2.x/create-instance-task
+. If your applications were already running in the namespace, restart your application:
+`$ kubectl delete pod -n marketing -l app=campaigns`
++
+. Verify that the application Kubernetes service port is named following the requirements requested by Istio: https://istio.io/docs/setup/additional-setup/requirements/ .
+. From the Service Mesh installer download location in the Command window, type the following command to bind the adapter with an application:
++
+[source,text,linenums]
+----
+./service-mesh binding create \
+--name=<replace_with_servicename>-anypoint-security \
+--namespace=marketing \same as adapter creation
+--adapter=anypoint-service-mesh-adapter \same as adapter creation
+--apiId=<replace_with_apiId> \
+--serviceName=<replace_with_servicename>
+----
++
+Where:
++
+[%header%autowidth.spread]
+|===
+| Parameter Name | Description | Required/Optional | Default Value
+| name | The name that identifies the binding that you want to create, for example, “test-binding-anypoint-security”. For the Beta exercise, replace the text within the angular braces. | Required | N/A
+| namespace | The Kubernetes namespace in which you want to create the binding, for example, “mulesoft-apps”. Make sure that you use the same namespace as the adapter you provisioned in the previous procedure. | Required | N/A
+| adapter | Specify the name of the adapter that you provisioned in the previous procedure.  | Required | N/A 
+| apiId | Specify the API Id of the API that you want to associate with this adapter.   | Required | N/A.
+ Use the API ID you obtained as part of installation prerequisites as explained in this document.
+| serviceName | The name of the service that will be binded to the API to be protected and managed by Anypoint Platform. | Required | N/A.
+Use the client Id and client secret you obtained as part of installation prerequisites as explained in this document.
+|===
++
+. Verify the binding status using the following command:
+`./service-mesh binding list`
++
+After this command completes processing, an output is generated, as shown in the following example.
+image::service-mesh-adapter-binding.png[Example Output]
+
+
+
+
