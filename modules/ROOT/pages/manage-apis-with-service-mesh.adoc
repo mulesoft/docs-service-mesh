@@ -1,0 +1,24 @@
+= Managing APIs with Anypoint Service Mesh
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+:keywords: service mesh, microservices, manage APIs
+
+image::manage-service-mesh-breadcrumb.png[75%, 75%]
+
+After you bind your API, the API in API Manager is marked as Active.You are now ready to apply policies to protect your APIs.
+
+image::api-manager-status-for-service-mesh.png[10%.10%]
+
+To apply policies:
+
+. Go to *API Manager > API Administrations > Policies*.
++
+image::select-policies-for-service-mesh.png[]
++
+. Select the *Client ID Enforcement* or *JWT Validation* policy to secure your APIs.
++
+image::apply-client-enforcement-policy-service-mesh.png[]
++
+. Alternatively, you can apply the Rate Limit and Rate Limit SLA-Based policies to define the number of requests that you want your service to receive within a specified period of time. 
+
