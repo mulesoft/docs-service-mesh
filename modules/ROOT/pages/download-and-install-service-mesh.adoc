@@ -37,7 +37,7 @@ When you being the installer, Istio is first installed, and the MuleSoft adapter
 
 To install Anypoint Service Mesh, perform the following steps:
 
-. From the location where you downloaded your Service Mesh Client, type ./service-mesh install
+. From the location where you downloaded your Service Mesh Client, type `./service-mesh install`
 The Welcome to Service Mesh installer message is displayed.
 . At the Please enter your Client Id prompt, specify your client ID that obtained as part of the prerequisites.
 . At the Please enter your Client Secret prompt, specify your client secret that obtained as part of the prerequisites.
@@ -45,8 +45,8 @@ The Welcome to Service Mesh installer message is displayed.
 +
 *Installation Command Example:*
 `./service-mesh install`
-`- client id: 2720bd7281ed410fba95ab70bb81b806`
-`- client secret: E5Cf4f549c024592A5daC018200498a3`
+`- client id: 5cc69178aae7bd261be12c3a57f5e2a4`
+`- client secret: 10a1b97ec481f34c11c0226931f3d586`
 `- mule license path: ~/path/to/muleLicenseKey.lic`
 +
 Anypoint Service Mesh installs within few minutes and displays a status, as shown in the example output. If an installation error occurs, the installer times out and uninstalls all previously installed Service Mesh components. 

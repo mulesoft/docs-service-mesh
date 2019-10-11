@@ -39,18 +39,49 @@ When you provision an adapter, or bind the adapter to an application, a status i
 * Provisioning--The adapter is in the process of being provisioned.
 * Binding--The adapter is in the process of being associated with specific application.
 
-The following screenshot shows that the “test” adapter of type “anypoint-service-mesh-adapter”, which was created in the “Namespace” namespace, is associated to the application with 1234 as its ID, and service name as “hello-world”.
+The following screenshot shows that the “customers” bind the adapter “anypoint-service-mesh-adapter”, which was created in the “nto-payments” namespace, is associated to the API with 1234 as its ID, and service name as “customers”.
 
-image::service-mesh-adapter-binding.png[]
+[source,text,linenums]
+----
+NAMESPACE      NAME        ADAPTER                         API ID  SERVICE NAME    STATUS
+nto-payments   customers   anypoint-service-mesh-adapter   1234    customers       Ready
+----
 
 === CLI Help for Adapter Commands
 
 The command line interface (CLI) tool for Service Mesh provides help for various commands. You can issue help commands at any time after you complete installing Service Mesh. 
 
 To use the help, type the following command:
-`./service mesh help`
+`./service-mesh adapter help`
 
-image::service-mesh-cli-adapter-help.png[CLI Help for Adapter Commands]
+[source,text,linenums]
+----
+INFO: Usage: service-mesh adapter [command] [command flags]
+INFO: 
+INFO: Available Commands:
+INFO:    help          Show this message.
+INFO:    create        Create a new adapter.
+INFO:    delete        Delete an adapter.
+INFO:    logs          Show status logs.
+INFO:    sizes         Show the adapter size options.
+INFO:    list          List all created adapters.
+INFO: 
+INFO: create Options:
+INFO:   --name           Adapter name
+INFO:   --clientId       Client Id
+INFO:   --clientSecret   Client Secret
+INFO:   --size           Adapter Size. Optional (medium)
+INFO:   --namespace      Namespace. Optional (default)
+INFO:   --platformUri    Anypoint platform url. Optional (https://anypoint.mulesoft.com)
+INFO: 
+INFO: delete Options:
+INFO:   --name           Adapter name
+INFO:   --namespace      Namespace. Optional (default)
+INFO: 
+INFO: logs Options:
+INFO:   --name           Adapter name
+INFO:   --namespace      Namespace. Optional (default)
+----
 
 == Provision Service Mesh Adapter
 
@@ -80,16 +111,21 @@ Where:
 | Parameter Name | Description | Required/Optional | Default Value
 | name | The name of the adapter that you want to create, for example, “service-mesh-test-adapter”. For the Beta exercise, use “anypoint-service-mesh-adapter” for this parameter. | Required | N/A
 | namespace | The namespace in which you want to create the adapter, for example, “mulesoft-apps”. For the Beta exercise, use “marketing” for this parameter | Optional | default
-| size | The size of the adapter based on the number of CPUs and memory to use | Optional | Medium
-| clientId | The client ID of the application | Required | 100
-| clientSecret | The client secret of the application | Required | 100
+| size | The size of the adapter based on the number of CPUs and memory to use (see `./service-mesh adapter sizes`)| Optional | medium
+| clientId | The client ID of the application | Required | N/A
+| clientSecret | The client secret of the application | Required | N/A
 | platformUri | The URL of the host where Anypoint Platform is installed | Optional | https://anypoint.mulesoft.com
 |===
 +
 . Verify the adapter status:
 `./service-mesh adapter list`
 +
-image::provision-service-mesh-adapter-output.png[Example Output]
++
+[source,text,linenums]
+----
+NAMESPACE      NAME                            CLIENT ID                         SIZE    STATUS
+nto-payments   anypoint-service-mesh-adapter   77047b5af1532889f6c785f4bbad09ba  medium  Ready
+----
 +
 . Review adapter logs to see detailed information about Kubernetes events and adapter transactions.
 `./service-mesh adapter logs --name=<adapter_name> --namespace=<namespace>`
@@ -136,7 +172,13 @@ Use the client Id and client secret you obtained as part of installation prerequ
 `./service-mesh binding list`
 +
 After this command completes processing, an output is generated, as shown in the following example.
-image::service-mesh-adapter-binding.png[Example Output]
++
+[source,text,linenums]
+----
+NAMESPACE      NAME        ADAPTER                         API ID  SERVICE NAME    STATUS
+nto-payments   customers   anypoint-service-mesh-adapter   1234    customers       Ready
+nto-payments   inventory   anypoint-service-mesh-adapter   5467    inventory       Ready
+----
 
 
 
