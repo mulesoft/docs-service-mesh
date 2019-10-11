@@ -45,8 +45,8 @@ The Welcome to Service Mesh installer message is displayed.
 +
 *Installation Command Example:*
 `./service-mesh install`
-`- client id: 5cc69178aae7bd261be12c3a57f5e2a4`
-`- client secret: 10a1b97ec481f34c11c0226931f3d586`
+`- client id: 2720bd7281ed410fba95ab70bb81b8w345`
+`- client secret: E5Cf4f549c024592A5daC0182005734`
 `- mule license path: ~/path/to/muleLicenseKey.lic`
 +
 Anypoint Service Mesh installs within few minutes and displays a status, as shown in the example output. If an installation error occurs, the installer times out and uninstalls all previously installed Service Mesh components. 
