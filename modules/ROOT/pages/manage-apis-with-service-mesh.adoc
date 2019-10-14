@@ -6,11 +6,18 @@ endif::[]
 
 image::manage-service-mesh-breadcrumb.png[75%, 75%]
 
-After you configure Service Mesh, you are now ready to manage your Mule and non-Mule applications from API Manager. You can apply policies to ensure various levels of security for your microservices. For example, you can apply the Rate Limting to define the number of requests that you want your service to receive within a specified period of time.
+After you configure Service Mesh, you are now ready to manage your Mule and non-Mule applications from API Manager. You can apply policies to ensure various levels of security for your microservices. 
+
+For example, you can apply the Rate Limiting policy to define the number of requests that you want your service to receive within a specified period of time.
+
+
+
 
 To apply policies:
 
-. Go to *API Manager > API Administrations > Policies*.
+. Go to *API Manager* and select the specific API instance.
+The API instance details are displayed.
+. From the left navigation, *select Policies > Apply New Policy*.
 +
 image::select-policies-for-service-mesh.png[]
 +
@@ -21,7 +28,7 @@ image::select-policies-for-service-mesh.png[]
 * *Rate Limit SLA-Based* 
 +
 image::apply-client-enforcement-policy-service-mesh.png[]
-For more information about how to apply policies, see the specific policy.
+For more information about how to apply policies, see the documentation for the specific policy.
 
 
 == See Also

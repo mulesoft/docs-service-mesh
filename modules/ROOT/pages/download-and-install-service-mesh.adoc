@@ -24,11 +24,11 @@ The following topics are covered in this section:
 You install, manage, and troubleshoot your Anypoint Service Mesh using Service Mesh Client. 
 
 To download the Service Mesh Client, perform the following step:
- 
++
 Type the following command at the command prompt:
- 
++
 `curl -Ls http://anypoint.mulesoft.com/servicemesh/xapi/v1/install > service-mesh && chmod +x service-mesh`
-
++
 The Service Mesh Client is now downloaded on your local drive.
 
 == Install Anypoint Service Mesh
@@ -37,25 +37,21 @@ When the installer is invoked, Istio is installed first. The MuleSoft adapter an
 
 To install Anypoint Service Mesh, perform the following steps:
 
-. From the location where you downloaded your Service Mesh Client, type ./service-mesh install
+. From the location where you downloaded your Service Mesh Client, type `./service-mesh install`
 The Welcome to Service Mesh installer message is displayed.
-. At the Please enter your Client Id prompt, specify your client ID that obtained as part of the prerequisites.
-. At the Please enter your Client Secret prompt, specify your client secret that obtained as part of the prerequisites.
+. At the Please enter your *Client Id* prompt, specify your client ID that obtained as part of the prerequisites.
+. At the Please enter your *Client Secret* prompt, specify your client secret that obtained as part of the prerequisites.
 . At the Please enter the path to your Service Mesh license, specify the MuleSoft license that you obtained by emailing the MuleSoft team as part of the prerequisites.
-+
-*Installation Command Example:*
-`./service-mesh install`
-`- client id: 2720bd7281ed410fba95ab70bb81b8w345`
-`- client secret: E5Cf4f549c024592A5daC0182005734`
-`- mule license path: ~/path/to/muleLicenseKey.lic`
 +
 Anypoint Service Mesh installs within few minutes and displays a status, as shown in the example output. If an installation error occurs, the installer times out and uninstalls all previously installed Service Mesh components. 
 +
 image::service-mesh-installer-output.png[Example Installation Output]
 +
 . Verify the status of all pods:
++
 `> kubectl get pods -n service-mesh`
-Mulesoft Anypoint Service Mesh is now installed. All the pods listed in the output must be in Ready state. A status of all pods is displayed, as shown in the example output.
++
+MuleSoft Anypoint Service Mesh is now installed. All the pods listed in the output must be in Ready state. A status of all pods is displayed, as shown in the example output.
 +
 image::verified-service-mesh-installer-output.png[]
 
