@@ -12,8 +12,8 @@ The following section addresses common questions regarding the features availabl
 . I have an installation of Istio running within Kubernetes. Can I still use Anypoint Service Mesh? Is the adapter available as a standalone install?
 No, this is currently not supported. You have to uninstall the current version of Istio, and re-install Anypoint Service Mesh. 
 
-. How can I apply Istio policies for traffic control and zero trust?
-Istio policies such as fault tolerance, circuit breaker, mTLS, and so on, can be applied from Istio’s control plane using the command line. This currently is not supported in Anypoint Platform. These policies will ONLY apply to microservices deployed within the kubernetes cluster that has Anypoint Service Mesh installed. 
+// . How can I apply Istio policies for traffic control and zero trust?
+// Istio policies such as fault tolerance, circuit breaker, mTLS, and so on, can be applied from Istio’s control plane using the command line. This currently is not supported in Anypoint Platform. These policies will ONLY apply to microservices deployed within the kubernetes cluster that has Anypoint Service Mesh installed. 
 
 
 . What policies can be applied within Anypoint Platform to the (non-mule) services discovered via Anypoint Service Mesh?
@@ -24,13 +24,8 @@ The following policies can be applied to discovered non-mule services directly f
 * Rate Limiting
 * Rate Limiting - SLA
 
-
-. What kind of monitoring data will be available within the Anypoint Platform after installing Anypoint Service Mesh?
-You can view all API Analytics available today. All the data collected by the Envoy proxy will be available in Anypoint Monitoring. 
-
-. The following components are currently NOT supported for microservices discovered with Anypoint Service Mesh:
-Application level monitoring - Services discovered are treated as HTTP APIs, so will not have application level data
-Anypoint Visualizer - Will show one node for the discovered cluster, but will not show any individual microservices within the cluster 
+. Is API Analytics currently supported with Anypoint Service Mesh? 
+Yes, it will be supported in the GA release. 
 
 . I use Anypoint Runtime Fabric today. Can I install Anypoint Service Mesh within my Runtime Fabric?
 No, and this is not required. Apps deployed to Anypoint Runtime Fabric are already available on Anypoint Platform. Therefore, there is no need to discover them with Anypoint Service Mesh. 

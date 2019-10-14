@@ -33,7 +33,7 @@ The Service Mesh Client is now downloaded on your local drive.
 
 == Install Anypoint Service Mesh
 
-When you being the installer, Istio is first installed, and the MuleSoft adapter and broker are then installed inside the Istio mixer. The installer perform several steps as part of the installation, such as it checks for dependencies and various configurations.
+When the installer is invoked, Istio is installed first. The MuleSoft adapter and broker are then installed inside the Istio mixer. The installer perform several steps as part of the installation, such as it checks for dependencies and various configurations.
 
 To install Anypoint Service Mesh, perform the following steps:
 

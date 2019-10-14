@@ -6,9 +6,7 @@ endif::[]
 
 image::manage-service-mesh-breadcrumb.png[75%, 75%]
 
-After you bind your API, the API in API Manager is marked as Active.You are now ready to apply policies to protect your APIs.
-
-image::api-manager-status-for-service-mesh.png[10%.10%]
+After you configure Service Mesh, you are now ready to manage your Mule and non-Mule applications from API Manager. You can apply policies to ensure various levels of security for your microservices. For example, you can apply the Rate Limting to define the number of requests that you want your service to receive within a specified period of time.
 
 To apply policies:
 
@@ -16,9 +14,18 @@ To apply policies:
 +
 image::select-policies-for-service-mesh.png[]
 +
-. Select the *Client ID Enforcement* or *JWT Validation* policy to secure your APIs.
+. Select any of the following policies to secure your APIs: 
+* *Client ID Enforcement* 
+* *JWT Validation* 
+* *Rate Limit* 
+* *Rate Limit SLA-Based* 
 +
 image::apply-client-enforcement-policy-service-mesh.png[]
-+
-. Alternatively, you can apply the Rate Limit and Rate Limit SLA-Based policies to define the number of requests that you want your service to receive within a specified period of time. 
+For more information about how to apply policies, see the specific policy.
+
+
+== See Also
+* xref:api-manager::client-id-based-policies.adoc[Client ID Enforcement policy]
+* xref:api-manager::policy-mule4-jwt-validation.adoc[JWT Validation policy]
+* xref:api-manager::rate-limit-1.2.0-task.adoc[Rate Limiting policy]
 

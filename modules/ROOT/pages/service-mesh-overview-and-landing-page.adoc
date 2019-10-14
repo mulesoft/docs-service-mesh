@@ -27,7 +27,7 @@ Most importantly, the Anypoint Service Mesh can perform these tasks across all s
 
 
 == Anypoint Service Mesh Architecture
-A service mesh is an independent architecture layer, which is encapsulated in a Kubernetes cluster. In a service mesh architecture, instead of the services communicating with one another, a sidecar proxy is used to perform the same job. The manner in which these sidecars interact is governed by an overall mixer, where a user can apply different policies and security.
+A service mesh is an independent architecture layer, which is encapsulated in a Kubernetes cluster. In a service mesh architecture, instead of the services directly  communicating with one another, a sidecar proxy is used to perform the same job. This allows for providing security to your services. The manner in which these sidecars interact is governed by an overall mixer, where a user can apply different policies and security.
 
 image::anypoint-service-mesh-architecture.png[Anypoint Service Mesh Architecture]
 
