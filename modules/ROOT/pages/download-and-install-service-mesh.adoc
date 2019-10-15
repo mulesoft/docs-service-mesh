@@ -6,6 +6,11 @@ endif::[]
 
 image::install-service-mesh-breadcrumb.png[]
 
+The following topics are covered in this section:
+
+* <<download-service-mesh,Download Service Mesh Client>>
+* <<install-service-mesh,Install Service Mesh>>
+
 Before you install Service Mesh, you must first download the product from the installer download URL. As part of installation, the following required components are deployed on a Kubernetes cluster:
 
 * Istio
@@ -13,11 +18,7 @@ Before you install Service Mesh, you must first download the product from the in
 * Mulesoft Anypoint Service Mesh Broker
 * Mulesoft ClusterIP Service
  
- 
-The following topics are covered in this section:
 
-* <<download-service-mesh,Download Service Mesh Client>>
-* <<install-service-mesh,Install Service Mesh>>
 
 [[download-service-mesh]]
 == Download Anypoint Service Mesh Client

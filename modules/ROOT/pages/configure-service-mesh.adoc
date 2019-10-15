@@ -8,10 +8,12 @@ image::configure-service-mesh-breadcrumb.png[]
 
 The following topics are covered in this section:
 
-* Provision Service Mesh Adapter
-* Create a non-Mule application
-* Bind Service Mesh Adapter
+* <<adapter-overview,Service Mesh Overview>>
+* <<provision-adapter,Provision Service Mesh Adapter>>
+* <<create-non-mule-app,Create a non-Mule application>>
+* <<bind-adapter,Bind Service Mesh Adapter>>
 
+[[adapter-overview]]
 == Service Mesh Adapter Overview
 
 After you install Service Mesh, you must provision the Service Mesh adapter and bind it with a specific namespace. When you provision the adapter, you must specify the size of the adapter based on the number of CPUs and memory of the system that will be managed in Service Mesh.
@@ -60,9 +62,10 @@ To use the help, type the following command:
 
 image::service-mesh-cli-adapter-help.png[CLI Help for Adapter Commands]
 
+[[provision-adapter]]
 == Provision Service Mesh Adapter
 
-Before	you can start managing your API using Service Mesh, you must prepare your namespace by provisioning a Service Mesh Adapter. Provisioning prepares the namespace for the Service Mesh configuration. After you provision the adapter, you must redeploy your existing application to ensure that the Envoy sidecar is injected with each POD.
+Before	you can start managing your API using Service Mesh, you must prepare your namespace by provisioning a Service Mesh Adapter. Provisioning prepares the namespace for the Service Mesh configuration. After you provision the adapter, you must redeploy your existing application to ensure that the Envoy sidecar is injected with each pod.
 
 To provision the Anypoint Service Mesh adapter:
  
@@ -101,6 +104,7 @@ image::provision-service-mesh-adapter-output.png[Example Output]
 +
 `./service-mesh adapter logs --name=<adapter_name> --namespace=<namespace>`
 
+[[create-non-mule-app]]
 == Create a non-Mule API
 
 If your MuleSoft or non-MuleSoft application does not exist, you must create it before you bind the service to the adapter. 
@@ -121,6 +125,7 @@ image::create-non-mule-api-service-mesh.png[85%, 85%]
 +
 Your API is now created.
 
+[[bind-adapter]]
 == Bind your service to an API on API Manager
 
 After you provision the adapter, you must bind your service with an existing API to the adapter that you created. The adapter uses the unique API ID of the API for this binding. The Anypoint Platform uses the API ID to identify an application and maintains its configuration. The adapter uses this API ID to fetch policies from the Anypoint Platform and applies to your services that are running in the cluster.
@@ -128,13 +133,13 @@ After you provision the adapter, you must bind your service with an existing API
 To bind the service with an API, perform the following steps:
 
 . Obtain the API ID of the API that you want to bind with the service.
-. If your applications were already running in the namespace, restart your application to inject the sidecar in the POD:
+. If your applications were already running in the namespace, restart your application to inject the sidecar in the pod:
 +
 `$ kubectl -n <namespace> patch deploy <deployname> --type=json -p='[{"op": "replace", "path": "/spec/template/metadata/labels/service-mesh.mulesoft.com","value":"enable"}]`
 +
 In the above command, replace the namespace and the deploy name with your specific details.
 +
-. Verify that the application Kubernetes service port is named following the requirements requested by Istio: https://istio.io/docs/setup/additional-setup/requirements/ .
+. Verify that the application Kubernetes service port is named following the requirements requested by Istio: https://istio.io/docs/setup/additional-setup/requirements/.
 . From the Service Mesh installer download location in the Command window, type the following command to bind the adapter with an application:
 +
 [source,text,linenums]
