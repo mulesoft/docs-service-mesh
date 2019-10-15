@@ -7,9 +7,10 @@ endif::[]
 Anypoint Service Mesh enables accelerated adoption of microservices by providing discoverability, management, and security for non-MuleSoft microservices. These non-MuleSoft microservices might be written using different languages and platforms, or might be deployed in different environments.
 
 To alleviate issues arising from differences in these microservices, Anypoint Service Mesh ensures the following application management advantages:
-Provides resilient service-to-service communication using zero-trust policies to handle traffic control, fault tolerance and load balancing 
-Extends MuleSoft API Management capabilities to any non-Mule service, with policies, security and analytics all applied directly from Anypoint Platform
-Amplifies reuse of services with discovery of non-Mule services within Exchange, available for use in future projects
+
+* Provides resilient service-to-service communication using zero-trust policies to handle traffic control, fault tolerance and load balancing 
+* Extends MuleSoft API Management capabilities to any non-Mule service, with policies, security and analytics all applied directly from Anypoint Platform
+* Amplifies reuse of services with discovery of non-Mule services within Exchange, available for use in future projects
 
 
 == Business Solution
@@ -27,7 +28,7 @@ Most importantly, the Anypoint Service Mesh can perform these tasks across all s
 
 
 == Anypoint Service Mesh Architecture
-A service mesh is an independent architecture layer, which is encapsulated in a Kubernetes cluster. In a service mesh architecture, instead of the services communicating with one another, a sidecar proxy is used to perform the same job. The manner in which these sidecars interact is governed by an overall mixer, where a user can apply different policies and security.
+A service mesh is an independent architecture layer, which is encapsulated in a Kubernetes cluster. In a service mesh architecture, instead of the services directly  communicating with one another, a sidecar proxy is used to perform the same job. This allows for providing security to your services. The manner in which these sidecars interact is governed by an overall mixer, where a user can apply different policies and security.
 
 image::anypoint-service-mesh-architecture.png[Anypoint Service Mesh Architecture]
 
@@ -43,9 +44,3 @@ Anypoint Exchange then uses the metadata to automatically discover and create HT
 
 image::service-mesh-service-discovery-flow.png[Service Discovery Flow using Service Mesh]
 
-== See Also
-
-*** xref:viewing-api-analytics.adoc[Reviewing Analytics usage]
-*** xref:analytics-chart.adoc[Reviewing API Manager Analytics charts usage]
-*** xref:analytics-event-api.adoc[Reviewing Analytics Event API]
-*** xref:analytics-event-forward.adoc[Reviewing Analytics Event Forwarding]

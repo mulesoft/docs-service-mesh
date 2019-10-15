@@ -23,6 +23,10 @@ Tip: To verify installed version, use the command: > helm version.
 For more information about how to install Helm, see the Helm installation documentation. https://helm.sh/docs/install/.
 ** Kubectl version 1.12 or later (compatible with the cluster) is installed on your local machine:
 For more information about how to install Kubectl, see https://kubernetes.io/docs/tasks/tools/install-kubectl/#before-you-begin 
+** One of the following environments on which to run Kubernetes:
+*** Google Kubernetes Engine (GKE)
+*** Amazon EKS
+*** Azure AKS
 * Not installed Istio in the cluster
 * Optionally, If you want to enable automatic sidecar injection, you must:
 ** Install Kubernetes 1.12+ with admissionregistration API 
