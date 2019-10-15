@@ -16,21 +16,23 @@ Before you install Service Mesh, you must first download the product from the in
  
 The following topics are covered in this section:
 
-* Download Service Mesh Client
-* Install Service Mesh
+* <<download-service-mesh,Download Service Mesh Client>>
+* <<install-service-mesh,Install Service Mesh>>
 
+[[download-service-mesh]]
 == Download Anypoint Service Mesh Client
 
 You install, manage, and troubleshoot your Anypoint Service Mesh using Service Mesh Client. 
 
 To download the Service Mesh Client, perform the following step:
-+
+
 Type the following command at the command prompt:
-+
+
 `curl -Ls http://anypoint.mulesoft.com/servicemesh/xapi/v1/install > service-mesh && chmod +x service-mesh`
-+
+
 The Service Mesh Client is now downloaded on your local drive.
 
+[[install-service-mesh]]
 == Install Anypoint Service Mesh
 
 When the installer is invoked, Istio is installed first. The MuleSoft adapter and broker are then installed inside the Istio mixer. The installer perform several steps as part of the installation, such as it checks for dependencies and various configurations.
