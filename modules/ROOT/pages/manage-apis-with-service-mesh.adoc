@@ -23,6 +23,7 @@ image::select-policies-for-service-mesh.png[]
 * *JWT Validation* 
 * *Rate Limit* 
 * *Rate Limit SLA-Based* 
+
 image::apply-client-enforcement-policy-service-mesh.png[]
 
 For more information about how to apply policies, see the documentation for the specific policy.
