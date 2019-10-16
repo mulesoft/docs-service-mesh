@@ -6,19 +6,13 @@ endif::[]
 
 image::install-service-mesh-breadcrumb.png[]
 
-Before you install Service Mesh, you must first download the product from the installer download URL. As part of installation, the following required components are deployed on a Kubernetes cluster:
-
-* Istio
-* Service Catalog
-* Mulesoft Anypoint Service Mesh Broker
-* Mulesoft ClusterIP Service
- 
- 
 The following topics are covered in this section:
 
 * <<download-service-mesh,Download Service Mesh Client>>
 * <<install-service-mesh,Install Service Mesh>>
 
+Before you install Service Mesh, you must first download the product from the installer download URL. 
+ 
 [[download-service-mesh]]
 == Download Anypoint Service Mesh Client
 
@@ -30,16 +24,26 @@ Type the following command at the command prompt:
 
 `curl -Ls http://anypoint.mulesoft.com/servicemesh/xapi/v1/install > service-mesh && chmod +x service-mesh`
 
-The Service Mesh Client is now downloaded on your local drive.
+The Service Mesh Client is now downloaded on your file system.
 
 [[install-service-mesh]]
 == Install Anypoint Service Mesh
 
-When the installer is invoked, Istio is installed first. The MuleSoft adapter and broker are then installed inside the Istio mixer. The installer perform several steps as part of the installation, such as it checks for dependencies and various configurations.
+When the installer is invoked, Istio and Service Mesh components are installed. The installer performs several steps as part of the installation, such as checks for dependencies and various configurations. If you failed to complete any of the prerequisites listed in the Review Prerequisites section, your installation might fail.
+
+As part of installation, the following required components are deployed on a Kubernetes cluster:
+
+* Istio
+* Service Catalog
+* Mulesoft Anypoint Service Mesh Broker
+* Mulesoft ClusterIP Service
 
 To install Anypoint Service Mesh, perform the following steps:
 
-. From the location where you downloaded your Service Mesh Client, type `./service-mesh install`
+. From the location where you downloaded your Service Mesh Client, type:
++
+`./service-mesh install`
++
 The Welcome to Service Mesh installer message is displayed.
 . At the Please enter your *Client Id* prompt, specify your client ID that obtained as part of the prerequisites.
 . At the Please enter your *Client Secret* prompt, specify your client secret that obtained as part of the prerequisites.
@@ -51,7 +55,7 @@ image::service-mesh-installer-output.png[Example Installation Output]
 +
 . Verify the status of all pods:
 +
-`> kubectl get pods -n service-mesh`
+`kubectl get pods -n service-mesh`
 +
 MuleSoft Anypoint Service Mesh is now installed. All the pods listed in the output must be in Ready state. A status of all pods is displayed, as shown in the example output.
 +
@@ -75,4 +79,4 @@ Before you uninstall Service Mesh, make sure that you:
 To uninstall Service Mesh:
 
 Run the  following command from the installer download URI:
-`> ./service-mesh uninstall && rm service-mesh`
+`./service-mesh uninstall && rm service-mesh`
