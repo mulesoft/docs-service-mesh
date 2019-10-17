@@ -3,5 +3,5 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
-Anypoint Service Mesh Beta program was launched in October 2019. To participate in the Beta program, contact MuleSoft Support.
+Anypoint Service Mesh Beta program was launched in October 2019. 
 

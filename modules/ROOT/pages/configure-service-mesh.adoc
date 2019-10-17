@@ -8,9 +8,9 @@ image::configure-service-mesh-breadcrumb.png[]
 
 
 [[adapter-overview]]
-== Service Mesh Adapter Overview
+== Overview
 
-To configure Service Mesh, you must provision the Service Mesh adapter and bind it with a specific namespace. Each adapters is bound to a specific namespace. Therefore, a namespace can be associated with only one adapter at any given time. 
+To configure Service Mesh, you must first provision the Service Mesh adapter, create a non-Mule API, and bind the adapter to that API. Each adapter is bound to a specific namespace. Therefore, a namespace can be associated with only one adapter at any given time. 
 
 When you provision the adapter, you must specify the size of the adapter based on the number of CPUs and memory of the system that will be managed in Service Mesh.
 
@@ -20,7 +20,12 @@ You configure Service Mesh using the following three steps:
 . <<create-non-mule-app,Create an API>>
 . <<bind-adapter,Bind your service>>
 
+== Adapter Overview
+
+After you install Anypoint Service Mesh, provision the Service Mesh adapter and bind it with a specific namespace. When you provision the adapter, specify the size of the adapter based on the number of CPUs and memory of the system managed in Service Mesh.
+
 === Adapter Plan
+
 Anypoint Service Mesh currently supports three plans for the adapter:
 
 [%header%autowidth.spread]
@@ -56,7 +61,7 @@ The status values include:
 The command line interface (CLI) tool for Service Mesh provides help for various commands. You can issue help commands at any time after you complete installing Service Mesh. 
 
 To use the help, type the following command:
-`./service-mesh help`
+`./service-mesh adapter help`
 
 image::service-mesh-cli-adapter-help.png[CLI Help for Adapter Commands]
 
@@ -71,6 +76,9 @@ After you provision the adapter, you must redeploy your existing application to 
 To provision the Anypoint Service Mesh adapter:
  
 . Determine the adapter size based on the plan.
+. From Anypoint Platform, obtain the the client ID and client secret for your environment.
+For more information about how to obtain these credentials, see 
+xref:api-manager::access-client-app-id-task.adoc[obtain credentials].
 . From the Service Mesh installer download location in the Command window, type the following command to create the adapter:
 +
 [source,text,linenums]
@@ -83,6 +91,7 @@ To provision the Anypoint Service Mesh adapter:
 --clientSecret=<clientSecret of the environment or organization> \
 --platformUri=<URL of Anypoint Platform>
 ----
+Note that all objects names, such as adapter name, binding name, and service name, must all be in lower case. An error is thrown if you do not follow Kubernetes naming conventions.
 +
 [%header%autowidth.spread]
 |===
@@ -95,18 +104,23 @@ To provision the Anypoint Service Mesh adapter:
 | `platformUri` | The URL of the host where Anypoint Platform is installed | Optional | https://anypoint.mulesoft.com
 |===
 +
-. Verify the adapter status using the `list` command.
+. Verify the adapter status using the `./service-mesh adapter list` command.
 +
 image::provision-service-mesh-adapter-output.png[Example Output]
 +
 . Review adapter logs to see detailed information about Kubernetes events and adapter transactions:
 +
 `./service-mesh adapter logs --name=<adapter_name> --namespace=<namespace>`
-. Optionally, if your applications were already running in the namespace before starting the Service Mesh installation, restart your application to inject the sidecar in the pod:
+. Optionally, run the following commands if your applications were already running in the namespace before starting the Service Mesh installation:
+.. Determine the deployment name for the patch: 
 +
-`kubectl -n <namespace> patch deploy <deployname> --type=json -p='[{"op": "replace", "path": "/spec/template/metadata/labels/service-mesh.mulesoft.com","value":"enable"}]'`
+`kubectl get deployments -n <namespace>`
 +
-In the above command, replace the namespace and the deploy name with your specific details.
+image::kubectl-deployment-name.png[]
+.. Using the deploy name from the previous command, restart your application to inject the sidecar in the pod:
++
+`kubectl -n <adapter-namespace> patch deploy <deployname> --type=json -p='[{"op": "replace", "path": "/spec/template/metadata/labels/service-mesh.mulesoft.com","value":"enable"}]'`
+
 
 [[create-non-mule-app]]
 == Create an API in Anypoint Platform
@@ -119,11 +133,12 @@ To create an API, perform the following steps:
 . Select *Create new API*.
 +
 The Creating an asset page is displayed.
-. Specify the *Name*, *Asset types* details for the API.  
+. Specify the *Name*, and *Asset types* details for the API.  
 +
-The Endpoint Configuration window is displayed, as shown in the following screenshot.
-+
-image::create-non-mule-api-service-mesh.png[85%, 85%]
+The Endpoint Configuration window is displayed.
+// , as shown in the following screenshot.
+// +
+// image::create-non-mule-api-service-mesh.png[85%, 85%]
 +
 . In the *Managing type* field, select the *Basic Endpoint* radio button.
 . In the *Application type* field, select the *Non-Mule application* radio button.
@@ -163,12 +178,13 @@ For more information, see the Istio documentation.
 [source,text,linenums]
 ----
 ./service-mesh binding create \
---name=<servicename> \
+--name=<bindingname> \
 --namespace=<namespace name> \
 --adapter=<adapter name> \
 --apiId=<api ID> \
 --serviceName=<servicename>
 ----
+Note that all objects names, such as adapter name, binding name, and service name, must all be in lower case. An error is thrown if you do not follow Kubernetes naming conventions.
 +
 [%header%autowidth.spread]
 |===
