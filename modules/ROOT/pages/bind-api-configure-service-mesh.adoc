@@ -8,14 +8,11 @@ When you create the binding, Service Mesh creates a three-way association of the
 
 After you create the binding, Service Mesh takes few seconds to complete the binding procedure and updates the status.
 
-//[PA: Why is the connection with the adapter needed here?]
+After the binding is completed, you can view the status using the `list` command. The status values include:
 
-
-// After the binding is completed, you can view the status using the `list` command. The status values include:
-
-// * Ready--The binding is now ready to be used. 
-// * Failed--The binding was not created successfully. An error occurred. 
-// * Binding--The binding is in the process of being associated with specific application.
+* Ready--The binding is now ready to be used. 
+* Failed--The binding was not created successfully. An error occurred. 
+* Binding--The binding is in the process of being associated with specific application.
 
 In the following example, a binding called “customers” is created to bind the “anypoint-service-mesh-adapter” adapter with the "customers" service. This binding is created in the “nto-payments” namespace, which is the same namespace where the adapter was previously created, and is associated with the API that has the ID as 1234.
 
@@ -37,8 +34,7 @@ image::api-id.png[]
 . To retrieve the service name from Kubernetes, with which you want to bind the API, run the command:
 +
 `kubectl get svc -n <namespace>`
-. Verify that the application Kubernetes service port is named following the requirements requested by Istio. 
-For more information, see the Istio documentation.
+. Verify that your microservice port is named following the requirements requested by Istio: xref:https://istio.io/docs/setup/additional-setup/requirements/[].
 . From the Service Mesh installer download location in the Command window, type the following command to bind the adapter with an application:
 +
 [source,text,linenums]

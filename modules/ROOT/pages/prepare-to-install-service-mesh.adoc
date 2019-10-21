@@ -45,8 +45,7 @@ Before you begin to download and install Anypoint Service Mesh, you must have th
 ** Obtain the client ID and client Secret credentials from Access Management. You will require these credentials of your organization or environment to connect Service Mesh to Anypoint Platform. 
 If you provision the adapter with organization credentials, you will be able to manage APIS on the specific adapter of that organization. 
 +
-If you specify environment credentials, you will only be able to manage apis of that environment. MuleSoft recommends that you use the environment credentials instead of the organization credentials. For more information about which permissions to use, see xref:api-manager::org-credentials-config-mule4.adoc#obtaining-credentials[obtaining credentials].
-For more information about how to obtain the credentials, see API Manager documentation.
+If you specify environment credentials, you will only be able to manage APIs of that environment. MuleSoft recommends that you use the environment credentials instead of the organization credentials. For more information about which permissions to use, see xref:api-manager::org-credentials-config-mule4.adoc#obtaining-credentials[obtaining credentials].
 * Cluster-admin role access to the Kubernetes cluster.
 
 == See Also

@@ -6,7 +6,6 @@ endif::[]
 
 
 After you provision the adapter, you must create an API to bind to the service. 
-//Give an example here and tell them why we need to do this.
 
 To create an API, perform the following steps:
 
@@ -15,6 +14,8 @@ To create an API, perform the following steps:
 +
 The Creating an asset page is displayed.
 . Specify the *Name*, and *Asset types* details for the API.  
++
+Your Asset is now created in Exchange for reuse. After you create the Asset, you are now ready to perform Endpoint configuration.
 +
 The Endpoint Configuration window is displayed.
 . In the *Managing type* field, select the *Basic Endpoint* radio button.

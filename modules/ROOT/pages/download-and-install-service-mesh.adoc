@@ -9,7 +9,7 @@ image::install-service-mesh-breadcrumb.png[]
  
 == Download Anypoint Service Mesh Client
 
-You install, manage, and troubleshoot your Anypoint Service Mesh using the Service Mesh Client. 
+You install, manage, and troubleshoot your Anypoint Service Mesh using the Service Mesh client. 
 
 To download the Service Mesh Client, type the following command at the command prompt:
 
@@ -19,7 +19,7 @@ The Service Mesh Client is now downloaded on your file system.
 
 == Install Anypoint Service Mesh
 
-When the installer is invoked, Istio, Service Catalog, Service Mesh Broker, and ClusterIP Service components are installed in your Kubernetes cluster. The installer performs several steps as part of the installation, such as checks for dependencies and performs various configurations. If you failed to complete any of the prerequisites listed in the xref:prepare-to-install-service-mesh.adoc[] section, your installation might fail.
+When the installer is invoked, Istio, Service Catalog, Anypoint Service Mesh Broker, and ClusterIP Service components are installed in your Kubernetes cluster. The installer performs several steps as part of the installation, such as checks for dependencies and performs various configurations. If you failed to complete any of the prerequisites listed in the xref:prepare-to-install-service-mesh.adoc[] section, your installation might fail.
 
 
 To install Anypoint Service Mesh, perform the following steps:

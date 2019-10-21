@@ -10,14 +10,10 @@ image::configure-service-mesh-breadcrumb.png[]
 [[adapter-overview]]
 == Overview
 
-//[PA: What is the adapter and why the user needs to use it?]
 To configure Service Mesh, you must first provision the Service Mesh adapter, create an API, and then bind the adapter to that API. Each adapter is bound to a specific namespace. Therefore, a namespace can be associated with only one adapter at any given time. 
-//[PA: Why do we need to provision the adapter]
 
-Every service running on your Kubernetes cluster must have a corresponding API in Anypoint Platform to ensure that the service is reusable. Services in Kubernetes is an abstract way to expose an application running on a set of pods as a network service.
+Every service that you want Anypoint Service Mesh to manage from your Kubernetes cluster, must have a corresponding API in Anypoint Platform. After you create the API, you must then bind the service in the cluster to the corresponding API in Anypoint Platform. In Kubernetes, services are an abstraction on top of the applications running on a set of pods as a network service.
 
-After you create the API, you must then bind the service in the cluster to the corresponding API in Anypoint Platform. When the API is called, the backend in turn runs the  service. 
-Once you install the adapter, the Envoy is an open source opensource microgateway or sidecar. In the same pod a sidecar is injected as your application. 
 
 You configure Service Mesh using the following three steps:
 

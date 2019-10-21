@@ -5,13 +5,11 @@ endif::[]
 :keywords: service mesh, microservices, installation prerequisites
 
 
-Before you can start managing your services using Service Mesh, you must prepare your namespace by provisioning a Service Mesh adapter. Provisioning prepares the namespace for the Service Mesh configuration. 
+Before you can start managing your services using Service Mesh, you must prepare your namespace by provisioning a Service Mesh adapter. Provisioning prepares the namespace for the Service Mesh configuration. As a best practice, you must create one namespace per adapter.
 
-The adapter microgateway behaves as the policy enforcement component, which fetches policies from Anypoint platform, checks whether the policies have been met, and then reports the analytics data back to Anypoint Platform.  The adapter intercepts all communications between the services and the corresponding APIs to ensure security and fault detection.
+The adapter behaves as the policy enforcement component, which fetches policies from Anypoint platform, checks whether the policies have been met, and then reports the analytics data back to Anypoint Platform.  
 
-[PA: Any best practice as to the number of namespaces and adapters per service?]
-
-When you provision the adapter, specify the size of the adapter based on the number of CPUs and memory of the system managed in Service Mesh. After you provision the adapter, you must redeploy all your existing applications to ensure that the Envoy sidecar is injected within each pod in the Kubernetes cluster.
+After you provision the adapter, you must redeploy all your existing applications to ensure that the Envoy sidecar is injected within each pod in the Kubernetes cluster.
 
 == Adapter Plan
 
@@ -29,21 +27,21 @@ You can also modify the size of an adapter after it has been provisioned. If you
 
 After the new adapter is ready, the old pod is terminated and all requests are routed to the new adapter. If the update fails to start up a new pod due to insufficient space, or if the pod is not ready, an error message is recorded in a Kubernetes event. In such a scenario, the old adapter continues to handle requests because the new pod is not yet available.
 
-// === Adapter Status
+== Adapter Status
 
-// When you provision an adapter, or bind the adapter to an application, a message is displayed after you run an adapter command. The message indicates whether the adapter was created, deleted, or modified successfully. 
+When you provision an adapter, or bind the adapter to an application, a message is displayed after you run an adapter command. The message indicates whether the adapter was created, deleted, or modified successfully. 
 
-// Additionally, you can verify the adapter status, which provides further details about the adapter. 
+Additionally, you can verify the adapter status, which provides further details about the adapter. 
 
-// To view the adapter status, type the following command:
+To view the adapter status, type the following command:
 
-// `./service-mesh adapter list`
+`./service-mesh adapter list`
 
-// The status values include:
+The status values include:
 
-// * Ready--The adapter is now ready to be used. 
-// * Failed--The adapter was not created successfully. An error occurred. 
-// * Provisioning--The adapter is in the process of being provisioned.
+* Ready--The adapter is now ready to be used. 
+* Failed--The adapter was not created successfully. An error occurred. 
+* Provisioning--The adapter is in the process of being provisioned.
 
 == CLI Help for Adapter Commands
 
@@ -101,9 +99,11 @@ image::provision-service-mesh-adapter-output.png[Example Output]
 `kubectl get deployments -n <namespace>`
 +
 //image::kubectl-deployment-name.png[]
-.. Using the deploy name from the previous command, restart your application to inject the sidecar in the pod:
+.. Using the deploy name from the previous command, restart all your services that need to be managed by Anypoint Service Mesh to inject the sidecar in the pod:
 +
 `kubectl -n <adapter-namespace> patch deploy <deployname> --type=json -p='[{"op": "replace", "path": "/spec/template/metadata/labels/service-mesh.mulesoft.com","value":"enable"}]'`
-//how to test the deployment status and other details--using a k8 command.
+. To check whether the applications are redeployed, run the following command:
++
+`kubectl get pods -n <namespace>`.
 
 
