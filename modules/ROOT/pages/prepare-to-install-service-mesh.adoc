@@ -6,13 +6,9 @@ endif::[]
 
 image::prepare-to-install-breadcrumb.png[]
 
-To start using Anypoint Service Mesh, you must have installed the applications and must have the roles and permissions listed in this topic. This section describes the following requirements:
+To install Anypoint Service Mesh, you must have completed the software, licensing, and permissions requirements listed in this section.
 
-* <<software-requirements,Software Requirements>>
-* <<licensing-requirements,Licensing Requirements>>
-* <<permissions-and-roles-requirements,Permissions and Roles Requirements>>
 
-[[software-requirements]]
 == Software Requirements
 
 Before you download and install Anypoint Service Mesh, make sure you have:
@@ -34,29 +30,29 @@ For more information about how to install Helm, see the Helm installation docume
 *Tip:* To verify the installation, use the command `kubectl api-versions | grep admissionregistration.k8s.io/v1beta1`.
 ** Configure kube-apiserver process with the admission-control flag to “MutatingAdmissionWebhook”
 For more information about how to turn on, see tke Kubernetes documentation.
-** Add and list ValidatingAdmissionWebhook admission controllers in the correct order
+** Add and list ValidatingAdmissionWebhook admission controllers in the correct order.
 
 
-[[licensing-requirements]]
 == Licensing Requirements
 
 You require a Anypoint Service Mesh license to perform the installation. If you do not have a license, contact your MuleSoft representative.
 
-
-[[permissions-and-roles-requirements]]
 == Permissions and Roles Requirements
 
 Before you begin to download and install Anypoint Service Mesh, you must have the following roles and permissions:
  
 * API Manager Environment Administrator permission or Organization Administrator role for your organization to access the client ID and client secret credentials.
-** Obtain the client ID and client Secret credentials from Access Management. You will require these credentials of your organization or environment to connect Service Mesh to Anypoint Platform. MuleSoft recommends that you use the environment credentials instead of the organization credentials.
+** Obtain the client ID and client Secret credentials from Access Management. You will require these credentials of your organization or environment to connect Service Mesh to Anypoint Platform. 
+If you provision the adapter with organization credentials, you will be able to manage APIS on the specific adapter of that organization. 
++
+If you specify environment credentials, you will only be able to manage apis of that environment. MuleSoft recommends that you use the environment credentials instead of the organization credentials. For more information about which permissions to use, see xref:api-manager::org-credentials-config-mule4.adoc#obtaining-credentials[obtaining credentials].
 For more information about how to obtain the credentials, see API Manager documentation.
-* Cluster-admin role access to the Kubernetes cluster
+* Cluster-admin role access to the Kubernetes cluster.
 
 == See Also
 
 * https://helm.sh/docs/install/[Helm Documentation]
 * https://kubernetes.io/docs/tasks/tools/install-kubectl/#before-you-begin[Kubernetes Installation Documentation]
 * https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#how-do-i-turn-on-an-admission-controller[Kubernetes Admission Controller Documentation]
-* xref:api-manager::org-credentials-config-mule4.adoc#obtaining-credentials[Obtain Environment Credentials]
+//* xref:api-manager::org-credentials-config-mule4.adoc#obtaining-credentials[Obtain Environment Credentials]
 

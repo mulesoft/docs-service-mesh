@@ -1,0 +1,23 @@
+= Uninstall Service Mesh
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+:keywords: service mesh, microservices, uninstalling
+
+You might have to uninstall or delete Anypoint Service Mesh to troubleshoot issues or for other reasons. If you uninstall Service Mesh with bindings or adapters created, or have applications with an injected Envoy, the application stops working. The command removes all the Kubernetes components associated with Service Mesh project.
+
+=== Recommendations for uninstallation
+
+Before you uninstall Service Mesh, make sure that you:
+
+. Delete all bindings
+. Delete all adapters
+. Remove the injection label on the namespaces with provisioned applications
+. Redeploy your applications
+. Finally uninstall Service Mesh
+
+
+To uninstall Service Mesh:
+
+Run the  following command from the installer download URI:
+`./service-mesh uninstall && rm service-mesh`

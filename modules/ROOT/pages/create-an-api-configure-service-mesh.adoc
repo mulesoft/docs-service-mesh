@@ -1,0 +1,24 @@
+= Create an API
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+:keywords: service mesh, microservices, downloading, installing
+
+
+After you provision the adapter, you must create an API to bind to the service. 
+//Give an example here and tell them why we need to do this.
+
+To create an API, perform the following steps:
+
+. Go to *Anypoint Platform > API Manager* and select the *Manage API* drop-down list. 
+. Select *Create new API*.
++
+The Creating an asset page is displayed.
+. Specify the *Name*, and *Asset types* details for the API.  
++
+The Endpoint Configuration window is displayed.
+. In the *Managing type* field, select the *Basic Endpoint* radio button.
+. In the *Application type* field, select the *Non-Mule application* radio button.
+. Optionally, specify the *Implementation URI*, and click *Save*.
++
+Your API is now created.

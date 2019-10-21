@@ -1,0 +1,74 @@
+= Bind Your Service to an API 
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+:keywords: service mesh, microservices, binding
+
+When you create the binding, Service Mesh creates a three-way association of the service in Kubernetes with the API that you created in Anypoint Platform to represent the service, and the adapter that you created for the service. The adapter uses the unique API ID of the API to fetch policies and apply them to your services that are running in the cluster.
+
+After you create the binding, Service Mesh takes few seconds to complete the binding procedure and updates the status.
+
+//[PA: Why is the connection with the adapter needed here?]
+
+
+// After the binding is completed, you can view the status using the `list` command. The status values include:
+
+// * Ready--The binding is now ready to be used. 
+// * Failed--The binding was not created successfully. An error occurred. 
+// * Binding--The binding is in the process of being associated with specific application.
+
+In the following example, a binding called “customers” is created to bind the “anypoint-service-mesh-adapter” adapter with the "customers" service. This binding is created in the “nto-payments” namespace, which is the same namespace where the adapter was previously created, and is associated with the API that has the ID as 1234.
+
+[source,text,linenums]
+----
+NAMESPACE      NAME        ADAPTER                         API ID  SERVICE NAME    STATUS
+nto-payments   customers   anypoint-service-mesh-adapter   1234    customers       Ready
+----
+
+== Binding the service
+To bind the service with an API, perform the following steps:
+
+. . Go to *Anypoint Platform > API administration*, and expand the API version name to display the instances.
+. Click an instance name and copy the API ID that is displayed. 
+Make sure to save this API ID to a text editor.
++
+image::api-id.png[]
++
+. To retrieve the service name from Kubernetes, with which you want to bind the API, run the command:
++
+`kubectl get svc -n <namespace>`
+. Verify that the application Kubernetes service port is named following the requirements requested by Istio. 
+For more information, see the Istio documentation.
+. From the Service Mesh installer download location in the Command window, type the following command to bind the adapter with an application:
++
+[source,text,linenums]
+----
+./service-mesh binding create \
+--name=<binding name> \
+--namespace=<namespace name> \
+--adapter=<adapter name> \
+--apiId=<api ID> \
+--serviceName=<service name>
+----
+Note that all objects names, such as adapter name, binding name, and service name, must all be in lower case. An error is thrown if you do not follow Kubernetes naming conventions.
++
+[%header%autowidth.spread]
+|===
+| Parameter Name | Description | Required/Optional | Default Value
+| name | The unique name that represents the binding of the Kubernetes Service with the API, for example, service-binding-anypoint-security”. 
+ | Required | N/A
+| namespace | The namespace in which your service is deployed. Make sure that you use the same namespace as the adapter you provisioned in the previous procedure. | Required | N/A
+| adapter | Specify the name of the adapter that you provisioned in the previous procedure.  | Required | N/A 
+| apiId | Specify the API ID of the API that you want to associate with this adapter. Use the API ID you obtained as part of Review Prerequisites section of this document. | Required | N/A.
+| serviceName | The name of the service that you want to bind to the API, which will be managed by Anypoint Platform. The service name is the identifier of the service that you want to manage with Anypoint Service Mesh. 
+| Required | N/A.
+|===
++
+The binding becomes activate within a few seconds and the API is successfully registered to the proxy.
+. Verify the binding status using the following command:
++
+`./service-mesh binding list`
++
+After you bind your API, the API in API Manager is marked as Active. You are now ready to apply policies to protect your APIs.
++
+image::api-manager-status-for-service-mesh.png[85%, 85%]
