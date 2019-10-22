@@ -40,28 +40,22 @@ The MuleSoft adapter and broker, which reside within the Istio mixer, connect co
 
 Anypoint Exchange then uses the metadata to automatically discover and create HTTP APIs for each service. These APIs can then be managed within API Manager. Similarly, Anypoint Monitoring uses the metadata to get information from the sidecar proxy and makes it available for API Analytics. 
 
-// === Traffic Flow in Service Mesh
+== Request Flow
 
-// 1- User calls Java Service
-// 2- Envoy proxy catches the request and sends the authorization check into mixer
-// 3- Mixer delegates policy enforcement checks into Mulesoft adapter.
+When a service is called, Anypoint Service Mesh ensure a smooth request flow and security checks as shown in the following diagam:
 
-// image::service-mesh-traffic-flow.png[Service Mesh Traffic Flow]
+image:service-mesh-flows.jpeg[]
+
+1. The client, which might be another microservice or any Kubernetes Ingress component, sends a request to the service.
+2. Envoy captures the request and redirects it to the Istio-mixer.
+3. The Mixer adapter then calls the Service Mesh adapter to perform policy checks and verifications.
+4. The Service Mesh adapter performs policy checks and responds back to the Mixer.
+5. The Mixer communicates the outcome of the policy checks to the Envoy proxy.
+6. When no policy violations are encountered, the request is routed to the microservice. The microservice runs the service logic and sends the response back to the client.
++
+The adapter communicates with Anypoint Platform asynchronously to get the latest policies and contracts, and eventually sends back the API analytics information.
 
 
-// === API and Service Binding
-
-// Binding
-// 1- Bind Service to API in API Manager
-// By using the Service Mesh Cli, user specifies he wants to bind his API to an existent API on API Manager
-// 2- Configures routing
-// Service Broker creates a set of rules for the mixer to send traffic to Mulesoft custom adapter, where policies will be enforced.
-// 3- Polls for policies and contracts
-// Mule Runtime starts polling for policies and contracts information of an existent API on API Manager
-// 4- Pushes HTTP Metrics
-// Traffic metrics and policy violations are pushed into Monitoring Center
-
-// image::service-mesh-binding-flows.png[]
 
 
 
