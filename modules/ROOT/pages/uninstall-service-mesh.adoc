@@ -6,7 +6,7 @@ endif::[]
 
 You might have to uninstall or delete Anypoint Service Mesh, for example, to troubleshoot issues. If you uninstall Service Mesh with bindings or adapters created, or have applications with an injected Envoy, the application stops working. The command removes all the Kubernetes components associated with Service Mesh project.
 
-=== Recommendations for uninstallation
+== Recommendations for uninstallation
 
 Before you uninstall Service Mesh:
 
