@@ -5,7 +5,7 @@ endif::[]
 :keywords: service mesh, microservices, installation prerequisites
 
 
-Before you can start managing your services using Service Mesh, you must prepare your namespace by provisioning a Service Mesh adapter. Provisioning prepares the namespace for the Service Mesh configuration. As a best practice, you must create one namespace per adapter.
+Before you can start managing your services using Anypoint Service Mesh, you must prepare your namespace by provisioning a Anypoint Service Mesh adapter. Provisioning prepares the namespace for the Anypoint Service Mesh configuration. As a best practice, you must create one namespace per adapter.
 
 The adapter behaves as the policy enforcement component, which fetches policies from Anypoint platform, checks whether the policies have been met, and then reports the analytics data back to Anypoint Platform.  
 
@@ -13,7 +13,7 @@ After you provision the adapter, you must redeploy all your existing application
 
 == Adapter Plan
 
-When you provision the adapter, you must specify the size of the adapter based on the number of CPUs and memory of the system that will be managed using Service Mesh. Anypoint Service Mesh currently supports small, medium, and large adapter plans:
+When you provision the adapter, you must specify the size of the adapter based on the number of CPUs and memory of the system that will be managed using Anypoint Service Mesh. Anypoint Service Mesh currently supports small, medium, and large adapter plans:
 
 [%header%autowidth.spread]
 |===
@@ -45,7 +45,7 @@ The status values include:
 
 == CLI Help for Adapter Commands
 
-After you install Service Mesh, you can use the command line interface (CLI) help to learn about the Service Mesh commands and their parameters:
+After you install Anypoint Service Mesh, you can use the command line interface (CLI) help to learn about the Anypoint Service Mesh commands and their parameters:
 +
 `./service-mesh adapter help`
 
@@ -59,7 +59,7 @@ To provision the Anypoint Service Mesh adapter:
 . From Anypoint Platform, obtain the the client ID and client secret for your environment.
 For more information about how to obtain these credentials, see 
 xref:api-manager::access-client-app-id-task.adoc[obtain credentials].
-. From the Service Mesh installer download location in the Command window, type the following command to create the adapter:
+. From the Anypoint Service Mesh installer download location in the Command window, type the following command to create the adapter:
 +
 [source,text,linenums]
 ----
@@ -93,7 +93,7 @@ image::provision-service-mesh-adapter-output.png[Example Output]
 . Review adapter logs to see detailed information about Kubernetes events and adapter transactions:
 +
 `./service-mesh adapter logs --name=<adapter_name> --namespace=<namespace>`
-. Optionally, run the following commands for each of your applications that were already running in the namespace before starting the Service Mesh installation:
+. Optionally, run the following commands for each of your applications that were already running in the namespace before starting the Anypoint Service Mesh installation:
 .. Determine the deployment name for the patch: 
 +
 `kubectl get deployments -n <namespace>`

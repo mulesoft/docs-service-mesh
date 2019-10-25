@@ -10,14 +10,14 @@ image::configure-service-mesh-breadcrumb.png[]
 [[adapter-overview]]
 == Overview
 
-To configure Service Mesh, you must first provision the Service Mesh adapter, create an API, and then bind the adapter to that API. Each adapter is bound to a specific namespace. Therefore, a namespace can be associated with only one adapter at any given time. 
+To configure Anypoint Service Mesh, you must first provision the Anypoint Service Mesh adapter, create an API, and then bind the adapter to that API. Each adapter is bound to a specific namespace. Therefore, a namespace can be associated with only one adapter at any given time. 
 
 Every service that you want Anypoint Service Mesh to manage from your Kubernetes cluster, must have a corresponding API in Anypoint Platform. After you create the API, you must then bind the service in the cluster to the corresponding API in Anypoint Platform. In Kubernetes, services are an abstraction on top of the applications running on a set of pods as a network service.
 
 
-You configure Service Mesh using the following three steps:
+You configure Anypoint Service Mesh using the following three steps:
 
-. <<provision-adapter,Provision Service Mesh Adapter>>
+. <<provision-adapter,Provision Anypoint Service Mesh Adapter>>
 . <<create-non-mule-app,Create an API>>
 . <<bind-adapter,Bind your service>>
 
