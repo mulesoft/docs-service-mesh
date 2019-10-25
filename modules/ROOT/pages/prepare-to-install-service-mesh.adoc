@@ -10,7 +10,7 @@ Before you download and install Anypoint Service Mesh, you must meet the  softwa
 
 == Software Requirements
 
-Your Service Mesh installation requires the following applications and Kubernetes environments:
+Your Anypoint Service Mesh installation requires the following applications and Kubernetes environments:
 
 * Kubernetes 1.12+ or a newer cluster, with RBAC (Role-Based Access Control) enabled
 * Helm 2.13.0 or later

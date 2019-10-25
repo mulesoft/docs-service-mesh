@@ -9,35 +9,35 @@ image::install-service-mesh-breadcrumb.png[]
  
 == Download Anypoint Service Mesh Client
 
-You install, manage, and troubleshoot your Anypoint Service Mesh using the Service Mesh client. 
+You install, manage, and troubleshoot your Anypoint Service Mesh using the Anypoint Service Mesh client. 
 
-To download the Service Mesh client, type the following command at the command prompt:
+To download the Anypoint Service Mesh client, type the following command at the command prompt:
 
 `curl -Ls http://anypoint.mulesoft.com/servicemesh/xapi/v1/install > service-mesh && chmod +x service-mesh`
 
-The Service Mesh client is now downloaded on your file system.
+The Anypoint Service Mesh client is now downloaded on your file system.
 
 == Install Anypoint Service Mesh
 
-When you invoke the installer, Istio, Service Catalog, Service Mesh Broker, and ClusterIP Service components are installed in your Kubernetes cluster. The installer performs several steps as part of the installation, such as checks for dependencies and performs various configurations. If you failed to complete any of the prerequisites listed in the xref:prepare-to-install-service-mesh.adoc[prepare to install] section, your installation might fail.
+When you invoke the installer, Istio, Service Catalog, Anypoint Service Mesh Broker, and ClusterIP Service components are installed in your Kubernetes cluster. The installer performs several steps as part of the installation, such as checking for dependencies and performing various configurations. 
 
-=== Install With No Proxy
+=== Install without Proxy
 To install Anypoint Service Mesh, perform the following steps:
 
-. From the location where you downloaded your Service Mesh client, type:
+. In the location from which you downloaded your Anypoint Service Mesh client, type:
 +
 `./service-mesh install`
 +
-The Welcome to Service Mesh installer message is displayed.
+The `Welcome to Anypoint Service Mesh installer` message is displayed.
 . Enter your client ID that you obtained as part of the prerequisites.
 . Enter your client secret that you obtained as part of the prerequisites.
-. Enter your MuleSoft license that you obtained by emailing the MuleSoft team as part of the prerequisites.
+. Enter the path where your Anypoint Service Mesh license is stored.
 +
 Anypoint Service Mesh installs within few minutes and displays a status: 
 +
 image::service-mesh-installer-output.png[Example Installation Output]
 +
-If an installation error occurs, the installer times out and uninstalls all previously installed Service Mesh components.
+If an installation error occurs, the installer times out and uninstalls all previously installed Anypoint Service Mesh components.
 . Verify the status of all pods:
 +
 `kubectl get pods -n service-mesh`
@@ -46,40 +46,38 @@ Anypoint Service Mesh is installed and a status of all pods is displayed:
 +
 image::verified-service-mesh-installer-output.png[]
 
-=== Install With Proxy
+=== Install with Proxy
 
-You might need to install Anypoint Service Mesh in a proxy environment. In such cases, you must provide provide the proxy configuration during the installation.
+If you need to install Anypoint Service Mesh in a proxy environment, provide the proxy configuration during the installation. 
 
-To install Anypoint Service Mesh with proxy configuration:
-
-. From the location where you downloaded your Service Mesh client, type:
+. In the location from which you downloaded your Anypoint Service Mesh client, type:
 +
 `./service-mesh install --clientId=<clientId> --clientSecret=<clientSecret> --license=<license absolute or relative path> --platformUri=<Anypoint Platform Uri> --proxy.host=<host> --proxy.protocol=<protocol> --proxy.port=<port> --proxy.user=<proxy username> --proxy.password=<proxy password>`
 +
 [%header%autowidth.spread]
 |===
 | Parameter Name | Description | Required/Optional | Default Value
-| `clientId` | The client ID of the environment (recommended) or the organization. Use the client ID that you obtained as part of the permission and roles prerequisites as explained in this document. | Required | N/A
-| `clientSecret` | The client secret of the environment (recommended) or the organization. Use the client secret that you obtained as part of the permission and roles prerequisites as explained in this document.| Required | N/A
-| `license` | The Mule license you obtained as part of the prerequisites. Provide the path to the location where you license is stored. | Required | N/A
+| `clientId` | The client ID of the environment (recommended) or the organization. Use the client ID that you obtained as part of performing the permission and roles prerequisites. | Required | None
+| `clientSecret` | The client secret of the environment (recommended) or the organization. Use the client secret that you obtained as part of performing the permission and roles prerequisites.| Required | None
+| `license` | The Anypoint Service Mesh license you obtained as part of the prerequisites. Provide the path to the location where you license is stored. | Required | None
 | `platformUri` | The URL of the proxy.| Optional | https://anypoint.mulesoft.com
-| `proxy.host` | The name of the proxy host. | Optional | default
-| `proxy.protocol`| The protocol used by the proxy, for example, HTTP or WSDL. | Optional | default
-| `proxy.port`| The port number used by the proxy. | Optional | default
-| `proxy.user` | The username for the proxy authentication. | Optional | default
-| `proxy.password`| The password for the proxy authentication. | Optional | default
+| `proxyHost` | The name of the proxy host. | Optional | None
+| `proxyProtocol`| The protocol used by the proxy: HTTP or HTTPS. | Optional | None
+| `proxyPort`| The port number used by the proxy. | Optional | None
+| `proxyUser` | The username for the proxy authentication. | Optional | None
+| `proxyPassword`| The password for the proxy authentication. | Optional | None
 |===
 +
 Anypoint Service Mesh installs within few minutes and displays a status: 
 +
 image::service-mesh-installer-output.png[Example Installation Output]
 +
-If an installation error occurs, the installer times out and uninstalls all previously installed Service Mesh components.
+If an installation error occurs, the installer times out and uninstalls all previously installed Anypoint Service Mesh components.
 . Verify the status of all pods:
 +
 `kubectl get pods -n service-mesh`
 +
-Anypoint Service Mesh is installed and a status of all pods is displayed:
+Anypoint Service Mesh is installed and the status of all pods is displayed:
 +
 image::verified-service-mesh-installer-output.png[]
 

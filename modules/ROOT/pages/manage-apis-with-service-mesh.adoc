@@ -6,7 +6,7 @@ endif::[]
 
 image::manage-service-mesh-breadcrumb.png[]
 
-After you configure Service Mesh, you can manage both Mule and non-Mule applications from Anypoint API Manager, including applying policies to secure your microservices.
+After you configure Anypoint Service Mesh, you can manage both Mule and non-Mule applications from Anypoint API Manager, including applying policies to secure your microservices.
 
 For example, you can apply the Rate Limiting policy to define the number of requests that you want your service to receive within a specified period of time.
 

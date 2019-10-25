@@ -10,8 +10,8 @@ Use the information in this section to understand how to prepare, install, and u
 
 *Step 1:* Review Prerequisites--Before you begin, you must carefully review the requirements listed in this section. The prerequisites include, software applications, roles and permissions, and licensing requirements. Omitting to fulfill any one of these requirements might result in an incomplete or failed installation.
 
-*Step 2:* Download and Install Anypoint Service Mesh--After you complete reviewing the prerequisites, you can download the Service Mesh client and perform the installation.
+*Step 2:* Download and Install Anypoint Service Mesh--After you complete reviewing the prerequisites, you can download the Anypoint Service Mesh client and perform the installation.
 
-*Step 3:* Configure Anypoint Service Mesh--You are not yet ready to start using Anypoint Service Mesh until you provision the Service Mesh adapter and bind the service namespace with the adapter. After you complete these steps, you can start managing your APIs using Service Mesh. 
+*Step 3:* Configure Anypoint Service Mesh--You are not yet ready to start using Anypoint Service Mesh until you provision the Anypoint Service Mesh adapter and bind the service namespace with the adapter. After you complete these steps, you can start managing your APIs using Service Mesh. 
 
-*Step 4:* Manage APIs with Anypoint Service Mesh--You are now ready to experience the value that Service Mesh brings in managing your APIs. You can apply policies and security standards to your APIs and manage access and control.
+*Step 4:* Manage APIs with Anypoint Service Mesh--You are now ready to experience the value that Anypoint Service Mesh brings in managing your APIs. You can apply policies and security standards to your APIs and manage access and control.

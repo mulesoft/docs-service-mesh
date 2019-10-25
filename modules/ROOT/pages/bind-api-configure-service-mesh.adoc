@@ -4,9 +4,9 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: service mesh, microservices, binding
 
-When you create the binding, Service Mesh creates a three-way association of the service in Kubernetes with the API that you created in Anypoint Platform to represent the service, and the adapter that you created for the service. The adapter uses the unique API ID of the API to fetch policies and apply them to your services that are running in the cluster.
+When you create the binding, Anypoint Service Mesh creates a three-way association of the service in Kubernetes with the API that you created in Anypoint Platform to represent the service, and the adapter that you created for the service. The adapter uses the unique API ID of the API to fetch policies and apply them to your services that are running in the cluster.
 
-After you create the binding, Service Mesh takes few seconds to complete the binding procedure and updates the status.
+After you create the binding, Anypoint Service Mesh takes few seconds to complete the binding procedure and updates the status.
 
 After the binding is completed, you can view the status using the `list` command. The status values include:
 
@@ -35,7 +35,7 @@ image::api-id.png[]
 +
 `kubectl get svc -n <namespace>`
 . Verify that your microservice port is named following the requirements requested by Istio: xref:https://istio.io/docs/setup/additional-setup/requirements/[].
-. From the Service Mesh installer download location in the Command window, type the following command to bind the adapter with an application:
+. From the Anypoint Service Mesh installer download location in the Command window, type the following command to bind the adapter with an application:
 +
 [source,text,linenums]
 ----
