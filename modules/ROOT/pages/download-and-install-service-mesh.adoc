@@ -52,7 +52,7 @@ If you need to install Anypoint Service Mesh in a proxy environment, provide the
 
 . In the location from which you downloaded your Anypoint Service Mesh client, type:
 +
-`./service-mesh install --clientId=<clientId> --clientSecret=<clientSecret> --license=<license absolute or relative path> --platformUri=<Anypoint Platform Uri> --proxy.host=<host> --proxy.protocol=<protocol> --proxy.port=<port> --proxy.user=<proxy username> --proxy.password=<proxy password>`
+`./service-mesh install --clientId=<clientId> --clientSecret=<clientSecret> --license=<license absolute or relative path> --platformUri=<Anypoint Platform Uri> --proxyHost=<host> --proxyProtocol=<protocol> --proxyPort=<port> --proxyUser=<proxy username> --proxyPassword=<proxy password>`
 +
 [%header%autowidth.spread]
 |===
