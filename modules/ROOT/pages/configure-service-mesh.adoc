@@ -17,7 +17,7 @@ Every service that you want Anypoint Service Mesh to manage from your Kubernetes
 
 You configure Anypoint Service Mesh using the following three steps:
 
-. <<beta-service-mesh::provision-adapter-configure-service-mesh.adoc,Provision Anypoint Service Mesh Adapter>>
+. <<provision-adapter-configure-service-mesh.adoc,Provision Anypoint Service Mesh Adapter>>
 . <<create-an-api-configure-service-mesh.adoc,Create an API>>
 . <<bind-api-configure-service-mesh.adoc,Bind your service>>
 
