@@ -15,7 +15,7 @@ Your Anypoint Service Mesh installation requires the following applications and 
 * Kubernetes 1.12+ or a newer cluster, with RBAC (Role-Based Access Control) enabled
 * Helm 2.13, 2.14 or 2.15 client. The installer will automatically intall it in the server for you. You can install in the server as well with `helm init`.
 *Tip:* To verify installed version, use the `helm version`. 
-For more information about how to install Helm, see the Helm installation documentation. .
+For more information about how to install Helm, see the xref:see-also[Helm installation documentation]. .
 * Kubectl version 1.12 or later (compatible with the cluster) is installed on your local machine
 *Tip:* To verify installed version, use the `kubectl version`.
 * One of the following environments on which to run Kubernetes:
