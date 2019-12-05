@@ -6,7 +6,12 @@ endif::[]
 
 image::prepare-to-install-breadcrumb.png[]
 
-Before you download and install Anypoint Service Mesh, you must meet the  software, licensing, and permissions and roles requirements describes in this section.
+Before you download and install Anypoint Service Mesh, make sure that you review and fulfill the software, licensing, and permissions and roles requirements describes in this section. 
+
+== About the Audience
+
+Anypoint Service Mesh is a enterprise microservices management application. Microservices are deployed in containerized environments to achieve best business results. Anypoint Service Mesh is developed using Istio and Kubernetes. Therefore, you must have basic working knowledge of Istio and Kubernetes to be able to install and use (derive benefit from??) Anypoint Service Mesh.
+
 
 == Software Requirements
 
@@ -24,11 +29,16 @@ For more information about how to install Helm, see the Helm installation docume
 ** Azure Kubernetes Service (AKS)
 * Not installed Istio in the cluster
 
-If you want to enable automatic sidecar injection, you must additionally have:
+If you want to enable automatic sidecar injection, you must additionally:
+
 * Install Kubernetes 1.12+ with admissionregistration API 
-*Tip:* To verify the installation, use the command `kubectl api-versions | grep admissionregistration.k8s.io/v1beta1`.
++
+*Tip:* To verify the installation, use the command: 
++
+`kubectl api-versions | grep admissionregistration.k8s.io/v1beta1`.
 * Configure kube-apiserver process with the admission-control flag to “MutatingAdmissionWebhook”
-For more information about how to turn on, see tke Kubernetes documentation.
++
+For more information about how to turn on *turn on what--Tomas?*, see the Kubernetes documentation.
 * Add and list ValidatingAdmissionWebhook admission controllers in the correct order.
 
 
@@ -40,7 +50,7 @@ You require a Anypoint Service Mesh license to perform the installation. If you 
 
 Before you can use Anypoint Service Mesh, you must have the following roles and permissions:
  
-* API Manager Environment Administrator permission or Organization Administrator role for your organization, to access the client ID and client secret credentials.
+* API Manager Environment Administrator or Organization Administrator permission for your organization, to access the client ID and client secret credentials.
 * Client ID and client secret credentials from Access Management.  
 If you provision the adapter with organization credentials, you will be able to manage APIS on the specific adapter of that organization. 
 +

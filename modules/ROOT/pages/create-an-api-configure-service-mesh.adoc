@@ -4,7 +4,6 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: service mesh, microservices, downloading, installing
 
-
 After you provision the adapter, you must create an API to bind to the service. 
 
 To create an API, perform the following steps:

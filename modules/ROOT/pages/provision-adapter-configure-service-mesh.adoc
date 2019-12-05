@@ -27,6 +27,8 @@ You can also modify the size of an adapter after it has been provisioned. If you
 
 After the new adapter is ready, the old pod is terminated and all requests are routed to the new adapter. If the update fails to start up a new pod due to insufficient space, or if the pod is not ready, an error message is recorded in a Kubernetes event. In such a scenario, the old adapter continues to handle requests because the new pod is not yet available.
 
+You can delete an adapter if it is no longer required or if you want to troubleshoot an issue. However, you must delete all existing bindings for the adapter before you delete the adapter itself.
+
 == Adapter Status
 
 When you provision an adapter, or bind the adapter to an application, a message is displayed after you run an adapter command. The message indicates whether the adapter was created, deleted, or modified successfully. 
@@ -51,7 +53,14 @@ After you install Anypoint Service Mesh, you can use the command line interface 
 
 image::service-mesh-cli-adapter-help.png[CLI Help for Adapter Commands]
 
+[[provision_the_adapter]]
 == Provisioning the adapter
+
+Before you provision the adapter, review the task prerequisites.
+
+*Task Prerequisites*
+
+Make sure that you create all objects names, such as adapter name, binding name, and service name, in lower case, for example, _test_adapter_name_. An error is thrown if you do not follow Kubernetes naming conventions.
 
 To provision the Anypoint Service Mesh adapter:
  
@@ -71,7 +80,6 @@ xref:api-manager::access-client-app-id-task.adoc[obtain credentials].
 --clientSecret=<client secret of the environment or organization> \
 --platformUri=<URL of Anypoint Platform>
 ----
-Note that all objects names, such as adapter name, binding name, and service name, must all be in lower case. An error is thrown if you do not follow Kubernetes naming conventions.
 +
 [%header%autowidth.spread]
 |===
@@ -93,7 +101,7 @@ image::provision-service-mesh-adapter-output.png[Example Output]
 . Review adapter logs to see detailed information about Kubernetes events and adapter transactions:
 +
 `./service-mesh adapter logs --name=<adapter_name> --namespace=<namespace>`
-. Optionally, run the following commands for each of your applications that were already running in the namespace before starting the Anypoint Service Mesh installation:
+. Run the following commands for each of your applications that were already running in the namespace before starting the Anypoint Service Mesh installation:
 .. Determine the deployment name for the patch: 
 +
 `kubectl get deployments -n <namespace>`
