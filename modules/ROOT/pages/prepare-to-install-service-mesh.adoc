@@ -10,7 +10,7 @@ Before you download and install Anypoint Service Mesh, make sure that you review
 
 == About the Audience
 
-Anypoint Service Mesh is a enterprise microservices management application. Microservices are deployed in containerized environments to achieve best business results. Anypoint Service Mesh is developed using Istio and Kubernetes. Therefore, you must have basic working knowledge of Istio and Kubernetes to be able to install and use (derive benefit from??) Anypoint Service Mesh.
+Anypoint Service Mesh is developed using Istio and Kubernetes. Therefore, you must have a basic working knowledge of Istio and Kubernetes to be able to install and use Anypoint Service Mesh.
 
 
 == Software Requirements
@@ -37,8 +37,6 @@ If you want to enable automatic sidecar injection, you must additionally:
 +
 `kubectl api-versions | grep admissionregistration.k8s.io/v1beta1`.
 * Configure kube-apiserver process with the admission-control flag to “MutatingAdmissionWebhook”
-+
-For more information about how to turn on *turn on what--Tomas?*, see the Kubernetes documentation.
 * Add and list ValidatingAdmissionWebhook admission controllers in the correct order.
 
 
@@ -50,7 +48,7 @@ You require a Anypoint Service Mesh license to perform the installation. If you 
 
 Before you can use Anypoint Service Mesh, you must have the following roles and permissions:
  
-* API Manager Environment Administrator or Organization Administrator permission for your organization, to access the client ID and client secret credentials.
+* API Manager Environment Administrator permission or Organization Administrator role for your organization, to access the client ID and client secret credentials.
 * Client ID and client secret credentials from Access Management.  
 If you provision the adapter with organization credentials, you will be able to manage APIS on the specific adapter of that organization. 
 +
