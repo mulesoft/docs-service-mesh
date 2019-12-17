@@ -6,9 +6,7 @@ endif::[]
 
 When you create the binding, Anypoint Service Mesh creates a three-way association of the service in Kubernetes with the API that you created in Anypoint Platform to represent the service, and the adapter that you created for the service. The adapter uses the unique API ID of the API to fetch policies and apply them to your services that are running in the cluster.
 
-After you create the binding, Anypoint Service Mesh takes few seconds to complete the binding procedure and updates the status.
-
-After the binding is completed, you can view the status using the `list` command. The status values include:
+After you create the binding, Anypoint Service Mesh takes few seconds to complete the binding procedure and updates the status. After the binding is completed, you can view the status using the `list` command. The status values include:
 
 * Ready--The binding is now ready to be used. 
 * Failed--The binding was not created successfully. An error occurred. 
@@ -60,7 +58,7 @@ Note that all objects names, such as adapter name, binding name, and service nam
 | Required | N/A.
 |===
 +
-The binding becomes activate within a few seconds and the API is successfully registered to the proxy.
+The binding is activated within a few seconds and the API is successfully registered to the proxy.
 . Verify the binding status using the following command:
 +
 `./service-mesh binding list`

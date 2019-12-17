@@ -22,10 +22,6 @@ The following policies can be applied to discovered non-mule services directly f
 * Rate Limiting
 * Rate Limiting - SLA
 
-. Is API Analytics currently supported with Anypoint Service Mesh? 
-+
-Yes, it will be supported in the GA release. 
-
 . I use Anypoint Runtime Fabric today. Can I install Anypoint Service Mesh within my Runtime Fabric?
 +
 No, and this is not required. Apps deployed to Anypoint Runtime Fabric are already available on Anypoint Platform. Therefore, there is no need to discover them with Anypoint Service Mesh. 
@@ -34,17 +30,17 @@ No, and this is not required. Apps deployed to Anypoint Runtime Fabric are alrea
 +
 Anypoint Service Mesh supports GKE (Google), AKS (Azure), and EKS (AWS)
 
-== Features Covered in GA Release
+// == Features Covered in GA Release
 
-The following section addresses common questions regarding the features available in the GA release of Anypoint Service Mesh.
+// The following section addresses common questions regarding the features available in the GA release of Anypoint Service Mesh.
 
-. What capabilities will be added for GA release? 
-+
-* API Discovery: users will be able to deploy their applications on their kubernetes cluster and their instance will be automatically discovered and managed by Anypoint Platform.
-* HTTP Metrics will be available on Monitoring Center
+// . What capabilities will be added for GA release? 
+// +
+// * API Discovery: users will be able to deploy their applications on their kubernetes cluster and their instance will be automatically discovered and managed by Anypoint Platform.
+// * HTTP Metrics will be available on Monitoring Center
 
-. What will appear in Anypoint Exchange when I discover a microservice with Anypoint Service Mesh?
-+
-After installing Anypoint Service Mesh, services specified for discovery within the your Kubernetes cluster will automatically be added to Anypoint Exchange as an HTTP API. This looks similar to any other HTTP API in Exchange. From here, the customer can add further documentation and specifications against the HTTP API. 
-+
-Alternatively, you can first create a spec from Anypoint Platform, and save the API in Anypoint Exchange. You can then use the auto-discovery ID from the newly created asset within the installtion scripts to sync between the Exchange asset and the service running within Kubernetes.
+// . What will appear in Anypoint Exchange when I discover a microservice with Anypoint Service Mesh?
+// +
+// After installing Anypoint Service Mesh, services specified for discovery within the your Kubernetes cluster will automatically be added to Anypoint Exchange as an HTTP API. This looks similar to any other HTTP API in Exchange. From here, the customer can add further documentation and specifications against the HTTP API. 
+// +
+// Alternatively, you can first create a spec from Anypoint Platform, and save the API in Anypoint Exchange. You can then use the auto-discovery ID from the newly created asset within the installtion scripts to sync between the Exchange asset and the service running within Kubernetes.
