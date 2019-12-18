@@ -29,11 +29,11 @@ image::select-policies-for-service-mesh.png[]
 
 image::apply-client-enforcement-policy-service-mesh.png[]
 
-For more information about how to apply policies, see the documentation for the specific policy.
+For more information about how to apply policies, see the specific policy documentation.
 
 
 == See Also
 * xref:api-manager::client-id-based-policies.adoc[Client ID Enforcement policy]
 * xref:api-manager::policy-mule4-jwt-validation.adoc[JWT Validation policy]
 * xref:api-manager::rate-limit-1.2.0-task.adoc[Rate Limiting policy]
-
+* xref:api-manager::policies-ootb-landing-page.adoc[Default Policies]
