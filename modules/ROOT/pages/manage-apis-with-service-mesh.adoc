@@ -6,9 +6,13 @@ endif::[]
 
 image::manage-service-mesh-breadcrumb.png[]
 
-After you configure Anypoint Service Mesh, you can manage both Mule and non-Mule applications from Anypoint API Manager, including applying policies to secure your microservices.
+After you configure Anypoint Service Mesh, you can manage both Mule and non-Mule applications from Anypoint API Manager, including applying policies to secure your microservices. 
+
+Not all policies available in Anypoint Platform are applicable to Anypoint Service Mesh. Only a subset of those policies apply. Additionally, the configurations within each of the policies that are applicable to Anypoint Service Mesh also differ from the policies that are applicable to Anypoint Platform.
 
 For example, you can apply the Rate Limiting policy to define the number of requests that you want your service to receive within a specified period of time.
+
+
 
 To apply policies:
 
@@ -25,11 +29,11 @@ image::select-policies-for-service-mesh.png[]
 
 image::apply-client-enforcement-policy-service-mesh.png[]
 
-For more information about how to apply policies, see the documentation for the specific policy.
+For more information about how to apply policies, see the specific policy documentation.
 
 
 == See Also
 * xref:api-manager::client-id-based-policies.adoc[Client ID Enforcement policy]
 * xref:api-manager::policy-mule4-jwt-validation.adoc[JWT Validation policy]
 * xref:api-manager::rate-limit-1.2.0-task.adoc[Rate Limiting policy]
-
+* xref:api-manager::policies-ootb-landing-page.adoc[Default Policies]
