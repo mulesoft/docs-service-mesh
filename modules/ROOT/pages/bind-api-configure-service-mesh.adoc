@@ -6,7 +6,21 @@ endif::[]
 
 When you create the binding, Anypoint Service Mesh creates a three-way association of the service in Kubernetes, the API that you created in Anypoint Platform to represent the service, and the adapter that you created for the service. The adapter uses the unique API ID to fetch policies and apply them to your services that are running in the cluster.
 
-When you create the binding, Anypoint Service Mesh takes few seconds to complete the binding procedure and update the status. After the binding is completed, you can view the status using the `list` command. The status values include:
+== Methods for Binding the Service
+
+Based on the method you used to create the API, using Anypoint Platform or Anypoint Service Mesh CLI, you can bind the service using one of the following ways:
+
+* <<bind_the_service, Bind the APIs created using Anypoint Platform>>
++
+If you created your API in the previous step using Anypoint Platform, you can create the binding using the Anypoint Service Mesh CLI. However, you create a binding in this case using your API ID. 
+*why do they need to use API ID versus API name? We do explain right?*
+* <<bind_using_CLI, Bind the APIs created using Anypoint Service Mesh CLI>>
++
+If you created the API using Anypoint Service Mesh CLI, you can use the same CLI to create the binding. However, you create a binding in case using your API name. 
+*why do they need to use API ID versus API name? We do explain right?*
+* <<bind_using_CRD, Bind the APIs created using using the CRD file>>
+
+After the binding is created, Anypoint Service Mesh takes a few seconds to complete the binding procedure and update the status. After the binding is completed, you can view the status using the `list` command. The status values include:
 
 * Ready--The binding is now ready to be used. 
 * Failed--The binding was not created successfully. An error occurred. 
@@ -19,13 +33,21 @@ In the following example, a binding called “customers” is created to bind th
 NAMESPACE      NAME        ADAPTER                         API ID  SERVICE NAME    STATUS
 nto-payments   customers   anypoint-service-mesh-adapter   1234    customers       Ready
 ----
+
+
 [[bind_the_service]]
-== Binding the Service
+== Binding an API Created Using Anypoint Platform
+
+Before you bind the service, ensure that you complete the task prerequisite.
+
+*Task Prerequisite*
+From the API Administration Tab of API Manager, obtain the API ID to create the binding using this method.
+
 To bind the service with an API, perform the following steps:
 
-. . Go to *Anypoint Platform > API administration*, and expand the API version name to display the instances.
+. Go to *Anypoint Platform > API administration*, and expand the API version name to display the instances.
 . Click an instance name and copy the API ID that is displayed. 
-Make sure to save this API ID to a text editor.
+Ensure that you save this API ID to a text editor.
 +
 image::api-id.png[]
 +
@@ -37,7 +59,7 @@ image::api-id.png[]
 +
 [source,text,linenums]
 ----
-./service-mesh binding create \
+./service-mesh adapter binding create \
 --name=<binding name> \
 --namespace=<namespace name> \
 --adapter=<adapter name> \
@@ -51,7 +73,7 @@ Note that all objects names, such as adapter name, binding name, and service nam
 | Parameter Name | Description | Required/Optional | Default Value
 | name | The unique name that represents the binding of the Kubernetes Service with the API, for example, service-binding-anypoint-security”. 
  | Required | N/A
-| namespace | The namespace in which your service is deployed. Make sure that you use the same namespace as the adapter you provisioned in the previous procedure. | Required | N/A
+| namespace | The namespace in which your service is deployed. Ensure that you use the same namespace as the adapter you provisioned in the previous procedure. | Required | N/A
 | adapter | Specify the name of the adapter that you provisioned in the previous procedure.  | Required | N/A 
 | apiId | Specify the API ID of the API that you want to associate with this adapter. Use the API ID you obtained as part of Review Prerequisites section of this document. | Required | N/A.
 | serviceName | The name of the service that you want to bind to the API, which will be managed by Anypoint Platform. The service name is the identifier of the service that you want to manage with Anypoint Service Mesh. 
@@ -66,3 +88,87 @@ The binding becomes activate within a few seconds and the API is successfully re
 After you bind your API, the API in API Manager is marked as Active. You are now ready to apply policies to protect your APIs.
 +
 image::api-manager-status-for-service-mesh.png[85%, 85%]
+
+[[bind_using_CLI]]
+
+== Binding the Service Using Anypoint Service Mesh CLI
+
+Before you bind the service, ensure that you complete the task prerequisite.
+
+*Task Prerequisite*
+From the API Administration Tab of API Manager, obtain the API name to create the binding using this method.
+
+To create the binding:
+
+. Retrieve the service name from Kubernetes, with which you want to bind the API using the following command:
+`kubectl get svc -n <namespace>`.
+. Verify that your microservice port is named based on xref:https://istio.io/docs/setup/additional-setup/requirements/[Istio requirements].
+. From the Anypoint Service Mesh installer download location, type the following command to bind the adapter with an API:
++
+[source,text,linenums]
+----
+./service-mesh api binding create \
+--name=<binding name> \
+--namespace=<namespace name> \
+--adapter=<adapter name> \
+--api=<api name> \
+--serviceName=<service name>
+----
++
+[%header%autowidth.spread]
+|===
+| Parameter Name | Description | Required/Optional | Default Value
+| name | The unique name that represents the binding of the Kubernetes Service with the API, for example, service-binding-anypoint-security”. 
+ | Required | N/A
+| namespace | The namespace in which your service is deployed. Ensure that you use the same namespace as the adapter you provisioned in the previous procedure. | Required | N/A
+| adapter | Specify the name of the adapter that you provisioned in the previous procedure.  | Required | N/A 
+| api | Specify the name of the API you want to associate with this adapter. You created this API in the previous procedure. | Required | N/A.
+| serviceName | The name of the service that you want to bind to the API, which will be managed by Anypoint Platform. The service name is the identifier of the service that you want to manage with Anypoint Service Mesh. 
+| Required | N/A.
+|===
+
+
+
+[[bind_using_CRD]]
+== Binding the Service Using the CRD File
+
+To bind the service using the CRD file:
+
+. Create your binding definition file and save it with a '.yaml' file extension:
+. If you created your API using Anypoint Platform, use spec.parameters.apiId:
++
+[source,text,linenums]
+----
+apiVersion: servicecatalog.k8s.io/v1beta1
+kind: ServiceBinding
+metadata:
+  name: <binding name> # example: orders-api-binding
+  namespace: <namespace name> # example: default
+spec:
+  instanceRef:
+    name: <adapter name> # example: bookinfo-service-mesh-adapter
+  parameters:
+    apiId: <api ID> # example: 15722113
+    service: <service name> # example: orders-service
+----
+. If you created your API using Anypoint Service Mesh CLI, use spec.instanceRef.name:
++
+source,text,linenums]
+----
+apiVersion: servicecatalog.k8s.io/v1beta1
+kind: ServiceBinding
+metadata:
+  # name will be used as resulting secret name if no secretName is specified under the spec section
+  name: <binding name> # example: orders-api-binding
+  namespace: <namespace name> # example: default
+spec:
+  instanceRef:
+    name: <api name> # example: orders-api
+  parameters:
+    adapter: <adapter name> # example: bookinfo-service-mesh-adapter
+    service: <service name> # example: orders-service
+----
+. Apply the CRD file using the following command:
+`kubectl apply -f my-adapter.yaml`
+. Verify the <<provision-adapter-configure-service-mesh#adapter_status, adapter status>> using the following command:
+`./service-mesh adapter list`

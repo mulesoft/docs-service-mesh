@@ -11,6 +11,18 @@ The adapter behaves as the policy enforcement component, which fetches policies 
 
 After you provision the adapter, you must redeploy all your existing applications to ensure that the Envoy sidecar is injected within each pod in the Kubernetes cluster.
 
+== Methods for Provisioning the Adapter
+
+Based on your requirements, you can provision the adapter using either of the following methods:
+
+* <<provision_the_adapter, Provision the adapter using Anypoint Service Mesh CLI>>
++
+If you want to create an adapter for a simple HTTP API, or do not manage you Kubernetes objects using custom resource definitions (CRD) files, use the CLI to provision the adapter.
+* <<provision_using_CRD, Provision the adapter using CRD>>
++
+If you deploy and manage your Kubernetes objects using CRD files, you might find it easier to also provision the Anypoint Service Mesh adapter using a CRD file instead of using the CLI. If you have or want to configure continuous integration in your environment, it is recommended that you provision the adapter using the CRD file.
+
+[[adapter_plan]]
 == Adapter Plan
 
 When you provision the adapter, you must specify the size of the adapter based on the number of CPUs and memory of the system that will be managed using Anypoint Service Mesh. Anypoint Service Mesh currently supports small, medium, and large adapter plans:
@@ -29,6 +41,7 @@ After the new adapter is ready, the old pod is terminated and all requests are r
 
 You can delete an adapter if it is no longer required. However, you must delete all existing bindings for the adapter before you delete the adapter itself.
 
+[[adapter_status]]
 == Adapter Status
 
 When you provision an adapter, or bind the adapter to an application, a message is displayed after you run an adapter command. The message indicates whether the adapter was created, deleted, or modified successfully. 
@@ -54,21 +67,19 @@ After you install Anypoint Service Mesh, you can use the command line interface 
 image::service-mesh-cli-adapter-help.png[CLI Help for Adapter Commands]
 
 [[provision_the_adapter]]
-== Provisioning the adapter
+== Provisioning the Adapter Using CLI
 
 Before you provision the adapter, review the task prerequisites.
 
 *Task Prerequisites*
 
-Make sure that you create all objects names, such as adapter name, binding name, and service name, in lower case, for example, _test_adapter_name_. An error is thrown if you do not follow Kubernetes naming conventions.
+Ensure that you create all objects names, such as adapter name, binding name, and service name, in lower case, for example, _test_adapter_name_. An error is thrown if you do not follow Kubernetes naming conventions.
 
-To provision the Anypoint Service Mesh adapter:
+To provision the Anypoint Service Mesh adapter using CLI:
  
-. Determine the adapter size based on the plan.
-. From Anypoint Platform, obtain the the client ID and client secret for your environment.
-For more information about how to obtain these credentials, see 
-xref:api-manager::access-client-app-id-task.adoc[obtain credentials].
-. From the Anypoint Service Mesh installer download location in the Command window, type the following command to create the adapter:
+. Determine the adapter size based on the <<adapter_plan, plan>>.
+. From Anypoint Platform, xref:api-manager::access-client-app-id-task.adoc[obtain the client ID and client secret credentials] for your environment.
+. From the Anypoint Service Mesh installer, download location in the Command window, and then type the following command to create the adapter:
 +
 [source,text,linenums]
 ----
@@ -92,7 +103,7 @@ xref:api-manager::access-client-app-id-task.adoc[obtain credentials].
 | `platformUri` | The URL of the host where Anypoint Platform is installed | Optional | https://anypoint.mulesoft.com
 |===
 +
-. Verify the adapter status:
+. Verify the <<adapter_status, adapter Status>>:
 +
 `./service-mesh adapter list`
 +
@@ -110,8 +121,36 @@ image::provision-service-mesh-adapter-output.png[Example Output]
 .. Using the deploy name from the previous command, restart all your services that need to be managed by Anypoint Service Mesh to inject the sidecar in the pod:
 +
 `kubectl -n <adapter-namespace> patch deploy <deployname> --type=json -p='[{"op": "replace", "path": "/spec/template/metadata/labels/service-mesh.mulesoft.com","value":"enable"}]'`
-. To check whether the applications are redeployed, run the following command:
+. To verify that the the applications are redeployed, run the following command:
 +
 `kubectl get pods -n <namespace>`.
+
+[[provision_using_CRD]]
+== Provisioning the Adapter Using the CRD File 
+
+To provision the Anypoint Service Mesh adapter using the CRD file:
+
+. Create your adapter definition file and save it with a '.yaml' file extension:
++
+[source,text,linenums]
+----
+apiVersion: servicecatalog.k8s.io/v1beta1
+kind: ServiceInstance
+metadata:
+  name: <adapter name> # example: bookinfo-service-mesh-adapter
+  namespace: <namespace name> # example: default
+spec:
+  clusterServiceClassExternalName: anypoint-service-mesh-adapter
+  clusterServicePlanExternalName: <plan size > # example: small.
+  parameters:
+    clientId: <client id> # example: 4bc55ee4cfc84a2ddddbb2c1109d1123c5c4
+    clientSecret: <client secret> # example: 8E5ae17BbB664Eddd9ab32A5fA869874Be7
+    platformUri: <platform uri> # example: https://eu1.anypoint.mulesoft.com
+----
+. Apply the CRD file using the following command:
+`kubectl apply -f my-adapter.yaml`
+. Verify the <<adapter_status, adapter status,>> using the following command:
+`./service-mesh adapter list`
+
 
 

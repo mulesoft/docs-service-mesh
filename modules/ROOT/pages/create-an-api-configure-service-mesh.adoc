@@ -4,9 +4,30 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: service mesh, microservices, downloading, installing
 
-After you provision the adapter, you must create an API to bind to the service. 
+After you provision the adapter, you must create an API in Anypoint Platform to bind to the service. 
 
-To create an API, perform the following steps:
+== Methods for Creating an API
+
+Based on your requirements, you can create your API using either of the following methods:
+
+* <<create-api-AP, Create an API using Anypoint Platform>>
++
+If you want to create REST or SOAP APIs with OAS or WSDL definition, you use Anypoint Platform. You can manage your contracts and complex API configurations easily in Anypoint Platform.
+* <<create-api-ASM-CLI, Create an API using Anypoint Service Mesh CLI>>
++
+If you want to create a simple HTTP API with no contracts or definitions, use the auto-creation feature of Anypoint Service Mesh. When you choose this option, Anypoint Service Mesh creates the API for you in Anypoint Platform using its powerful CLI tool. You do not have to manually log in to Anypoint Platform or manage your API. 
++
+Note that if you create REST or SOAP APIs using the auto-create feature of Anypoint Service Mesh, the APIs are still managed internally as an HTTP asset without any definition. 
++
+*Chirag,I have serious concerns for using the "auto-creation feature" terminology because nowhere in the CLI commands or the interface does it show it. If we just refer to it for marketing purpose but don't call it as such in the product, we must also omit it in the docs.* 
+* <<create_api-CRD, Create an API using the CRD file>>
++
+If you deploy and manage your Kubernetes objects using custom resource definitions (CRD) files, you might find it easier to also create an API using a CRD file instead of using the CLI. 
+
+[[create-api-AP]]
+== Creating an API Using Anypoint Platform
+
+To create an API using Anypoint Platform, perform the following steps:
 
 . Go to *Anypoint Platform > API Manager* and select the *Manage API* drop-down list. 
 . Select *Create new API*.
@@ -22,3 +43,91 @@ The Endpoint Configuration window is displayed.
 . Optionally, specify the *Implementation URI*, and click *Save*.
 +
 Your API is now created.
+
+[[create-api-ASM-CLI]]
+== Creating an API Using Anypoint Service Mesh CLI
+
+Before you create the API, you must complete the task prerequisite.
+
+*Task Prerequisite*
+
+Ensure that you obtain the environment ID and organization ID. You can perform this task from either API Manager or from Access Management. You require the <INSERT_PERMISSION> permission or <INSERT_ROLE> role to see to obtain these credentials.
+
+To create an API using Anypoint Service Mesh CLI, perform the following steps:
+
+. Using the Anypoint Service Mesh CLI, type the following command to create the API:
++
+[source,text,linenums]
+----
+./service-mesh api create  
+--name=<API resource name> \
+--namespace=<namespace name> \
+--environmentId=<environment ID> \
+--groupId=<group ID of the asset, for example, organization ID> \
+--assetId=<asset ID on Exchange> \
+--version=<Asset version of the instance on exchange> \
+--instanceLabel=<ID of the instance on API Manager> \ 
+--specTags=<list of comma separated tags to be added to the asset on Exchange> \
+--instanceTags=<list of comma separated tags to be added to the instance on API Manager> \
+--user=<username of the Anypoint Platform user, creating the API instance> \
+--password=<password of the Anypoint Platform user, creating the API instance>
+----
++
+[%header%autowidth.spread]
+|===
+| Parameter Name | Description | Required/Optional | Default Value
+| `name` | The name of the API that you want to provision, for example, <orders-api>. | Required | N/A
+| `namespace` | The namespace in which you want to create the adapter, for example, “mulesoft-apps”. | Optional | default
+| `environmentId` | The ID of the environment where you want to create your API instance. | Required | N/A
+| `groupId` | The ID of the group of assets on Exchange, for example, the organization ID. You can find the organization ID on API Manager landing page or in Access Management. | Optional | Organization ID of the organization that contains the environment. 
+| `assetId` | The ID of the assets that are a part of an organization. Supports alphanumeric characters without spaces. | Required | N/A
+| `version` | The version of the asset on Exchange. *Needs to be semver* what is this chirag? | Required | N/A
+| `instanceLabel` | The ID of the API instances of an Asset within a given environment. Supports alphanumeric characters without spaces. | Required | N/A
+| `specTags` | Tags to be added to the asset on Exchange. |  Optional | N/A
+| `instanceTags` | Tags to be added to the API instance on API Manager. |  Optional | N/A
+| `user` | The username credential of the Anypoint Platform user, who is creating the API. | Required | N/A
+| `password` | The password of the Anypoint Platform user, who is creating the API. | Required | N/A
+|===
++
+. Verify the <<provision-adapter-configure-service-mesh#adapter_status, adapter status>>:
++
+`./service-mesh adapter list`
++
+The adapter displays a Ready status.
+. Optionally, you can verify that an asset is created on Exchange and an API is created on API Manager.
+
+[[create_api-CRD]]
+== Creating an API Using the CRD File
+
+To create an API in Anypoint Platform using the CRD file:
+
+. Create your adapter definition file and save it with a '.yaml' file extension:
++
+[source,text,linenums]
+----
+apiVersion: servicecatalog.k8s.io/v1beta1
+kind: ServiceInstance
+metadata:
+  name: <api name> # example: orders-api
+  namespace: <namespace name> # example: default
+spec:
+  clusterServiceClassExternalName: anypoint-platform-api-instance
+  clusterServicePlanExternalName: service-mesh
+  parameters:
+    environmentId: <environment ID> # example: 7cea45c6-3237-464d-bd34-3122c4abde29
+    groupId: <group ID> # example: 350b8164-e809-4091-91f5-079fb30e5a1e
+    assetId: <asset ID> # example: orders-api
+    version: <version> # example: 0.0.1
+    instanceLabel: <instance label> # example: public
+    tags:
+      apiSpec:
+      - <tag in Exchange asset> # example: orders
+      apiInstance:
+      - <tag in API Manager instance> # example: orders
+    user: <Username of the Anypoint Platform user>
+    password: <Password of the Anypoint Platform user>
+----
+. Apply the CRD file using the following command:
+`kubectl apply -f my-adapter.yaml`
+. Verify the <<provision-adapter-configure-service-mesh#adapter_status, adapter status>> using the following command:
+`./service-mesh adapter list`
