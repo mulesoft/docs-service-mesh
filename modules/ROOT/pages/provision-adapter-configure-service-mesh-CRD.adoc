@@ -1,0 +1,85 @@
+= Provision the Adapter Using the CRD
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+:keywords: service mesh, microservices, installation prerequisites
+
+
+Before you can start managing your services using Anypoint Service Mesh, you must prepare your namespace by provisioning a Anypoint Service Mesh adapter. Provisioning prepares the namespace for the Anypoint Service Mesh configuration. As a best practice, you must create one namespace per adapter.
+
+The adapter behaves as the policy enforcement component, which fetches policies from Anypoint platform, checks whether the policies have been met, and then reports the analytics data back to Anypoint Platform.  
+
+After you provision the adapter, you must redeploy all your existing applications to ensure that the Envoy sidecar is injected within each pod in the Kubernetes cluster.
+
+[[adapter_plan]]
+== Adapter Plan
+
+When you provision the adapter, you must specify the size of the adapter based on the number of CPUs and memory of the system that will be managed using Anypoint Service Mesh. The following adapter plans are currently supported: 
+
+[%header%autowidth.spread]
+|===
+| Plan | CPU (cores) | Memory (GiB) | API Limit
+| small | .5 | 1 | 25
+| medium | 1 | 1.5 | 50
+| large | 2 | 2 | 100
+|===
+
+You can also modify the size of an adapter after it has been provisioned. If you update the plan size, the adapter deployment is updated appropriately. Kubernetes then creates a pod with the new information. However, the old adapter continues handling requests until the new pod is ready.
+
+After the new adapter is ready, the old pod is terminated and all requests are routed to the new adapter. If the update fails to start up a new pod due to insufficient space, or if the pod is not ready, an error message is recorded in a Kubernetes event. In such a scenario, the old adapter continues to handle requests because the new pod is not yet available.
+
+You can delete an adapter if it is no longer required. However, you must delete all existing bindings for the adapter before you delete the adapter itself.
+
+[[adapter_status]]
+== Adapter Status
+
+When you provision an adapter, or bind the adapter to an application, a message is displayed after you run an adapter command. The message indicates whether the adapter was created, deleted, or modified successfully. 
+
+Additionally, you can verify the adapter status, which provides further details about the adapter. 
+
+To view the adapter status, type the following command:
+
+`./service-mesh adapter list`
+
+The status values include:
+
+* Ready--The adapter is now ready to be used. 
+* Failed--The adapter was not created successfully. An error occurred. 
+* Provisioning--The adapter is in the process of being provisioned.
+
+
+[[provision_using_CRD]]
+== Provisioning the Adapter Using a CRD 
+
+To provision the Anypoint Service Mesh adapter using a CRD:
+
+. Create your adapter definition file and save it with a '.yaml' file extension:
++
+[source,text,linenums]
+----
+apiVersion: servicecatalog.k8s.io/v1beta1
+kind: ServiceInstance
+metadata:
+  name: <adapter name> # example: bookinfo-service-mesh-adapter
+  namespace: <namespace name> # example: default
+  labels: 
+    service-mesh.mulesoft.com/kind: adapter  
+  clusterServiceClassExternalName: anypoint-service-mesh-adapter
+  clusterServicePlanExternalName: <plan size > # example: small.
+  parameters:
+    clientId: <client id> # example: 4bc55ee4cfc84a2ddddbb2c1109d1123c5c4
+    clientSecret: <client secret> # example: 8E5ae17BbB664Eddd9ab32A5fA869874Be7
+    platformUri: <platform uri> # example: https://eu1.anypoint.mulesoft.com
+    replication: 
+        replicas: <amount of replicas> # example: 2
+----
+. Apply the CRD using the following command:
+`kubectl apply -f my-adapter.yaml`
+. Verify the <<adapter_status, adapter status,>> using the following command:
+`./service-mesh adapter list`
+
+== See Also
+
+* xref::prepare-to-install-service-mesh.adoc[Prepare to install Anypoint Service Mesh]
+* xref::create-an-api-configure-service-mesh-CRD.adoc[Create an API using CRD]
+* xref::bind-api-configure-service-mesh-CRD.adoc[Bind a service using CRD]
