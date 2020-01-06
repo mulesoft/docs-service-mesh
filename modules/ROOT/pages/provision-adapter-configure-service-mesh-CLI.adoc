@@ -1,4 +1,4 @@
-= Provision the Adapter Using the CLI
+= Provisioning the Adapter Using the CLI
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
@@ -56,19 +56,19 @@ After you install Anypoint Service Mesh, you can use the command line interface 
 image::service-mesh-cli-adapter-help.png[CLI Help for Adapter Commands]
 
 [[provision_the_adapter]]
-== Provisioning the Adapter Using CLI
+== Provision the Adapter Using the CLI
 
-Before you provision the adapter, review the task prerequisites.
+Before you provision the adapter, complete the task prerequisites.
 
 *Task Prerequisites*
 
-Ensure that you create all objects names, such as adapter name, binding name, and service name, in lower case, for example, _test_adapter_name_. An error is thrown if you do not follow Kubernetes naming conventions.
+Note that all object names, such as adapter name, binding name, and service name, must be in lowercase letters, for example, _test_adapter_name_. An error is thrown if you do not follow Kubernetes naming conventions.
 
-To provision the Anypoint Service Mesh adapter using CLI:
+To provision the Anypoint Service Mesh adapter using the CLI:
  
 . Determine the adapter size based on the <<adapter_plan, plan>>.
 . From Anypoint Platform, xref:api-manager::access-client-app-id-task.adoc[obtain the client ID and client secret credentials] for your environment.
-. From the Anypoint Service Mesh installer, download location in the Command window, and then type the following command to create the adapter:
+. From the Anypoint Service Mesh installer download location in the Command window, type the following command to create the adapter:
 +
 [source,text,linenums]
 ----
@@ -85,12 +85,12 @@ To provision the Anypoint Service Mesh adapter using CLI:
 [%header%autowidth.spread]
 |===
 | Parameter Name | Description | Required/Optional | Default Value
-| `name` | The name of the adapter that you want to create, for example, “service-mesh-test-adapter”. | Required | N/A
+| `name` | The name of the adapter that you want to create, for example, “service-mesh-test-adapter”. | Required | Not applicable
 | `namespace` | The namespace in which you want to create the adapter, for example, “mulesoft-apps”. | Optional | default
 | `size`| The size of the adapter based on the number of CPUs and memory to use | Optional | medium
 | `replicas` | The number of replicas you want to spin for the mule adapter. For high availability it is recommended not to have less than two. | Optional | 2
-| `clientId` | The client ID of the environment (recommended) or the organization. Use the client ID that you obtained as part of the permission and roles prerequisites as explained in this document. | Required | N/A
-| `clientSecret` | The client secret of the environment (recommended) or the organization. Use the client secret that you obtained as part of the permission and roles prerequisites as explained in this document.| Required | N/A
+| `clientId` | The client ID of the environment (recommended) or the organization. Use the client ID that you obtained as part of the permission and roles prerequisites as explained in this document. | Required | Not applicable
+| `clientSecret` | The client secret of the environment (recommended) or the organization. Use the client secret that you obtained as part of the permission and roles prerequisites as explained in this document.| Required | Not applicable
 | `platformUri` | The URL of the host where Anypoint Platform is installed | Optional | https://anypoint.mulesoft.com
 |===
 +

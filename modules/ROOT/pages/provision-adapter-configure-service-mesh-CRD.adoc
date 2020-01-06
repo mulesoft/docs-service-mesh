@@ -1,13 +1,13 @@
-= Provision the Adapter Using the CRD
+= Provisioning the Adapter Using a CRD
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 :keywords: service mesh, microservices, installation prerequisites
 
 
-Before you can start managing your services using Anypoint Service Mesh, you must prepare your namespace by provisioning a Anypoint Service Mesh adapter. Provisioning prepares the namespace for the Anypoint Service Mesh configuration. As a best practice, you must create one namespace per adapter.
+Before you can start managing your services using Anypoint Service Mesh, you must prepare your namespace by provisioning an Anypoint Service Mesh adapter. Provisioning prepares the namespace for the Anypoint Service Mesh configuration. As a best practice, you must create one namespace per adapter.
 
-The adapter behaves as the policy enforcement component, which fetches policies from Anypoint platform, checks whether the policies have been met, and then reports the analytics data back to Anypoint Platform.  
+The adapter acts as a policy enforcement component that fetches policies from Anypoint platform, checks whether the policies have been met, and then reports the analytics data back to Anypoint Platform.  
 
 After you provision the adapter, you must redeploy all your existing applications to ensure that the Envoy sidecar is injected within each pod in the Kubernetes cluster.
 
@@ -49,7 +49,7 @@ The status values include:
 
 
 [[provision_using_CRD]]
-== Provisioning the Adapter Using a CRD 
+== Provision the Adapter Using a CRD 
 
 To provision the Anypoint Service Mesh adapter using a CRD:
 

@@ -1,4 +1,4 @@
-= Configure Anypoint Service Mesh using the CRD
+= Configuring Anypoint Service Mesh Using a CRD
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
@@ -10,9 +10,9 @@ If you deploy and manage your Kubernetes objects and your microservices using CR
 
 If you have configured continuous integration in your environment, you must provision the adapter and bind the service using the CRD.
 
-The following diagram explains the flow for configuring Anypoint Service Mesh using the CRD.
+The following diagram illustrates the flow for configuring Anypoint Service Mesh using the CRD:
 
-image::configure-service-mesh-CRD-flowchart-new.png[]
+image::configure-service-mesh-CRD-flowchart-new.png[90%,120%]
 
 
 == See Also

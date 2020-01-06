@@ -1,4 +1,4 @@
-= Download and Install Service Mesh
+= Downloading and Installing Service Mesh
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]

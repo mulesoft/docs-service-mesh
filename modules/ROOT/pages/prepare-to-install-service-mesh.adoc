@@ -1,4 +1,4 @@
-= Review Prerequisites
+= Reviewing Prerequisites
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
@@ -24,14 +24,14 @@ Your Anypoint Service Mesh installation requires the following applications and 
 +
 For more information about how to install Helm, see the Helm installation documentation.
 * Kubectl version 1.12 or later, compatible with the cluster, is installed on your local machine
-*Tip:* To verify installed version, use the `kubectl version`.
+*Tip:* To verify installed version, use the `kubectl version` command.
 * One of the following environments on which to run Kubernetes:
 ** Google Kubernetes Engine (GKE)
 ** Amazon EKS
 ** Azure Kubernetes Service (AKS)
 * Not installed Istio in the cluster
 * If you want to enable automatic sidecar injection, you must additionally:
-. Install Kubernetes 1.12+ with the admissionregistration API.
+. Install Kubernetes 1.12 with the admissionregistration API.
 . Verify the installation using the following the command: 
 +
 `kubectl api-versions | grep admissionregistration.k8s.io/v1beta1`.
