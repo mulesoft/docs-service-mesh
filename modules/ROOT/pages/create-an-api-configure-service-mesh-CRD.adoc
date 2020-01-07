@@ -53,9 +53,13 @@ Ensure that you obtain the environment ID and organization ID. You can perform t
 
 You require the Manage APIs Configuration permission for the environment where you are creating the API Instance and Exchange Contributor permission for the Business group where you are creating the asset.
 
-To create an API in Anypoint Platform using Anypoint Service Mesh:
+=== Create Kubernetes Secret
 
-. To store user credentials, create the following Kubernetes secret in a file, for example `user-secret.yaml`:
+Anypoint Service Mesh supports the use of Kubernetes secrets to store and manage sensitive information, such as your user credentials.
+
+To store your user credentials in Kubernetes secrets:
+
+. Create a CRD with the following Kubernetes secret details in a .yaml file, for example `user-secret.yaml`:
 +
 [source,text,linenums]
 ----
@@ -78,7 +82,7 @@ stringData:
 +
 If the secret is correctly applied, a “secret/my-credentials configured” message is displayed. 
 +
-. Referencing the secret in your API CRD, instead of the parameters user and password, as illustrated in the following example:
+. Reference the secret in your API CRD, instead of the user and password parameters, as illustrated in the following example:
 +
 [source,text,linenums]
 ----
@@ -108,7 +112,12 @@ spec:
       name: my-credentials
       key: user-pass
 ----
-+
+
+
+=== Create an API
+
+To create an API in Anypoint Platform using Anypoint Service Mesh:
+
 . Create your adapter definition file and save it with a '.yaml' file extension, for example `test-api.yaml`:
 +
 [source,text,linenums]

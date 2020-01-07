@@ -22,6 +22,12 @@ NAMESPACE      NAME        ADAPTER                         API ID  SERVICE NAME 
 nto-payments   customers   anypoint-service-mesh-adapter   1234    customers       Ready
 ----
 
+== Methods for Binding an API
+
+You can bind an API to a service using Anypoint Platform or Anypoint Service Mesh, based on your preference:
+
+* <<bind_the_service, Bind an API created using Anypoint Platform>>: If you created your API using Anypoint Platform, use this procedure.
+* <<bind_using_ASM, Bind an API created using Anypoint Service Mesh>> : If you created your API using Anypoint Service Mesh, use this procedure.
 
 [[bind_the_service]]
 == Bind an API Created Using Anypoint Platform
@@ -76,7 +82,7 @@ After you bind your API, the API in API Manager is marked as Active. You are now
 +
 image::api-manager-status-for-service-mesh.png[85%, 85%]
 
-[[bind_using_CLI]]
+[[bind_using_ASM]]
 
 == Bind an API Created Using Anypoint Service Mesh
 
