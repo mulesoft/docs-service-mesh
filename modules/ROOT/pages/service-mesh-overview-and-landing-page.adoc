@@ -42,7 +42,7 @@ Anypoint Exchange then uses the metadata to automatically discover and create HT
 
 == Request Flow
 
-When a service is called, Anypoint Service Mesh ensure a smooth request flow and security checks as shown in the following diagam:
+When a service is called, Anypoint Service Mesh ensures a smooth request flow and security checks as shown in the following diagam:
 
 image:service-mesh-flows.jpeg[]
 
