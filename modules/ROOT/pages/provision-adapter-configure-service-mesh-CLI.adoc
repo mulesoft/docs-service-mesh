@@ -1,4 +1,4 @@
-= Provision the Adapter
+= Provisioning the Adapter Using the CLI
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
@@ -11,9 +11,10 @@ The adapter behaves as the policy enforcement component, which fetches policies 
 
 After you provision the adapter, you must redeploy all your existing applications to ensure that the Envoy sidecar is injected within each pod in the Kubernetes cluster.
 
+[[adapter_plan]]
 == Adapter Plan
 
-When you provision the adapter, you must specify the size of the adapter based on the number of CPUs and memory of the system that will be managed using Anypoint Service Mesh. Anypoint Service Mesh currently supports small, medium, and large adapter plans:
+When you provision the adapter, you must specify the size of the adapter based on the number of CPUs and memory of the system that will be managed using Anypoint Service Mesh. The following adapter plans are currently supported: 
 
 [%header%autowidth.spread]
 |===
@@ -23,12 +24,13 @@ When you provision the adapter, you must specify the size of the adapter based o
 | large | 2 | 2 | 100
 |===
 
-You can also modify the size of an adapter after it has been provisioned. If you update the plan size, the adapter deployment is updated appropriately. Kubernetes then creates a pod with new information. However, the old adapter continues handling requests until the new pod is ready.
+You can also modify the size of an adapter after it has been provisioned. If you update the plan size, the adapter deployment is updated appropriately. Kubernetes then creates a pod with the new information. However, the old adapter continues handling requests until the new pod is ready.
 
 After the new adapter is ready, the old pod is terminated and all requests are routed to the new adapter. If the update fails to start up a new pod due to insufficient space, or if the pod is not ready, an error message is recorded in a Kubernetes event. In such a scenario, the old adapter continues to handle requests because the new pod is not yet available.
 
 You can delete an adapter if it is no longer required. However, you must delete all existing bindings for the adapter before you delete the adapter itself.
 
+[[adapter_status]]
 == Adapter Status
 
 When you provision an adapter, or bind the adapter to an application, a message is displayed after you run an adapter command. The message indicates whether the adapter was created, deleted, or modified successfully. 
@@ -54,20 +56,18 @@ After you install Anypoint Service Mesh, you can use the command line interface 
 image::service-mesh-cli-adapter-help.png[CLI Help for Adapter Commands]
 
 [[provision_the_adapter]]
-== Provisioning the adapter
+== Provision the Adapter Using the CLI
 
-Before you provision the adapter, review the task prerequisites.
+Before you provision the adapter, complete the task prerequisites.
 
 *Task Prerequisites*
 
-Make sure that you create all objects names, such as adapter name, binding name, and service name, in lower case, for example, _test_adapter_name_. An error is thrown if you do not follow Kubernetes naming conventions.
+Note that all object names, such as adapter name, binding name, and service name, must be in lowercase letters, for example, _test_adapter_name_. An error is thrown if you do not follow Kubernetes naming conventions.
 
-To provision the Anypoint Service Mesh adapter:
+To provision the Anypoint Service Mesh adapter using the CLI:
  
-. Determine the adapter size based on the plan.
-. From Anypoint Platform, obtain the the client ID and client secret for your environment.
-For more information about how to obtain these credentials, see 
-xref:api-manager::access-client-app-id-task.adoc[obtain credentials].
+. Determine the adapter size based on the <<adapter_plan, plan>>.
+. From Anypoint Platform, xref:api-manager::access-client-app-id-task.adoc[obtain the client ID and client secret credentials] for your environment.
 . From the Anypoint Service Mesh installer download location in the Command window, type the following command to create the adapter:
 +
 [source,text,linenums]
@@ -76,6 +76,7 @@ xref:api-manager::access-client-app-id-task.adoc[obtain credentials].
 --name=<adapter name> \
 --namespace=<adapter namespace> \
 --size=<adapter plan size> \
+--replicas=<amount of replicas for the adapter> \
 --clientId=<clientId of the environment or organization> \
 --clientSecret=<client secret of the environment or organization> \
 --platformUri=<URL of Anypoint Platform>
@@ -84,15 +85,16 @@ xref:api-manager::access-client-app-id-task.adoc[obtain credentials].
 [%header%autowidth.spread]
 |===
 | Parameter Name | Description | Required/Optional | Default Value
-| `name` | The name of the adapter that you want to create, for example, “service-mesh-test-adapter”. | Required | N/A
+| `name` | The name of the adapter that you want to create, for example, “service-mesh-test-adapter”. | Required | Not applicable
 | `namespace` | The namespace in which you want to create the adapter, for example, “mulesoft-apps”. | Optional | default
 | `size`| The size of the adapter based on the number of CPUs and memory to use | Optional | medium
-| `clientId` | The client ID of the environment (recommended) or the organization. Use the client ID that you obtained as part of the permission and roles prerequisites as explained in this document. | Required | N/A
-| `clientSecret` | The client secret of the environment (recommended) or the organization. Use the client secret that you obtained as part of the permission and roles prerequisites as explained in this document.| Required | N/A
+| `replicas` | The number of replicas you want to spin for the mule adapter. For high availability it is recommended not to have less than two. | Optional | 2
+| `clientId` | The client ID of the environment (recommended) or the organization. Use the client ID that you obtained as part of the permission and roles prerequisites as explained in this document. | Required | Not applicable
+| `clientSecret` | The client secret of the environment (recommended) or the organization. Use the client secret that you obtained as part of the permission and roles prerequisites as explained in this document.| Required | Not applicable
 | `platformUri` | The URL of the host where Anypoint Platform is installed | Optional | https://anypoint.mulesoft.com
 |===
 +
-. Verify the adapter status:
+. Verify the <<adapter_status, adapter Status>>:
 +
 `./service-mesh adapter list`
 +
@@ -110,8 +112,12 @@ image::provision-service-mesh-adapter-output.png[Example Output]
 .. Using the deploy name from the previous command, restart all your services that need to be managed by Anypoint Service Mesh to inject the sidecar in the pod:
 +
 `kubectl -n <adapter-namespace> patch deploy <deployname> --type=json -p='[{"op": "replace", "path": "/spec/template/metadata/labels/service-mesh.mulesoft.com","value":"enable"}]'`
-. To check whether the applications are redeployed, run the following command:
+. To verify that the the applications are redeployed, run the following command:
 +
 `kubectl get pods -n <namespace>`.
 
+== See Also
 
+* xref::prepare-to-install-service-mesh.adoc[Prepare to install Anypoint Service Mesh]
+* xref::create-an-api-configure-service-mesh-CLI.adoc[Create an API using CLI]
+* xref::bind-api-configure-service-mesh-CLI.adoc[Bind a service using CLI]
