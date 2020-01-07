@@ -50,8 +50,6 @@ Note that the license you procure must contain the following entitlements:
 * API Gateway: api-gateway
 * Cluster: clustering
 
-*Need to add more infomation about the digested format.--Tomas*
-
 == Permissions and Roles Requirements
 
 Before you can use Anypoint Service Mesh, you must have the following roles and permissions:
