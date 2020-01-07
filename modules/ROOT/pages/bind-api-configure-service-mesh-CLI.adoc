@@ -17,6 +17,7 @@ After the binding is created, Anypoint Service Mesh takes a few seconds to compl
 In the following example, a binding called `customers` is created to bind the `anypoint-service-mesh-adapter` adapter with the `customers` service. This binding is created in the `nto-payments` namespace, which is the same namespace where the adapter was previously created, and is associated with the API that has the ID as 1234.
 
 [source,text,linenums]
+
 ----
 NAMESPACE      NAME        ADAPTER                         API ID  SERVICE NAME    STATUS
 nto-payments   customers   anypoint-service-mesh-adapter   1234    customers       Ready
