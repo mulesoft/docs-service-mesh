@@ -30,6 +30,7 @@ For more information about how to install Helm, see the Helm installation docume
 ** Amazon EKS
 ** Azure Kubernetes Service (AKS)
 * Not installed Istio in the cluster
+* Verify the Kubernetes api-server has network connectivity to the webhook pod and that the Kubernetes cluster follows other xref:https://istio.io/docs/ops/configuration/mesh/webhook/#verify-dynamic-admission-webhook-prerequisites[Istio's network prerequisites.] 
 * If you want to enable automatic sidecar injection, you must additionally:
 . Install Kubernetes 1.12 with the admissionregistration API.
 . Verify the installation using the following the command: 
