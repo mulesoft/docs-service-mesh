@@ -39,11 +39,24 @@ For more information about how to install Helm, see the Helm installation docume
 . Add and list ValidatingAdmissionWebhook admission controllers in the correct order.
 
 
+== Hardware Requirements
+
+Your Anypoint Service Mesh installation requires the following hardware configuration:
+
+* CPU: 4 cores
+* Memory: 8 GBs
+
+
 == Production Licensing and Trial Licensing Requirements
 
-You require a Anypoint Service Mesh license to perform the installation in your production environment.
+You require a Anypoint Service Mesh license to perform the installation in your production environment. Ensure that the license you specify is in a digested format. If you do not have a license, contact your MuleSoft representative.
 
-For evaluation purposes, you can request a trial version of Anypoint Service Mesh. The trial version limits usage and is best suited for only exploring and learning the product. The trial version is not recommended for production uses.
+Note that the license you procure must contain the following entitlements:
+
+* API Gateway: api-gateway
+* Cluster: clustering
+
+For evaluation purposes, you can request a trial version of Anypoint Service Mesh. The trial version limits the usage of the product and is best suited for only exploring and learning the product. The trial version is not recommended for production use.
 
 To obtain a trial or regular license key, contact your MuleSoft account representative or the MuleSoft sales team. 
 
@@ -58,6 +71,58 @@ If you provision the adapter with organization credentials, you will be able to 
 +
 If you specify environment credentials, you will only be able to manage APIs of that environment. MuleSoft recommends that you use the environment credentials instead of the organization credentials. For more information about which permissions to use, see xref:api-manager::org-credentials-config-mule4.adoc#obtaining-credentials[obtaining credentials].
 * Cluster-admin role access to the Kubernetes cluster.
+
+== Configuring Your Environment Variable
+
+Before you begin installing Anypoint Service Mesh, update your PATH environment variable to store system-wide values, such as the directories to search for the executable programs.
+
+=== Configure Your Environment Variable on Windows
+
+To configure your PATH variable on Windows:
+
+. Perform the following step based on the Windows version installed in your environment:
+.. For Windows 8 or 10, press the Windows key, and then search for and
+select *System (Control Panel)*.
+.. For Windows 7, right-click the *Computer* icon on the desktop
+and select *Properties*.
+. Select *Advanced system settings* > *Environment Variables*.
+. Under *System Variables*, find and select the `PATH` variable, and then click
+*Edit*.
+. If there is no existing entry for the `PATH` variable, click *New*.
+. Add your directory to the beginning of the variable value followed by `;` (a
+semicolon). 
++
+For example, if the value was `C:\Windows\System32`, change it to
+`C:\Users\Me\bin;C:\Windows\System32`.
+. Click *OK*.
+. Restart your terminal.
+
+=== Configure Your Environment Variable on Mac OS X
+
+To configure your PATH variable on Mac OS X:
+
+. Open the `.bash_profile` file in your home directory.
++
+For example, type `CD /Users/<your-user-name>/.bash_profile`) in a text editor.
+. Add the following command to the last line of your file:
++
+`export PATH="your-dir:$PATH"`, where *your-dir* is the directory you want to add.
+. Save the `.bash_profile` file.
+. Restart your terminal.
+
+=== Configure Your Environment Variable on Linux
+​
+To configure your PATH variable on Linux: 
+
+. Open the `.bashrc` file in your home directory.
++
+For example, type `CD /home/<your-user-name>/.bashrc`) in a text editor.
+. Add the following command to the last line of the file:
++
+`export PATH="your-dir:$PATH"`, where *your-dir* is the directory you want to add.
+. Save the `.bashrc` file.
+. Restart your terminal.
+
 
 == See Also
 
