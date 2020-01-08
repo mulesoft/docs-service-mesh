@@ -72,7 +72,7 @@ spec:
     clientSecret: <client secret> # example: 8E5ae17BbB664Eddd9ab32A5fA869874Be7
     platformUri: <platform uri> # example: https://eu1.anypoint.mulesoft.com
     replication: 
-        replicas: <amount of replicas> # example: 2
+      replicas: <amount of replicas> # example: 2
 ----
 . Apply the CRD using the following command:
 `kubectl apply -f my-adapter.yaml`
