@@ -52,6 +52,9 @@ image::api-id.png[]
 +
 `kubectl get svc -n <namespace>`
 . Verify that your microservice port is named following the requirements requested by Istio: xref:https://istio.io/docs/setup/additional-setup/requirements/[].
+. Create your binding definition file and save it with a `.yaml` file extension, for example, 
++
+`bind-api.yaml`:
 . If you created your API using Anypoint Platform, use `spec.parameters.apiId`:
 +
 [source,text,linenums]
@@ -71,7 +74,10 @@ spec:
     service: <service name> # example: orders-service
 ----
 +
-The binding is activated within a few seconds and the API is successfully registered to the proxy.
+. Apply the CRD using the following command:
++
+`kubectl apply -f bind-api.yaml`
++
 . Verify the binding status using the following command:
 +
 `./service-mesh adapter binding list`
