@@ -62,8 +62,9 @@ kind: ServiceInstance
 metadata:
   name: <adapter name> # example: bookinfo-service-mesh-adapter
   namespace: <namespace name> # example: default
-  labels: 
-    service-mesh.mulesoft.com/kind: adapter  
+  labels:
+    service-mesh.mulesoft.com/kind: adapter
+spec:
   clusterServiceClassExternalName: anypoint-service-mesh-adapter
   clusterServicePlanExternalName: <plan size > # example: small.
   parameters:
