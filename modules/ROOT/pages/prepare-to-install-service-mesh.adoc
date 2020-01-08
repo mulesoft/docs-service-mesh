@@ -23,14 +23,13 @@ Your Anypoint Service Mesh installation requires the following applications and 
 *Tip:* To verify the installed version, use the `helm version` command. 
 +
 For more information about how to install Helm, see the Helm installation documentation.
-* Kubectl version 1.12 or later, compatible with the cluster, is installed on your local machine
+* Kubectl version 1.12 or later, compatible with the cluster, installed on your local machine
 *Tip:* To verify installed version, use the `kubectl version` command.
 * One of the following environments on which to run Kubernetes:
 ** Google Kubernetes Engine (GKE)
 ** Amazon EKS
 ** Azure Kubernetes Service (AKS)
 * Not installed Istio in the cluster
-* Verify the Kubernetes api-server has network connectivity to the webhook pod and that the Kubernetes cluster follows other xref:https://istio.io/docs/ops/configuration/mesh/webhook/#verify-dynamic-admission-webhook-prerequisites[Istio's network prerequisites.] 
 * If you want to enable automatic sidecar injection, you must additionally:
 . Install Kubernetes 1.12 with the admissionregistration API.
 . Verify the installation using the following the command: 
@@ -38,7 +37,7 @@ For more information about how to install Helm, see the Helm installation docume
 `kubectl api-versions | grep admissionregistration.k8s.io/v1beta1`.
 . Configure the kube-apiserver process with the admission-control flag to “MutatingAdmissionWebhook”.
 . Add and list ValidatingAdmissionWebhook admission controllers in the correct order.
-
+* Verify that the Kubernetes api-server has network connectivity to the webhook pod and that the Kubernetes cluster follows other xref:https://istio.io/docs/ops/configuration/mesh/webhook/#verify-dynamic-admission-webhook-prerequisites[Istio network prerequisites.] 
 
 == Production Licensing and Trial Licensing Requirements
 
