@@ -64,7 +64,8 @@ metadata:
   name: <adapter name> # example: bookinfo-service-mesh-adapter
   namespace: <namespace name> # example: default
   labels: 
-    service-mesh.mulesoft.com/kind: adapter  
+    service-mesh.mulesoft.com/kind: adapter
+spec:
   clusterServiceClassExternalName: anypoint-service-mesh-adapter
   clusterServicePlanExternalName: <plan size > # example: small.
   parameters:
@@ -72,7 +73,7 @@ metadata:
     clientSecret: <client secret> # example: 8E5ae17BbB664Eddd9ab32A5fA869874Be7
     platformUri: <platform uri> # example: https://eu1.anypoint.mulesoft.com
     replication: 
-        replicas: <amount of replicas> # example: 2
+      replicas: <amount of replicas> # example: 2
 ----
 . Apply the CRD using the following command:
 `kubectl apply -f my-adapter.yaml`
