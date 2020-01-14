@@ -10,7 +10,7 @@ Before you download and install Anypoint Service Mesh, ensure that you review an
 
 == Audience Requirements
 
-Anypoint Service Mesh is developed using Istio and Kubernetes. Therefore, you must have a basic working knowledge of Istio and Kubernetes to be able to install and use Anypoint Service Mesh.
+Anypoint Service Mesh is developed using Istio and Kubernetes. Therefore, you must have a working knowledge of Istio and Kubernetes to be able to install and use Anypoint Service Mesh.
 
 
 == Software Requirements
