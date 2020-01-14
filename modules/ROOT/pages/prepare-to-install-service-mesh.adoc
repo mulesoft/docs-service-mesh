@@ -116,7 +116,7 @@ To configure your `PATH` variable on Linux:
 
 . Open the `.bashrc` file in your home directory.
 +
-For example, type `CD /home/<your-user-name>/.bashrc`) in a text editor.
+For example, type `cd /home/<your-user-name>/.bashrc`) in a text editor.
 . Add the following command to the last line of the file:
 +
 `export PATH="your-dir:$PATH"`, where *your-dir* is the directory you want to add.
