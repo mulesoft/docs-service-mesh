@@ -79,12 +79,12 @@ To create an API using Anypoint Service Mesh, perform the following steps:
 | `name` | The name of the API that you want to provision, for example, `orders-api`. | Required | Not applicable
 | `namespace` | The namespace in which you want to create the adapter, for example, `mulesoft-apps`. | Optional | default
 | `environmentId` | The ID of the environment where you want to create your API instance. | Required | Not applicable
-| `groupId` | The ID of the group of assets on Exchange, for example, the organization ID. You can find the organization ID on API Manager landing page or in Access Management. | Optional | Organization ID of the organization that contains the environment. 
+| `groupId` | The ID of the group of assets on Exchange, for example, the organization ID. You can find the organization ID on the API Manager landing page or in Access Management. | Optional | Organization ID of the organization that contains the environment. 
 | `assetId` | The ID of the assets that are a part of an organization. Supports alphanumeric characters without spaces. | Required | Not applicable
-| `version` | The version of the asset on Exchange. *Needs to be semver* what is this chirag? | Required | Not applicable
+| `version` | The version of the asset on Exchange. The version number must follow the semantic versioning format for major, minor, and patch releases. | Required | Not applicable
 | `instanceLabel` | The ID of the API instances of an Asset within a given environment. Supports alphanumeric characters without spaces. | Required | Not applicable
-| `specTags` | Tags to be added to the asset on Exchange. |  Optional | Not applicable
-| `instanceTags` | Tags to be added to the API instance on API Manager. |  Optional | Not applicable
+| `specTags` | Tags to add to the asset on Exchange. |  Optional | Not applicable
+| `instanceTags` | Tags to add to the API instance on API Manager. |  Optional | Not applicable
 | `user` | The username credential of the Anypoint Platform user who is creating the API. | Required | Not applicable
 | `password` | The password of the Anypoint Platform user who is creating the API. | Required | Not applicable
 |===
