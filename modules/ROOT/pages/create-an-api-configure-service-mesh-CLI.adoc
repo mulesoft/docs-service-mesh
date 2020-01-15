@@ -81,7 +81,7 @@ To create an API using Anypoint Service Mesh, perform the following steps:
 | `environmentId` | The ID of the environment where you want to create your API instance. | Required | Not applicable
 | `groupId` | The ID of the group of assets on Exchange, for example, the organization ID. You can find the organization ID on API Manager landing page or in Access Management. | Optional | Organization ID of the organization that contains the environment. 
 | `assetId` | The ID of the assets that are a part of an organization. Supports alphanumeric characters without spaces. | Required | Not applicable
-| `version` | The version of the asset on Exchange. *Needs to be semver* what is this chirag? | Required | Not applicable
+| `version` | The version of the asset on Exchange. The version number must follow the semantic versioning format for major, minor, and patch releases. | Required | Not applicable
 | `instanceLabel` | The ID of the API instances of an Asset within a given environment. Supports alphanumeric characters without spaces. | Required | Not applicable
 | `specTags` | Tags to be added to the asset on Exchange. |  Optional | Not applicable
 | `instanceTags` | Tags to be added to the API instance on API Manager. |  Optional | Not applicable
