@@ -104,13 +104,13 @@ image::provision-service-mesh-adapter-output.png[Example Output]
 . Review adapter logs to see detailed information about Kubernetes events and adapter transactions:
 +
 `./service-mesh adapter logs --name=<adapter_name> --namespace=<namespace>`
-. Run the following commands for each of your applications that were already running in the namespace before starting the Anypoint Service Mesh installation:
+. Run the following commands, one-by-one, for each of your applications that were already running in the namespace before starting the Anypoint Service Mesh installation:
 .. Determine the deployment name for the patch: 
 +
 `kubectl get deployments -n <namespace>`
 +
 //image::kubectl-deployment-name.png[]
-.. Using the deploy name from the previous command, restart all your services that need to be managed by Anypoint Service Mesh to inject the sidecar in the pod:
+.. Using the deployment name from the previous command, restart all your services that need to be managed by Anypoint Service Mesh to inject the sidecar in the pod:
 +
 `kubectl -n <adapter-namespace> patch deploy <deployname> --type=json -p='[{"op": "replace", "path": "/spec/template/metadata/labels/service-mesh.mulesoft.com","value":"enable"}]'`
 . To verify that the the applications are redeployed, run the following command:
