@@ -1,4 +1,5 @@
 .xref:index.adoc[Anypoint Service Mesh]
+* xref:index.adoc[Anypoint Service Mesh Overview]
 //* xref:service-mesh-overview-and-landing-page.adoc[Overview]
 * xref:getting-started-service-mesh.adoc[Getting started with Service Mesh]
 * xref:prepare-to-install-service-mesh.adoc[Reviewing Prerequisites]
