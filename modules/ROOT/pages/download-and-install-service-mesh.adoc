@@ -19,15 +19,11 @@ The Anypoint Service Mesh client is now downloaded on your file system.
 
 == Install Anypoint Service Mesh
 
-When you invoke the installer, Istio, Service Catalog, Anypoint Service Mesh Broker, and ClusterIP Service components are installed in your Kubernetes cluster. The installer performs several steps as part of the installation, such as checking for dependencies and performing various configurations. 
+When you invoke the installer, Istio, Service Catalog, Anypoint Service Mesh Broker, and ClusterIP Service components are installed in your Kubernetes cluster. The installer performs several configuration tasks and verifies that: 
 
-As part of the installation process, the following dependency checks are performed by the Anypoint Service Mesh installer:
-
-- Kubernetes versions is supported.
-- Istio is not installed.
-- Service Catalog is not installed.
-- Service Mesh is not installed.
-- User is entitled to use service mesh.
+- A supported Kubernetes versions is installed in the cluster.
+- Istio, Service Catalog, and Anypoint Service Mesh are not pre-installed.
+- Appropriate Anypoint Service Mesh licences and entitlements are applied.
 
 === Install without Proxy
 To install Anypoint Service Mesh, perform the following steps:
