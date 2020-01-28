@@ -49,7 +49,7 @@ image::api-id.png[]
 . To retrieve the service name from Kubernetes, with which you want to bind the API, run the command:
 +
 `kubectl get svc -n <namespace>`
-. Verify that your microservice port is named following the requirements requested by xref:http://istio.io/docs/setup/additional-setup/requirements/[Istio].
+. Verify that your microservice port is named according to the requirements described in xref:http://istio.io/docs/setup/additional-setup/requirements/[Istio].
 . From the Anypoint Service Mesh installer download location in the Command window, type the following command to bind the adapter with an application:
 +
 [source,text,linenums]
