@@ -16,7 +16,7 @@ You can create an API using Anypoint Platform or Anypoint Service Mesh:
 If you want to create REST or SOAP APIs with OAS or WSDL definition, use Anypoint Platform. 
 +
 Note that if you want to upload a REST API or OAS asset type, use a .json or .yaml file. Alternatively, if you want to upload a SOAP API or WSDL asset type, use a .wsdl or .xml file.
-* <<create-api-ASM-CLI, Create an API Using Anypoint Service Mesh Autocreate>>
+* <<create-api-ASM-CLI, Create an API Using Anypoint Service Mesh (Auto-create feature)>>
 +
 Anypoint Service Mesh enables you to automatically create an HTTP API in Anypoint Platform, with no REST or SOAP definitions. You do not have to manually log in to Anypoint Platform. 
 +
