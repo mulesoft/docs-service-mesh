@@ -100,8 +100,8 @@ In order to whitelist a header, you need to execute:
 
 So for example, if you want to allow the use of header `x-client-secret`, you need to execute:
 
-`./service-mesh management header-whitelist add --name=x-client-secret`
+`./service-mesh management config header-whitelist add --name=x-client-secret`
 
 In order to list the whitelisted headers, execute:
 
-`./service-mesh management header-whitelist list`
+`./service-mesh management config header-whitelist list`
