@@ -96,7 +96,7 @@ If you want to use a custom header you need to whitelist it. Whitelisting a head
 
 In order to whitelist a header, you need to execute:
 
-`./service-mesh management header-whitelist --name=<header name>`
+`./service-mesh management config header-whitelist --name=<header name>`
 
 So for example, if you want to allow the use of header `x-client-secret`, you need to execute:
 
