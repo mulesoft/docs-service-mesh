@@ -81,5 +81,32 @@ Anypoint Service Mesh is installed and the status of all pods is displayed:
 +
 image::verified-service-mesh-installer-output.png[]
 
+=== Configure headers to use in client authorization based policies
+
+Service Mesh is configured with a reduced set of whitelisted headers for client based policies. Those headers are:
+
+- jwt
+- authorization
+- client_id
+- client-id
+- client_secret
+- client-secret
+
+If you want to use a custom header you need to whitelist it. Whitelisting a header is an operation done at cluster level. This means that you don't need to do it for every managed API.
+
+In order to whitelist a header, you need to execute:
+
++
+`./service-mesh management whitelist <header name>`
++
+
+So for example, if you want to allow the use of header `x-client-secret`, you need to execute:
+
++
+`./service-mesh management header-whitelist add x-client-secret`
++
+
+In order to list the whitelisted, execute:
+`./service-mesh management header-whitelist list`
 
 
