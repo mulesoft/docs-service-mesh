@@ -83,7 +83,7 @@ image::verified-service-mesh-installer-output.png[]
 
 === Configure headers to use in client authorization based policies
 
-Service Mesh is configured with a reduced set of whitelisted headers for client based policies. Those headers are:
+Service Mesh is configured with a reduced set of whitelisted headers for client based policies (case is insensitive). Those headers are:
 
 - jwt
 - authorization
@@ -96,17 +96,12 @@ If you want to use a custom header you need to whitelist it. Whitelisting a head
 
 In order to whitelist a header, you need to execute:
 
-+
-`./service-mesh management whitelist <header name>`
-+
+`./service-mesh management header-whitelist --name=<header name>`
 
 So for example, if you want to allow the use of header `x-client-secret`, you need to execute:
 
-+
-`./service-mesh management header-whitelist add x-client-secret`
-+
+`./service-mesh management header-whitelist add --name=x-client-secret`
 
-In order to list the whitelisted, execute:
+In order to list the whitelisted headers, execute:
+
 `./service-mesh management header-whitelist list`
-
-
