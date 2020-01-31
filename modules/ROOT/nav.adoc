@@ -14,5 +14,6 @@
         *** xref:bind-api-configure-service-mesh-CRD.adoc[Binding APIs with Services]
 * xref:manage-apis-with-service-mesh.adoc[Managing APIs with Service Mesh]
 * xref:uninstall-service-mesh.adoc[Uninstalling Service Mesh]
+* xref:troubleshoot-service-mesh.adoc[Troubleshooting Service Mesh]
 //* xref:service-mesh-faqs.adoc[FAQs]
 
