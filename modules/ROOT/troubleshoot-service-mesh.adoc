@@ -1,0 +1,8 @@
+= Troubleshooting Anypoint Service Mesh
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+:keywords: service mesh, microservices, installation prerequisites
+
+When you perform Anypoint Service Mesh tasks, you might encounter issues or receive error messages. The following topics are covered in this section:
+
