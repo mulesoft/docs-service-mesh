@@ -1,0 +1,101 @@
+= Troubleshooting Service Issues
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+:keywords: service mesh, microservices, service issues, troubleshooting
+
+When you attempt to run a service, you might encounter issues with the deployment, such as problems with a deployment port, or load balancer issues. This section provides possible causes for your deployment and service issues and describes how to troubleshoot these errors:
+
+* <<deployment-not-ready,Deployment not Ready>>
+* <<image-ports-do-not-match-deployment-ports, Image ports do not match deployment ports>>
+* <<service-not-exposed-as-load-balancer, Service is not exposed as load balancer>>
+
+[[deployment-not-ready]]
+== Deployment is Not Ready
+
+Your deployment might not be ready or your deployment might encounter errors after you complete your installation and attempt to run a service.
+
+=== Cause
+
+This issue can be caused due to various reasons. 
+
+=== Diagnose
+
+To diagnose the problem:
+
+. Check the status of deployments: 
++
+`$ kubectl -n <namespace> get deployments`.
++
+The ready column shows M/N (M < N). 
+. Check the status of the affected pods: 
++
+kubectl -n <namespace> get pods.
+
+=== Solution
+
+To resolve this issue:
+
+. Perform the following action based on the status from the diagnosis step:
+** `ErrImagePull` or `ImagePullBackOff`: The image cannot be pulled. Ensure that the image value in the deployment spec or pod references a valid repository or image name.
+** `Pending`: Ensure that the pod has the required resources. Either edit the deployment to request lower CPU and memory, or scale the cluster.
+** `CrashLoopBackOff`: Describe the pod to get more information about the failure:
++
+`$ kubectl -n <namespace> describe pod <pod-name>`.
+. In the events section of the output generated from the previous step, check if any logs are available describing the status of the deployment: live or ready.
+.. Verify that the liveness and readiness probes for the deployment are correctly configured and match an existing endpoint in the application. 
+.. Extend the initial delay or periods, and manually check the responses and logs in the pod:
+`$ kubectl -n <namespace> logs <pod-name>`
+
+[[image-ports-do-not-match-deployment-ports]]
+== Image Ports Do Not Match Deployment Ports
+[PA: when can this error occur, as in when they are trying to perform this particular task?]
+
+=== Cause
+
+Your requests to specific ports can fail due to various reasons. 
+
+=== Diagnose
+
+To diagnose the problem, run the following command:
++
+`$ kubectl -n <namespace> get deployments`
++
+The ready column shows N/N (100% ready). However, requests to the declared ports fail with an application-unrelated reason, such as "upstream connect error” or “disconnect or reset before headers”.
+
+=== Solution
+
+To resolve this issue:
+
+. Verify that the request is targeting one of the deployment ports. 
+. Verify that the deployment port is exposed in the Dockerfile of the image.
+
+[[service-not-exposed-as-load-balancer]]
+=== Service is not Exposed as Load Balancer
+
+When you create a service, you must xref:https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/[expose] it if you want to access it from outside. 
+
+Exposing the service provides an externally-accessible IP address that sends traffic to the correct port on your cluster nodes provided your cluster runs in a supported environment and is configured with the correct cloud load balancer provider package.
+
+If you failed to expose the service, any request to the IP address of the service goes into an unresponsive state.
+
+=== Cause
+
+This issue can occur if you skipped exposing the service as load balancer.
+
+
+=== Diagnose
+
+To diagnose the issue with the service, run the following command from the Command prompt: 
+`$ kubectl -n <namespace> get service`
+
+In the results, the `Type` column displays a value other than "LoadBalancer" and the `External-IP` column displays the value "<none>".
+
+=== Solution
+
+To resolve this issue, verify the service specifications. You must configure the service specification as a load balancer to be render it publically available. 
+
+If the service is not meant to be public, the endpoint must be used from within the cluster or must be accessed from outside the cluster using the following command: 
++
+`$ kubectl port-forward or kubectl proxy`.
+

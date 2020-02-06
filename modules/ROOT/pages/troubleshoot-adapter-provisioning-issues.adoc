@@ -1,0 +1,180 @@
+= Troubleshooting Adapter Provisioning Issues
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+:keywords: service mesh, microservices, adapter provisioning issues, troubleshooting
+
+When you provision the adapter, you might encounter issues such as insufficient resources, or image cannot be accessed. This section provides possible causes for your deployment and service issues and describes how to troubleshoot these errors:
+
+* <<insufficient-resource-allocation,Insufficient resource allocation>>
+* <<image-cannot-be-pulled,Image cannot be pulled>>
+* <<mule-fails-due-to-license-issues,Mule Runtime Engine fails to start due to license issues>>
+* <<catalog-content-init-failed,Catalog content initialization failed>>
+* <<adapter-failed-to-delete, Adapter failed to delete>>
+
+
+[[insufficient-resource-allocation]]
+== Insufficient Resource Allocation
+
+When you attempt to provision the adapter, your adapter might fail.
+
+=== Cause
+
+If your adapter pod does not have sufficient CPU space allocated, your adapter fails as a result.
+
+=== Diagnose
+
+To diagnose the issue: 
+
+. Check the adapter status by running the following command:
++
+`$ ./service-mesh adapter list`
++
+The status is displayed in a few minutes.
+. If the adapter displays a Failed status, run the following command:
+`$ kubectl -n service-mesh get pods`
+. Check the status of the adapter pod: `grpmule-<namespace>`. 
++
+If the status is in Pending state, describe the pod:
++
+`$ kubectl -n service-mesh describe pods -l namespace=<namespace>`.
+. If you do not view the `grpmule-<namespace>` pod, run the same command right after creating the adapter, while it is being provisioned but before it has failed:
++
+`$ kubectl -n service-mesh describe pods -l namespace=<namespace>`.
+. In the Events section, verify that you have an “Insufficient CPU” or other resource listing:
+//need a text of the screenshot here
+. Alternatively, you can describe the nodes to check the resource allocation:
++
+`$ kubectl describe nodes`.
+The allocated resources are displayed:
+//need a text of the screenshot here
+
+=== Solution
+
+To resolve this issue:
+
+. Delete the exisiting adapter.
+. Assign additional resources to your Kubernetes Cluster, as required.
+. Provision your adapter again.
+
+[[image-cannot-be-pulled]]
+== Image Cannot be Pulled
+
+After provisioning the adapter, it fails to start with the following error:
+
+//provide the exact error here
+
+=== Cause
+
+This issue can occur due to invalid credentials specified in the adapter or can occur due to issues with the registry-credentials-rotator pod.
+
+== Diagnosis
+
+To diagnose the issue, verify the status of the affected pods: 
++
+`$ kubectl -n service-mesh get pods`.
+Your pod might appear in either a `ErrImagePull` or a `ImagePullBackOff` state.
+
+=== Solution
+
+To resolve this issue:
+
+. Ensure that the registry-credentials-rotator pod is running:
++
+`$ kubectl -n service-mesh get pod -l app=service-mesh-registry-credentials-rotator`.
+. Review the logs of the pod to determine if any incorrect client ID and client secret, no entitlement, or permissions issues occurred:
++
+`$ kubectl -n service-mesh logs`
++
+`$(kubectl -n service-mesh get pod -l app=service-mesh-registry-credentials-rotator -oname)`.
+. Verify that the pull secret was created:
++
+`$ kubectl -n service-mesh get secret service-mesh-pull-secret`.
+. Verify that the correct platform URL and credentials are provided:
++
+`$ kubectl -n service-mesh get secret service-mesh-registry-credentials-rotator-env -ogo-template='CLIENT_ID:{{.data.CLIENT_ID|base64decode}} CLIENT_SECRET:{{.data.CLIENT_SECRET|base64decode}}'`.
++
+`$ kubectl -n service-mesh get cm service-mesh-registry-credentials-rotator-env  -ogo-template='PLATFORM_URI:{{.data.PLATFORM_URI}}`.
+
+[[mule-fails-due-to-license-issues]]
+== Mule Runtime Engine Fails to Start Due to Licence Issues
+
+When you attempt to list your adapters, you might receive a failed status.
+
+=== Cause
+
+If you did not provide a valid Mule license with the required entitlements, your Mule adapter will not start.
+
+=== Diagnosis
+
+To diagnose the issue:
+
+. Verify the adapter status:
++
+`$ ./service-mesh adapter list`.
++
+. If the adapter status is displayed as `Failed`, verify the status of the (grpmule-<namespace>) adapter pod:
++
+`$ kubectl -n service-mesh get pods`.
+In this case, your pod status might be displayed as `CrashLoopBackOff`.
+
+=== Solution
+
+To resolve this issue, update the adapter with a valid license:
++
+`$ ./service-mesh management config license --license=/path/to/license.lic`.
+
+
+[[catalog-content-init-failed]]
+== Catalog Content Initialization Failed
+
+When you attempt to provision an adapter, it might fail because the catalog content did not correctly initialize.
+
+=== Cause
+
+The Catalog is a component installed by Anypoint Service Mesh, which is required to provision adapters, create bindings, and create APIs. If the Catalog is not initialized correctly, the adapter fails.
+
+=== Diagnosis
+
+To diagnose the issue:
+
+. Review the adapter logs:
++
+`$ ./service-mesh adapter logs --namespace=<adapter_namespace> --name=<adapter_name>`.
++
+An output similar to the following text is displayed:
++
+`2019-11-26T20:46:35Z   Error provisioning ServiceInstance of ClusterServiceClass (K8S: "4f6e6cf6-ffdd-425f-a2c7-3c9258ad246a" ExternalName: "anypoint-service-mesh-adapter") at ClusterServiceBroker "service-mesh-incluster-broker": Status: 500; ErrorMessage: <nil>; Description: Catalog content init failed; ResponseError: <nil>`
+
+=== Solution
+
+To resolve this issue, run the following command to force Catalog initialization:
++
+`$ kubectl -n service-mesh patch clusterservicebrokers/service-mesh-incluster-broker --type=json -p='[{"op": "replace", "path": "/spec/relistRequests","value":1}]'`.
+
+[[adapter-failed-to-delete]]
+== Adapter Failed to Delete
+
+When you attempt to delete an adapter that you previously created, you might encounter issues.
+
+=== Cause
+
+If the adapter that you want to delete has service bindings associated with it, you cannot delete that adapter.
+
+=== Diagnosis
+
+To diagnose the issue, verify  the adapter status:
++
+`$ ./service-mesh adapter list`.
+
+In the output of the command, if there are bindings associated with the adapter or the service instance, the status is displayed as `DeprovisionBlockedByExistingCredentials`. This means that the service has associated bindings.
+
+
+=== Solution
+
+To resolve this issue, delete all the bindings associated with the adapter. When every binding is successfully deleted, then the adapter will be also deleted. 
+
+For more information, see xref:https://github.com/GoogleCloudPlatform/kubernetes-engine-samples/tree/master/service-catalog#instance-has-remaining-bindings[Kubernetes] help. 
+
+
+
