@@ -15,52 +15,47 @@ After you create the API, you then bind your service with the API. This section 
 
 If you provide a DNS name that does not comply with the DNS subdomain standard format, an error occurs and the binding fails.
 
-=== Cause
-
-This issue occurs if you provided a DNS name that does not follow the DNS subdomain standards.
-
 === Diagnose
 
 To diagnose this issue, run one of the following commands:
 +
-`$ ./service-mesh api binding list` Or `$ ./service-mesh adapter binding list`.
+* `$ ./service-mesh api binding list` 
+* `$ ./service-mesh adapter binding list`
 +
-The output of this command displays a Failed status of the binding:
+The output displays that a binding failed:
 +
-`The ServiceBinding "customer-API" is invalid: metadata.name: Invalid value: "customer-API": a DNS-1123 subdomain must consist of lower case alphanumeric characters, '-' or '.', and must start and end with an alphanumeric character (e.g. 'example.com', regex used for validation is '[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*')`.
+`The ServiceBinding "customer-API" is invalid: metadata.name: Invalid value: "customer-API": a DNS-1123 subdomain must consist of lower case alphanumeric characters, '-' or '.', and must start and end with an alphanumeric character (e.g. 'example.com', regex used for validation is '[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*')`
 
 === Solution
 
 Ensure that you provide DNS name values that follow the DNS subdomain standards.
 
 [[references non-existent-instance-error]]
-== References Non-existent Instance Error
+== References Nonexistent Instance Error
 
-When creating a binding, the binding command requires you to provide a name for the service and the name of the adapter that you created previously. Errors can occur if you did not specify the correct parameters for the binding command.
+When you create a binding, you must include in the binding command a name for the service and the name of the adapter that you created previously. Otherwise, you receive this error message.
 
 == Causes
 
-This error occur can occur due to multiple reasons:
+This error occur can occur because:
  
-* Service does not  exist because:
-* Incorrect service name specified when referring to the service name.
+* The service name in the binding command is incorrect.
 * The Namespace flag was not provided and therefore the service was searched for in the `default` namespace.
-* The adapter does not exist because an incorrect adapter name was specified when referring to the adapter name.
+* The adapter name in the binding command is incorrect.
 
 
 === Diagnose
 
-To diagnose this issue, run one of the following commands:
+Diagnose this issue by running one of the following commands:
 +
-`$ ./service-mesh api binding list`
-Or
-`$ ./service-mesh adapter binding list`
+* `$ ./service-mesh api binding list`
+* `$ ./service-mesh adapter binding list`
 +
-The status of binding displays the `ReferencesNonexistentInstance` status.
+The status of binding displays as `ReferencesNonexistentInstance`.
 
 === Solution
 
-Delete the erroneous binding and recreate it with the correct input.
+Delete the erroneous binding command and re-create it with the correct input.
 
 [[missing-entitlements-in-license]]
 == Missing Entitlements in License
@@ -81,7 +76,7 @@ To diagnose this issue:
 `$ ./service-mesh adapter list`
 . If the adapter status is Failed, review the adapter logs:
 +
-`$ ./service-mesh api binding logs --namespace=<replace_with_namespace> --name=<replace_with_adapter_name>`
+`$ ./service-mesh api binding logs --namespace=_replace_with_namespace_ --name=_replace_with_adapter_name_`
 +
 The command displays an output like this:
 +`
@@ -91,7 +86,7 @@ DATE                   MESSAGE
 2019-11-26T18:17:12Z   Bind call failed: endpoints health check failed`
 . Obtain the adapter logs and verify the license entitlements:
 +
-`$ kubectl -n service-mesh logs $(kubectl -n service-mesh get pod -l namespace=<replace_with_namespace> -oname) -c mule | grep license`.
+`$ kubectl -n service-mesh logs $(kubectl -n service-mesh get pod -l namespace=_replace_with_namespace_ -oname) -c mule | grep license`
 +
 The output must display valid licenses and must have at least the api-gateway and clustering entitlements:
 +
@@ -103,13 +98,13 @@ To resolve this error:
 
 . Replace the licence with a valid one:
 +
-`$ kubectl create secret generic -n service-mesh --dry-run service-mesh-incluster-broker-impl-license --from-file=license=<license_path> -oyaml | kubectl apply -n service-mesh -f -`.
+`$ kubectl create secret generic -n service-mesh --dry-run service-mesh-incluster-broker-impl-license --from-file=license=_license_path_ -oyaml | kubectl apply -n service-mesh -f -`
 . Redeploy the adapter:
 +
-`$ kubectl -n service-mesh patch $(kubectl -n service-mesh get deploy -l namespace=<replace_with_namespace> -oname) --type=json -p="[{\"op\": \"replace\", \"path\": \"/spec/template/metadata/annotations/kubectl.kubernetes.io~1restartedAt\",\"value\":\"$(date -u +%FT%TZ)\"}]"`.
-. Remove the failed bindings and recreate them:
+`$ kubectl -n service-mesh patch $(kubectl -n service-mesh get deploy -l namespace=_replace_with_namespace_ -oname) --type=json -p="[{\"op\": \"replace\", \"path\": \"/spec/template/metadata/annotations/kubectl.kubernetes.io~1restartedAt\",\"value\":\"$(date -u +%FT%TZ)\"}]"`
+. Remove the failed bindings and re-create them:
 + 
-`$ ./service-mesh api binding delete --namespace=<replace_with_namespace> --name=<replace_with_adapter_name>`.
+`$ ./service-mesh api binding delete --namespace=_replace_with_namespace_ --name=_replace_with_adapter_name_`
 
 
 

@@ -4,19 +4,20 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: service mesh, microservices, policy enforcement issues, troubleshooting
 
-Even though you might have applied policies to your services, the Mule adapter may not seem to be enforcing these policies:
+Even though you applied policies to your services, the Mule adapter might not seem to be enforcing these policies, responding with the following error messages:
 
 * <<service-port-not-named,Service port is not named>>
 * <<policy-not-disassociated-after-deleting-bindings,Policy not disassociated after deleting bindings>>
-* <<binding-service-name-does-not-match-actual-service-name, Binding service name does not match actual service name>>
+* <<binding-service-name-does-not-match-actual-service-name,Binding service name does not match actual service name>>
 * <<app-pod-does-not-have-envoy-sidecar,Application pod does not have an Envoy sidecar>>
 * <<internal-error-with-500-error-code,Internal error with 500 error code>>
 
 
 [[service-port-not-named]]
-== Service Port is Not Named
+== Service Port Is Not Named
+//Tomas is this the actual error that is generated?
 
-When you create a service, you must specify certain specifications, such as ports and selector. Each of these specifications have their own set of parameters that must be defined. When you specify a port to be assigned to service, you must also specify a name for that port, such as "http". When you fail to do so, an error is generated.
+When you create a service, you must provide specifications, such as ports and selectors. Each of these has its own set of parameters that must be defined. When you assign a port to a service, you must also specify a name for that port, such as "http," to avoid an error.
 
 === Causes
 
@@ -26,7 +27,7 @@ A name for the service port is not specified.
 
 To diagnose this issue, verify the definition of the service that exposes the application:
 +
-`$ kubectl -n <namespace> get services -o yaml`.
+`$ kubectl -n _namespace_ get services -o yaml`
 +
 For example, the following service does not have a named port:
 +
@@ -59,7 +60,7 @@ items:
 
 === Solution
 
-Isito requires every xref:https://istio.io/docs/ops/deployment/requirements/[port to be named]. To resolve this error, recreate the service with a named port as shown in the following example:
+The Isito platform requires every xref:https://istio.io/docs/ops/deployment/requirements/[port to be named]. To resolve this error, re-create the service with a named port:
 
 [source,text,linenums]
 ----
@@ -80,7 +81,7 @@ spec:
 [[policy-not-disassociated-after-deleting-bindings]]
 == Policy Not Disassociated after Deleting Bindings
 
-After you delete the bindings, the policies applied to the service may not be successfully removed.
+After you delete the bindings, the policies applied to the service might not be successfully removed.
 
 == Causes
 
@@ -90,50 +91,48 @@ When a binding was deleted, an associated traffic rule was not deleted. Because 
 
 To diagnose this issue, verify that the service rules have been deleted:
 +
-`$ kubectl get rules -l serviceName=<service name>`.
+`$ kubectl get rules -l serviceName=_service name_`
 +
 If you determine that the rules are still applied, manually delete those rules.
 
 === Solution
 
-To delete the incorrect rules applied to the service, run the following command:
+Delete the incorrect rules applied to the service:
 +
-`$ kubectl delete rules -l serviceName=<service name>`.
+`$ kubectl delete rules -l serviceName=_service name_`
 +
-If the rules are successfully deleted, a confirmation message is displayed:
+A confirmation message is displayed:
 //need the text for the screenshot
 
 [[binding-service-name-does-not-match-actual-service-name]]
 == Binding Service Name Does Not Match Actual Service Name
 
-When you create the binding, you must provide a service name. If the service name provided with the binding command does not match the actual service name, an error occurs.
+When you create the binding, you must provide a service name. If the service name provided does not match the actual service name, an error occurs.
 
 === Causes
 
-Binding was created pointing to an non-existent service.
+Binding was created pointing to an nonexistent service.
 
 
 === Diagnose
 
 To diagnose this issue:
 
-. Review the service bindings:
+. Review the service bindings using either of the following commands:
 +
-`$ ./service-mesh api binding list`
+* `$ ./service-mesh api binding list`
 +
-Or
-+
-`$ ./service-mesh adapter binding list` 
+* `$ ./service-mesh adapter binding list` 
 . Compare the service with the bindings:
 +
-`$ kubectl -n <namespace> get services`.
+`$ kubectl -n <namespace> get services`
 +
 //add text of the screenshot here
-In the above example, service names must be, for example `customer-service`, and NOT `customers.nto-payment.svc.cluster.nto-cluster`.
+In the above example, service names must be, for example `customer-service`, and NOT `customers.nto-payment.svc.cluster.nto-cluster`
 
 === Solution
 
-To resolve this issue, delete the existing bindings and recreate them to point to the actual services, as shown in the following example:
+Delete the existing bindings and re-create them to point to the actual services:
 
 //add text of the screenshot here
 
@@ -150,37 +149,36 @@ Applications were not restarted in the namespace that was marked for injecting E
 
 To diagnose this issue, verify that the sidecar has an envoy proxy associated to it:
 +
-`$ kubectl -n <namespace> describe pod <pod_name> | grep -q istio-proxy: && echo INJECTED`.
-+
-If the terminal does not display the status as “Injected”, you must restart the pods.  
+`$ kubectl -n <namespace> describe pod <pod_name> | grep -q istio-proxy: && echo INJECTED`
+ 
 
 === Solution
 
-To resolve this issue, restart the pods: 
+If the terminal does not display the status as `Injected`, you must restart the pods: 
 +
-`$ kubectl  -n <namespace> delete pods <pod_name>`.
+`$ kubectl  -n <namespace> delete pods <pod_name>`
 
 [[internal-error-with-500-error-code]]
 == Internal Error with 500 Error Code
 
-The applications managed by Anypoint Service Mesh generates a 500 error code with the following error description: `INTERNAL:grpcmule-nto-payment.handler.service-mesh`.
+The applications managed by Anypoint Service Mesh generate a 500 error code with the following error description: `INTERNAL:grpcmule-nto-payment.handler.service-mesh`.`INTERNAL:grpcmule-nto-payment.handler.service-mesh`
 
 === Causes
 
-This error occurs because the license may have expired and as a result, the adapter restarted.
+This error occurs if the license expires and, as a result, the adapter restarts.
 
 === Diagnose
 
 To diagnose this issue:
 
-. Execute the following command to display the adapter pod:
+. Display the adapter pod:
 +
-`$ kubectl get pods -n service-mesh`.
+`$ kubectl get pods -n service-mesh`
 . Retrieve the adapter logs:
 +
-`$ kubectl -n service-mesh logs $(kubectl -n service-mesh get pod -l namespace=<replace_with_namespace> -oname) -c mule`.
+`$ kubectl -n service-mesh logs $(kubectl -n service-mesh get pod -l namespace=_replace_with_namespace_ -oname) -c mule`
 +
-If the license has expired, an error similar to the following text is displayed on your Command prompt:
+If the license has expired, an error similar to the following is displayed:
 +
 //add text here for the screenshot.
 
@@ -188,9 +186,9 @@ If the license has expired, an error similar to the following text is displayed 
 
 To resolve this issue: 
 
-. Replace the licence with a valid one:
+. Replace the existing licence with a valid one:
 +
-`$ kubectl create secret generic -n service-mesh --dry-run service-mesh-incluster-broker-impl-license --from-file=license=<license_path> -oyaml | kubectl apply -n service-mesh -f -`.
+`$ kubectl create secret generic -n service-mesh --dry-run service-mesh-incluster-broker-impl-license --from-file=license=_license_path_ -oyaml | kubectl apply -n service-mesh -f -`
 . Redeploy the adapter:
 +
-`$ kubectl -n service-mesh patch $(kubectl -n service-mesh get deploy -l namespace=<replace_with_namespace> -oname) --type=json -p="[{\"op\": \"replace\", \"path\": \"/spec/template/metadata/annotations/kubectl.kubernetes.io~1restartedAt\",\"value\":\"$(date -u +%FT%TZ)\"}]"`.
+`$ kubectl -n service-mesh patch $(kubectl -n service-mesh get deploy -l namespace=_replace_with_namespace_ -oname) --type=json -p="[{\"op\": \"replace\", \"path\": \"/spec/template/metadata/annotations/kubectl.kubernetes.io~1restartedAt\",\"value\":\"$(date -u +%FT%TZ)\"}]"`

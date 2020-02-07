@@ -4,26 +4,26 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: service mesh, microservices, installation issues, troubleshooting
 
-When you begin installing Anypoint Service Mesh, you might encounter issues caused by incorrect credentials, insufficient space on pods, and so on. 
-
-This section provides possible causes for your installation issues and describes how to troubleshoot these errors:
+When you begin installing Anypoint Service Mesh, you might encounter issues caused by incorrect credentials, insufficient space on pods, and so on. These texts provide possible causes for your installation issues and describe how to troubleshoot these errors:
 
 * <<credentials-no-permissions,Credentials Do Not Have the Necessary Permissions or Entitlements>>
-* <<invalid-credentials,Invalid credentials provided>>
-* <<insufficient-pod-allocation,Insufficient pod allocation>>
-* <<service-mesh-not-found, Service Mesh not found>>
-* <<failed-webhook-calling,Installation failed due to WebHook calling error>>
-* <<installation-failed-unkown-reason, Installation failed due to unknown reason>>
+* <<invalid-credentials,Invalid Credentials Provided>>
+* <<insufficient-pod-allocation,Insufficient Pod Allocation>>
+* <<service-mesh-not-found, Service Mesh Not Found>>
+* <<failed-webhook-calling,Installation Failed Due to WebHook Calling Error>>
+* <<installation-failed-unkown-reason, Installation Failed Due to Unknown Reason>>
 
 [[credentials-no-permissions]]
 == Credentials Do Not Have the Necessary Permissions or Entitlements
-When you start the Anypoint Service Mesh installation, the installer appears to be progressing with dependency checks but an “the given credentials does not have the necessary permissions or entitlements” error is displayed.
+
+When you start the Anypoint Service Mesh installation, the installer appears to be progressing with dependency checks but an `the given credentials does not have the necessary permissions or entitlements` error is displayed:
+//as kim if this is backticks
 
 //need text of the screenshot here
 
 === Cause
 
-This issue occurs because the credentials that you provided for the installation does not have the required permissions.
+This issue occurs when the credentials that you provide for the installation do not have the required permissions.
 
 === Solution
 
@@ -32,7 +32,7 @@ Contact your MuleSoft Customer Success representative to obtain the required per
 [[invalid-credentials]]
 == Invalid Credentials Provided
 
-When you start the Anypoint Service Mesh installation, the installer appears to be progressing with performing dependency checks but an “the given credentials are invalid” error is displayed.
+When you start the Anypoint Service Mesh installation, the installer appears to be progressing with performing dependency checks but an `the given credentials are invalid` error is displayed:
 
 //Need text of the screenshot here.
 
@@ -40,21 +40,23 @@ When you start the Anypoint Service Mesh installation, the installer appears to 
 
 This error can occur due to the following reasons:
 
-* The Client ID and Client Secret secret credentials that you specified to the installer is incorrect. 
+* The client ID and client secret credentials you specified to the installer are incorrect. 
 * You are using an incorrect control plane for the installation.
 
 
 === Solution
 
 To resolve this error, perform the following steps:
+//Note that steps must be chronological; please confirm that these are, because they do not seem so to me. They definitely are not chronological as a set of five, because there are two separate issues.
 
-. Verify that you are using the correct control plane. 
+. If you are using the correct control plane. 
 . Modify the control plane by setting the SERVICEMESH_PLATFORM_URI variable:
 +
 `export SERVICEMESH_PLATFORM_URI=https://eu1.anypoint.mulesoft.com`
 . If you are not using a US Control Plane, verify that you have exported the correct variable to point to the correct one. 
 . Obtain the correct organization or environment credentials.
-. Re-run the installer with the correct pair of credentials.
+. Restart the installer with the correct pair of client ID and client secret credentials.
+//is this correct credentials?
 
 [[insufficient-pod-allocation]]
 == Insufficient Pod Allocation
@@ -75,32 +77,31 @@ To resolve this error, perform the following steps:
 `kubectl get pods --all-namespaces`
 +
 All the pods in all namespaces are displayed with their status and additional details.
-. If a pod displays a “Pending” status, as illustrated in the previous screenshot, obtain additional details for the pod:
+. If a pod is `Pending`”, obtain additional information about the pod:
 +
-`kubectl describe pods <pod_name> -n service-mesh`
-//Need a text for the screenshot here.
+`kubectl describe pods _pod_name_ -n service-mesh`
 +
 The result of the command shows that the scheduling of the node has failed.  
-. To verify that the number of pods under the capacity section is not already filled up, run the command:
+. Verify that node capacity is not exceeded:
 +
 `kubectl describe nodes`
-. Increase capacity of the node or amount of nodes.
+. Increase the capacity of the node or add nodes.
 +
-*Tip:* If you are using Aamzon EKS, this value is calculated from the instance type. Therefore, if you increase the instance type, the amount of pods is increased.
-. Re-run the Anypoint Service Mesh installer to complete the installation.
+*Tip:* If you are using Aamzon EKS, this node capacity is calculated from the instance type. Therefore if you increase the instance type, the number of pods is increased.
+. Restart the Anypoint Service Mesh installer to complete the installation.
 
 [[service-mesh-not-found]]
 == Service Mesh Not Found
 
-When you start the Anypoint Service Mesh installation, the installer fails with the “Service Mesh not found” error.
+When you start the Anypoint Service Mesh installation, the installer fails with the `Service Mesh not found` error.
 
 === Causes
 
-This issue can be caused due to various reasons. 
+This issue can be caused by various reasons. 
 
 === Diagnose
 
-To identify the command that caused the error, run the following command:
+Identify the command that caused the error:
 +
 `$ sh -x ./service-mesh install`
 
@@ -112,7 +113,7 @@ To resolve this error, download the latest version of the installer and check if
 [[failed-webhook-calling]]
 == Installation Failed Due to Failed WebHook Calling Error
 
-When you start the Anypoint Service Mesh installation, the installer fails with the following error:
+When you start the Anypoint Service Mesh installation, the installer fails with the `failed calling webhook` error:
 
 [source,text,linenums]
 ----
@@ -122,14 +123,10 @@ FATAL: Installing 'service-mesh' Helm Chart!!!
 
 === Diagnose
 
-This issue can be caused due to various reasons. 
-
 To diagnose the issue:
 
-* Case 1: Verify that the master nodes have access to port 443 in worker nodes. 
-* Case 2:  Verify that no orphan resources were created from a previous installation or uninstallation:
-
-At the Command prompt, type the following command:
+. Verify that the master nodes have access to port 443 in worker nodes. 
+. Verify that no orphan resources remain from a previous installation or uninstallation:
 +
 `kubectl get clusterservicebrokers,clusterrole,psp,clusterrolebinding,mutatingwebhookconfigurations,validatingwebhookconfigurations -oname | awk '/(service-mesh|istio|catalog)/'`
 +
@@ -137,20 +134,18 @@ Any existing orphan resource are displayed.
 
 === Solution
 
-Perform the solution based on the appropriate case as described in the Diagnose section:
+To resolve this issue:
 
-* Case 1: Fix your network setup to allow the master node to connect to port 443. Depending on the provider, you can accomplish this task by modifying security groups. 
-
-* Case 2: 
-. Delete all orphan resources before attempting to reinstall. 
-. Depending on the resources, you might have to run the following commands:
-.. `$ kubectl delete ns service-mesh`
-.. `$ kubectl get clusterservicebrokers,clusterrole,psp,clusterrolebinding,mutatingwebhookconfigurations,validatingwebhookconfigurations -oname | awk '/(service-mesh|istio|catalog)/' | xargs kubectl delete`
+. If your master node does not have access to port 442 in worker nodes, modify security groups based on the provider. 
+. If you find orphan resources, delete them and then reinstall Anypoint Service Mesh. Depending on the resources, run one of the following commands:
++
+* `$ kubectl delete ns service-mesh`
+* `$ kubectl get clusterservicebrokers,clusterrole,psp,clusterrolebinding,mutatingwebhookconfigurations,validatingwebhookconfigurations -oname | awk '/(service-mesh|istio|catalog)/' | xargs kubectl delete`
 
 [[installation-failed-unkown-reason]]
 == Installation Failed Due to Unknown Reasons
 
-Your installation might fail due to an unknown error or due to a problem not documented in the possible installation error scenarios.
+Your installation might fail due to an unknown error.
 
-To determine which command failed during the installation, re-run the installer in full mode: 
-`$ sh -x ./service-mesh install: $ sh -x ./service-mesh install`.
+To determine if a command failed during the installation, restart the installer in full mode: 
+`$ sh -x ./service-mesh install: $ sh -x ./service-mesh install`

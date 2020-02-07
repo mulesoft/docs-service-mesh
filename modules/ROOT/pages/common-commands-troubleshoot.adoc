@@ -4,7 +4,7 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: service mesh, microservices, common commands, troubleshooting
 
-When troubleshooting Anypoint Service Mesh, you might need to perform various common tasks, such as retrieving adapter logs, displaying the adapter status, modifying log4j configuration, and so on:
+When troubleshooting Anypoint Service Mesh, you might need to perform various common tasks:
 
 * <<retrieve-adapter-logs,Retrieve adapter logs>>
 * <<access-the-adapter,Access the adapter>>
@@ -19,32 +19,25 @@ To retrieve the adapter logs when you are troubleshooting an issue:
 
 . Display the adapter pod:
 +
-`$ kubectl get pods -n service-mesh`.
-+
-An output is displayed that looks like this:
-+
-//add text of the screenshot here
+`$ kubectl get pods -n service-mesh`
 . Retrieve the adapter logs:
-`$ kubectl -n service-mesh logs $(kubectl -n service-mesh get pod -l namespace=<replace_with_namespace> -oname) -c mule`.
+`$ kubectl -n service-mesh logs`
+`$(kubectl -n service-mesh get pod -l namespace=_replace_with_namespace_ -oname) -c mule`
 
 [[access-the-adapter]]
 == Access the Adapter
 
-When troubleshooting Anypoint Service Mesh, you might need to access and display the information about the adapter.
+When troubleshooting Anypoint Service Mesh, you might need to access and display information about the adapter.
 
-//[PA: Kim is this format better or the ones that I follow in the next few topics?]
+
 To display information about the adapter pods:
 
-. Dispalys all the pods created under the namespace service-mesh:
+. Display all the pods created under the namespace service-mesh:
 +
-`$ kubectl get pods -n service-mesh`.
-+
-An output is displayed that looks like this:
-+
-//add text for the screenshot here
+`$ kubectl get pods -n service-mesh`
 . Access the adapter:
 +
-`$ kubectl -n service-mesh exec -ti  <adapter-pod-name>`.
+`$ kubectl -n service-mesh exec -ti _adapter-pod-name_`
 
 [[retrieve-policies-and-contracts-info]]
 == Retrieve Policies and Contracts Information from the Adapter
@@ -53,44 +46,36 @@ When troubleshooting issues with Anypoint Service Mesh, you might need to retrie
 
 . Display the adapter pod: 
 +
-`$ kubectl get pods -n service-mesh`.
-+
-An output is displayed that looks like this:
-+
-//add text for the screenshot here
+`$ kubectl get pods -n service-mesh`
 . Download the policy and contract files:
 +
-`$ kubectl cp service-mesh/$(kubectl -n service-mesh get pod -ocustom-columns='NAME:.metadata.name' --no-headers -l namespace=<replace_with_namespace>):/usr/src/app/policies -c mule ~/Desktop/`.
+`$ kubectl cp service-mesh/$(kubectl -n service-mesh get pod -ocustom-columns='NAME:.metadata.name' --no-headers -l namespace=_replace-with-namespace_):/usr/src/app/policies -c mule ~/Desktop/`
 
 [[modify-log4j-config]]
-== Modify Log4j configuration
+== Modify Log4j Configuration
 
 When troubleshooting Anypoint Service Mesh, you might need to modify the Log4j configuration:
 
-. Execute the following command to display the adapter pod:
+. Display the adapter pod:
 +
-`$ kubectl get pods -n service-mesh`.
-+
-An output is displayed that looks like this:
-+
-//add text for the screenshot there
+`$ kubectl get pods -n service-mesh`
 . Download the current log4j configuration:
 +
-`$ kubectl cp -c mule service-mesh/<replace_with_grpcmule_pod_name>:/usr/src/app/conf/log4j2.xml log4j2.xml`.
+`$ kubectl cp -c mule service-mesh/_replace_with_grpcmule_pod_name_:/usr/src/app/conf/log4j2.xml log4j2.xml`
 . Update the downloaded copy of log4j2.xml as required and upload it again to the pod:
 +
-`$ kubectl cp -c mule log4j2.xml service-mesh/<replace_with_grpcmule_pod_name>:/usr/src/app/conf/log4j2.xmlonf/log4j2.xml`.
+`$ kubectl cp -c mule log4j2.xml service-mesh/_replace_with_grpcmule_pod_name_:/usr/src/app/conf/log4j2.xmlonf/log4j2.xml`
 +
-The `log4j` configuration file is configured to check for changes every 60 seconds. Therefore to view the modifications applied, you might have to wait for that amount of time at a minimum.
+Because the `log4j` configuration file checks for changes every 60 seconds, you might have to wait to confirm your modification.
 
 [[replace-service-mesh-license]]
-== Replace the Service Mesh license
+== Update the Service Mesh License
 
-When troubleshooting Anypoint Service Mesh, you might need to replace the license:
+When troubleshooting Anypoint Service Mesh, you might need to update the license:
 
-. Replace the licence with a valid one:
+. Update the existing licence with one that you know is valid:
 +
-`$ kubectl create secret generic -n service-mesh --dry-run service-mesh-incluster-broker-impl-license --from-file=license=<license_path> -oyaml | kubectl apply -n service-mesh -f -`.
+`$ kubectl create secret generic -n service-mesh --dry-run service-mesh-incluster-broker-impl-license --from-file=license=_license_path_ -oyaml | kubectl apply -n service-mesh -f -`
 . Redeploy the adapter:
 +
-`$ kubectl -n service-mesh patch $(kubectl -n service-mesh get deploy -l namespace=<replace_with_namespace> -oname) --type=json -p="[{\"op\": \"replace\", \"path\": \"/spec/template/metadata/annotations/kubectl.kubernetes.io~1restartedAt\",\"value\":\"$(date -u +%FT%TZ)\"}]"`.
+`$ kubectl -n service-mesh patch $(kubectl -n service-mesh get deploy -l namespace=_replace_with_namespace_ -oname) --type=json -p="[{\"op\": \"replace\", \"path\": \"/spec/template/metadata/annotations/kubectl.kubernetes.io~1restartedAt\",\"value\":\"$(date -u +%FT%TZ)\"}]"`
