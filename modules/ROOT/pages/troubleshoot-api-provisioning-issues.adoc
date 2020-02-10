@@ -1,0 +1,56 @@
+= Troubleshooting API Provisioning Issues
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+:keywords: service mesh, microservices, API provisioning issues, troubleshooting
+
+After you provision an adapter, you must create an API, to which you then bind the service. You encounter errors when you provision an API if you provide invalid credentials.
+//Should I move this error to the Service errors topic and call the topic "API and Service Issues"?
+//@ Toams can we pose this as if you encounter API Provisioning issues, check these: incorrect credentials, and so on.
+
+== Credential Errors
+
+When you create an API, you must provide valid username and password credentials.
+
+=== Cause
+
+If you provide incorrect credentials, the following error occurs:
+
+image::credentials-error-api-prov-service-mesh.png[Credentials error when provisioning APIs]
+
+=== Diagnosis
+
+To diagnose the issue:
+
+. Describe your service instance:
++
+`$ kubectl describe serviceinstance inventory-resource-api`
+In the `Status` field, a detailed description of the error is displayed:
++
+image::error-with-params-error-display-api-prov-service-mesh.png[Error with parameters when provisioning APIs]
+
+In the following example, an error occurred due to an extra comma in the stringData section that is provided after the password segment:
+
+[source,text,linenums]
+----
+apiVersion: v1
+kind: Secret
+metadata:
+  name: my-credentials
+  namespace: nto-payment
+type: Opaque
+stringData:
+  user-pass:
+    '{
+      "user": "<user>",
+      "password": "<password>",
+    }'
+----
+
+=== Solution
+
+To resolve this issue:
+
+. Delete the API.
+. Resolve the error with the username and password credentials.
+. Re-create the API.  
