@@ -37,7 +37,7 @@ For more information about how to install Helm, see the Helm installation docume
 `kubectl api-versions | grep admissionregistration.k8s.io/v1beta1`.
 . Configure the kube-apiserver process with the admission-control flag to “MutatingAdmissionWebhook”.
 . Add and list ValidatingAdmissionWebhook admission controllers in the correct order.
-* Verify that the Kubernetes api-server has network connectivity to the webhook pod and that the Kubernetes cluster follows other xref:https://istio.io/docs/ops/configuration/mesh/webhook/#verify-dynamic-admission-webhook-prerequisites[Istio network prerequisites.] 
+* Verify that the Kubernetes api-server has network connectivity to the webhook pod and that the Kubernetes cluster follows other https://istio.io/docs/ops/configuration/mesh/webhook/#verify-dynamic-admission-webhook-prerequisites[Istio network prerequisites.] 
 
 == Hardware Requirements
 
