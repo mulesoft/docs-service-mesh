@@ -45,12 +45,20 @@ If the status is Pending, describe the pod:
 `$ kubectl -n service-mesh describe pods -l namespace=_namespace_`
 . Perform one of the following actions: 
 ** In the Events section, verify that you have an “Insufficient CPU” or other resource listing:
-//need a text of the screenshot here
+
+[source,text,linenums]
+----
+Events:
+Type     Reason            Age                 From               Message
+----     ------            ----                ----               -------
+Warning  FailedScheduling  46s (x5 over 3m7s)  default-scheduler  0/3 nodes are available: 3 Insufficient cpu.
+----
 ** Describe the nodes to check the resource allocation:
 +
 `$ kubectl describe nodes`
 The allocated resources are displayed:
 
+image::allocated-resources-adapter-prov-issues-service-mesh.png[Insufficient resources available for adapter provisioning]
 
 === Solution
 
@@ -65,7 +73,7 @@ To resolve this issue:
 
 After provisioning the adapter, it fails to start with the following error:
 
-//provide the exact error here
+//@Tomas--provide the exact error here
 
 === Cause
 

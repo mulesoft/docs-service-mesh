@@ -66,7 +66,6 @@ To successfully install and use Anypoint Service Mesh, you must have applied a v
 
 If the license you applied when installing Anypoint Service Mesh does not have the correct entitlements, you encounter errors.
 
-
 === Diagnose
 
 To diagnose this issue:

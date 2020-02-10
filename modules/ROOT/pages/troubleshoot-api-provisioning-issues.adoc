@@ -15,7 +15,8 @@ When you create an API, you must provide valid username and password credentials
 === Cause
 
 If you provide incorrect credentials, the following error occurs:
-//need text of the screenshot here
+
+image::credentials-error-api-prov-service-mesh.png[Credentials error when provisioning APIs]
 
 === Diagnosis
 
@@ -25,7 +26,8 @@ To diagnose the issue:
 +
 `$ kubectl describe serviceinstance inventory-resource-api`
 In the `Status` field, a detailed description of the error is displayed:
-//Need text of the screenshot here.
++
+image::error-with-params-error-display-api-prov-service-mesh.png[Error with parameters when provisioning APIs]
 
 In the following example, an error occurred due to an extra comma in the stringData section that is provided after the password segment:
 

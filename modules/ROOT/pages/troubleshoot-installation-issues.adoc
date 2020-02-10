@@ -17,9 +17,8 @@ When you begin installing Anypoint Service Mesh, you might encounter issues caus
 == Credentials Do Not Have the Necessary Permissions or Entitlements
 
 When you start the Anypoint Service Mesh installation, the installer appears to be progressing with dependency checks but an `the given credentials does not have the necessary permissions or entitlements` error is displayed:
-//as kim if this is backticks
 
-//need text of the screenshot here
+image::credentials-permissions-install-issues-service-mesh.png[Credentials no not have permissions or entitlements]
 
 === Cause
 
@@ -34,7 +33,7 @@ Contact your MuleSoft Customer Success representative to obtain the required per
 
 When you start the Anypoint Service Mesh installation, the installer appears to be progressing with performing dependency checks but an `the given credentials are invalid` error is displayed:
 
-//Need text of the screenshot here.
+image::invalid-credentials-install-issues-service-mesh.png[Invalid credentials provided during installation]
 
 === Causes
 

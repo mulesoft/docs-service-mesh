@@ -15,7 +15,7 @@ Even though you applied policies to your services, the Mule adapter might not se
 
 [[service-port-not-named]]
 == Service Port Is Not Named
-//Tomas is this the actual error that is generated?
+//Tomas is this the actual error name that is generated?
 
 When you create a service, you must provide specifications, such as ports and selectors. Each of these has its own set of parameters that must be defined. When you assign a port to a service, you must also specify a name for that port, such as "http," to avoid an error.
 
@@ -102,7 +102,9 @@ Delete the incorrect rules applied to the service:
 `$ kubectl delete rules -l serviceName=_service name_`
 +
 A confirmation message is displayed:
-//need the text for the screenshot
++
+image::policy-not-dis-policy-enforcement-service-mesh.png[Policy not disassociated error when enforcing a policy]
+
 
 [[binding-service-name-does-not-match-actual-service-name]]
 == Binding Service Name Does Not Match Actual Service Name
@@ -127,14 +129,14 @@ To diagnose this issue:
 +
 `$ kubectl -n <namespace> get services`
 +
-//add text of the screenshot here
+image::binding-service-does-not-match-get-services-service-mesh.png[Binding service does match actual service error]
 In the above example, service names must be, for example `customer-service`, and NOT `customers.nto-payment.svc.cluster.nto-cluster`
 
 === Solution
 
 Delete the existing bindings and re-create them to point to the actual services:
 
-//add text of the screenshot here
+image::binding-service-does-not-match-solution-service-mesh.png[Binding service does not match actual service resolution]
 
 [[app-pod-does-not-have-envoy-sidecar]]
 == Application Pod Does Not Have an Envoy Sidecar
@@ -180,7 +182,7 @@ To diagnose this issue:
 +
 If the license has expired, an error similar to the following is displayed:
 +
-//add text here for the screenshot.
+image::internal-500-error-msg-service-mesh.png[Internal 500 error message]
 
 === Solution
 
