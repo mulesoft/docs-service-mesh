@@ -28,9 +28,9 @@ A name for the service port is not specified.
 To diagnose this issue, verify the definition of the service that exposes the application:
 +
 `$ kubectl -n _namespace_ get services -o yaml`
-+
+
 For example, the following service does not have a named port:
-+
+
 [source,text,linenums]
 ----
 apiVersion: v1
@@ -90,19 +90,18 @@ When a binding was deleted, an associated traffic rule was not deleted. Because 
 === Diagnose
 
 To diagnose this issue, verify that the service rules have been deleted:
-+
+
 `$ kubectl get rules -l serviceName=_service name_`
-+
+
 If you determine that the rules are still applied, manually delete those rules.
 
 === Solution
 
 Delete the incorrect rules applied to the service:
-+
+
 `$ kubectl delete rules -l serviceName=_service name_`
-+
+
 A confirmation message is displayed:
-+
 image::policy-not-dis-policy-enforcement-service-mesh.png[Policy not disassociated error when enforcing a policy]
 
 
@@ -123,13 +122,13 @@ To diagnose this issue:
 . Review the service bindings using either of the following commands:
 +
 * `$ ./service-mesh api binding list`
-+
 * `$ ./service-mesh adapter binding list` 
 . Compare the service with the bindings:
 +
 `$ kubectl -n <namespace> get services`
 +
 image::binding-service-does-not-match-get-services-service-mesh.png[Binding service does match actual service error]
+
 In the above example, service names must be, for example `customer-service`, and NOT `customers.nto-payment.svc.cluster.nto-cluster`
 
 === Solution
@@ -150,20 +149,22 @@ Applications were not restarted in the namespace that was marked for injecting E
 === Diagnose
 
 To diagnose this issue, verify that the sidecar has an envoy proxy associated to it:
-+
+
 `$ kubectl -n <namespace> describe pod <pod_name> | grep -q istio-proxy: && echo INJECTED`
  
 
 === Solution
 
 If the terminal does not display the status as `Injected`, you must restart the pods: 
-+
+
 `$ kubectl  -n <namespace> delete pods <pod_name>`
 
 [[internal-error-with-500-error-code]]
 == Internal Error with 500 Error Code
 
-The applications managed by Anypoint Service Mesh generate a 500 error code with the following error description: `INTERNAL:grpcmule-nto-payment.handler.service-mesh`.`INTERNAL:grpcmule-nto-payment.handler.service-mesh`
+The applications managed by Anypoint Service Mesh generate a 500 error code with the following error description: 
+
+`INTERNAL:grpcmule-nto-payment.handler.service-mesh`.`INTERNAL:grpcmule-nto-payment.handler.service-mesh`
 
 === Causes
 

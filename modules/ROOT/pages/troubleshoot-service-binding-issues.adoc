@@ -7,7 +7,7 @@ endif::[]
 After you create the API, you then bind your service with the API. This section provides possible causes for issues that might occue when you bind your service, and describes how to troubleshoot these errors:
 
 * <<dns-name-error,DNS Name Error>>
-* <<references non-existent-instance-error,References non-existent instance error>>
+* <<references-non-existent-instance-error,References non-existent instance error>>
 * <<missing-entitlements-in-license,Missing entitlements in license>>
 
 [[dns-name-error]]
@@ -18,7 +18,7 @@ If you provide a DNS name that does not comply with the DNS subdomain standard f
 === Diagnose
 
 To diagnose this issue, run one of the following commands:
-+
+
 * `$ ./service-mesh api binding list` 
 * `$ ./service-mesh adapter binding list`
 +
@@ -30,7 +30,8 @@ The output displays that a binding failed:
 
 Ensure that you provide DNS name values that follow the DNS subdomain standards.
 
-[[references non-existent-instance-error]]
+
+[[references-non-existent-instance-error]]
 == References Nonexistent Instance Error
 
 When you create a binding, you must include in the binding command a name for the service and the name of the adapter that you created previously. Otherwise, you receive this error message.
@@ -47,7 +48,7 @@ This error occur can occur because:
 === Diagnose
 
 Diagnose this issue by running one of the following commands:
-+
+
 * `$ ./service-mesh api binding list`
 * `$ ./service-mesh adapter binding list`
 +
@@ -56,6 +57,7 @@ The status of binding displays as `ReferencesNonexistentInstance`.
 === Solution
 
 Delete the erroneous binding command and re-create it with the correct input.
+
 
 [[missing-entitlements-in-license]]
 == Missing Entitlements in License
@@ -78,18 +80,24 @@ To diagnose this issue:
 `$ ./service-mesh api binding logs --namespace=_replace_with_namespace_ --name=_replace_with_adapter_name_`
 +
 The command displays an output like this:
-+`
++
+[source,text,linenums]
+----
 DATE                   MESSAGE
 2019-11-26T18:15:00Z   The binding is being created asynchronously
 2019-11-26T18:16:52Z   The binding is being created asynchronously (wait all endpoints health check)
-2019-11-26T18:17:12Z   Bind call failed: endpoints health check failed`
+2019-11-26T18:17:12Z   Bind call failed: endpoints health check failed
+----
 . Obtain the adapter logs and verify the license entitlements:
 +
 `$ kubectl -n service-mesh logs $(kubectl -n service-mesh get pod -l namespace=_replace_with_namespace_ -oname) -c mule | grep license`
 +
 The output must display valid licenses and must have at least the api-gateway and clustering entitlements:
 +
-`Valid license key --> Evaluation = false, Expiration Date = Thu Dec 30 23:00:00 GMT 2100, Contact Name = Mule, Contact Email Address = support@mulesoft.com, Contact Telephone = 00000, Contact Company = MuleSoft, Contact Country = US, Entitlements = clustering,api-gateway`
+[source,text,linenums]
+----
+Valid license key --> Evaluation = false, Expiration Date = Thu Dec 30 23:00:00 GMT 2100, Contact Name = Mule, Contact Email Address = support@mulesoft.com, Contact Telephone = 00000, Contact Company = MuleSoft, Contact Country = US, Entitlements = clustering,api-gateway
+----
 
 === Solution
 

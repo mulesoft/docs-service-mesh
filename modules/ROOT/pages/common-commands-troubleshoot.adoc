@@ -21,7 +21,9 @@ To retrieve the adapter logs when you are troubleshooting an issue:
 +
 `$ kubectl get pods -n service-mesh`
 . Retrieve the adapter logs:
++
 `$ kubectl -n service-mesh logs`
++
 `$(kubectl -n service-mesh get pod -l namespace=_replace_with_namespace_ -oname) -c mule`
 
 [[access-the-adapter]]
