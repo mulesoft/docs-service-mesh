@@ -28,7 +28,7 @@ To diagnose the issue:
 
 . Check the adapter status:
 +
-`$ ./service-mesh adapter list`
+`$ asmctl adapter list`
 +
 The status is displayed in a few minutes.
 . If the adapter displays a Failed status, run the following command:
@@ -122,7 +122,7 @@ To diagnose the issue:
 
 . Verify the adapter status:
 +
-`$ ./service-mesh adapter list`
+`$ asmctl adapter list`
 +
 . If the adapter status is `Failed`, verify the status of the (grpmule-<namespace>) adapter pod:
 +
@@ -133,7 +133,7 @@ In this case, your pod status might be displayed as `CrashLoopBackOff`.
 
 To resolve this issue, update the adapter with a valid license:
 +
-`$ ./service-mesh management config license --license=/path/to/license.lic`
+`$ asmctl management config license --license=/path/to/license.lic`
 
 
 [[catalog-content-init-failed]]
@@ -151,7 +151,7 @@ To diagnose the issue:
 
 . Review the adapter logs:
 +
-`$ ./service-mesh adapter logs --namespace=_adapter_namespace_ --name=_adapter_name_`
+`$ asmctl adapter logs --namespace=_adapter_namespace_ --name=_adapter_name_`
 +
 Output similar to the following is displayed:
 +
@@ -176,7 +176,7 @@ If the adapter that you want to delete has service bindings associated with it, 
 
 To diagnose the issue, verify adapter status:
 +
-`$ ./service-mesh adapter list`
+`$ asmctl adapter list`
 +
 If there are bindings associated with the adapter or the service instance, the status is displayed as `DeprovisionBlockedByExistingCredentials`.
 

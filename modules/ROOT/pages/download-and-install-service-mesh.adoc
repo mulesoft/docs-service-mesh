@@ -26,7 +26,7 @@ To install Anypoint Service Mesh, perform the following steps:
 
 . In the location from which you downloaded your Anypoint Service Mesh client, type:
 +
-`./service-mesh install`
+`asmctl install`
 +
 The `Welcome to Anypoint Service Mesh installer` message is displayed.
 . Enter your client ID that you obtained as part of the prerequisites.
@@ -52,7 +52,7 @@ If you need to install Anypoint Service Mesh in a proxy environment, provide the
 
 . In the location from which you downloaded your Anypoint Service Mesh client, type:
 +
-`./service-mesh install --clientId=<clientId> --clientSecret=<clientSecret> --license=<license absolute or relative path> --platformUri=<Anypoint Platform Uri> --proxyHost=<host> --proxyProtocol=<protocol> --proxyPort=<port> --proxyUser=<proxy username> --proxyPassword=<proxy password>`
+`asmctl install --clientId=<clientId> --clientSecret=<clientSecret> --license=<license absolute or relative path> --platformUri=<Anypoint Platform Uri> --proxyHost=<host> --proxyProtocol=<protocol> --proxyPort=<port> --proxyUser=<proxy username> --proxyPassword=<proxy password>`
 +
 [%header%autowidth.spread]
 |===

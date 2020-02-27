@@ -19,8 +19,8 @@ If you provide a DNS name that does not comply with the DNS subdomain standard f
 
 To diagnose this issue, run one of the following commands:
 
-* `$ ./service-mesh api binding list` 
-* `$ ./service-mesh adapter binding list`
+* `$ asmctl api binding list` 
+* `$ asmctl adapter binding list`
 +
 The output displays that a binding failed:
 +
@@ -49,8 +49,8 @@ This error occur can occur because:
 
 Diagnose this issue by running one of the following commands:
 
-* `$ ./service-mesh api binding list`
-* `$ ./service-mesh adapter binding list`
+* `$ asmctl api binding list`
+* `$ asmctl adapter binding list`
 +
 The status of binding displays as `ReferencesNonexistentInstance`.
 
@@ -74,10 +74,10 @@ To diagnose this issue:
 
 . Check the adapter status:
 +
-`$ ./service-mesh adapter list`
+`$  asmctl adapter list`
 . If the adapter status is Failed, review the adapter logs:
 +
-`$ ./service-mesh api binding logs --namespace=_replace_with_namespace_ --name=_replace_with_adapter_name_`
+`$ asmctl api binding logs --namespace=_replace_with_namespace_ --name=_replace_with_adapter_name_`
 +
 The command displays an output like this:
 +
@@ -111,7 +111,7 @@ To resolve this error:
 `$ kubectl -n service-mesh patch $(kubectl -n service-mesh get deploy -l namespace=_replace_with_namespace_ -oname) --type=json -p="[{\"op\": \"replace\", \"path\": \"/spec/template/metadata/annotations/kubectl.kubernetes.io~1restartedAt\",\"value\":\"$(date -u +%FT%TZ)\"}]"`
 . Remove the failed bindings and re-create them:
 + 
-`$ ./service-mesh api binding delete --namespace=_replace_with_namespace_ --name=_replace_with_adapter_name_`
+`$ asmctl api binding delete --namespace=_replace_with_namespace_ --name=_replace_with_adapter_name_`
 
 
 

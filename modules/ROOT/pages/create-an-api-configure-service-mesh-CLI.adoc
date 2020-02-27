@@ -59,7 +59,7 @@ To create an API using Anypoint Service Mesh, perform the following steps:
 +
 [source,text,linenums]
 ----
-./service-mesh api create  
+asmctl api create  
 --name=<API resource name> \
 --namespace=<namespace name> \
 --environmentId=<environment ID> \
@@ -90,7 +90,7 @@ To create an API using Anypoint Service Mesh, perform the following steps:
 |===
 +
 . Verify the API status using the following command:
-`./service-mesh api list`
+`asmctl api list`
 +
 The API that was created is displayed.
 . Optionally, you can verify that an asset is created on Exchange and an API is created on API Manager.

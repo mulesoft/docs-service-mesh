@@ -17,4 +17,4 @@ Before you uninstall Anypoint Service Mesh:
 To uninstall Anypoint Service Mesh:
 
 Run the  following command from the installer download URI:
-`./service-mesh uninstall && rm service-mesh`
+`asmctl uninstall && rm service-mesh`
