@@ -102,7 +102,7 @@ This issue can be caused by various reasons.
 
 Identify the command that caused the error:
 +
-`$ sh -x ./service-mesh install`
+`$ sh -x asmctl install`
 
 === Solution
 
@@ -147,4 +147,4 @@ To resolve this issue:
 Your installation might fail due to an unknown error.
 
 To determine if a command failed during the installation, restart the installer in full mode: 
-`$ sh -x ./service-mesh install: $ sh -x ./service-mesh install`
+`$ sh -x asmctl install: $ sh -x asmctl install`

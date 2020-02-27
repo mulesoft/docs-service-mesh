@@ -121,8 +121,8 @@ To diagnose this issue:
 
 . Review the service bindings using either of the following commands:
 +
-* `$ ./service-mesh api binding list`
-* `$ ./service-mesh adapter binding list` 
+* `$ asmctl api binding list`
+* `$ asmctl adapter binding list` 
 . Compare the service with the bindings:
 +
 `$ kubectl -n <namespace> get services`

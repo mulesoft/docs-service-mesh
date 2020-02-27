@@ -54,7 +54,7 @@ image::api-id.png[]
 +
 [source,text,linenums]
 ----
-./service-mesh adapter binding create \
+asmctl adapter binding create \
 --name=<binding name> \
 --namespace=<namespace name> \
 --adapter=<adapter name> \
@@ -77,7 +77,7 @@ Note that all object names, such as adapter name, binding name, and service name
 The binding is activated within a few seconds and the API is successfully registered to the proxy.
 . Verify the binding status using the following command:
 +
-`./service-mesh adapter binding list`
+`asmctl adapter binding list`
 +
 After you bind your API, the API in API Manager is marked as Active. You are now ready to apply policies to protect your APIs:
 +
@@ -98,7 +98,7 @@ To create the binding:
 +
 [source,text,linenums]
 ----
-./service-mesh api binding create \
+asmctl api binding create \
 --name=<binding name> \
 --namespace=<namespace name> \
 --adapter=<adapter name> \
