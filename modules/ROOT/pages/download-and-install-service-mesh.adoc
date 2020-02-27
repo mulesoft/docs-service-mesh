@@ -21,7 +21,7 @@ The Anypoint Service Mesh client `asmctl` is now downloaded on your file system.
 
 == Install Anypoint Service Mesh
 
-When you invoke the installer Service Catalog, Anypoint Service Mesh Broker, and ClusterIP Service components are installed in your Kubernetes cluster. The installer performs several steps as part of the installation, such as checking for dependencies and performing various configurations. 
+When you invoke the installer, Service Catalog, Anypoint Service Mesh Broker, and ClusterIP Service components are installed in your Kubernetes cluster. The installer performs several steps as part of the installation, such as checking for dependencies and performing various configurations. 
 
 === Install without Proxy
 To install Anypoint Service Mesh, perform the following steps:
