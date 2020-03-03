@@ -17,6 +17,21 @@ To download the Anypoint Service Mesh client, type the following command at the 
 
 The Anypoint Service Mesh client is now downloaded on your file system.
 
+== Configure Your Environment Variable
+
+Before you begin installing Anypoint Service Mesh, update your `PATH` environment variable to store system-wide values, such as the directories to search for the executable programs.
+
+To configure your `PATH` variable on Linux: 
+
+. Open the `.bashrc` file in your home directory.
++
+For example, type `cd /home/<your-user-name>/.bashrc` in a text editor.
+. Add the following command to the last line of the file:
++
+`export PATH="your-dir:$PATH"`, where *your-dir* is the directory you want to add.
+. Save the `.bashrc` file.
+. Restart your terminal.
+
 == Install Anypoint Service Mesh
 
 When you invoke the installer, Istio, Service Catalog, Anypoint Service Mesh Broker, and ClusterIP Service components are installed in your Kubernetes cluster. The installer performs several steps as part of the installation, such as checking for dependencies and performing various configurations. 

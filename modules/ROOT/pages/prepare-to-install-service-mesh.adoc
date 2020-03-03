@@ -29,15 +29,14 @@ For more information about how to install Helm, see the Helm installation docume
 ** Google Kubernetes Engine (GKE)
 ** Amazon EKS
 ** Azure Kubernetes Service (AKS)
-* https://istio.io/docs/setup[Install Istio] 1.4.x in your cluster with the following configurations: 
-. Enable policy control by configuring the flags:
+* https://istio.io/docs/setup[Install Istio] 1.4.4 or 1.4.5 in your cluster with the following configurations: 
+. Enable policy control by configuring the flag:
 ** `--set values.global.disablePolicyChecks=false`
-** `--set pilot.policy.enabled=true`
 +
-For more information, see https://istio.io/docs/tasks/policy-enforcement/enabling-policy/[Policy Enforcement]. 
+For more information, see https://istio.io/docs/tasks/policy-enforcement/enabling-policy/[Policy Enforcement]. To configure other versions of Istio, contact your MuleSoft representative.
 . Enable API Analytics by setting the `disableMixerHttpReports` flag to *false*: 
 +
-`kubectl -n istio-system get cm istio -o yaml | sed -e 's/disableMixerHttpReports: true/disableMixerHttpReports: false/g' | kubectl replace -f`
+`kubectl -n istio-system get cm istio -o yaml | sed -e 's/disableMixerHttpReports: true/disableMixerHttpReports: false/g' | kubectl replace -f -`
 * If you want to enable automatic sidecar injection, you must additionally:
 . Install Kubernetes 1.12 with the admissionregistration API.
 . Verify the installation using the following the command: 
@@ -79,58 +78,6 @@ If you provision the adapter with organization credentials, you will be able to 
 +
 If you specify environment credentials, you will only be able to manage APIs of that environment. MuleSoft recommends that you use the environment credentials instead of the organization credentials. For more information about which permissions to use, see xref:api-manager::org-credentials-config-mule4.adoc#obtaining-credentials[obtaining credentials].
 * Cluster-admin role access to the Kubernetes cluster.
-
-== Configuring Your Environment Variable
-
-Before you begin installing Anypoint Service Mesh, update your `PATH` environment variable to store system-wide values, such as the directories to search for the executable programs.
-
-// === Configure Your Environment Variable on Windows
-
-// To configure your `PATH` variable on Windows:
-
-// . Perform the following step based on the Windows version installed in your environment:
-// .. For Windows 8 or 10, press the Windows key, and then search for and
-// select *System (Control Panel)*.
-// .. For Windows 7, right-click the *Computer* icon on the desktop
-// and select *Properties*.
-// . Select *Advanced system settings* > *Environment Variables*.
-// . Under *System Variables*, find and select the `PATH` variable, and then click
-// *Edit*.
-// . If there is no existing entry for the `PATH` variable, click *New*.
-// . Add your directory to the beginning of the variable value followed by `;` (a
-// semicolon). 
-// +
-// For example, if the value is `C:\Windows\System32`, change it to
-// `C:\Users\Me\bin;C:\Windows\System32`.
-// . Click *OK*.
-// . Restart your terminal.
-
-// === Configure Your Environment Variable on Mac OS X
-
-// To configure your `PATH` variable on Mac OS X:
-
-// . Open the `.bash_profile` file in your home directory.
-// +
-// For example, type `CD /Users/<your-user-name>/.bash_profile`) in a text editor.
-// . Add the following command to the last line of your file:
-// +
-// `export PATH="your-dir:$PATH"`, where *your-dir* is the directory you want to add.
-// . Save the `.bash_profile` file.
-// . Restart your terminal.
-
-// === Configure Your Environment Variable on Linux
-​
-To configure your `PATH` variable on Linux: 
-
-. Open the `.bashrc` file in your home directory.
-+
-For example, type `cd /home/<your-user-name>/.bashrc`) in a text editor.
-. Add the following command to the last line of the file:
-+
-`export PATH="your-dir:$PATH"`, where *your-dir* is the directory you want to add.
-. Save the `.bashrc` file.
-. Restart your terminal.
-
 
 == See Also
 
