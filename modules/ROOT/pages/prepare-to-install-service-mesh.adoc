@@ -33,7 +33,7 @@ For more information about how to install Helm, see the Helm installation docume
 . Enable policy control by configuring the flag:
 ** `--set values.global.disablePolicyChecks=false`
 +
-For more information, see https://istio.io/docs/tasks/policy-enforcement/enabling-policy/[Policy Enforcement]. For other versions of Istio, contact your Mulesoft representative to get the proper configuration.
+For more information, see https://istio.io/docs/tasks/policy-enforcement/enabling-policy/[Policy Enforcement]. To configure other versions of Istio, contact your MuleSoft representative.
 . Enable API Analytics by setting the `disableMixerHttpReports` flag to *false*: 
 +
 `kubectl -n istio-system get cm istio -o yaml | sed -e 's/disableMixerHttpReports: true/disableMixerHttpReports: false/g' | kubectl replace -f -`
