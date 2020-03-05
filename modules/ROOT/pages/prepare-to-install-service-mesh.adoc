@@ -18,18 +18,11 @@ Anypoint Service Mesh is developed using Istio and Kubernetes. Therefore, you mu
 Your Anypoint Service Mesh installation requires the following applications and Kubernetes environments:
 
 * Kubernetes 1.12+ or a newer cluster, with RBAC (Role-Based Access Control) enabled
-* Helm 3.0.0 or later
-+
-*Tip:* To verify the installed version, use the `helm version` command. 
-+
-For more information about how to install Helm, see the Helm installation documentation.
-* Kubectl version 1.12 or later, compatible with the cluster, installed on your local machine
-*Tip:* To verify installed version, use the `kubectl version` command.
 * One of the following environments on which to run Kubernetes:
 ** Google Kubernetes Engine (GKE)
 ** Amazon EKS
 ** Azure Kubernetes Service (AKS)
-* https://istio.io/docs/setup[Install Istio] 1.4.4 or 1.4.5 in your cluster with the following configurations: 
+* https://istio.io/docs/setup[Install Istio] 1.4.4, 1.4.5, or 1.4.6 in your cluster with the following configurations: 
 . Enable policy control by configuring the flag:
 ** `--set values.global.disablePolicyChecks=false`
 +
