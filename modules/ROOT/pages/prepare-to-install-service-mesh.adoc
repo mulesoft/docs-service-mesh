@@ -22,7 +22,7 @@ Your Anypoint Service Mesh installation requires the following applications and 
 ** Google Kubernetes Engine (GKE)
 ** Amazon EKS
 ** Azure Kubernetes Service (AKS)
-* https://istio.io/docs/setup[Install Istio] 1.4.4, 1.4.5 or 1.4.6 in your cluster with the following configurations: 
+* https://istio.io/docs/setup[Install Istio] 1.4.4, 1.4.5, or 1.4.6 in your cluster with the following configurations: 
 . Enable policy control by configuring the flag:
 ** `--set values.global.disablePolicyChecks=false`
 +
