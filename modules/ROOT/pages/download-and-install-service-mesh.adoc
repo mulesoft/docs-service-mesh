@@ -20,12 +20,17 @@ To download the Anypoint Service Mesh client, type the following command at the 
 
 When you invoke the installer, Istio, Service Catalog, Anypoint Service Mesh Broker, and ClusterIP Service components are installed in your Kubernetes cluster. The installer performs several steps as part of the installation, such as checking for dependencies and performing various configurations. 
 
-You can install Anypoint Service Mesh with or without a proxy. The installation procedure differs based on the option you choose.
+You can install Anypoint Service Mesh using the following options: 
+
+* <<install-without-proxy,Install Anypoint Service Mesh without Proxy>> 
+* <<install-with-proxy,Install Anypoint Service Mesh with Proxy>> 
+
 
 === Task Prerequisites
 
 Before you install Anypoint Service Mesh, ensure that you have completed the xref:prepare-to-install-service-mesh.adoc[installation prerequisites]. You will require the credentials and license information acquired from the prerequisites to perform the installation.
 
+[[install-without-proxy]]
 === Install without Proxy
 
 To install Anypoint Service Mesh without a proxy, perform the following steps:
@@ -51,6 +56,7 @@ Anypoint Service Mesh is installed and a status of all pods is displayed:
 +
 image::verified-service-mesh-installer-output.png[]
 
+[[install-with-proxy]]
 === Install with Proxy
 
 If you need to install Anypoint Service Mesh in a proxy environment, provide the proxy configuration during the installation. 

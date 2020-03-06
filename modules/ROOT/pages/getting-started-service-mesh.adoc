@@ -9,17 +9,17 @@ image::get-started-with-service-mesh-breadcrumb.png[75%, 75%]
 To get started with Anypoint Service Mesh, you must understand how to prepare, install, and use it.
 
 *Step 1:* Review and Complete Prerequisites for Downloading and Installing Anypoint Service Mesh
-+
+
 Before you begin, you must carefully review the prerequisites for software applications, roles and permissions, and licensing. Otherwise, your installation will be incomplete or fail altogether.
 
 *Step 2:* Download and Install Anypoint Service Mesh
-+
+
 After you complete the prerequisites, you can download the Anypoint Service Mesh client and perform the installation.
 
 *Step 3:* Configure Anypoint Service Mesh
-+
+
 Provision the Anypoint Service Mesh adapter and bind the service namespace with the adapter.
 
 *Step 4:* Manage APIs with Anypoint Service Mesh
-+
+
 You are now ready to apply policies and security standards to your APIs and manage access and control.

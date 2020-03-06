@@ -82,6 +82,6 @@ spec:
 
 == See Also
 
-* xref::prepare-to-install-service-mesh.adoc[Prepare to install Anypoint Service Mesh]
+* xref::prepare-to-install-service-mesh.adoc[Prerequisites for Downloading and Installing Anypoint Service Mesh]
 * xref::create-an-api-configure-service-mesh-CRD.adoc[Create an API using CRD]
 * xref::bind-api-configure-service-mesh-CRD.adoc[Bind a service using CRD]

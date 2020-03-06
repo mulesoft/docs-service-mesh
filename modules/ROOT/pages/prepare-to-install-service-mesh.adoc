@@ -29,7 +29,6 @@ For more information about how to install Helm, see the Helm installation docume
 ** Google Kubernetes Engine (GKE)
 ** Amazon EKS
 ** Azure Kubernetes Service (AKS)
-* Not installed Istio in the cluster
 * If you want to enable automatic sidecar injection, you must additionally:
 . Install Kubernetes 1.12 with the admissionregistration API.
 . Verify the installation using the following the command: 
@@ -37,7 +36,9 @@ For more information about how to install Helm, see the Helm installation docume
 `kubectl api-versions | grep admissionregistration.k8s.io/v1beta1`.
 . Configure the kube-apiserver process with the admission-control flag to “MutatingAdmissionWebhook”.
 . Add and list `ValidatingAdmissionWebhook` admission controllers in the correct order.
-* Kubernetes api-server network connectivity to the webhook pod and Kubernetes cluster compliance with other xref:https://istio.io/docs/ops/configuration/mesh/webhook/#verify-dynamic-admission-webhook-prerequisites[Istio network prerequisites.] 
+* Kubernetes api-server network connectivity to the webhook pod and Kubernetes cluster compliance with other xref:https://https://istio.io/docs/ops/configuration/mesh/webhook/[Istio network prerequisites.] 
+
+Additionally, as part of the software prerequisites, ensure that Istio is not installed in the cluster.
 
 == Hardware Requirements
 
@@ -66,11 +67,9 @@ To obtain a trial or regular license key, contact your MuleSoft account represen
 Before you can use Anypoint Service Mesh, you must have the following roles and permissions:
  
 * API Manager Environment Administrator permission or Organization Administrator role for your organization, to access the client ID and client secret credentials
-* Client ID and client secret credentials from Access Management
-+  
-If you provision the adapter with organization credentials, you are able to manage APIS on the specific adapter of that organization. 
-+
-If you specify environment credentials, you can manage APIs of only that environment. MuleSoft recommends that you use the environment credentials instead of the organization credentials. 
+* Client ID and client secret credentials from Access Management: 
+** If you provision the adapter with organization credentials, you are able to manage APIS on the specific adapter of that organization. 
+** If you specify environment credentials, you can manage APIs of only that environment. MuleSoft recommends that you use the environment credentials instead of the organization credentials. 
 +
 For more information about which permissions to use, see xref:api-manager::org-credentials-config-mule4.adoc#obtaining-credentials[obtaining credentials].
 * Cluster-admin role access to the Kubernetes cluster

@@ -85,7 +85,7 @@ To provision the Anypoint Service Mesh adapter using the CLI:
 +
 [%header%autowidth.spread]
 |===
-| Parameter Name | Description | Required/Optional | Default Value
+| Parameter Name | Description | Required or Optional | Default Value
 | `name` | The name of the adapter that you want to create, for example, “service-mesh-test-adapter”. | Required | Not applicable
 | `namespace` | The namespace in which you want to create the adapter, for example, “mulesoft-apps”. | Optional | default
 | `size`| The size of the adapter based on the number of CPUs and memory to use | Optional | medium
@@ -119,6 +119,6 @@ image::provision-service-mesh-adapter-output.png[Example Output]
 
 == See Also
 
-* xref::prepare-to-install-service-mesh.adoc[Prepare to install Anypoint Service Mesh]
+* xref::prepare-to-install-service-mesh.adoc[Prerequisites for Downloading and Installing Anypoint Service Mesh]
 * xref::create-an-api-configure-service-mesh-CLI.adoc[Create an API using CLI]
 * xref::bind-api-configure-service-mesh-CLI.adoc[Bind a service using CLI]
