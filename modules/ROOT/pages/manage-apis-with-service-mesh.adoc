@@ -6,19 +6,20 @@ endif::[]
 
 image::manage-service-mesh-breadcrumb.png[]
 
-After you configure Anypoint Service Mesh, you can manage both Mule and non-Mule applications from Anypoint API Manager, including applying policies to secure your microservices and viewing analytics data regarding the usage of your APIs. 
-
+After you configure Anypoint Service Mesh, you can manage both Mule and non-Mule applications from Anypoint API Manager, including applying policies to secure your microservices and viewing analytics about your API use. 
 
 == Apply Policies to Your APIs
 
-Not all policies available in Anypoint Platform are applicable to Anypoint Service Mesh. Only a subset of those policies apply. Additionally, the configurations within each of the policies that are applicable to Anypoint Service Mesh also differ from the policies that are applicable to Anypoint Platform.
+Not all policies available in Anypoint Platform are applicable to Anypoint Service Mesh. Additionally, the configurations within each of the policies that are applicable to Anypoint Service Mesh differ from the policies that are applicable to Anypoint Platform.
 
 For example, you can apply the Rate Limiting policy to define the number of requests that you want your service to receive within a specified period of time.
 
+//How is this an example of the configuration applicability difference: of the sentence directly above?
+
 To apply policies:
 
-. Navigate to *API Manager* and select the specific API instance.
-. From the left navigation, *select Policies > Apply New Policy*.
+. Navigate to *API Manager* and select your API instance.
+. From the left navigation, *select Policies > Apply New Policy*:
 +
 image::select-policies-for-service-mesh.png[]
 +
@@ -37,7 +38,7 @@ For more information about how to apply policies, see the specific policy docume
 You can monitor the usage of your APIs to determine various aspects of their performance. For more information about how to view the analytics data, see xref:api-manager::analytics-landing-page.adoc[API Analytics Dashboard].
 
 == See Also
-* xref:api-manager::client-id-based-policies.adoc[Client ID Enforcement policy]
-* xref:api-manager::policy-mule4-jwt-validation.adoc[JWT Validation policy]
-* xref:api-manager::rate-limit-1.2.0-task.adoc[Rate Limiting policy]
+* xref:api-manager::client-id-based-policies.adoc[Client ID Enforcement Policy]
+* xref:api-manager::policy-mule4-jwt-validation.adoc[JWT Validation Policy]
+* xref:api-manager::rate-limit-1.2.0-task.adoc[Rate Limiting Policy]
 * xref:api-manager::policies-ootb-landing-page.adoc[Default Policies]

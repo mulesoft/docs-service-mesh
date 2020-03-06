@@ -9,28 +9,33 @@ image::install-service-mesh-breadcrumb.png[]
  
 == Download Anypoint Service Mesh Client
 
-You install, manage, and troubleshoot your Anypoint Service Mesh using the Anypoint Service Mesh client. 
+You install, manage, and troubleshoot your Anypoint Service Mesh instance by using the Anypoint Service Mesh client. 
 
 To download the Anypoint Service Mesh client, type the following command at the command prompt:
 
 `curl -Ls http://anypoint.mulesoft.com/servicemesh/xapi/v1/install > service-mesh && chmod +x service-mesh`
 
-The Anypoint Service Mesh client is now downloaded on your file system.
 
 == Install Anypoint Service Mesh
 
 When you invoke the installer, Istio, Service Catalog, Anypoint Service Mesh Broker, and ClusterIP Service components are installed in your Kubernetes cluster. The installer performs several steps as part of the installation, such as checking for dependencies and performing various configurations. 
 
+You can install Anypoint Service Mesh with or without a proxy. The installation procedure differs based on the option you choose.
+
+=== Task Prerequisites
+
+Before you install Anypoint Service Mesh, ensure that you have completed the xref:prepare-to-install-service-mesh.adoc[installation prerequisites]. You will require the credentials and license information acquired from the prerequisites to perform the installation.
+
 === Install without Proxy
-To install Anypoint Service Mesh, perform the following steps:
+
+To install Anypoint Service Mesh without a proxy, perform the following steps:
 
 . In the location from which you downloaded your Anypoint Service Mesh client, type:
 +
 `./service-mesh install`
 +
-The `Welcome to Anypoint Service Mesh installer` message is displayed.
-. Enter your client ID that you obtained as part of the prerequisites.
-. Enter your client secret that you obtained as part of the prerequisites.
+. Enter your client ID.
+. Enter your client secret.
 . Enter the path where your Anypoint Service Mesh license is stored.
 +
 Anypoint Service Mesh installs within few minutes and displays a status: 
@@ -56,16 +61,17 @@ If you need to install Anypoint Service Mesh in a proxy environment, provide the
 +
 [%header%autowidth.spread]
 |===
-| Parameter Name | Description | Required/Optional | Default Value
-| `clientId` | The client ID of the environment (recommended) or the organization. Use the client ID that you obtained as part of performing the permission and roles prerequisites. | Required | None
-| `clientSecret` | The client secret of the environment (recommended) or the organization. Use the client secret that you obtained as part of performing the permission and roles prerequisites.| Required | None
-| `license` | The Anypoint Service Mesh license you obtained as part of the prerequisites. Provide the path to the location where you license is stored. | Required | None
-| `platformUri` | The URL of the proxy.| Optional | https://anypoint.mulesoft.com
-| `proxyHost` | The name of the proxy host. | Optional | None
-| `proxyProtocol`| The protocol used by the proxy: HTTP or HTTPS. | Optional | None
-| `proxyPort`| The port number used by the proxy. | Optional | None
-| `proxyUser` | The username for the proxy authentication. | Optional | None
-| `proxyPassword`| The password for the proxy authentication. | Optional | None
+| Parameter Name | Description | Required or Optional | Default Value
+| `clientId` | The client ID of the environment (recommended) or the organization 
+| Required | None
+| `clientSecret` | The client secret of the environment (recommended) or the organization | Required | None
+| `license` | The path to the location where your license is stored | Required | None
+| `platformUri` | The URL of the proxy| Optional | https://anypoint.mulesoft.com
+| `proxyHost` | The name of the proxy host | Optional | None
+| `proxyProtocol`| The protocol used by the proxy: HTTP or HTTPS | Optional | None
+| `proxyPort`| The port number used by the proxy | Optional | None
+| `proxyUser` | The username for the proxy authentication | Optional | None
+| `proxyPassword`| The password for the proxy authentication | Optional | None
 |===
 +
 Anypoint Service Mesh installs within few minutes and displays a status: 

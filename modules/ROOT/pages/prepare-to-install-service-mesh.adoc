@@ -1,4 +1,4 @@
-= Reviewing Prerequisites
+= Prerequisites for Downloading and Installing Anypoint Service Mesh
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
@@ -6,18 +6,18 @@ endif::[]
 
 image::prepare-to-install-breadcrumb.png[]
 
-Before you download and install Anypoint Service Mesh, ensure that you review and fulfill the software, licensing, and permissions and roles requirements described in this section. 
+Before you download and install Anypoint Service Mesh, ensure that you review and fulfill the software, licensing, and permissions and roles requirements. 
 
 == Audience Requirements
 
-Anypoint Service Mesh is developed using Istio and Kubernetes. Therefore, you must have a working knowledge of Istio and Kubernetes to be able to install and use Anypoint Service Mesh.
+Anypoint Service Mesh is developed using Istio and Kubernetes. Therefore, you must have a working knowledge of Istio and Kubernetes to install and use Anypoint Service Mesh.
 
 
 == Software Requirements
 
 Your Anypoint Service Mesh installation requires the following applications and Kubernetes environments:
 
-* Kubernetes 1.12+ or a newer cluster, with RBAC (Role-Based Access Control) enabled
+* Kubernetes 1.12+ or a newer cluster, with RBAC (role-based access control) enabled
 * Helm 3.0.0 or later
 +
 *Tip:* To verify the installed version, use the `helm version` command. 
@@ -36,8 +36,8 @@ For more information about how to install Helm, see the Helm installation docume
 +
 `kubectl api-versions | grep admissionregistration.k8s.io/v1beta1`.
 . Configure the kube-apiserver process with the admission-control flag to “MutatingAdmissionWebhook”.
-. Add and list ValidatingAdmissionWebhook admission controllers in the correct order.
-* Verify that the Kubernetes api-server has network connectivity to the webhook pod and that the Kubernetes cluster follows other xref:https://istio.io/docs/ops/configuration/mesh/webhook/#verify-dynamic-admission-webhook-prerequisites[Istio network prerequisites.] 
+. Add and list `ValidatingAdmissionWebhook` admission controllers in the correct order.
+* Kubernetes api-server network connectivity to the webhook pod and Kubernetes cluster compliance with other xref:https://istio.io/docs/ops/configuration/mesh/webhook/#verify-dynamic-admission-webhook-prerequisites[Istio network prerequisites.] 
 
 == Hardware Requirements
 
@@ -56,7 +56,7 @@ Note that the license you obtain must contain the following entitlements:
 * API Gateway: api-gateway
 * Cluster: clustering
 
-For evaluation purposes, you can request a trial version of Anypoint Service Mesh. The trial version limits the usage of the product and is best suited for only exploring and learning the product. The trial version is not recommended for production use.
+For evaluation purposes, you can request a trial version of Anypoint Service Mesh. The trial version limits the use of the product and is best suited for only exploring and learning the product. The trial version is not recommended for production use.
 
 To obtain a trial or regular license key, contact your MuleSoft account representative or the MuleSoft sales team. 
 
@@ -65,61 +65,28 @@ To obtain a trial or regular license key, contact your MuleSoft account represen
 
 Before you can use Anypoint Service Mesh, you must have the following roles and permissions:
  
-* API Manager Environment Administrator permission or Organization Administrator role for your organization, to access the client ID and client secret credentials.
-* Client ID and client secret credentials from Access Management.  
-If you provision the adapter with organization credentials, you will be able to manage APIS on the specific adapter of that organization. 
+* API Manager Environment Administrator permission or Organization Administrator role for your organization, to access the client ID and client secret credentials
+* Client ID and client secret credentials from Access Management
++  
+If you provision the adapter with organization credentials, you are able to manage APIS on the specific adapter of that organization. 
 +
-If you specify environment credentials, you will only be able to manage APIs of that environment. MuleSoft recommends that you use the environment credentials instead of the organization credentials. For more information about which permissions to use, see xref:api-manager::org-credentials-config-mule4.adoc#obtaining-credentials[obtaining credentials].
-* Cluster-admin role access to the Kubernetes cluster.
+If you specify environment credentials, you can manage APIs of only that environment. MuleSoft recommends that you use the environment credentials instead of the organization credentials. 
++
+For more information about which permissions to use, see xref:api-manager::org-credentials-config-mule4.adoc#obtaining-credentials[obtaining credentials].
+* Cluster-admin role access to the Kubernetes cluster
 
-== Configuring Your Environment Variable
+== Configuring Your Environment Variable on Linux Systems
 
 Before you begin installing Anypoint Service Mesh, update your `PATH` environment variable to store system-wide values, such as the directories to search for the executable programs.
 
-// === Configure Your Environment Variable on Windows
-
-// To configure your `PATH` variable on Windows:
-
-// . Perform the following step based on the Windows version installed in your environment:
-// .. For Windows 8 or 10, press the Windows key, and then search for and
-// select *System (Control Panel)*.
-// .. For Windows 7, right-click the *Computer* icon on the desktop
-// and select *Properties*.
-// . Select *Advanced system settings* > *Environment Variables*.
-// . Under *System Variables*, find and select the `PATH` variable, and then click
-// *Edit*.
-// . If there is no existing entry for the `PATH` variable, click *New*.
-// . Add your directory to the beginning of the variable value followed by `;` (a
-// semicolon). 
-// +
-// For example, if the value is `C:\Windows\System32`, change it to
-// `C:\Users\Me\bin;C:\Windows\System32`.
-// . Click *OK*.
-// . Restart your terminal.
-
-// === Configure Your Environment Variable on Mac OS X
-
-// To configure your `PATH` variable on Mac OS X:
-
-// . Open the `.bash_profile` file in your home directory.
-// +
-// For example, type `CD /Users/<your-user-name>/.bash_profile`) in a text editor.
-// . Add the following command to the last line of your file:
-// +
-// `export PATH="your-dir:$PATH"`, where *your-dir* is the directory you want to add.
-// . Save the `.bash_profile` file.
-// . Restart your terminal.
-
-// === Configure Your Environment Variable on Linux
-​
 To configure your `PATH` variable on Linux: 
 
 . Open the `.bashrc` file in your home directory.
 +
-For example, type `cd /home/<your-user-name>/.bashrc`) in a text editor.
+For example, type `cd /home/_your-user-name_/.bashrc`) in a text editor.
 . Add the following command to the last line of the file:
 +
-`export PATH="your-dir:$PATH"`, where *your-dir* is the directory you want to add.
+`export PATH=_your-dir:$PATH_`, where _your-dir_ is the directory you want to add.
 . Save the `.bashrc` file.
 . Restart your terminal.
 
@@ -129,5 +96,5 @@ For example, type `cd /home/<your-user-name>/.bashrc`) in a text editor.
 * https://helm.sh/docs/install/[Helm Documentation]
 * https://kubernetes.io/docs/tasks/tools/install-kubectl/#before-you-begin[Kubernetes Installation Documentation]
 * https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#how-do-i-turn-on-an-admission-controller[Kubernetes Admission Controller Documentation]
-//* xref:api-manager::org-credentials-config-mule4.adoc#obtaining-credentials[Obtain Environment Credentials]
+
 
