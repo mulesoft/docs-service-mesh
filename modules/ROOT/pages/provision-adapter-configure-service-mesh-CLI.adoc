@@ -37,7 +37,7 @@ When you provision an adapter, or bind the adapter to an application, a message 
 
 Additionally, you can verify the adapter status, which provides further details about the adapter. To view the adapter status, type the following command:
 +
-`./service-mesh adapter list`
+`asmctl adapter list`
 
 The status values include:
 
@@ -52,7 +52,7 @@ Note that you must delete all associated bindings before you delete the adapter.
 
 After you install Anypoint Service Mesh, you can use the command line interface (CLI) help to learn about the Anypoint Service Mesh commands and their parameters:
 +
-`./service-mesh adapter help`
+`asmctl adapter help`
 
 image::service-mesh-cli-adapter-help.png[CLI Help for Adapter Commands]
 
@@ -73,7 +73,7 @@ To provision the Anypoint Service Mesh adapter using the CLI:
 +
 [source,text,linenums]
 ----
-./service-mesh adapter create \
+asmctl adapter create \
 --name=<adapter name> \
 --namespace=<adapter namespace> \
 --size=<adapter plan size> \
@@ -97,13 +97,13 @@ To provision the Anypoint Service Mesh adapter using the CLI:
 +
 . Verify the <<adapter_status, adapter Status>>:
 +
-`./service-mesh adapter list`
+`asmctl adapter list`
 +
 image::provision-service-mesh-adapter-output.png[Example Output]
 +
 . Review adapter logs to see detailed information about Kubernetes events and adapter transactions:
 +
-`./service-mesh adapter logs --name=<adapter_name> --namespace=<namespace>`
+`asmctl adapter logs --name=<adapter_name> --namespace=<namespace>`
 . Run the following commands, one-by-one, for each of your applications that were already running in the namespace before starting the Anypoint Service Mesh installation:
 .. Determine the deployment name for the patch: 
 +

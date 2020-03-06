@@ -17,6 +17,7 @@ Anypoint Service Mesh is developed using Istio and Kubernetes. Therefore, you mu
 
 Your Anypoint Service Mesh installation requires the following applications and Kubernetes environments:
 
+
 * Kubernetes 1.12+ or a newer cluster, with RBAC (role-based access control) enabled
 * Helm 3.0.0 or later
 +
@@ -29,6 +30,15 @@ For more information about how to install Helm, see the Helm installation docume
 ** Google Kubernetes Engine (GKE)
 ** Amazon EKS
 ** Azure Kubernetes Service (AKS)
+* https://istio.io/docs/setup[Install Istio] 1.4.4, 1.4.5, or 1.4.6 in your cluster with the following configurations: 
+. Enable policy control by configuring the flag:
+** `--set values.global.disablePolicyChecks=false`
++
+For more information, see https://istio.io/docs/tasks/policy-enforcement/enabling-policy/[Policy Enforcement]. To configure other versions of Istio, contact your MuleSoft representative.
+. Enable API Analytics by setting the `disableMixerHttpReports` flag to *false*: 
++
+`kubectl -n istio-system get cm istio -o yaml | sed -e 's/disableMixerHttpReports: true/disableMixerHttpReports: false/g' | kubectl replace -f -`
+
 * If you want to enable automatic sidecar injection, you must additionally:
 . Install Kubernetes 1.12 with the admissionregistration API.
 . Verify the installation using the following the command: 
@@ -39,6 +49,7 @@ For more information about how to install Helm, see the Helm installation docume
 * Kubernetes api-server network connectivity to the webhook pod and Kubernetes cluster compliance with other xref:https://https://istio.io/docs/ops/configuration/mesh/webhook/[Istio network prerequisites.] 
 
 Additionally, as part of the software prerequisites, ensure that Istio is not installed in the cluster.
+
 
 == Hardware Requirements
 
@@ -89,11 +100,11 @@ For example, type `cd /home/_your-user-name_/.bashrc`) in a text editor.
 . Save the `.bashrc` file.
 . Restart your terminal.
 
-
 == See Also
 
 * https://helm.sh/docs/install/[Helm Documentation]
 * https://kubernetes.io/docs/tasks/tools/install-kubectl/#before-you-begin[Kubernetes Installation Documentation]
 * https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#how-do-i-turn-on-an-admission-controller[Kubernetes Admission Controller Documentation]
+* https://istio.io/docs/setup/[Istio Documentation]
 
 

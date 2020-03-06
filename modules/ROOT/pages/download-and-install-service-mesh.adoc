@@ -13,8 +13,23 @@ You install, manage, and troubleshoot your Anypoint Service Mesh instance by usi
 
 To download the Anypoint Service Mesh client, type the following command at the command prompt:
 
-`curl -Ls http://anypoint.mulesoft.com/servicemesh/xapi/v1/install > service-mesh && chmod +x service-mesh`
+`curl -Ls http://anypoint.mulesoft.com/servicemesh/xapi/v1/install > asmctl && chmod +x asmctl`
 
+
+== Configure Your Environment Variable
+
+Before you begin installing Anypoint Service Mesh, update your `PATH` environment variable to store system-wide values, such as the directories to search for the executable programs.
+
+To configure your `PATH` variable on Linux: 
+
+. Open the `.bashrc` file in your home directory.
++
+For example, type `cd /home/<your-user-name>/.bashrc` in a text editor.
+. Add the following command to the last line of the file:
++
+`export PATH="your-dir:$PATH"`, where *your-dir* is the directory you want to add.
+. Save the `.bashrc` file.
+. Restart your terminal.
 
 == Install Anypoint Service Mesh
 
@@ -37,7 +52,7 @@ To install Anypoint Service Mesh without a proxy, perform the following steps:
 
 . In the location from which you downloaded your Anypoint Service Mesh client, type:
 +
-`./service-mesh install`
+`asmctl install`
 +
 . Enter your client ID.
 . Enter your client secret.
@@ -63,7 +78,7 @@ If you need to install Anypoint Service Mesh in a proxy environment, provide the
 
 . In the location from which you downloaded your Anypoint Service Mesh client, type:
 +
-`./service-mesh install --clientId=<clientId> --clientSecret=<clientSecret> --license=<license absolute or relative path> --platformUri=<Anypoint Platform Uri> --proxyHost=<host> --proxyProtocol=<protocol> --proxyPort=<port> --proxyUser=<proxy username> --proxyPassword=<proxy password>`
+`asmctl install --clientId=<clientId> --clientSecret=<clientSecret> --license=<license absolute or relative path> --platformUri=<Anypoint Platform Uri> --proxyHost=<host> --proxyProtocol=<protocol> --proxyPort=<port> --proxyUser=<proxy username> --proxyPassword=<proxy password>`
 +
 [%header%autowidth.spread]
 |===
