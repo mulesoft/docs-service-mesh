@@ -75,7 +75,7 @@ asmctl api create
 +
 [%header%autowidth.spread]
 |===
-| Parameter Name | Description | Required/Optional | Default Value
+| Parameter Name | Description | Required or Optional | Default Value
 | `name` | The name of the API that you want to provision, for example, `orders-api`. | Required | Not applicable
 | `namespace` | The namespace in which you want to create the adapter, for example, `mulesoft-apps`. | Optional | default
 | `environmentId` | The ID of the environment where you want to create your API instance. | Required | Not applicable

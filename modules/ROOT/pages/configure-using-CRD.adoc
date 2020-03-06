@@ -17,7 +17,7 @@ image::configure-service-mesh-CRD-flowchart-new.png[90%,120%]
 
 == See Also
 
-* xref::prepare-to-install-service-mesh.adoc[Prepare to install Anypoint Service Mesh]
+* xref::prepare-to-install-service-mesh.adoc[Prerequisites for Downloading and Installing Anypoint Service Mesh]
 * xref::provision-adapter-configure-service-mesh-CRD.adoc[Provision an adapter using CRD]
 * xref::create-an-api-configure-service-mesh-CRD.adoc[Create an API using CRD]
 * xref::bind-api-configure-service-mesh-CRD.adoc[Bind a service using CRD]

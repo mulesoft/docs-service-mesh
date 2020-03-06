@@ -65,7 +65,7 @@ Note that all object names, such as adapter name, binding name, and service name
 +
 [%header%autowidth.spread]
 |===
-| Parameter Name | Description | Required/Optional | Default Value
+| Parameter Name | Description | Required or Optional | Default Value
 | name | The unique name that represents the binding of the Kubernetes Service with the API, for example, `service-binding-anypoint-security`. 
  | Required | Not applicable
 | namespace | The namespace in which your service is deployed. Ensure that you use the same namespace as the adapter you provisioned in the previous procedure. | Required | Not applicable
@@ -108,7 +108,7 @@ asmctl api binding create \
 +
 [%header%autowidth.spread]
 |===
-| Parameter Name | Description | Required/Optional | Default Value
+| Parameter Name | Description | Required or Optional | Default Value
 | name | The unique name that represents the binding of the Kubernetes Service with the API, for example, `service-binding-anypoint-security`. 
  | Required | Not applicable
 | namespace | The namespace in which your service is deployed. Ensure that you use the same namespace as the adapter you provisioned in the previous procedure. | Required | Not applicable
