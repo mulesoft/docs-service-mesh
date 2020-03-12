@@ -80,6 +80,58 @@ spec:
 . Verify the <<adapter_status, adapter status,>> using the following command:
 `asmctl adapter list`
 
+== Reference Kubernetes Secret
+
+Anypoint Service Mesh supports the use of Kubernetes secrets to store and manage sensitive information, such as your user credentials.
+
+To store your user credentials in Kubernetes secrets:
+
+. First of all we need to create a secret to hold the sensitive information, it can be created by Devops/Admin, and save it with a '.yaml' file extension, for example `bookinfo-service-mesh-adapter-config.yaml`:
++
+[source,text,linenums]
+----
+apiVersion: v1
+kind: Secret
+metadata:
+  name: <secret name> # example: bookinfo-service-mesh-adapter-config
+  namespace: <namespace name> # example: default
+type: Opaque
+stringData:
+  config: |
+    {
+      "clientId": "<replace-with-clientId>",
+      "clientSecret": "<replace-with-clientSecret>"
+    }
+----
+. Apply the Secret using the following command: 
++
+`kubectl apply -f bookinfo-service-mesh-adapter-config.yaml`
++
+If the secret is correctly applied, a `"secret/bookinfo-service-mesh-adapter-config created"` message is displayed.
++
+. Reference the secret in your Adapter CRD, instead of the clientId and clientSecret parameters, as illustrated in the following example:
++
+[source,text,linenums]
+----
+apiVersion: servicecatalog.k8s.io/v1beta1
+kind: ServiceInstance
+metadata:
+  name: <adapter name> # example: bookinfo-service-mesh-adapter
+  namespace: <namespace name> # example: default
+  labels:
+    service-mesh.mulesoft.com/kind: adapter
+spec:
+  clusterServiceClassExternalName: anypoint-service-mesh-adapter
+  clusterServicePlanExternalName: <plan size > # example: small.
+  parameters:
+    replication:
+      replicas: <amount of replicas> # example: 2
+  parametersFrom: # we will refer to the secret holding the config from here
+    - secretKeyRef:
+        name: <secret name> # example: bookinfo-service-mesh-adapter-config
+        key: config
+----
+
 == See Also
 
 * xref::prepare-to-install-service-mesh.adoc[Prerequisites for Downloading and Installing Anypoint Service Mesh]

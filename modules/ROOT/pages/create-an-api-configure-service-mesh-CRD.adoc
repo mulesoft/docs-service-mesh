@@ -97,28 +97,28 @@ Anypoint Service Mesh supports the use of Kubernetes secrets to store and manage
 
 To store your user credentials in Kubernetes secrets:
 
-. Create a CRD with the following Kubernetes secret details in a .yaml file, for example `user-secret.yaml`:
+. First of all we need to create a secret to hold the sensitive information, it can be created by Devops/Admin, and save it with a '.yaml' file extension, for example `orders-api-config.yaml`:
 +
 [source,text,linenums]
 ----
 apiVersion: v1
 kind: Secret
 metadata:
-  name: my-credentials
-  namespace: nto-payment
+  name: <secret name> # example: orders-api-config
+  namespace: <namespace name> # example: default
 type: Opaque
 stringData:
-  user-pass:
-    '{
-      "user": "<user>",
-      "password": "<password>"
-    }'
+  config: |
+    {
+      "user": "<replace-with-anypoint-username>",
+      "password": "<replace-with-anypoint-clientSecret>"
+    }
 ----
-. Apply the CRD using the following command:
+. Apply the Secret using the following command: 
 +
-`kubectl apply -f user-secret.yaml`
+`kubectl apply -f orders-api-config.yaml`
 +
-If the secret is correctly applied, a “secret/my-credentials configured” message is displayed. 
+If the secret is correctly applied, a `"secret/orders-api-config created"` message is displayed.
 +
 . Reference the secret in your API CRD, instead of the user and password parameters, as illustrated in the following example:
 +
@@ -127,28 +127,28 @@ If the secret is correctly applied, a “secret/my-credentials configured” mes
 apiVersion: servicecatalog.k8s.io/v1beta1
 kind: ServiceInstance
 metadata:
-  name: inventory-resource-api
-  namespace: nto-payment
-  labels: 
+  name: <api name> # example: orders-api
+  namespace: <namespace name> # example: default
+  labels:
     service-mesh.mulesoft.com/kind: api
 spec:
   clusterServiceClassExternalName: anypoint-platform-api-instance
   clusterServicePlanExternalName: service-mesh
   parameters:
-    environmentId: 28f63f07-7422-44f4-9e95-a85fa58f8e9c
-    groupId: 380c89c6-8421-4c66-85b3-80336d9cb1ca
-    assetId: inventory-api
-    version: 1.0.0
-    instanceLabel: public
+    environmentId: <environment ID> # example: 7cea45c6-3237-464d-bd34-3122c4abde29
+    groupId: <group ID> # example: 350b8164-e809-4091-91f5-079fb30e5a1e
+    assetId: <asset ID> # example: orders-api
+    version: <version> # example: 0.0.1
+    instanceLabel: <instance label> # example: public
     tags:
       apiSpec:
-      - spec1
+      - <tag in Exchange asset> # example: orders
       apiInstance:
-      - spec2
-  parametersFrom:
-  - secretKeyRef:
-      name: my-credentials
-      key: user-pass
+      - <tag in API Manager instance> # example: orders
+  parametersFrom: # we will refer to the secret holding the config from here
+    - secretKeyRef:
+        name: <secret name> # example: orders-api-config
+        key: config
 ----
 
 
