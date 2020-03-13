@@ -18,14 +18,6 @@ Anypoint Service Mesh is developed using Istio and Kubernetes. Therefore, you mu
 Your Anypoint Service Mesh installation requires the following applications and Kubernetes environments:
 
 
-* Kubernetes 1.12+ or a newer cluster, with RBAC (role-based access control) enabled
-* Helm 3.0.0 or later
-+
-*Tip:* To verify the installed version, use the `helm version` command. 
-+
-For more information about how to install Helm, see the Helm installation documentation.
-* Kubectl version 1.12 or later, compatible with the cluster, installed on your local machine
-*Tip:* To verify installed version, use the `kubectl version` command.
 * One of the following environments on which to run Kubernetes:
 ** Google Kubernetes Engine (GKE)
 ** Amazon EKS
@@ -39,19 +31,10 @@ For more information, see https://istio.io/docs/tasks/policy-enforcement/enablin
 +
 `kubectl -n istio-system get cm istio -o yaml | sed -e 's/disableMixerHttpReports: true/disableMixerHttpReports: false/g' | kubectl replace -f -`
 
-* If you want to enable automatic sidecar injection, you must additionally:
-. Install Kubernetes 1.12 with the admissionregistration API.
-. Verify the installation using the following the command: 
-+
-`kubectl api-versions | grep admissionregistration.k8s.io/v1beta1`.
-. Configure the kube-apiserver process with the admission-control flag to “MutatingAdmissionWebhook”.
-. Add and list `ValidatingAdmissionWebhook` admission controllers in the correct order.
-* Kubernetes api-server network connectivity to the webhook pod and Kubernetes cluster compliance with other xref:https://https://istio.io/docs/ops/configuration/mesh/webhook/[Istio network prerequisites.] 
-
 
 == Hardware Requirements
 
-Your Anypoint Service Mesh installation requires the following hardware configuration:
+Your Anypoint Service Mesh installation requires at least the following hardware configuration:
 
 * CPU: 4 cores
 * Memory: 8 GBs
@@ -59,7 +42,7 @@ Your Anypoint Service Mesh installation requires the following hardware configur
 
 == Production Licensing and Trial Licensing Requirements
 
-You require an Anypoint Service Mesh license to perform the installation in your production environment. Ensure that the license you specify is in a digested format. If you do not have a license, contact your MuleSoft representative.
+You require an Anypoint Service Mesh license to perform the installation in your production environment.
 
 Note that the license you obtain must contain the following entitlements:
 
@@ -100,9 +83,6 @@ For example, type `cd /home/_your-user-name_/.bashrc`) in a text editor.
 
 == See Also
 
-* https://helm.sh/docs/install/[Helm Documentation]
-* https://kubernetes.io/docs/tasks/tools/install-kubectl/#before-you-begin[Kubernetes Installation Documentation]
-* https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#how-do-i-turn-on-an-admission-controller[Kubernetes Admission Controller Documentation]
 * https://istio.io/docs/setup/[Istio Documentation]
 
 
