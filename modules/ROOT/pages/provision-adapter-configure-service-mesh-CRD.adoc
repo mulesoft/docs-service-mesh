@@ -87,7 +87,7 @@ Anypoint Service Mesh supports the use of Kubernetes secrets to store and manage
 *Task Prerequisites*
 
 You must have the Devops or Admin role or permission to create the Kubernetes secret.
-
+//[PA: Rodrigo--Are these the exact nams of the roles or permissions?]
 
 To store your user credentials in Kubernetes secrets:
 
