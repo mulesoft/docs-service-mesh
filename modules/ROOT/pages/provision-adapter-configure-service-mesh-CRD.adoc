@@ -84,9 +84,14 @@ spec:
 
 Anypoint Service Mesh supports the use of Kubernetes secrets to store and manage sensitive information, such as your user credentials.
 
+*Task Prerequisites*
+
+You must have the Devops or Admin role or permission to create the Kubernetes secret.
+
+
 To store your user credentials in Kubernetes secrets:
 
-. First of all we need to create a secret to hold the sensitive information, it can be created by Devops/Admin, and save it with a '.yaml' file extension, for example `bookinfo-service-mesh-adapter-config.yaml`:
+. In a `.yaml` file, create a secret in which to store the sensitive information, for example, `bookinfo-service-mesh-adapter-config.yaml`:
 +
 [source,text,linenums]
 ----
@@ -103,13 +108,12 @@ stringData:
       "clientSecret": "<replace-with-clientSecret>"
     }
 ----
-. Apply the Secret using the following command: 
+. Apply the secret: 
 +
 `kubectl apply -f bookinfo-service-mesh-adapter-config.yaml`
 +
-If the secret is correctly applied, a `"secret/bookinfo-service-mesh-adapter-config created"` message is displayed.
-+
-. Reference the secret in your Adapter CRD, instead of the clientId and clientSecret parameters, as illustrated in the following example:
+If the secret is correctly applied, a "secret/bookinfo-service-mesh-adapter-config created" message is displayed.
+. Reference the secret in your adapter CRD (instead of the clientId and clientSecret parameters), as illustrated in the following example:
 +
 [source,text,linenums]
 ----
