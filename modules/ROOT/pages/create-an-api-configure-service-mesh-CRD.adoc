@@ -95,6 +95,11 @@ The API that was created is displayed.
 
 Anypoint Service Mesh supports the use of Kubernetes secrets to store and manage sensitive information, such as your user credentials.
 
+*Task Prerequisites*
+
+You must have the Devops or Admin role or permission to create the Kubernetes secret.
+//[PA: Rodrigo--Are these the exact nams of the roles or permissions?]
+
 To store your user credentials in Kubernetes secrets:
 
 . In a `.yaml` file, create a secret in which to store the sensitive information, for example `orders-api-config.yaml`:
@@ -114,16 +119,13 @@ stringData:
       "password": "<replace-with-anypoint-clientSecret>"
     }
 ----
-+
-You must have the Devops or Admin role to create the secret. 
-//[PA: Rodrigo--Are these the exact nams of the roles or permissions?]
 . Apply the secret: 
 +
 `kubectl apply -f orders-api-config.yaml`
 +
 If the secret is correctly applied, a "secret/orders-api-config created" message is displayed.
 +
-. Reference the secret in your API CRD, instead of the user and password parameters, as illustrated in the following example:
+. Reference the secret in your API CRD, (instead of the user and password parameter), as illustrated in the following example:
 +
 [source,text,linenums]
 ----
