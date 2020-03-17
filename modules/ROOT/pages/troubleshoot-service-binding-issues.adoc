@@ -105,7 +105,8 @@ To resolve this error:
 
 . Replace the licence with a valid one:
 +
-`$ kubectl create secret generic -n service-mesh --dry-run service-mesh-incluster-broker-impl-license --from-file=license=_license_path_ -oyaml | kubectl apply -n service-mesh -f -`
+`$ asmctl management config license --license=/path/to/license.lic`
+
 . Redeploy the adapter:
 +
 `$ kubectl -n service-mesh patch $(kubectl -n service-mesh get deploy -l namespace=_replace_with_namespace_ -oname) --type=json -p="[{\"op\": \"replace\", \"path\": \"/spec/template/metadata/annotations/kubectl.kubernetes.io~1restartedAt\",\"value\":\"$(date -u +%FT%TZ)\"}]"`
