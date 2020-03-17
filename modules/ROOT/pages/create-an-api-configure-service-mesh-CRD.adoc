@@ -149,7 +149,7 @@ spec:
       - <tag in Exchange asset> # example: orders
       apiInstance:
       - <tag in API Manager instance> # example: orders
-  parametersFrom: # The element specifies the secret name and confiuguration required for retrieving the parameters.
+  parametersFrom: # The element specifies the secret name and configuration required for retrieving the parameters.
     - secretKeyRef:
         name: <secret name> # example: orders-api-config
         key: config
