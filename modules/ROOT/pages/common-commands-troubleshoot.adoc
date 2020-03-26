@@ -66,7 +66,7 @@ When troubleshooting Anypoint Service Mesh, you might need to modify the Log4j c
 `$ kubectl cp -c mule service-mesh/_replace_with_grpcmule_pod_name_:/usr/src/app/conf/log4j2.xml log4j2.xml`
 . Update the downloaded copy of log4j2.xml as required and upload it again to the pod:
 +
-`$ kubectl cp -c mule log4j2.xml service-mesh/_replace_with_grpcmule_pod_name_:/usr/src/app/conf/log4j2.xmlonf/log4j2.xml`
+`$ asmctl management config log4j --namespace=_replace_with_namespace --log4jFile=log4j2.xml`
 +
 Because the `log4j` configuration file checks for changes every 60 seconds, you might have to wait to confirm your modification.
 
@@ -77,7 +77,7 @@ When troubleshooting Anypoint Service Mesh, you might need to update the license
 
 . Update the existing licence with one that you know is valid:
 +
-`$ kubectl create secret generic -n service-mesh --dry-run service-mesh-incluster-broker-impl-license --from-file=license=_license_path_ -oyaml | kubectl apply -n service-mesh -f -`
+`$ asmctl management config license --license=/path/to/license.lic`
 . Redeploy the adapter:
 +
 `$ kubectl -n service-mesh patch $(kubectl -n service-mesh get deploy -l namespace=_replace_with_namespace_ -oname) --type=json -p="[{\"op\": \"replace\", \"path\": \"/spec/template/metadata/annotations/kubectl.kubernetes.io~1restartedAt\",\"value\":\"$(date -u +%FT%TZ)\"}]"`
