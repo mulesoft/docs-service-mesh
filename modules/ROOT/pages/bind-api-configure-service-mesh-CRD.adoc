@@ -68,7 +68,7 @@ spec:
     name: <adapter name> # example: bookinfo-service-mesh-adapter
   parameters:
     apiId: <api ID> # example: 15722113
-    service: <service name> # example: orders-service
+    service: <Kubernetes resource service name> # example: orders-service
 ----
 +
 The binding is activated within a few seconds and the API is successfully registered to the proxy.
@@ -106,7 +106,7 @@ spec:
     name: <api name> # example: orders-api
   parameters:
     adapter: <adapter name> # example: bookinfo-service-mesh-adapter
-    service: <service name> # example: orders-service
+    service: <Kubernetes resource service name> # example: orders-service
 ----
 +
 . Apply the CRD using the following command:
