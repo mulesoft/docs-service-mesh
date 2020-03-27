@@ -1,0 +1,41 @@
+= Configure Service Mesh
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+:keywords: service mesh, microservices, downloading, installing
+
+image::configure-service-mesh-breadcrumb.png[]
+
+
+[[adapter-overview]]
+== Overview
+
+To configure Anypoint Service Mesh, you must first provision the Anypoint Service Mesh adapter, create an API, and then bind the adapter to that API. Each adapter is bound to a specific namespace. Therefore, a namespace can be associated with only one adapter at any given time. 
+
+Every service that you want Anypoint Service Mesh to manage from your Kubernetes cluster must have a corresponding API in Anypoint Platform. After you create the API, you must then bind the service in the cluster to the corresponding API in Anypoint Platform. In Kubernetes, services are an abstraction on top of the applications running on a set of pods as a network service.
+
+
+You configure Anypoint Service Mesh using the following three steps:
+
+. Provision Anypoint Service Mesh Adapter.
+. Create an API.
+. Bind your service.
+
+== Methods for Configuring Anypoint Service Mesh
+
+You can configure Anypoint Service Mesh using the command line interface (CLI) or using the Kubernetes custom resource definition (CRD) based on your preference:
+
+* xref::configure-using-CLI.adoc[Using CLI]
+* xref::configure-using-CRD.adoc[Using CRD]
+
+
+//image::configure-service-mesh-flowchart.png[]
+
+== See Also
+
+* xref::prepare-to-install-service-mesh.adoc[Prepare to install Anypoint Service Mesh]
+* xref::provision-adapter-configure-service-mesh-CLI.adoc[Provision an adapter using CLI]
+* xref::provision-adapter-configure-service-mesh-CRD.adoc[Provision an adapter using CRD]
+* xref::create-an-api-configure-service-mesh-CRD.adoc[Create an API using CRD]
+* xref::bind-api-configure-service-mesh-CLI.adoc[Bind a service using CLI]
+* xref::bind-api-configure-service-mesh-CRD.adoc[Bind a service using CRD]

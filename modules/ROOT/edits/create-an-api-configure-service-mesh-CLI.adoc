@@ -1,0 +1,103 @@
+= Creating an API Using the CLI
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+:keywords: service mesh, microservices, downloading, installing
+
+After you provision the adapter, you must create an API to bind to the service. The following diagram illustrates the flow for creating an API:
+
+//image::configure-service-mesh-flowchart-2.png[]
+image::create-API-CLI-flowchart.png[]
+
+You can create an API using Anypoint Platform or Anypoint Service Mesh:
+
+* <<create-api-AP, Create an API Using Anypoint Platform>>
++
+If you want to create REST or SOAP APIs with OAS or WSDL definition, use Anypoint Platform. 
++
+Note that if you want to upload a REST API or OAS asset type, use a .json or .yaml file. Alternatively, if you want to upload a SOAP API or WSDL asset type, use a .wsdl or .xml file.
+* <<create-api-ASM-CLI, Create an API Using Anypoint Service Mesh Autocreate>>
++
+Anypoint Service Mesh enables you to automatically create an HTTP API in Anypoint Platform, with no REST or SOAP definitions. You do not have to manually log in to Anypoint Platform. 
++
+If you automatically create REST or SOAP APIs with Anypoint Service Mesh, the APIs are still managed internally as an HTTP asset without any definition. 
+
+[[create-api-AP]]
+== Create an API Using Anypoint Platform
+
+To create an API using Anypoint Platform, perform the following steps:
+
+. Go to *Anypoint Platform > API Manager* and select the *Manage API* drop-down list. 
+. Select *Create new API*.
++
+The Creating an asset page is displayed.
+. Specify a *Name* value and *Asset types* details for the API.  
++
+Your asset is now created in Exchange for reuse. After you create the asset, you are ready to perform endpoint configuration.
++
+The Endpoint Configuration window is displayed.
+. In the *Managing type* field, select the *Basic Endpoint* radio button.
+. In the *Application type* field, select the *Non-Mule application* radio button.
+. Optionally, specify the *Implementation URI*, and click *Save*.
++
+Your API is now created.
+
+[[create-api-ASM-CLI]]
+== Create an API Using Anypoint Service Mesh
+
+Use the procedure in this section to automatically create an API using Anypoint Service Mesh. Before you create the API, you must complete the task prerequisite.
+
+*Task Prerequisite*
+
+Ensure that you obtain the environment ID and organization ID. You can perform this task from either API Manager or from Access Management. 
+
+You require the Manage APIs Configuration permission for the environment where you are creating the API Instance and Exchange Contributor permission for the Business group where you are creating the asset.
+
+To create an API using Anypoint Service Mesh, perform the following steps:
+
+. Using Anypoint Service Mesh, type the following command to create the API:
++
+[source,text,linenums]
+----
+./service-mesh api create  
+--name=<API resource name> \
+--namespace=<namespace name> \
+--environmentId=<environment ID> \
+--groupId=<group ID of the asset, for example, organization ID> \
+--assetId=<asset ID on Exchange> \
+--version=<Asset version of the instance on exchange> \
+--instanceLabel=<ID of the instance on API Manager> \ 
+--specTags=<list of comma separated tags to be added to the asset on Exchange> \
+--instanceTags=<list of comma separated tags to be added to the instance on API Manager> \
+--user=<username of the Anypoint Platform user, creating the API instance> \
+--password=<password of the Anypoint Platform user, creating the API instance>
+----
++
+[%header%autowidth.spread]
+|===
+| Parameter Name | Description | Required/Optional | Default Value
+| `name` | The name of the API that you want to provision, for example, `orders-api`. | Required | Not applicable
+| `namespace` | The namespace in which you want to create the adapter, for example, `mulesoft-apps`. | Optional | default
+| `environmentId` | The ID of the environment where you want to create your API instance. | Required | Not applicable
+| `groupId` | The ID of the group of assets on Exchange, for example, the organization ID. You can find the organization ID on the API Manager landing page or in Access Management. | Optional | Organization ID of the organization that contains the environment. 
+| `assetId` | The ID of the assets that are a part of an organization. Supports alphanumeric characters without spaces. | Required | Not applicable
+| `version` | The version of the asset on Exchange. The version number must follow the semantic versioning format for major, minor, and patch releases. | Required | Not applicable
+| `instanceLabel` | The ID of the API instances of an Asset within a given environment. Supports alphanumeric characters without spaces. | Required | Not applicable
+| `specTags` | Tags to add to the asset on Exchange. |  Optional | Not applicable
+| `instanceTags` | Tags to add to the API instance on API Manager. |  Optional | Not applicable
+| `user` | The username credential of the Anypoint Platform user who is creating the API. | Required | Not applicable
+| `password` | The password of the Anypoint Platform user who is creating the API. | Required | Not applicable
+|===
++
+. Verify the API status using the following command:
+`./service-mesh api list`
++
+The API that was created is displayed.
+. Optionally, you can verify that an asset is created on Exchange and an API is created on API Manager.
+
+== See Also
+
+* xref::bind-api-configure-service-mesh-CLI.adoc[Bind a service using CLI]
+* xref::manage-apis-with-service-mesh.adoc[Manage APIs with Anypoint Service Mesh]
+* xref::uninstall-service-mesh.adoc[Uninstall Anypoint Service Mesh]
+* xref:exchange::ex2-to-simulate-api-data.adoc[Simulate Data in REST APIs]
