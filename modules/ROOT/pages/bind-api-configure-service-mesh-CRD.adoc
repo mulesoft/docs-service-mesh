@@ -4,11 +4,11 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: service mesh, microservices, binding
 
-When you create the binding, Anypoint Service Mesh creates a three-way association of the service in Kubernetes,the API that you created in Anypoint Platform to represent the service, and the adapter that you created for the service. 
+When you create the binding, Anypoint Service Mesh creates a three-way association of the service in Kubernetes, the API that you created in Anypoint Platform to represent the service, and the adapter that you created for the service. 
 
 The adapter uses the unique API ID to fetch policies and apply them to your services that are running in the cluster.
 
-If you created the API in the previous procedure using Anypoint Platform, you use the API ID to bind the service. However, if you used the CRD to create the API, you must use the API name to bind the service.
+If you created the API using Anypoint Platform, you use the API ID to bind the service. However, if you used the CRD to create the API, you must use the API name to bind the service.
 
 After the binding is created, Anypoint Service Mesh takes a few seconds to complete the binding procedure and update the status. After the binding is completed, you can view the status using the `list` command. The status values include:
 
@@ -29,30 +29,27 @@ nto-payments   customers   anypoint-service-mesh-adapter   1234    customers    
 You can bind an API to a service using Anypoint Platform or Anypoint Service Mesh, based on your preference:
 
 * <<bind_the_service, Bind an API created using Anypoint Platform>>: If you created your API using Anypoint Platform, use this procedure.
-* <<bind_using_ASM, Bind an API created using Anypoint Service Mesh>> : If you created your API using Anypoint Service Mesh, use this procedure.
+* <<bind_using_ASM, Bind an API created using Anypoint Service Mesh>>: If you created your API using Anypoint Service Mesh, use this procedure.
 
 
 [[bind_the_service]]
 == Bind an API Created Using Anypoint Platform
 
-Before you bind the service, ensure that you complete the task prerequisite.
-
-*Task Prerequisite*
-From the API Administration Tab of API Manager, obtain the API ID to create the binding using this method.
+Before you bind the service, from the API Administration Tab of API Manager, obtain the API ID.
 
 To bind the service with an API, perform the following steps:
 
 . Go to *Anypoint Platform > API administration* and expand the API version name to display the instances.
 . Click an instance name and copy the API ID that is displayed. 
-Ensure that you save this API ID to a text editor.
+Ensure that you save this API ID somewhere that you can access readily.
 +
 image::api-id.png[]
 +
-. To retrieve the service name from Kubernetes, with which you want to bind the API, run the command:
+. Retrieve from Kubernetes the name of the service with which you want to bind the API:
 +
 `kubectl get svc -n <namespace>`
-. Verify that your microservice port is named following the requirements requested by Istio: xref:https://istio.io/docs/setup/additional-setup/requirements/[].
-. If you created your API using Anypoint Platform, use `spec.parameters.apiId`:
+. Verify that your microservice port is named following Istio standards: xref:https://istio.io/docs/setup/additional-setup/requirements/[].
+. If you created your API using Anypoint Platform, use the `spec.parameters.apiId` parameter in your `yaml` file:
 +
 [source,text,linenums]
 ----
@@ -112,11 +109,11 @@ spec:
 . Apply the CRD using the following command:
 +
 `kubectl apply -f bind-api.yaml`
-. Verify the binding status using the following command:
+. Verify the binding status:
 +
 `./service-mesh api binding list`
 +
-After you bind your API, the API in API Manager is marked as Active. You are now ready to apply policies to protect your APIs.
+The API in API Manager is marked `Active` and you can now apply policies to protect your APIs.
 
 == See Also
 
