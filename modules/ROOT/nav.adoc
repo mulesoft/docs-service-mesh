@@ -15,5 +15,12 @@
 * xref:manage-apis-with-service-mesh.adoc[Managing APIs with Service Mesh]
 * xref:uninstall-service-mesh.adoc[Uninstalling Service Mesh]
 * xref:troubleshoot-service-mesh.adoc[Troubleshooting Service Mesh]
+    ** xref:troubleshoot-installation-issues.adoc[Installation Issues]
+    ** xref:troubleshoot-user-service-issues.adoc[Service Issues]
+    ** xref:troubleshoot-adapter-provisioning-issues.adoc[Adapter Provisioning Issues]
+    ** xref:troubleshoot-api-provisioning-issues.adoc[API Provisioning Issues]
+    ** xref:troubleshoot-service-binding-issues.adoc[Service Binding Issues]
+    ** xref:troubleshoot-policy-enforcement-issues.adoc[Policy Enforcement Issues]
+    ** xref:common-commands-troubleshoot.adoc[Common Commands Used for Troubleshooting]
 //* xref:service-mesh-faqs.adoc[FAQs]
 

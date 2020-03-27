@@ -16,7 +16,7 @@ image::configure-service-mesh-CLI-flowchart.png[90%,120%]
 
 == See Also
 
-* xref::prepare-to-install-service-mesh.adoc[Prepare to install Anypoint Service Mesh]
+* xref::prepare-to-install-service-mesh.adoc[Prerequisites for Downloading and Installing Anypoint Service Mesh]
 * xref::provision-adapter-configure-service-mesh-CLI.adoc[Provision an adapter using CLI]
 * xref::create-an-api-configure-service-mesh-CLI.adoc[Create an API using CLI]
 * xref::bind-api-configure-service-mesh-CLI.adoc[Bind a service using CLI]

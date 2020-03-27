@@ -65,13 +65,13 @@ spec:
     name: <adapter name> # example: bookinfo-service-mesh-adapter
   parameters:
     apiId: <api ID> # example: 15722113
-    service: <service name> # example: orders-service
+    service: <Kubernetes resource service name> # example: orders-service
 ----
 +
 The binding is activated within a few seconds and the API is successfully registered to the proxy.
 . Verify the binding status using the following command:
 +
-`./service-mesh adapter binding list`
+`asmctl adapter binding list`
 +
 After you bind your API, the API in API Manager is marked as Active. You are now ready to apply policies to protect your APIs.
 +
@@ -103,7 +103,7 @@ spec:
     name: <api name> # example: orders-api
   parameters:
     adapter: <adapter name> # example: bookinfo-service-mesh-adapter
-    service: <service name> # example: orders-service
+    service: <Kubernetes resource service name> # example: orders-service
 ----
 +
 . Apply the CRD using the following command:
@@ -111,7 +111,7 @@ spec:
 `kubectl apply -f bind-api.yaml`
 . Verify the binding status:
 +
-`./service-mesh api binding list`
+`asmctl api binding list`
 +
 The API in API Manager is marked `Active` and you can now apply policies to protect your APIs.
 

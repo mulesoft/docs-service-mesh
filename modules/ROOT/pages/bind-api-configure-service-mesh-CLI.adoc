@@ -51,7 +51,7 @@ image::api-id.png[]
 +
 [source,text,linenums]
 ----
-./service-mesh adapter binding create \
+asmctl adapter binding create \
 --name=<binding name> \
 --namespace=<namespace name> \
 --adapter=<adapter name> \
@@ -74,7 +74,7 @@ Note that all object names, such as adapter name, binding name, and service name
 The binding is activated within a few seconds and the API is successfully registered to the proxy.
 . Verify the binding status:
 +
-`./service-mesh adapter binding list`
+`asmctl adapter binding list`
 +
 After you bind your API, the API in API Manager is marked as Active. You are now ready to apply policies to protect your APIs:
 +
@@ -93,7 +93,7 @@ To create the binding:
 +
 [source,text,linenums]
 ----
-./service-mesh api binding create \
+asmctl api binding create \
 --name=<binding name> \
 --namespace=<namespace name> \
 --adapter=<adapter name> \
@@ -104,8 +104,7 @@ To create the binding:
 [%header%autowidth.spread]
 |===
 | Parameter Name | Description | Required or Optional | Default Value
-| name | The unique name that represents the binding of the Kubernetes service with the API, for example, `service-binding-anypoint-security`. 
- | Required | Not applicable
+| name | The unique name that represents the binding of the Kubernetes service with the API, for example, `service-binding-anypoint-security`. | Required | Not applicable
 | namespace | The namespace in which your service is deployed. Ensure that you use the same namespace as the adapter you provisioned earlier. | Required | Not applicable
 | adapter | Specify the name of the adapter that you provisioned earlier.  | Required | Not applicable 
 | api | Specify the name of the API you want to associate with this adapter. | Required | Not applicable
