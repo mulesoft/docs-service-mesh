@@ -8,9 +8,9 @@ After you provision an adapter, you must create an API, to which you then bind t
 //Should I move this error to the Service errors topic and call the topic "API and Service Issues"?
 //@ Toams can we pose this as if you encounter API Provisioning issues, check these: incorrect credentials, and so on.
 
-== Credential Errors
+== Secret is incorrectly configured
 
-When you create an API, you must provide valid username and password credentials.
+If using a secret when you create an API, you need to confirm you are correctly referencing it
 
 === Cause
 
