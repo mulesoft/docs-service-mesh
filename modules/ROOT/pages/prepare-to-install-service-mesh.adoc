@@ -34,7 +34,7 @@ For more information, see https://istio.io/docs/tasks/policy-enforcement/enablin
 
 == Hardware Requirements
 
-Your Anypoint Service Mesh installation requires at least the following hardware configuration:
+Your Anypoint Service Mesh installation requires the following hardware configuration at a minimum:
 
 * CPU: 4 cores
 * Memory: 8 GBs
@@ -42,9 +42,7 @@ Your Anypoint Service Mesh installation requires at least the following hardware
 
 == Production Licensing and Trial Licensing Requirements
 
-You require an Anypoint Service Mesh license to perform the installation in your production environment.
-
-Note that the license you obtain must contain the following entitlements:
+You require an Anypoint Service Mesh license to perform the installation in your production environment. The license that you obtain must contain the following entitlements:
 
 * API Gateway: api-gateway
 * Cluster: clustering
