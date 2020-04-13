@@ -113,6 +113,10 @@ spec:
 +
 `asmctl api binding list`
 +
+. Verify the istio sidecar status:
++
+`asmctl management check sidecar --namespace=<namespace>`
++
 The API in API Manager is marked `Active` and you can now apply policies to protect your APIs.
 
 == See Also
