@@ -79,6 +79,23 @@ For example, type `cd /home/_your-user-name_/.bashrc`) in a text editor.
 . Save the `.bashrc` file.
 . Restart your terminal.
 
+== Ports, IPs and hostnames whitelist
+
+In your network, you may need to whitelist the hostnames and ports of various parts of Anypoint Platform to allow Anypoint Service Mesh to communicate with the MuleSoft-managed online Anypoint Platform APIs and services.
+
+[%header%autowidth.spread,cols="3+a"]
+|===
+|Plane |Host |Port
+|*US*|*anypoint.mulesoft.com* | 443
+|*US*|*analytics-ingest.anypoint.mulesoft.com* |  443
+|*US*|*exchange-files.anypoint.mulesoft.com* |  443
+|*US*|*exchange2-asset-manager-kprod.s3.amazonaws.com* |  443
+|*EU*|*eu1.anypoint.mulesoft.com* | 443
+|*EU*|*analytics-ingest.eu1.anypoint.mulesoft.com* |  443
+|*EU*|*exchange-files.eu1.anypoint.mulesoft.com* |  443
+|*EU*|*exchange2-asset-manager-kprod-eu.s3.eu-central-1.amazonaws.com* |  443
+|===
+
 == See Also
 
 * https://istio.io/docs/setup/[Istio Documentation]
