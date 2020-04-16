@@ -15,12 +15,7 @@ When troubleshooting Anypoint Service Mesh, you might need to perform various co
 [[retrieve-adapter-logs]]
 == Retrieve Adapter Logs
 
-To retrieve the adapter logs when you are troubleshooting an issue:
-
-. Display the adapter pod:
-+
-`$ kubectl get pods -n service-mesh`
-. Retrieve the adapter logs:
+To retrieve the adapter logs of a single pod when you are troubleshooting an issue:
 +
 `$ kubectl -n service-mesh logs`
 +
