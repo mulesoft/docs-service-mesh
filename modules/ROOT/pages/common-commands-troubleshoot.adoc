@@ -24,7 +24,7 @@ To retrieve the adapter logs when you are troubleshooting an issue:
 +
 `$ kubectl -n service-mesh logs`
 +
-`$(kubectl -n service-mesh get pod -l namespace=nto-payment -o jsonpath='{.items[0].metadata.name}') -c mule`
+`$(kubectl -n service-mesh get pod -l namespace=_replace_with_namespace_ -o jsonpath='{.items[0].metadata.name}') -c mule`
 
 [[access-the-adapter]]
 == Access the Adapter
