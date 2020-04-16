@@ -17,9 +17,7 @@ When troubleshooting Anypoint Service Mesh, you might need to perform various co
 
 To retrieve the adapter logs of a single pod when you are troubleshooting an issue:
 +
-`$ kubectl -n service-mesh logs`
-+
-`$(kubectl -n service-mesh get pod -l namespace=_replace_with_namespace_ -o jsonpath='{.items[0].metadata.name}') -c mule`
+`$ kubectl -n service-mesh logs $(kubectl -n service-mesh get pod -l namespace=_replace_with_namespace_ -o jsonpath='{.items[0].metadata.name}') -c mule`
 
 [[access-the-adapter]]
 == Access the Adapter
