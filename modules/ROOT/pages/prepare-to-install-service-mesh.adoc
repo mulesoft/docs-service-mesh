@@ -94,7 +94,7 @@ In your network, you may need to whitelist the hostnames and ports of various pa
 |*EU*|*analytics-ingest.eu1.anypoint.mulesoft.com* |  443
 |*EU*|*exchange-files.eu1.anypoint.mulesoft.com* |  443
 |*EU*|*exchange2-asset-manager-kprod-eu.s3.eu-central-1.amazonaws.com* |  443
-|*ALL* *|*get.helm.sh* | 443
+|*ALL*|*get.helm.sh* | 443
 |*ALL*|*storage.googleapis.com* | 443
 
 |===
