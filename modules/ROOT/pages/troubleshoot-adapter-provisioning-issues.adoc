@@ -35,7 +35,7 @@ The status is displayed in a few minutes.
 `$ kubectl -n service-mesh get pods`
 . Check the status of the adapter pod: 
 +
-`$ grpmule-_namespace_`
+`$ kubectl -n service-mesh get pods | grep grpcmule`
 +
 If the status is Pending, describe the pod:
 +
