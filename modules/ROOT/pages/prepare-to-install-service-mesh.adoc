@@ -64,6 +64,27 @@ Before you can use Anypoint Service Mesh, you must have the following roles and 
 For more information about which permissions to use, see xref:api-manager::org-credentials-config-mule4.adoc#obtaining-credentials[obtaining credentials].
 * Cluster-admin role access to the Kubernetes cluster
 
+== Ports, IPs and Hostnames Whitelist Requirements
+
+In your network, you might need to whitelist the hostnames and ports of external resources to allow Anypoint Service Mesh to communicate with the MuleSoft-managed online Anypoint Platform APIs and services.
+
+[%header%autowidth.spread,cols="3+a"]
+|===
+|Plane |Host |Port
+|*US*|*anypoint.mulesoft.com* | 443
+|*US*|*analytics-ingest.anypoint.mulesoft.com* |  443
+|*US*|**.dkr.ecr.us-east-1.amazonaws.com* |  443
+|*US*|*exchange-files.anypoint.mulesoft.com* |  443
+|*US*|*exchange2-asset-manager-kprod.s3.amazonaws.com* |  443
+|*EU*|*eu1.anypoint.mulesoft.com* | 443
+|*EU*|*analytics-ingest.eu1.anypoint.mulesoft.com* |  443
+|*EU*|**.dkr.ecr.eu-central-1.amazonaws.com* |  443
+|*EU*|*exchange-files.eu1.anypoint.mulesoft.com* |  443
+|*EU*|*exchange2-asset-manager-kprod-eu.s3.eu-central-1.amazonaws.com* |  443
+|*ALL*|*get.helm.sh* | 443
+|*ALL*|*storage.googleapis.com* | 443
+|===
+
 == Configuring Your Environment Variable on Linux Systems
 
 Before you begin installing Anypoint Service Mesh, update your `PATH` environment variable to store system-wide values, such as the directories to search for the executable programs.
@@ -78,6 +99,8 @@ For example, type `cd /home/_your-user-name_/.bashrc`) in a text editor.
 `export PATH=_your-dir:$PATH_`, where _your-dir_ is the directory you want to add.
 . Save the `.bashrc` file.
 . Restart your terminal.
+
+
 
 == See Also
 
