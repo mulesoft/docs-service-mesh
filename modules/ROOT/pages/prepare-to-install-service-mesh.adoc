@@ -64,7 +64,7 @@ Before you can use Anypoint Service Mesh, you must have the following roles and 
 For more information about which permissions to use, see xref:api-manager::org-credentials-config-mule4.adoc#obtaining-credentials[obtaining credentials].
 * Cluster-admin role access to the Kubernetes cluster
 
-== Ports, IPs and Hostnames Whitelist
+== Ports, IPs and Hostnames Whitelist Requirements
 
 In your network, you might need to whitelist the hostnames and ports of external resources to allow Anypoint Service Mesh to communicate with the MuleSoft-managed online Anypoint Platform APIs and services.
 
