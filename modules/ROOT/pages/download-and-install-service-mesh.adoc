@@ -87,7 +87,7 @@ If you need to install Anypoint Service Mesh in a proxy environment, provide the
 | Required | None
 | `clientSecret` | The client secret of the environment (recommended) or the organization | Required | None
 | `license` | The path to the location where your license is stored | Required | None
-| `platformUri` | The URL of the proxy| Optional | https://anypoint.mulesoft.com
+| `platformUri` | The URL of the platform| Optional | https://anypoint.mulesoft.com
 | `proxyHost` | The name of the proxy host | Optional | None
 | `proxyProtocol`| The protocol used by the proxy: HTTP or HTTPS | Optional | None
 | `proxyPort`| The port number used by the proxy | Optional | None
