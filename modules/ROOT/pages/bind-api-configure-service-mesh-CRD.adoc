@@ -113,7 +113,7 @@ spec:
 +
 `asmctl api binding list`
 +
-. Verify the istio sidecar status:
+. Verify the Istio sidecar status:
 +
 `asmctl management check sidecar --namespace=<namespace>`
 +
