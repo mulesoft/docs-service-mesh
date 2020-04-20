@@ -46,7 +46,7 @@ For more information, see https://istio.io/docs/tasks/policy-enforcement/enablin
 `kubectl api-versions | grep admissionregistration.k8s.io/v1beta1`.
 . Configure the kube-apiserver process with the admission-control flag to “MutatingAdmissionWebhook”.
 . Add and list `ValidatingAdmissionWebhook` admission controllers in the correct order.
-* Kubernetes api-server network connectivity to the webhook pod and Kubernetes cluster compliance with other xref:https://istio.io/docs/ops/configuration/mesh/webhook/[Istio network prerequisites.] 
+* Kubernetes api-server network connectivity to the webhook pod and Kubernetes cluster compliance with other https://istio.io/docs/ops/configuration/mesh/webhook/[Istio network prerequisites.] 
 
 
 == Hardware Requirements
