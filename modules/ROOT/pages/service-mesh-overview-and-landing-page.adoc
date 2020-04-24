@@ -61,5 +61,4 @@ The adapter communicates with Anypoint Platform asynchronously to get the latest
 
 == See Also
 
-* https://istio.io/docs/reference/config/policy-and-telemetry/mixer-overview[Mixer Overview]
 * https://istio.io/docs/reference/config/policy-and-telemetry/mixer-overview/#adapters[Adapter Overview]
