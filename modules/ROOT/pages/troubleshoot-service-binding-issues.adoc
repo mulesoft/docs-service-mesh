@@ -38,11 +38,12 @@ When you create a binding, you must include in the binding command a name for th
 
 == Causes
 
-This error occur can occur because:
+This error can occur if:
  
+* The adapter name in the binding command is incorrect (adapter binding).
+* The API name in the binding command is incorrect (API binding).
 * The service name in the binding command is incorrect.
 * The Namespace flag was not provided and therefore the service was searched for in the `default` namespace.
-* The adapter name in the binding command is incorrect.
 
 
 === Diagnose
