@@ -18,7 +18,7 @@ To download the Anypoint Service Mesh client, type the following command at the 
 
 // == Configure Your Environment Variable
 
-// Before you begin installing Anypoint Service Mesh, update your `PATH` environment variable to store system-wide values, such as the directories to search for the executable programs.
+// Before you begin installing Anypoint Service Mesh, configure your `PATH` environment variable to store system-wide values, such as the directories to search for the executable programs.
 
 // To configure your `PATH` variable on Linux: 
 

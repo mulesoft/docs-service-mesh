@@ -30,11 +30,7 @@ For more information about how to install Helm, see the Helm installation docume
 ** Google Kubernetes Engine (GKE)
 ** Amazon EKS
 ** Azure Kubernetes Service (AKS)
-* https://istio.io/docs/setup[Install Istio] 1.4.4, 1.4.5, or 1.4.6 in your cluster with the following configurations: 
-. Enable policy control by configuring the flag:
-** `--set values.global.disablePolicyChecks=false`
-+
-For more information, see https://archive.istio.io/v1.4/docs/tasks/policy-enforcement/enabling-policy/[Policy Enforcement]. To configure other versions of Istio, contact your MuleSoft representative.
+* <<Istio v1.4.x or 1.5.x,install_Istio>>
 . Enable API Analytics by setting the `disableMixerHttpReports` flag to *false*: 
 +
 `kubectl -n istio-system get cm istio -o yaml | sed -e 's/disableMixerHttpReports: true/disableMixerHttpReports: false/g' | kubectl replace -f -`
@@ -98,26 +94,27 @@ For example, type `cd /home/_your-user-name_/.bashrc`) in a text editor.
 . Save the `.bashrc` file.
 . Restart your terminal.
 
-== Preparing to Install Instio
+[[install_Istio]]
+== Installing Istio
 
-When you install Instio in your environment, you must configure Instio settings based on the Instio version that you install.
+You can install Istio 1.4.x or 1.5.x in your environment to support Anypoint Service Mesh. However, the Istio configuration for Anypoint Service Mesh differs based on the Istio version that you installed.
 
-=== Installing Instio 1.4x
+=== Install Istio 1.4.x
 
-To install and configure Instio 1.4x for Anypoint Service Mesh:
+To install and configure Istio 1.4.x for Anypoint Service Mesh:
 
-. Download and install Instio using the Instio documentation.
+. Download and install Istio using the https://istio.io/docs/setup/[Istio Documentation].
 . Enable the policy control flag:
 +
-`set values.global.disablePolicyChecks=false`
+`--set values.global.disablePolicyChecks=false`
 +
-For more information about this flag, see https://archive.istio.io/v1.4/docs/tasks/policy-enforcement/enabling-policy/[Policy Enforcement]. 
+For more information about this flag, see https://archive.istio.io/v1.4/docs/tasks/policy-enforcement/enabling-policy/[Policy Enforcement].
 
-=== Installing Instio 1.5x
+=== Install Istio 1.5.x
 
-To install and configure Instio 1.5x for Anypoint Service Mesh:
+To install and configure Istio 1.5.x for Anypoint Service Mesh:
 
-. Download and install Instio using the Instio documentation.
+. Download and install Istio using the https://istio.io/docs/setup/[Istio Documentation].
 . Enable the policy control flag:
 +
 [source,text,linenums]
@@ -149,14 +146,37 @@ components:
   telemetry:
     enabled: true
 ----
-If you configured your profile correctly with these configurations settings, a full manifest file is displayed as illustrated in the following example:
+The following example illustrates the full manifest: 
 +
-----
 [source,text,linenums]
+----
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
 spec:
+profile: default
+  components:
+    policy:
+      enabled: true
+    sidecarInjector:
+      enabled: true
+    citadel:
+      enabled: true
+    telemetry:
+      enabled: true
+  addonComponents:
+    prometheus:
+      enabled: false
+  values:
+    global:
+      disablePolicyChecks: false
+    telemetry:
+      v1:
+        enabled: true
+      v2:
+        enabled: false
 ----  
+When using the full manifest, ensure that you choose the correct profile. In the example, the `default` profile is used.
+
 
 == See Also
 
