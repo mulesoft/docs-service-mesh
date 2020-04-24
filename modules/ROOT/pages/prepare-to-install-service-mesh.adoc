@@ -98,6 +98,66 @@ For example, type `cd /home/_your-user-name_/.bashrc`) in a text editor.
 . Save the `.bashrc` file.
 . Restart your terminal.
 
+== Preparing to Install Instio
+
+When you install Instio in your environment, you must configure Instio settings based on the Instio version that you install.
+
+=== Installing Instio 1.4x
+
+To install and configure Instio 1.4x for Anypoint Service Mesh:
+
+. Download and install Instio using the Instio documentation.
+. Enable the policy control flag:
++
+`set values.global.disablePolicyChecks=false`
++
+For more information about this flag, see https://archive.istio.io/v1.4/docs/tasks/policy-enforcement/enabling-policy/[Policy Enforcement]. 
+
+=== Installing Instio 1.5x
+
+To install and configure Instio 1.5x for Anypoint Service Mesh:
+
+. Download and install Instio using the Instio documentation.
+. Enable the policy control flag:
++
+[source,text,linenums]
+----
+values:
+  global:
+    disablePolicyChecks: false
+  components:
+    policy:
+      enabled: true
+    sidecarInjector:
+      enabled: true
+----
+. Enable telemetry:
++
+[source,text,linenums]
+----
+values:
+  prometheus:
+    enabled: true
+  telemetry:
+    v1:
+      enabled: true
+    v2:
+      enabled: false
+components:
+  citadel:
+    enabled: true
+  telemetry:
+    enabled: true
+----
+If you configured your profile correctly with these configurations settings, a full manifest file is displayed as illustrated in the following example:
++
+----
+[source,text,linenums]
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+spec:
+----  
+
 == See Also
 
 * https://helm.sh/docs/install/[Helm Documentation]
