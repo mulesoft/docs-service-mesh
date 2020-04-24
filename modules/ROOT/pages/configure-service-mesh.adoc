@@ -27,8 +27,18 @@ You can configure Anypoint Service Mesh using the command line interface (CLI) o
 * xref::configure-using-CLI.adoc[Using CLI]
 * xref::configure-using-CRD.adoc[Using CRD]
 
+== Configuring Response Headers for Anypoint Service Mesh
 
-//image::configure-service-mesh-flowchart.png[]
+Services protected by Anypoint Service Mesh return extra headers. These headers are added by Envoy and the gRPC adapter. You can remove these headers to avoid returning them to the originating client.
+
+To remove the headers:
+
+. Log in to your Ingress server.
+. Search for and remove the following headers added by Envoy:
+* `x-envoy-upstream-service-time`
+* `x-envoy-decorator-operation`
+. Search for and remove the `x-mule-report` header added by the gRPC adapter.
+
 
 == See Also
 

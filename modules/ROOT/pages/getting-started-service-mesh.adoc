@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: service mesh, microservices, cluster, get started
 
+//image::get-started-with-service-mesh-breadcrumb.png[75%, 75%]
+
 image::get-started-with-service-mesh-breadcrumb.png[75%, 75%]
 
 To get started with Anypoint Service Mesh, you must understand how to prepare, install, and use it.

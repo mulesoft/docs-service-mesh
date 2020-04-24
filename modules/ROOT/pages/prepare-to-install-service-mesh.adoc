@@ -22,11 +22,7 @@ Your Anypoint Service Mesh installation requires the following applications and 
 ** Google Kubernetes Engine (GKE)
 ** Amazon EKS
 ** Azure Kubernetes Service (AKS)
-* https://istio.io/docs/setup[Install Istio] 1.4.4, 1.4.5, or 1.4.6 in your cluster with the following configurations: 
-. Enable policy control by configuring the flag:
-** `--set values.global.disablePolicyChecks=false`
-+
-For more information, see https://archive.istio.io/v1.4/docs/tasks/policy-enforcement/enabling-policy/[Policy Enforcement]. To configure other versions of Istio, contact your MuleSoft representative.
+* <<Istio v1.4.x or 1.5.x,install_Istio>>
 . Enable API Analytics by setting the `disableMixerHttpReports` flag to *false*: 
 +
 `kubectl -n istio-system get cm istio -o yaml | sed -e 's/disableMixerHttpReports: true/disableMixerHttpReports: false/g' | kubectl replace -f -`
@@ -99,6 +95,89 @@ For example, type `cd /home/_your-user-name_/.bashrc`) in a text editor.
 `export PATH=_your-dir:$PATH_`, where _your-dir_ is the directory you want to add.
 . Save the `.bashrc` file.
 . Restart your terminal.
+
+[[install_Istio]]
+== Installing Istio
+
+You can install Istio 1.4.x or 1.5.x in your environment to support Anypoint Service Mesh. However, the Istio configuration for Anypoint Service Mesh differs based on the Istio version that you installed.
+
+=== Install Istio 1.4.x
+
+To install and configure Istio 1.4.x for Anypoint Service Mesh:
+
+. Download and install Istio using the https://istio.io/docs/setup/[Istio Documentation].
+. Enable the policy control flag:
++
+`--set values.global.disablePolicyChecks=false`
++
+For more information about this flag, see https://archive.istio.io/v1.4/docs/tasks/policy-enforcement/enabling-policy/[Policy Enforcement].
+
+=== Install Istio 1.5.x
+
+To install and configure Istio 1.5.x for Anypoint Service Mesh:
+
+. Download and install Istio using the https://istio.io/docs/setup/[Istio Documentation].
+. Enable the policy control flag:
++
+[source,text,linenums]
+----
+values:
+  global:
+    disablePolicyChecks: false
+  components:
+    policy:
+      enabled: true
+    sidecarInjector:
+      enabled: true
+----
+. Enable telemetry:
++
+[source,text,linenums]
+----
+values:
+  prometheus:
+    enabled: true
+  telemetry:
+    v1:
+      enabled: true
+    v2:
+      enabled: false
+components:
+  citadel:
+    enabled: true
+  telemetry:
+    enabled: true
+----
+The following example illustrates the full manifest: 
++
+[source,text,linenums]
+----
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+spec:
+profile: default
+  components:
+    policy:
+      enabled: true
+    sidecarInjector:
+      enabled: true
+    citadel:
+      enabled: true
+    telemetry:
+      enabled: true
+  addonComponents:
+    prometheus:
+      enabled: false
+  values:
+    global:
+      disablePolicyChecks: false
+    telemetry:
+      v1:
+        enabled: true
+      v2:
+        enabled: false
+----  
+When using the full manifest, ensure that you choose the correct profile. In the example, the `default` profile is used.
 
 
 
