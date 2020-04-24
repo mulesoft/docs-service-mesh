@@ -55,7 +55,7 @@ You require the Manage APIs Configuration permission for the environment where y
 
 To create an API in Anypoint Platform using Anypoint Service Mesh:
 
-. Create your adapter definition file and save it with a '.yaml' file extension, for example `test-api.yaml`:
+. Create your api definition file and save it with a '.yaml' file extension, for example `test-api.yaml`:
 +
 [source,text,linenums]
 ----
