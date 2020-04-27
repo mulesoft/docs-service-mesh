@@ -17,12 +17,13 @@ Anypoint Service Mesh is developed using Istio and Kubernetes. Therefore, you mu
 
 Your Anypoint Service Mesh installation requires the following applications and Kubernetes environments:
 
-
 * One of the following environments on which to run Kubernetes:
 ** Google Kubernetes Engine (GKE)
 ** Amazon EKS
 ** Azure Kubernetes Service (AKS)
-* <<Istio v1.4.x or 1.5.x,install_Istio>>
+* Install Istio
++
+For more information about how to install specific versions of Istio, see <<Installing Istio,install_Istio>>.
 . Enable API Analytics by setting the `disableMixerHttpReports` flag to *false*: 
 +
 `kubectl -n istio-system get cm istio -o yaml | sed -e 's/disableMixerHttpReports: true/disableMixerHttpReports: false/g' | kubectl replace -f -`
@@ -109,8 +110,9 @@ You can install Istio 1.4.x or 1.5.x in your environment to support Anypoint Ser
 
 To install and configure Istio 1.4.x for Anypoint Service Mesh:
 
-. Download and install Istio using the https://istio.io/docs/setup/[Istio Documentation].
-. Enable the policy control flag:
+. Download Istio using the https://istio.io/docs/setup/[Istio Documentation].
+. Install Istio with the following configurations:
+.. Enable the policy control flag:
 +
 `--set values.global.disablePolicyChecks=false`
 +
@@ -120,8 +122,9 @@ For more information about this flag, see https://archive.istio.io/v1.4/docs/tas
 
 To install and configure Istio 1.5.x for Anypoint Service Mesh:
 
-. Download and install Istio using the https://istio.io/docs/setup/[Istio Documentation].
-. Enable the policy control flag:
+. Download Istio using the https://istio.io/docs/setup/[Istio Documentation].
+. Install Istio with the following configurations:
+.. Enable the policy control flag:
 +
 [source,text,linenums]
 ----
@@ -134,7 +137,7 @@ values:
     sidecarInjector:
       enabled: true
 ----
-. Enable telemetry:
+.. Enable telemetry:
 +
 [source,text,linenums]
 ----
@@ -182,7 +185,6 @@ profile: default
         enabled: false
 ----  
 When using the full manifest, ensure that you choose the correct profile. In the example, the `default` profile is used.
-
 
 
 == See Also
