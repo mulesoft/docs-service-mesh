@@ -96,12 +96,12 @@ Before using a custom header, you must whitelist it. Because header whitelisting
 
 To whitelist a header, run the following command:
 
-`./service-mesh management config header-whitelist --name=<header name>`
+`asmctl management config policy-headers allow --name=x-client-secret`
 
 For example, if you want to allow the use of the header `x-client-secret`, run:
 
-`./service-mesh management config header-whitelist add --name=x-client-secret`
+`asmctl management config policy-headers allow --name=x-client-secret`
 
 To list existing whitelisted headers, run the following command:
 
-`./service-mesh management config header-whitelist list`
+`asmctl management config policy-headers list`
