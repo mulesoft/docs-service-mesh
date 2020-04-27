@@ -96,7 +96,7 @@ Before using a custom header, you must allow it. Because headers are allowed at 
 
 To allow a header, run the following command:
 
-`asmctl management config policy-headers allow --name=x-client-secret`
+`asmctl management config policy-headers allow --name=_header-name_`
 
 For example, if you want to allow the use of the header `x-client-secret`, run:
 
