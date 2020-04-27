@@ -55,10 +55,6 @@ To install Anypoint Service Mesh without a proxy, perform the following steps:
 +
 `asmctl install --clientId=<clientId> --clientSecret=<clientSecret> --license=<license absolute or relative path> --platformUri=<Anypoint Platform Uri>`
 +
-. Enter your client ID.
-. Enter your client secret.
-. Enter the path where your Anypoint Service Mesh license is stored.
-+
 Anypoint Service Mesh installs within few minutes and displays a status: 
 +
 image::service-mesh-installer-output.png[Example Installation Output]
