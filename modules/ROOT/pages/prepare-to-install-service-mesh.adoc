@@ -148,7 +148,7 @@ components:
   telemetry:
     enabled: true
 ----
-The following example illustrates the full manifest: 
+The following example illustrates a full manifest: 
 +
 [source,text,linenums]
 ----
