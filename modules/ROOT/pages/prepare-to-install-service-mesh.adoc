@@ -24,10 +24,6 @@ Your Anypoint Service Mesh installation requires the following applications and 
 * Install Istio
 +
 For more information about how to install specific versions of Istio, see <<install_Istio,Installing Istio>>.
-* Enable API Analytics by setting the `disableMixerHttpReports` flag to *false*: 
-+
-`kubectl -n istio-system get cm istio -o yaml | sed -e 's/disableMixerHttpReports: true/disableMixerHttpReports: false/g' | kubectl replace -f -`
-
 
 == Hardware Requirements
 
