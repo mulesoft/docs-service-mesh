@@ -17,16 +17,13 @@ Anypoint Service Mesh is developed using Istio and Kubernetes. Therefore, you mu
 
 Your Anypoint Service Mesh installation requires the following applications and Kubernetes environments:
 
-
 * One of the following environments on which to run Kubernetes:
 ** Google Kubernetes Engine (GKE)
 ** Amazon EKS
 ** Azure Kubernetes Service (AKS)
-* <<Istio v1.4.x or 1.5.x,install_Istio>>
-. Enable API Analytics by setting the `disableMixerHttpReports` flag to *false*: 
+* Install Istio
 +
-`kubectl -n istio-system get cm istio -o yaml | sed -e 's/disableMixerHttpReports: true/disableMixerHttpReports: false/g' | kubectl replace -f -`
-
+For more information about how to install specific versions of Istio, see <<install_Istio,Installing Istio>>.
 
 == Hardware Requirements
 
@@ -50,12 +47,16 @@ To obtain a trial or regular license key, contact your MuleSoft account represen
 
 == Permissions and Roles Requirements
 
-Before you can use Anypoint Service Mesh, you must have the following roles and permissions:
+Before you can use Anypoint Service Mesh, you must have the following roles, and credentials:
  
-* API Manager Environment Administrator permission or Organization Administrator role for your organization, to access the client ID and client secret credentials
-* Client ID and client secret credentials from Access Management: 
-** If you provision the adapter with organization credentials, you are able to manage APIS on the specific adapter of that organization. 
-** If you specify environment credentials, you can manage APIs of only that environment. MuleSoft recommends that you use the environment credentials instead of the organization credentials. 
+* Organization Administrators role to access the client ID and client secret credentials
+* Client ID and client secret credentials (from Access Management), to provision the adapter: 
+** With organization credentials
++
+If you provision the adapter with organization credentials, you can manage APIS on the specific adapter of that organization. 
+** With environment credentails
++
+If you specify environment credentials, you can manage APIs of only that environment. MuleSoft recommends that you use the environment credentials instead of the organization credentials. 
 +
 For more information about which permissions to use, see xref:api-manager::org-credentials-config-mule4.adoc#obtaining-credentials[obtaining credentials].
 * Cluster-admin role access to the Kubernetes cluster (only required for installation process)
@@ -81,21 +82,6 @@ In your network, you might need to whitelist the hostnames and ports of external
 |*ALL*|*storage.googleapis.com* | 443
 |===
 
-== Configuring Your Environment Variable on Linux Systems
-
-Before you begin installing Anypoint Service Mesh, update your `PATH` environment variable to store system-wide values, such as the directories to search for the executable programs.
-
-To configure your `PATH` variable on Linux: 
-
-. Open the `.bashrc` file in your home directory.
-+
-For example, type `cd /home/_your-user-name_/.bashrc`) in a text editor.
-. Add the following command to the last line of the file:
-+
-`export PATH=_your-dir:$PATH_`, where _your-dir_ is the directory you want to add.
-. Save the `.bashrc` file.
-. Restart your terminal.
-
 [[install_Istio]]
 == Installing Istio
 
@@ -105,8 +91,8 @@ You can install Istio 1.4.x or 1.5.x in your environment to support Anypoint Ser
 
 To install and configure Istio 1.4.x for Anypoint Service Mesh:
 
-. Download and install Istio using the https://istio.io/docs/setup/[Istio Documentation].
-. Enable the policy control flag:
+. Download Istio using the https://istio.io/docs/setup/[Istio Documentation].
+. Install Istio with the policy control flag enabled:
 +
 `--set values.global.disablePolicyChecks=false`
 +
@@ -116,8 +102,9 @@ For more information about this flag, see https://archive.istio.io/v1.4/docs/tas
 
 To install and configure Istio 1.5.x for Anypoint Service Mesh:
 
-. Download and install Istio using the https://istio.io/docs/setup/[Istio Documentation].
-. Enable the policy control flag:
+. Download Istio using the https://istio.io/docs/setup/[Istio Documentation].
+. Install Istio with the following configurations:
+.. Enable the policy control flag:
 +
 [source,text,linenums]
 ----
@@ -130,7 +117,7 @@ values:
     sidecarInjector:
       enabled: true
 ----
-. Enable telemetry:
+.. Enable telemetry:
 +
 [source,text,linenums]
 ----
@@ -178,7 +165,6 @@ spec:
         enabled: false
 ----  
 When using the full manifest, ensure that you choose the correct profile. In the example, the `default` profile is used.
-
 
 
 == See Also
