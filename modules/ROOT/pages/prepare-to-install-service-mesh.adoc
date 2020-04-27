@@ -52,7 +52,7 @@ To obtain a trial or regular license key, contact your MuleSoft account represen
 
 Before you can use Anypoint Service Mesh, you must have the following roles and permissions:
  
-* API Manager Environment Administrator permission or Organization Administrator role for your organization, to access the client ID and client secret credentials
+* Organization Administrator role for your organization, to access the client ID and client secret credentials
 * Client ID and client secret credentials from Access Management: 
 ** If you provision the adapter with organization credentials, you are able to manage APIS on the specific adapter of that organization. 
 ** If you specify environment credentials, you can manage APIs of only that environment. MuleSoft recommends that you use the environment credentials instead of the organization credentials. 
