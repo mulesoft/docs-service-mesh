@@ -29,17 +29,14 @@ You can configure Anypoint Service Mesh using the command line interface (CLI) o
 
 == Configuring Response Headers for Anypoint Service Mesh
 
-Services protected by Anypoint Service Mesh return extra headers. These headers are added by Envoy and the gRPC adapter. If you use an ingress, you can remove these headers to avoid returning them to the client.
+Services protected by Anypoint Service Mesh return extra headers. These headers are added by Envoy and the gRPC adapter. If you use an Ingress, you can remove these headers to avoid returning them to the client.
 
-The headers added by Envoy are:
+Envoy added headers include:
 
 * `x-envoy-upstream-service-time`
 * `x-envoy-decorator-operation`
 
-The headers added by the Mule adapter are:
-
-* `x-mule-report`
-
+The Mule adapter adds the `x-mule-report` header.
 
 == See Also
 
