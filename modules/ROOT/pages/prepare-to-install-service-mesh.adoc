@@ -155,7 +155,7 @@ The following example illustrates the full manifest:
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
 spec:
-profile: default
+  profile: default
   components:
     policy:
       enabled: true
