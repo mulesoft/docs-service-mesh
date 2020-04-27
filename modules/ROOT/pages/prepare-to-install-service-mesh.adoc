@@ -24,7 +24,7 @@ Your Anypoint Service Mesh installation requires the following applications and 
 * Install Istio
 +
 For more information about how to install specific versions of Istio, see <<install_Istio,Installing Istio,>>.
-. Enable API Analytics by setting the `disableMixerHttpReports` flag to *false*: 
+* Enable API Analytics by setting the `disableMixerHttpReports` flag to *false*: 
 +
 `kubectl -n istio-system get cm istio -o yaml | sed -e 's/disableMixerHttpReports: true/disableMixerHttpReports: false/g' | kubectl replace -f -`
 
@@ -96,8 +96,7 @@ You can install Istio 1.4.x or 1.5.x in your environment to support Anypoint Ser
 To install and configure Istio 1.4.x for Anypoint Service Mesh:
 
 . Download Istio using the https://istio.io/docs/setup/[Istio Documentation].
-. Install Istio with the following configurations:
-.. Enable the policy control flag:
+. Install Istio with the policy control flag enabled:
 +
 `--set values.global.disablePolicyChecks=false`
 +
