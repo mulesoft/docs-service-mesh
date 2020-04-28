@@ -60,7 +60,7 @@ To create an API using Anypoint Service Mesh, perform the following steps:
 [source,text,linenums]
 ----
 asmctl api create  
---name=<API resource name> \
+--name=<API Kubernetes resource name> \
 --namespace=<namespace name> \
 --environmentId=<environment ID> \
 --groupId=<group ID of the asset, for example, organization ID> \
@@ -76,7 +76,7 @@ asmctl api create
 [%header%autowidth.spread]
 |===
 | Parameter Name | Description | Required or Optional | Default Value
-| `name` | The name of the API that you want to provision, for example, `orders-api`. | Required | Not applicable
+| `name` | The name of the API Kubernetes resource that you want to provision, for example, `orders-api`. | Required | Not applicable
 | `namespace` | The namespace in which you want to create the adapter, for example, `mulesoft-apps`. | Optional | default
 | `environmentId` | The ID of the environment where you want to create your API instance. | Required | Not applicable
 | `groupId` | The ID of the group of assets on Exchange, for example, the organization ID. You can find the organization ID on the API Manager landing page or in Access Management. | Optional | Organization ID of the organization that contains the environment. 
