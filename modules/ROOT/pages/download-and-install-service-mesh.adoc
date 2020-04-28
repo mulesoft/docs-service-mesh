@@ -15,21 +15,21 @@ To download the Anypoint Service Mesh client, type the following command at the 
 
 `curl -Ls http://anypoint.mulesoft.com/servicemesh/xapi/v1/install > asmctl && chmod +x asmctl`
 
+== Configure Your Environment Variable on Linux Systems
 
-// == Configure Your Environment Variable
+Before you begin installing Anypoint Service Mesh, configure your PATH environment variable to store system-wide values, such as the directories to search for the executable programs.
 
-// Before you begin installing Anypoint Service Mesh, configure your `PATH` environment variable to store system-wide values, such as the directories to search for the executable programs.
+To configure your PATH variable on Linux:
 
-// To configure your `PATH` variable on Linux: 
-
-// . Open the `.bashrc` file in your home directory.
-// +
-// For example, type `cd /home/<your-user-name>/.bashrc` in a text editor.
-// . Add the following command to the last line of the file:
-// +
-// `export PATH="your-dir:$PATH"`, where *your-dir* is the directory you want to add.
-// . Save the `.bashrc` file.
-// . Restart your terminal.
+. Open the .bashrc file in your home directory.
++
+For example, type `cd /home/_your-user-name_/.bashrc)` in a text editor.
++
+. Add the following command to the last line of the file:
++
+`export PATH=your-dir:$PATH`, where your-dir is the directory you want to add.
+. Save the .bashrc file.
+. Restart your terminal.
 
 == Install Anypoint Service Mesh
 
