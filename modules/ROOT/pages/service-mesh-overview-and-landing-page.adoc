@@ -49,14 +49,14 @@ When a service is called, Anypoint Service Mesh ensures a smooth request flow an
 
 image:service-mesh-request-flow.png[]
 
-1. The client, which might be another microservice or any Kubernetes Ingress component, sends a request to the service.
-2. Envoy captures the request and redirects it to the Istio-mixer.
-3. The Mixer adapter then calls the Anypoint Service Mesh adapter to perform policy checks and verifications.
-4. The Anypoint Service Mesh adapter performs policy checks and responds back to the Mixer.
-5. The Mixer communicates the outcome of the policy checks to the Envoy proxy.
-6. When no policy violations are encountered, the request is routed to the microservice. The microservice runs the service logic and sends the response back to the client.
-+
-The adapter communicates with Anypoint Platform asynchronously to get the latest policies and contracts, and eventually sends back the API analytics information.
+. The client, which might be another microservice or any Kubernetes Ingress component, sends a request to the service.
+. Envoy captures the request and redirects it to the Istio-mixer.
+. The Mixer adapter then calls the Anypoint Service Mesh adapter to perform policy checks and verifications.
+. The Anypoint Service Mesh adapter performs policy checks and responds back to the Mixer.
+. The Mixer communicates the outcome of the policy checks to the Envoy proxy.
+. When no policy violations are encountered, the request is routed to the microservice. The microservice runs the service logic and sends the response back to the client.
+. The adapter communicates with Anypoint Platform asynchronously to get the latest policies and contracts.
+. Eventually, the adapter sends back the API analytics information to Anypoint Platform.
 
 
 == See Also
