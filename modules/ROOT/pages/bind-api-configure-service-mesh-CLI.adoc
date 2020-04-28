@@ -104,7 +104,7 @@ asmctl api binding create \
 [%header%autowidth.spread]
 |===
 | Parameter Name | Description | Required or Optional | Default Value
-| name | The unique name that represents the Kubernetes resource and the Kubernetes Service to bind with the API, for example, `service-binding-anypoint-security`. | Required | Not applicable
+| name | The unique name that represents the Kubernetes binding resource, for example, `service-binding-anypoint-security`. | Required | Not applicable
 | namespace | The namespace in which your service is deployed. Ensure that you use the same namespace as the adapter you provisioned earlier. | Required | Not applicable
 | adapter | Specify the Kubernetes adapter resource that you provisioned earlier.  | Required | Not applicable 
 | api | Specify the Kubernetes API resource that you want to associate with this adapter. | Required | Not applicable
