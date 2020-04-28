@@ -8,7 +8,7 @@ When you create the binding, Anypoint Service Mesh creates a three-way associati
 
 The adapter uses the unique API ID to fetch policies and apply them to your services that are running in the cluster.
 
-If you created the API using Anypoint Platform, you use the API ID to bind the service. However, if you used the CRD to create the API, you must use the API name to bind the service.
+If you created the API using Anypoint Platform, you use the API ID to bind the service. However, if you used the CRD to create the API, you must use the API Kubernetes resource name to bind the service.
 
 After the binding is created, Anypoint Service Mesh takes a few seconds to complete the binding procedure and update the status. After the binding is completed, you can view the status using the `list` command. The status values include:
 
@@ -62,7 +62,7 @@ metadata:
     service-mesh.mulesoft.com/kind: adapter-binding
 spec:
   instanceRef:
-    name: <adapter name> # example: bookinfo-service-mesh-adapter
+    name: <Adapter Kubernetes resource name> # example: bookinfo-service-mesh-adapter
   parameters:
     apiId: <api ID> # example: 15722113
     service: <Kubernetes resource service name> # example: orders-service
@@ -100,9 +100,9 @@ metadata:
     service-mesh.mulesoft.com/kind: api-binding
 spec:
   instanceRef:
-    name: <api name> # example: orders-api
+    name: <API Kubernetes resource name> # example: orders-api
   parameters:
-    adapter: <adapter name> # example: bookinfo-service-mesh-adapter
+    adapter: <Adapter Kubernetes resource name> # example: bookinfo-service-mesh-adapter
     service: <Kubernetes resource service name> # example: orders-service
 ----
 +
