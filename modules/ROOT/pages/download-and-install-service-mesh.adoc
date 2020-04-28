@@ -15,25 +15,24 @@ To download the Anypoint Service Mesh client, type the following command at the 
 
 `curl -Ls http://anypoint.mulesoft.com/servicemesh/xapi/v1/install > asmctl && chmod +x asmctl`
 
-== Configure Your Environment Variable on Linux Systems
+== Configuring Your Environment Variable on Linux Systems
 
-Before you begin installing Anypoint Service Mesh, configure your PATH environment variable to store system-wide values, such as the directories to search for the executable programs.
+Before you begin installing Anypoint Service Mesh, configure your `PATH` environment variable to store system-wide values, such as the directories to search for the executable programs.
 
-To configure your PATH variable on Linux:
+To configure your `PATH` variable on Linux: 
 
-. Open the .bashrc file in your home directory.
+. Open the `.bashrc` file in your home directory.
 +
-For example, type `cd /home/_your-user-name_/.bashrc)` in a text editor.
-+
+For example, type `cd /home/_your-user-name_/.bashrc`) in a text editor.
 . Add the following command to the last line of the file:
 +
-`export PATH=your-dir:$PATH`, where your-dir is the directory you want to add.
-. Save the .bashrc file.
+`export PATH=_your-dir:$PATH_`, where _your-dir_ is the directory you want to add.
+. Save the `.bashrc` file.
 . Restart your terminal.
 
 == Install Anypoint Service Mesh
 
-When you invoke the installer, Istio, Service Catalog, Anypoint Service Mesh Broker, and ClusterIP Service components are installed in your Kubernetes cluster. The installer performs several steps as part of the installation, such as checking for dependencies and performing various configurations. 
+When you invoke the installer, Service Catalog, Anypoint Service Mesh Broker, and ClusterIP Service components are installed in your Kubernetes cluster. The installer performs several steps as part of the installation, such as checking for dependencies and performing various configurations. 
 
 You can install Anypoint Service Mesh using the following options: 
 
@@ -52,11 +51,7 @@ To install Anypoint Service Mesh without a proxy, perform the following steps:
 
 . In the location from which you downloaded your Anypoint Service Mesh client, type:
 +
-`asmctl install`
-+
-. Enter your client ID.
-. Enter your client secret.
-. Enter the path where your Anypoint Service Mesh license is stored.
+`asmctl install --clientId=<clientId> --clientSecret=<clientSecret> --license=<license absolute or relative path> --platformUri=<Anypoint Platform Uri>`
 +
 Anypoint Service Mesh installs within few minutes and displays a status: 
 +
@@ -108,5 +103,27 @@ Anypoint Service Mesh is installed and the status of all pods is displayed:
 +
 image::verified-service-mesh-installer-output.png[]
 
+=== Allow Headers for Client Authorization-Based Policies
 
+Anypoint Service Mesh is configured with minimal allowed headers for client-based policies:
 
+- jwt
+- authorization
+- client_id
+- client-id
+- client_secret
+- client-secret
+
+Before using a custom header, you must allow it. Because headers are allowed at the cluster level, you do not need to allow headers for every managed API.
+
+To allow a header, run the following command:
+
+`asmctl management config policy-headers allow --name=_header-name_`
+
+For example, if you want to allow the use of the header `x-client-secret`, run:
+
+`asmctl management config policy-headers allow --name=x-client-secret`
+
+To list existing allowed headers, run the following command:
+
+`asmctl management config policy-headers list`

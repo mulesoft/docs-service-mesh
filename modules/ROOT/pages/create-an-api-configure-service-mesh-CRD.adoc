@@ -57,26 +57,26 @@ To create an API in Anypoint Platform using Anypoint Service Mesh:
 apiVersion: servicecatalog.k8s.io/v1beta1
 kind: ServiceInstance
 metadata:
-  name: <api name> # example: orders-api
-  namespace: <namespace name> # example: default
+  name: _Kubernetes API resource name_ # example: orders-api
+  namespace: _namespace name_ # example: default
   labels: 
     service-mesh.mulesoft.com/kind: api
 spec:
   clusterServiceClassExternalName: anypoint-platform-api-instance
   clusterServicePlanExternalName: service-mesh
   parameters:
-    environmentId: <environment ID> # example: 7cea45c6-3237-464d-bd34-3122c4abde29
-    groupId: <group ID> # example: 350b8164-e809-4091-91f5-079fb30e5a1e
-    assetId: <asset ID> # example: orders-api
-    version: <version> # example: 0.0.1
-    instanceLabel: <instance label> # example: public
+    environmentId: _environment ID_ # example: 7cea45c6-3237-464d-bd34-3122c4abde29
+    groupId: _group ID_ # example: 350b8164-e809-4091-91f5-079fb30e5a1e
+    assetId: _asset ID_ # example: orders-api
+    version: _version_ # example: 0.0.1
+    instanceLabel: _instance label_ # example: public
     tags:
       apiSpec:
-      - <tag in Exchange asset> # example: orders
+      - _tag in Exchange asset_ # example: orders
       apiInstance:
-      - <tag in API Manager instance> # example: orders
-    user: <Username of the Anypoint Platform user>
-    password: <Password of the Anypoint Platform user>
+      - _tag in API Manager instance_ # example: orders
+    user: _Username of the Anypoint Platform user_
+    password: _Password of the Anypoint Platform user_
 ----
 . Apply the CRD file using the following command:
 `kubectl apply -f test-api.yaml`
@@ -103,14 +103,14 @@ To store your user credentials in Kubernetes secrets:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: <secret name> # example: orders-api-config
-  namespace: <namespace name> # example: default
+  name: _secret name_ # example: orders-api-config
+  namespace: _namespace name_ # example: default
 type: Opaque
 stringData:
   config: |
     {
-      "user": "<replace-with-anypoint-username>",
-      "password": "<replace-with-anypoint-clientSecret>"
+      "user": "_replace-with-anypoint-username_",
+      "password": "_replace-with-anypoint-clientSecret_"
     }
 ----
 . Apply the secret: 
@@ -126,27 +126,27 @@ If the secret is correctly applied, a 'secret/orders-api-config created' message
 apiVersion: servicecatalog.k8s.io/v1beta1
 kind: ServiceInstance
 metadata:
-  name: <api name> # example: orders-api
-  namespace: <namespace name> # example: default
+  name: _Kubernetes API resource name_ # example: orders-api
+  namespace: _namespace name_ # example: default
   labels:
     service-mesh.mulesoft.com/kind: api
 spec:
   clusterServiceClassExternalName: anypoint-platform-api-instance
   clusterServicePlanExternalName: service-mesh
   parameters:
-    environmentId: <environment ID> # example: 7cea45c6-3237-464d-bd34-3122c4abde29
-    groupId: <group ID> # example: 350b8164-e809-4091-91f5-079fb30e5a1e
-    assetId: <asset ID> # example: orders-api
-    version: <version> # example: 0.0.1
-    instanceLabel: <instance label> # example: public
+    environmentId: _environment ID_ # example: 7cea45c6-3237-464d-bd34-3122c4abde29
+    groupId: _group ID_ # example: 350b8164-e809-4091-91f5-079fb30e5a1e
+    assetId: _asset ID_ # example: orders-api
+    version: _version_ # example: 0.0.1
+    instanceLabel: _instance label_ # example: public
     tags:
       apiSpec:
-      - <tag in Exchange asset> # example: orders
+      - _tag in Exchange asset_ # example: orders
       apiInstance:
-      - <tag in API Manager instance> # example: orders
+      - _tag in API Manager instance_ # example: orders
   parametersFrom: # The element specifies the secret name and configuration required for retrieving the parameters.
     - secretKeyRef:
-        name: <secret name> # example: orders-api-config
+        name: _secret name_ # example: orders-api-config
         key: config
 ----
 
