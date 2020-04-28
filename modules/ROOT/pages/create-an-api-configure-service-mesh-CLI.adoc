@@ -60,23 +60,23 @@ To create an API using Anypoint Service Mesh, perform the following steps:
 [source,text,linenums]
 ----
 asmctl api create  
---name=<API Kubernetes resource name> \
---namespace=<namespace name> \
---environmentId=<environment ID> \
---groupId=<group ID of the asset, for example, organization ID> \
---assetId=<asset ID on Exchange> \
---version=<Asset version of the instance on exchange> \
---instanceLabel=<ID of the instance on API Manager> \ 
---specTags=<list of comma separated tags to be added to the asset on Exchange> \
---instanceTags=<list of comma separated tags to be added to the instance on API Manager> \
---user=<username of the Anypoint Platform user, creating the API instance> \
---password=<password of the Anypoint Platform user, creating the API instance>
+--name=_Kubernetes API resource name_ \
+--namespace=_namespace name_ \
+--environmentId=_environment ID_ \
+--groupId=_group ID of the asset, for example, organization ID_ \
+--assetId=_asset ID on Exchange_ \
+--version=_Asset version of the instance on exchange_ \
+--instanceLabel=_ID of the instance on API Manager_ \ 
+--specTags=_list of comma separated tags to be added to the asset on Exchange_ \
+--instanceTags=_list of comma separated tags to be added to the instance on API Manager_ \
+--user=_username of the Anypoint Platform user, creating the API instance_ \
+--password=_password of the Anypoint Platform user, creating the API instance_
 ----
 +
 [%header%autowidth.spread]
 |===
 | Parameter Name | Description | Required or Optional | Default Value
-| `name` | The name of the API Kubernetes resource that you want to provision, for example, `orders-api`. | Required | Not applicable
+| `name` | The name of the Kubernetes API resource that you want to provision, for example, `orders-api`. | Required | Not applicable
 | `namespace` | The namespace in which you want to create the adapter, for example, `mulesoft-apps`. | Optional | default
 | `environmentId` | The ID of the environment where you want to create your API instance. | Required | Not applicable
 | `groupId` | The ID of the group of assets on Exchange, for example, the organization ID. You can find the organization ID on the API Manager landing page or in Access Management. | Optional | Organization ID of the organization that contains the environment. 
