@@ -6,7 +6,7 @@ endif::[]
 
 When you create the binding, Anypoint Service Mesh creates a three-way association of the service in Kubernetes, the API that you created in Anypoint Platform to represent the service, and the adapter that you created for the service. The adapter uses the unique API ID to fetch policies and apply them to your services that are running in the cluster.
 
-If you created the API using Anypoint Platform, you use the API ID to bind the service. However, if you you used Anypoint Service Mesh to create the API, you must use the API Kubernetes resource name to bind the service.
+If you created the API using Anypoint Platform, you use the API ID to bind the service. However, if you you used Anypoint Service Mesh to create the API, you must use the Kubernetes API resource name to bind the service.
 
 After the binding is created, Anypoint Service Mesh takes a few seconds to complete the binding procedure and update the status. After the binding is completed, you can view the status using the `list` command. The status values include:
 
@@ -45,28 +45,28 @@ image::api-id.png[]
 +
 . Retrieve from Kubernetes the name of the service with which you want to bind the API:
 +
-`kubectl get svc -n <namespace>`
+`kubectl get svc -n _namespace_`
 . Verify that your microservice port is named according to the requirements described in xref:http://istio.io/docs/setup/additional-setup/requirements/[Istio].
 . From the Anypoint Service Mesh installer download location in the Command window, bind the adapter with an application:
 +
 [source,text,linenums]
 ----
 asmctl adapter binding create \
---name=<binding Kubernetes resource name> \
---namespace=<namespace name> \
---adapter=<adapter Kubernetes resource name> \
---apiId=<api ID> \
---serviceName=<service name>
+--name=_Kubernetes binding resource name_ \
+--namespace=_namespace name_ \
+--adapter=_Kubernetes adapter resource name_ \
+--apiId=_api ID_ \
+--serviceName=_service name_
 ----
 Note that all object names, such as adapter name, binding name, and service name, must be in lowercase letters. An error is thrown if you do not follow Kubernetes naming conventions.
 +
 [%header%autowidth.spread]
 |===
 | Parameter Name | Description | Required or Optional | Default Value
-| name | The unique name that represents the Kubernetes resource name and the Kubernetes Service to bind with the API, for example, `service-binding-anypoint-security`. 
+| name | The unique name that represents the Kubernetes resource and the Kubernetes Service to bind with the API, for example, `service-binding-anypoint-security`. 
  | Required | Not applicable
 | namespace | The namespace in which your service is deployed. Ensure that you use the same namespace as the adapter you provisioned earlier. | Required | Not applicable
-| adapter | Specify the name of the adapter of the Kubernetes resource that you provisioned earlier.  | Required | Not applicable
+| adapter | Specify the name of the Kubernetes adapter resource that you provisioned earlier.  | Required | Not applicable
 | apiId | Specify the API ID of the API that you acquired prior to beginning this procedure. | Required | Not applicable
 | serviceName | The name of the service that you want to bind to the API. The service name is the identifier of the service that you want to manage with Anypoint Service Mesh. | Required | Not applicable
 |===
@@ -87,27 +87,27 @@ image::api-manager-status-for-service-mesh.png[85%, 85%]
 To create the binding:
 
 . Retrieve from Kubernetes the name of the service with which you want to bind the API:
-`kubectl get svc -n <namespace>`
+`kubectl get svc -n _namespace_`
 . Verify that your microservice port is named based on xref:https://istio.io/docs/setup/additional-setup/requirements/[Istio requirements].
 . From the Anypoint Service Mesh installer download location, bind the adapter with an API:
 +
 [source,text,linenums]
 ----
 asmctl api binding create \
---name=<Kubernetes resource name> \
---namespace=<namespace name> \
---adapter=<adapter of the Kubernetes resource> \
---api=<API name of the Kubernetes resource> \
---serviceName=<service name>
+--name=_Kubernetes resource name_ \
+--namespace=_namespace name_ \
+--adapter=_Kubernetes adapter resource_ \
+--api=_Kubernetes API resource_ \
+--serviceName=_service name_
 ----
 +
 [%header%autowidth.spread]
 |===
 | Parameter Name | Description | Required or Optional | Default Value
-| name | The unique name that represents the Kubernetes resource name and the Kubernetes Service to bind with the API, for example, `service-binding-anypoint-security`. | Required | Not applicable
+| name | The unique name that represents the Kubernetes resource and the Kubernetes Service to bind with the API, for example, `service-binding-anypoint-security`. | Required | Not applicable
 | namespace | The namespace in which your service is deployed. Ensure that you use the same namespace as the adapter you provisioned earlier. | Required | Not applicable
-| adapter | Specify the adapter name of the Kubernetes resource that you provisioned earlier.  | Required | Not applicable 
-| api | Specify the API name of the Kubernetes resource you want to associate with this adapter. | Required | Not applicable
+| adapter | Specify the Kubernetes adapter resource that you provisioned earlier.  | Required | Not applicable 
+| api | Specify the Kubernetes API resource that you want to associate with this adapter. | Required | Not applicable
 | serviceName | The name of the service that you want to bind to the API. The service name is the identifier of the service that you want to manage with Anypoint Service Mesh. 
 | Required | Not applicable
 |===
