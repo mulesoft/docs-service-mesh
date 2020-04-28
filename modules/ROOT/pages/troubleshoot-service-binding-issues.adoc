@@ -76,9 +76,9 @@ To diagnose this issue:
 . Check the adapter status:
 +
 `$  asmctl adapter list`
-. If the adapter status is Failed, review the adapter logs:
+. If the adapter status is Failed, review the binding logs:
 +
-`$ asmctl api binding logs --namespace=_replace_with_namespace_ --name=_replace_with_adapter_name_`
+`$ asmctl api binding logs --namespace=_replace_with_namespace_ --name=_replace_with_binding_name_`
 +
 The command displays an output like this:
 +
