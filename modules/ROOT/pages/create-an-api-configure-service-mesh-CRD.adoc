@@ -62,7 +62,7 @@ To create an API in Anypoint Platform using Anypoint Service Mesh:
 apiVersion: servicecatalog.k8s.io/v1beta1
 kind: ServiceInstance
 metadata:
-  name: _api name_ # example: orders-api
+  name: _Kubernetes API resource name_ # example: orders-api
   namespace: _namespace name_ # example: default
   labels: 
     service-mesh.mulesoft.com/kind: api
@@ -131,7 +131,7 @@ If the secret is correctly applied, a 'secret/orders-api-config created' message
 apiVersion: servicecatalog.k8s.io/v1beta1
 kind: ServiceInstance
 metadata:
-  name: _api name_ # example: orders-api
+  name: _Kubernetes API resource name_ # example: orders-api
   namespace: _namespace name_ # example: default
   labels:
     service-mesh.mulesoft.com/kind: api
