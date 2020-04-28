@@ -4,12 +4,7 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: service mesh, microservices, downloading, installing
 
-After you provision the adapter, you must create an API to bind to the service. The following diagram illustrates the flow for creating an API:
-
-//image::configure-service-mesh-flowchart-2.png[]
-image::create-API-CLI-flowchart.png[]
-
-You can create an API using Anypoint Platform or Anypoint Service Mesh:
+After you provision the adapter, you must create an API to bind to the service. You can create an API using Anypoint Platform or Anypoint Service Mesh:
 
 * <<create-api-AP, Create an API Using Anypoint Platform>>
 +
