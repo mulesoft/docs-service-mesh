@@ -52,9 +52,9 @@ image::api-id.png[]
 [source,text,linenums]
 ----
 asmctl adapter binding create \
---name=<Binding Kubernetes resource name> \
+--name=<binding Kubernetes resource name> \
 --namespace=<namespace name> \
---adapter=<Adapter Kubernetes resource name> \
+--adapter=<adapter Kubernetes resource name> \
 --apiId=<api ID> \
 --serviceName=<service name>
 ----
@@ -63,10 +63,10 @@ Note that all object names, such as adapter name, binding name, and service name
 [%header%autowidth.spread]
 |===
 | Parameter Name | Description | Required or Optional | Default Value
-| name | The unique name that represents the Binding Kubernetes resource of the Kubernetes Service with the API, for example, `service-binding-anypoint-security`. 
+| name | The unique name that represents the Kubernetes resource name and the Kubernetes Service to bind with the API, for example, `service-binding-anypoint-security`. 
  | Required | Not applicable
 | namespace | The namespace in which your service is deployed. Ensure that you use the same namespace as the adapter you provisioned earlier. | Required | Not applicable
-| adapter | Specify the name of the Adapter Kubernetes resource that you provisioned earlier.  | Required | Not applicable
+| adapter | Specify the name of the adapter of the Kubernetes resource that you provisioned earlier.  | Required | Not applicable
 | apiId | Specify the API ID of the API that you acquired prior to beginning this procedure. | Required | Not applicable
 | serviceName | The name of the service that you want to bind to the API. The service name is the identifier of the service that you want to manage with Anypoint Service Mesh. | Required | Not applicable
 |===
@@ -94,20 +94,20 @@ To create the binding:
 [source,text,linenums]
 ----
 asmctl api binding create \
---name=<Binding Kubernetes resource name> \
+--name=<Kubernetes resource name> \
 --namespace=<namespace name> \
---adapter=<Adapter Kubernetes resource name> \
---api=<API Kubernetes resource name> \
+--adapter=<adapter of the Kubernetes resource> \
+--api=<API name of the Kubernetes resource> \
 --serviceName=<service name>
 ----
 +
 [%header%autowidth.spread]
 |===
 | Parameter Name | Description | Required or Optional | Default Value
-| name | The unique name that represents the Binding Kubernetes resource of the Kubernetes service with the API, for example, `service-binding-anypoint-security`. | Required | Not applicable
+| name | The unique name that represents the Kubernetes resource name and the Kubernetes Service to bind with the API, for example, `service-binding-anypoint-security`. | Required | Not applicable
 | namespace | The namespace in which your service is deployed. Ensure that you use the same namespace as the adapter you provisioned earlier. | Required | Not applicable
-| adapter | Specify the name of the Adapter Kubernetes resource that you provisioned earlier.  | Required | Not applicable 
-| api | Specify the name of the API Kubernetes resource you want to associate with this adapter. | Required | Not applicable
+| adapter | Specify the adapter name of the Kubernetes resource that you provisioned earlier.  | Required | Not applicable 
+| api | Specify the API name of the Kubernetes resource you want to associate with this adapter. | Required | Not applicable
 | serviceName | The name of the service that you want to bind to the API. The service name is the identifier of the service that you want to manage with Anypoint Service Mesh. 
 | Required | Not applicable
 |===
