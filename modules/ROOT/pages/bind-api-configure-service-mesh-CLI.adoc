@@ -63,7 +63,7 @@ Note that all object names, such as adapter name, binding name, and service name
 [%header%autowidth.spread]
 |===
 | Parameter Name | Description | Required or Optional | Default Value
-| name | The unique name that represents the Kubernetes resource and the Kubernetes Service to bind with the API, for example, `service-binding-anypoint-security`. 
+| name | The unique name that represents the Kubernetes binding resource, for example, `service-binding-anypoint-security`. 
  | Required | Not applicable
 | namespace | The namespace in which your service is deployed. Ensure that you use the same namespace as the adapter you provisioned earlier. | Required | Not applicable
 | adapter | Specify the name of the Kubernetes adapter resource that you provisioned earlier.  | Required | Not applicable
@@ -116,4 +116,3 @@ asmctl api binding create \
 
 * xref::manage-apis-with-service-mesh.adoc[Manage APIs with Anypoint Service Mesh]
 * xref::uninstall-service-mesh.adoc[Uninstall Anypoint Service Mesh]
-
