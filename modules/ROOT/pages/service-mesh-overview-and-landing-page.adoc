@@ -47,7 +47,7 @@ After the services are discovered, Anypoint Exchange uses the metadata to automa
 
 When a service is called, Anypoint Service Mesh ensures a smooth request flow and security checks as shown in the following diagam:
 
-image:service-mesh-flows.jpeg[]
+image:service-mesh-request-flow.png[]
 
 1. The client, which might be another microservice or any Kubernetes Ingress component, sends a request to the service.
 2. Envoy captures the request and redirects it to the Istio-mixer.
