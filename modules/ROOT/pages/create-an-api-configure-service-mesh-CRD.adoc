@@ -71,7 +71,7 @@ spec:
   clusterServicePlanExternalName: service-mesh
   parameters:
     environmentId: <environment ID> # example: 7cea45c6-3237-464d-bd34-3122c4abde29
-    groupId: <group ID> # example: 350b8164-e809-4091-91f5-079fb30e5a1e
+    groupId: <group ID> # OPTIONAL - example: 350b8164-e809-4091-91f5-079fb30e5a1e
     assetId: <asset ID> # example: orders-api
     version: <version> # example: 0.0.1
     instanceLabel: <instance label> # example: public
@@ -140,7 +140,7 @@ spec:
   clusterServicePlanExternalName: service-mesh
   parameters:
     environmentId: <environment ID> # example: 7cea45c6-3237-464d-bd34-3122c4abde29
-    groupId: <group ID> # example: 350b8164-e809-4091-91f5-079fb30e5a1e
+    groupId: <group ID> # OPTIONAL - example: 350b8164-e809-4091-91f5-079fb30e5a1e
     assetId: <asset ID> # example: orders-api
     version: <version> # example: 0.0.1
     instanceLabel: <instance label> # example: public
