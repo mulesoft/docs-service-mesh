@@ -21,7 +21,9 @@ Your Anypoint Service Mesh installation requires the following applications and 
 ** Google Kubernetes Engine (GKE)
 ** Amazon EKS
 ** Azure Kubernetes Service (AKS)
-* Install Istio with policy enforcement and telemetry enabled. For more information about how to install Istio with this configuration enabled, see <<install_Istio,Installing Istio>>.
+* Install Istio with policy enforcement and telemetry enabled. 
++
+For more information about how to install Istio with this configuration enabled, see <<install_Istio,Installing Istio>>.
 
 == Hardware Requirements
 
@@ -152,11 +154,10 @@ spec:
       v2:
         enabled: false
 ----  
-When using the full manifest, ensure that you choose the correct profile. In the example, the `default` profile is used. To install the manifest, execute:
+When using the full manifest, ensure that you choose the correct profile. In the example, the `default` profile is used. 
+To install the manifest, run:
 +
 `istioctl manifest apply -f <manifest-file.yaml>`
-+
-
 
 === Install Istio 1.4.x
 
