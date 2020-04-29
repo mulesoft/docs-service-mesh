@@ -21,9 +21,9 @@ Your Anypoint Service Mesh installation requires the following applications and 
 ** Google Kubernetes Engine (GKE)
 ** Amazon EKS
 ** Azure Kubernetes Service (AKS)
-* Install Istio
+* Install Istio with policy enforcement and telemetry enabled. 
 +
-For more information about how to install specific versions of Istio, see <<install_Istio,Installing Istio>>.
+For more information about how to install Istio with this configuration enabled, see <<install_Istio,Installing Istio>>.
 
 == Hardware Requirements
 
@@ -87,16 +87,6 @@ In your network, you might need to whitelist the hostnames and ports of external
 
 You can install Istio 1.4.x or 1.5.x in your environment to support Anypoint Service Mesh. However, the Istio configuration for Anypoint Service Mesh differs based on the Istio version that you installed.
 
-=== Install Istio 1.4.x
-
-To install and configure Istio 1.4.x for Anypoint Service Mesh:
-
-. Download Istio using the https://istio.io/docs/setup/[Istio Documentation].
-. Install Istio with the policy control flag enabled:
-+
-`--set values.global.disablePolicyChecks=false`
-+
-For more information about this flag, see https://archive.istio.io/v1.4/docs/tasks/policy-enforcement/enabling-policy/[Policy Enforcement].
 
 === Install Istio 1.5.x
 
@@ -164,8 +154,21 @@ spec:
       v2:
         enabled: false
 ----  
-When using the full manifest, ensure that you choose the correct profile. In the example, the `default` profile is used.
+When using the full manifest, ensure that you choose the correct profile. In the example, the `default` profile is used. 
+To install the manifest, run:
++
+`istioctl manifest apply -f <manifest-file.yaml>`
 
+=== Install Istio 1.4.x
+
+To install and configure Istio 1.4.x for Anypoint Service Mesh:
+
+. Download Istio using the https://istio.io/docs/setup/[Istio Documentation].
+. Install Istio with the policy control flag enabled:
++
+`--set values.global.disablePolicyChecks=false`
++
+For more information about this flag, see https://archive.istio.io/v1.4/docs/tasks/policy-enforcement/enabling-policy/[Policy Enforcement].
 
 == See Also
 
