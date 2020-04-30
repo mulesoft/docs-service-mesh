@@ -60,7 +60,7 @@ items:
 
 === Solution
 
-The Isito platform requires every xref:https://istio.io/docs/ops/deployment/requirements/[port to be named]. To resolve this error, re-create the service with a named port:
+The Isito platform requires every link:https://istio.io/docs/ops/deployment/requirements/[port to be named]. To resolve this error, re-create the service with a named port:
 
 [source,text,linenums]
 ----

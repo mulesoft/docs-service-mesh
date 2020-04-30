@@ -3,7 +3,6 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
-:page-aliases: service-mesh-overview-and-landing-page.adoc
 :keywords: service mesh, microservices, cluster, container
 
 

@@ -52,7 +52,7 @@ image::bind-api-id.png[Display API ID]
 . Retrieve from Kubernetes the name of the service with which you want to bind the API:
 +
 `kubectl get svc -n <namespace>`
-. Verify that your microservice port is named based on xref:https://istio.io/docs/setup/additional-setup/requirements/[Istio requirements].
+. Verify that your microservice port is named based on link:https://istio.io/docs/setup/additional-setup/requirements/[Istio requirements].
 . If you created your API using Anypoint Platform, use the `spec.parameters.apiId` parameter in your `yaml` file:
 +
 [source,text,linenums]
