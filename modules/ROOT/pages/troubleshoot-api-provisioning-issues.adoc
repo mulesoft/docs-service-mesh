@@ -5,12 +5,10 @@ endif::[]
 :keywords: service mesh, microservices, API provisioning issues, troubleshooting
 
 After you provision an adapter, you must create an API, to which you then bind the service. You encounter errors when you provision an API if you provide invalid credentials.
-//Should I move this error to the Service errors topic and call the topic "API and Service Issues"?
-//@ Toams can we pose this as if you encounter API Provisioning issues, check these: incorrect credentials, and so on.
 
 == Client Secret is Incorrectly Configured
 
-If using a secret when you create an API, you must vefify that you are correctly referencing the secret.
+If using a secret when you create an API, you must verify that you are correctly referencing the secret.
 
 === Cause
 

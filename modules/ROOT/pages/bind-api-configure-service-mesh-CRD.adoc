@@ -43,12 +43,16 @@ To bind the service with an API, perform the following steps:
 . Click an instance name and copy the API ID that is displayed. 
 Ensure that you save this API ID somewhere that you can access readily.
 +
-image::api-id.png[]
+.The diagram shows the location where the API ID is displayed on the API version window.
+image::bind-api-id.png[Display API ID]
++
+<1> API name and API instance version.
+<2> API ID.
 +
 . Retrieve from Kubernetes the name of the service with which you want to bind the API:
 +
 `kubectl get svc -n <namespace>`
-. Verify that your microservice port is named following Istio standards: xref:https://istio.io/docs/setup/additional-setup/requirements/[].
+. Verify that your microservice port is named based on link:https://istio.io/docs/setup/additional-setup/requirements/[Istio requirements].
 . If you created your API using Anypoint Platform, use the `spec.parameters.apiId` parameter in your `yaml` file:
 +
 [source,text,linenums]
@@ -75,8 +79,11 @@ The binding is activated within a few seconds and the API is successfully regist
 +
 After you bind your API, the API in API Manager is marked as Active. You are now ready to apply policies to protect your APIs.
 +
-image::api-manager-status-for-service-mesh.png[85%, 85%]
-
+.The diagram shows the location where the status of the service is displayed.
+image::api-manager-status-for-service-mesh.png[95%, 95%]
++
+<1> API name and API instance version.
+<2> Service status.
 
 [[bind_using_ASM]]
 == Bind an API Created Using Anypoint Service Mesh

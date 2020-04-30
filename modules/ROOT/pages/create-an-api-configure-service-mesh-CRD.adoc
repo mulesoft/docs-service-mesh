@@ -153,7 +153,7 @@ spec:
 
 == See Also
 
-* xref::bind-api-configure-service-mesh-CRD.adoc[Bind a service using CRD]
+* xref::bind-api-configure-service-mesh-CRD.adoc[Bind a Service Using CRD]
 * xref::manage-apis-with-service-mesh.adoc[Manage APIs with Anypoint Service Mesh]
 * xref::uninstall-service-mesh.adoc[Uninstall Anypoint Service Mesh]
 * xref:exchange::ex2-to-simulate-api-data.adoc[Simulate Data in REST APIs]

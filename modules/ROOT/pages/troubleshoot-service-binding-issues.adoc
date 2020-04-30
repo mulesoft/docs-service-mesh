@@ -6,7 +6,7 @@ endif::[]
 
 After you create the API, you then bind your service with the API. This section provides possible causes for issues that might occue when you bind your service, and describes how to troubleshoot these errors:
 
-* <<dns-name-error,DNS Name Error>>
+* <<dns-name-error,DNS name error>>
 * <<references-non-existent-instance-error,References non-existent instance error>>
 * <<missing-entitlements-in-license,Missing entitlements in license>>
 

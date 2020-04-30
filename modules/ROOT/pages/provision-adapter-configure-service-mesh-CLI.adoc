@@ -9,7 +9,7 @@ Before you can start managing your services using Anypoint Service Mesh, you mus
 
 The adapter behaves as the policy enforcement component, which fetches policies from Anypoint platform, checks whether the policies have been met, and then reports the analytics data back to Anypoint Platform.  
 
-After you provision the adapter, you must redeploy all your existing applications to ensure that the Envoy sidecar is injected within each pod in the Kubernetes cluster.
+After you provision the adapter, you must redeploy all your existing applications to ensure that the Envoy sidecar is injected within each pod in the Kubernetes Cluster.
 
 [[adapter_plan]]
 == Adapter Plan
@@ -41,10 +41,10 @@ Additionally, you can verify the adapter status, which provides further details 
 
 The status values include:
 
-* Ready: The adapter is now ready to be used. 
-* Failed: The adapter was not created successfully. An error occurred. 
-* Provisioning: The adapter is in the process of being provisioned.
-* DeprovisionBlockedByExisingCredentials: The adapter has existing bindings, which are in use. 
+* `Ready`: The adapter is now ready to be used. 
+* `Failed`: The adapter was not created successfully. An error occurred. 
+* `Provisioning`: The adapter is in the process of being provisioned.
+* `DeprovisionBlockedByExisingCredentials`: The adapter has existing bindings, which are in use. 
 +
 Note that you must delete all associated bindings before you delete the adapter.
 
@@ -54,7 +54,7 @@ After you install Anypoint Service Mesh, you can use the command line interface 
 +
 `asmctl adapter help`
 
-image::service-mesh-cli-adapter-help.png[CLI Help for Adapter Commands]
+image::service-mesh-cli-adapter-help.png[CLI help for adapter commands]
 
 [[provision_the_adapter]]
 == Provision the Adapter Using the CLI
@@ -99,7 +99,7 @@ asmctl adapter create \
 +
 `asmctl adapter list`
 +
-image::provision-service-mesh-adapter-output.png[Example Output]
+image::provision-service-mesh-adapter-output.png[Example output]
 +
 . Review adapter logs to see detailed information about Kubernetes events and adapter transactions:
 +
@@ -120,5 +120,5 @@ image::provision-service-mesh-adapter-output.png[Example Output]
 == See Also
 
 * xref::prepare-to-install-service-mesh.adoc[Prerequisites for Downloading and Installing Anypoint Service Mesh]
-* xref::create-an-api-configure-service-mesh-CLI.adoc[Create an API using CLI]
-* xref::bind-api-configure-service-mesh-CLI.adoc[Bind a service using CLI]
+* xref::create-an-api-configure-service-mesh-CLI.adoc[Create an API Using CLI]
+* xref::bind-api-configure-service-mesh-CLI.adoc[Bind a Service Using CLI]
