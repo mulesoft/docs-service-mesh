@@ -9,7 +9,7 @@ Before you can start managing your services using Anypoint Service Mesh, you mus
 
 The adapter acts as a policy enforcement component that fetches policies from Anypoint platform, checks whether the policies have been met, and then reports the analytics data back to Anypoint Platform.  
 
-After you provision the adapter, you must redeploy all your existing applications to ensure that the Envoy sidecar is injected within each pod in the Kubernetes cluster.
+After you provision the adapter, you must redeploy all your existing applications to ensure that the Envoy sidecar is injected within each pod in the Kubernetes Cluster.
 
 [[adapter_plan]]
 == Adapter Plan
@@ -41,10 +41,10 @@ Additionally, you can verify the adapter status, which provides further details 
 
 The status values include:
 
-* Ready: The adapter is now ready to be used. 
-* Failed: The adapter was not created successfully. An error occurred. 
-* Provisioning: The adapter is in the process of being provisioned.
-* DeprovisionBlockedByExisingCredentials: The adapter has existing bindings, which are in use. 
+* `Ready`: The adapter is now ready to be used. 
+* `Failed`: The adapter was not created successfully. An error occurred. 
+* `Provisioning`: The adapter is in the process of being provisioned.
+* `DeprovisionBlockedByExisingCredentials`: The adapter has existing bindings, which are in use. 
 +
 Note that you must delete all associated bindings before you delete the adapter.
 
@@ -138,5 +138,5 @@ spec:
 == See Also
 
 * xref::prepare-to-install-service-mesh.adoc[Prerequisites for Downloading and Installing Anypoint Service Mesh]
-* xref::create-an-api-configure-service-mesh-CRD.adoc[Create an API using CRD]
-* xref::bind-api-configure-service-mesh-CRD.adoc[Bind a service using CRD]
+* xref::create-an-api-configure-service-mesh-CRD.adoc[Create an API Using CRD]
+* xref::bind-api-configure-service-mesh-CRD.adoc[Bind a Service Using CRD]

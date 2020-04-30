@@ -6,6 +6,7 @@ endif::[]
 :page-aliases: service-mesh-overview-and-landing-page.adoc
 :keywords: service mesh, microservices, cluster, container
 
+
 Anypoint Service Mesh enables accelerated adoption of microservices by providing discoverability, management, and security for non-MuleSoft microservices. These non-MuleSoft microservices might be written using different languages and platforms, or might be deployed in different environments.
 
 To alleviate issues arising from differences in these microservices, Anypoint Service Mesh ensures the following application management advantages:
@@ -21,41 +22,41 @@ Growing business demands for diverse deployment environments introduces a need f
 
 In a common enterprise setup, numerous teams are engaged in building services that connect and expose functionalities across all sorts of systems: mainframes, SaaS apps, IoT devices, and so on. The result is a siloed environment, with teams managing these applications in different ways. 
 
-With Anypoint Service Mesh, you can connect your applications, data, and devices through APIs in an application network. You can manage, govern, and secure your application network using Anypoint Platform.
+With Anypoint Service Mesh, you can connect your non-Mule applications, data, and devices through APIs in an application network. You can manage, govern, and secure your application network using Anypoint Platform.
 
-Microservices can exist outside of the MuleSoft ecosystem, built using different languages and deployed to different environments. Anypoint Service Mesh enables you to extend your application network to any type of microservice. 
+When your microservices can exist outside of the MuleSoft ecosystem, built using different languages and deployed to different environments. Anypoint Service Mesh enables you to extend your application network to any type of microservice. 
 
 Most importantly, Anypoint Service Mesh can perform these tasks across all services, independent of the technology upon which it is built. You can discover, manage and secure any type of microservice from a central control plane in the Anypoint Platform.
 
 == Anypoint Service Mesh Architecture
 
-A service mesh is an independent architecture layer, which is encapsulated in a Kubernetes cluster. In a service mesh architecture, instead of the services directly communicating with one another, a sidecar proxy is used to perform the same job. This allows for providing security to your services. The manner in which these sidecar proxies interact is governed by an overall mixer, where a user can apply different policies and security.
+A service mesh is an independent architecture layer, which is encapsulated in a Kubernetes Cluster. In a service mesh architecture, instead of the services directly communicating with one another, a sidecar proxy is used to perform the same job. This allows for providing security to your services. The manner in which these sidecar proxies interact is governed by an overall mixer, where a user can apply different policies and security.
 
 The mixer is a highly modular and extensible component, whose key function is to provide a layer of abstraction over the different policy and telemetry backend systems. Because of this abstraction, applications such as Anypoint Platform, enable the rest of Istio to be agnostic of the backend processing.
 
 The mixer is architected on a general-purpose plug-in model, which provides flexibility in dealing with different infrastructure backend applications. These plug-in applications, known as adapters, enable the mixer to interface with different infrastructure backend applications that deliver core functionality, such as logging, monitoring, enforcing quotas, performing ACL checks, and so on.
 
-image::anypoint-service-mesh-architecture.png[Anypoint Service Mesh Architecture]
+image::anypoint-service-mesh-architecture.png[Anypoint Service Mesh architecture]
 
 As illustrated in the diagram, at the top of the architecture is Anypoint Platform, which brings complete lifecycle API management capabilities to the microservices built with Mule runtime engine (Mule). These Mule instances might be deployed within CloudHub, or Runtime Fabric at your location. 
 
-Istio, which is installed on a Kubernentes cluster, uses Envoy to manage the services using a sidecar proxy. The sidecar is responsible for any communication with the service, and resides within the same container as your service. With the Anypoint Service Mesh enabled, you can easily apply any of Istio’s native policies for traffic control and security. These policies help ensure reliable and secure service-to-service communication.
+Istio, which is installed on a Kubernentes Cluster, uses Envoy to manage the services using a sidecar proxy. The sidecar is responsible for any communication with the service, and resides within the same container as your service. With the Anypoint Service Mesh enabled, you can easily apply any of Istio’s native policies for traffic control and security. These policies help ensure reliable and secure service-to-service communication.
 
-The MuleSoft adapter and broker, which reside within the Istio mixer, connect components to Anypoint Platform. The adapter and broker enable sharing of metadata about all the services that are managed by the mesh. This allows for discovery of your existing microservices from the Kubernetes cluster as APIs into Anypoint Platform. 
+The MuleSoft adapter and broker, which reside within the Istio mixer, connect components to Anypoint Platform. The adapter and broker enable sharing of metadata about all the services that are managed by the mesh. This allows for discovery of your existing microservices from the Kubernetes Cluster as APIs into Anypoint Platform. 
 
 After the services are discovered, Anypoint Exchange uses the metadata to automatically discover and create HTTP APIs for each service. These APIs can then be managed within API Manager. Similarly, Anypoint Monitoring uses the metadata to get information from the sidecar proxy and makes it available for API Analytics.
 
 == Service Request Flow
 
-When a service is called, Anypoint Service Mesh ensures a smooth request flow and security checks as shown in the following diagam:
+When a service is called, Anypoint Service Mesh ensures a smooth request flow and security checks as shown in the following diagram:
 
 image:service-mesh-request-flow.png[]
 
 . The client, which might be another microservice or any Kubernetes Ingress component, sends a request to the service.
 . Envoy captures the request and redirects it to the Istio-mixer.
-. The Mixer adapter then calls the Anypoint Service Mesh adapter to perform policy checks and verifications.
-. The Anypoint Service Mesh adapter performs policy checks and responds back to the Mixer.
-. The Mixer communicates the outcome of the policy checks to the Envoy proxy.
+. The mixer adapter then calls the Anypoint Service Mesh adapter to perform policy checks and verifications.
+. The Anypoint Service Mesh adapter performs policy checks and responds back to the mixer.
+. The mixer communicates the outcome of the policy checks to the Envoy proxy.
 . When no policy violations are encountered, the request is routed to the microservice. The microservice runs the service logic and sends the response back to the client.
 . The adapter communicates with Anypoint Platform asynchronously to get the latest policies and contracts.
 . Eventually, the adapter sends back the API analytics information to Anypoint Platform.

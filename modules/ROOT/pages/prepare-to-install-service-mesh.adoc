@@ -1,4 +1,4 @@
-= Prerequisites for Downloading and Installing Anypoint Service Mesh
+= Reviewing Prerequisites for Downloading and Installing Anypoint Service Mesh
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
@@ -23,7 +23,7 @@ Your Anypoint Service Mesh installation requires the following applications and 
 ** Azure Kubernetes Service (AKS)
 * Install Istio
 +
-For more information about how to install specific versions of Istio, see <<install_Istio,Installing Istio>>.
+For more information about how to install specific versions of Istio, see <<install_Istio,installing Istio>>.
 
 == Hardware Requirements
 
@@ -54,14 +54,14 @@ Before you can use Anypoint Service Mesh, you must have the following roles, and
 ** With organization credentials
 +
 If you provision the adapter with organization credentials, you can manage APIS on the specific adapter of that organization. 
-** With environment credentails
+** With environment credentials
 +
 If you specify environment credentials, you can manage APIs of only that environment. MuleSoft recommends that you use the environment credentials instead of the organization credentials. 
 +
 For more information about which permissions to use, see xref:api-manager::org-credentials-config-mule4.adoc#obtaining-credentials[obtaining credentials].
 * Cluster-admin role access to the Kubernetes cluster (only required for installation process)
 
-== Ports, IPs and Hostnames Whitelist Requirements
+== Ports, IPs, and Hostnames Whitelist Requirements
 
 In your network, you might need to whitelist the hostnames and ports of external resources to allow Anypoint Service Mesh to communicate with the MuleSoft-managed online Anypoint Platform APIs and services.
 
@@ -91,18 +91,18 @@ You can install Istio 1.4.x or 1.5.x in your environment to support Anypoint Ser
 
 To install and configure Istio 1.4.x for Anypoint Service Mesh:
 
-. Download Istio using the https://istio.io/docs/setup/[Istio Documentation].
+. Download Istio using the https://istio.io/docs/setup/[Istio documentation].
 . Install Istio with the policy control flag enabled:
 +
 `--set values.global.disablePolicyChecks=false`
 +
-For more information about this flag, see https://archive.istio.io/v1.4/docs/tasks/policy-enforcement/enabling-policy/[Policy Enforcement].
+For more information about this flag, see https://archive.istio.io/v1.4/docs/tasks/policy-enforcement/enabling-policy/[policy enforcement].
 
 === Install Istio 1.5.x
 
 To install and configure Istio 1.5.x for Anypoint Service Mesh:
 
-. Download Istio using the https://istio.io/docs/setup/[Istio Documentation].
+. Download Istio using the https://istio.io/docs/setup/[Istio documentation].
 . Install Istio with the following configurations:
 .. Enable the policy control flag:
 +
@@ -170,5 +170,12 @@ When using the full manifest, ensure that you choose the correct profile. In the
 == See Also
 
 * https://istio.io/docs/setup/[Istio Documentation]
+* xref::configure-service-mesh.adoc[Configure Anypoint Service Mesh]
+* xref::provision-adapter-configure-service-mesh-CLI.adoc[Provision an Adapter Using CLI]
+* xref::provision-adapter-configure-service-mesh-CRD.adoc[Provision an Adapter Using CRD]
+* xref::create-an-api-configure-service-mesh-CLI.adoc[Create an API Using CLI]
+* xref::create-an-api-configure-service-mesh-CRD.adoc[Create an API Using CRD]
+* xref::bind-api-configure-service-mesh-CLI.adoc[Bind a Service Using CLI]
+* xref::bind-api-configure-service-mesh-CRD.adoc[Bind a Service Using CRD]
 
 

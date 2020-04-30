@@ -6,10 +6,10 @@ endif::[]
 
 When you perform Anypoint Service Mesh tasks, you might encounter issues or receive error messages. The following topics help you resolve these issues:
 
-* xref::troubleshoot-installation-issues.adoc[Installation Issues]
-* xref::troubleshoot-user-service-issues.adoc[User Service Issues]
-* xref:troubleshoot-adapter-provisioning-issues.adoc[Adapter Provisioning Issues]
-* xref:troubleshoot-api-provisioning-issues.adoc[API Provisioning Issues]
-* xref:troubleshoot-service-binding-issues.adoc[Service Binding Issues]
-* xref:troubleshoot-policy-enforcement-issues.adoc[Policy Enforcement Issues]
-* xref:common-commands-troubleshoot.adoc[Common Commands Used for Troubleshooting]
+* xref::troubleshoot-installation-issues.adoc[Installation issues]
+* xref::troubleshoot-user-service-issues.adoc[User service issues]
+* xref:troubleshoot-adapter-provisioning-issues.adoc[Adapter provisioning issues]
+* xref:troubleshoot-api-provisioning-issues.adoc[API provisioning issues]
+* xref:troubleshoot-service-binding-issues.adoc[Service binding issues]
+* xref:troubleshoot-policy-enforcement-issues.adoc[Policy enforcement issues]
+* xref:common-commands-troubleshoot.adoc[Common commands used for troubleshooting]

@@ -15,15 +15,15 @@ To download the Anypoint Service Mesh client, type the following command at the 
 
 `curl -Ls http://anypoint.mulesoft.com/servicemesh/xapi/v1/install > asmctl && chmod +x asmctl`
 
-== Configuring Your Environment Variable on Linux Systems
+== Configure Your Environment Variable on Unix-like Systems
 
-Before you begin installing Anypoint Service Mesh, configure your `PATH` environment variable to store system-wide values, such as the directories to search for the executable programs.
+Before you install Anypoint Service Mesh, configure your `PATH` environment variable to store system-wide values, such as the directories to search for the executable programs.
 
 To configure your `PATH` variable on Linux: 
 
 . Open the `.bashrc` file in your home directory.
 +
-For example, type `cd /home/_your-user-name_/.bashrc`) in a text editor.
+For example, type `nano ~/.bashrc` to open the file with the nano text editor.
 . Add the following command to the last line of the file:
 +
 `export PATH=_your-dir:$PATH_`, where _your-dir_ is the directory you want to add.
@@ -32,12 +32,12 @@ For example, type `cd /home/_your-user-name_/.bashrc`) in a text editor.
 
 == Install Anypoint Service Mesh
 
-When you invoke the installer, Service Catalog, Anypoint Service Mesh Broker, and ClusterIP Service components are installed in your Kubernetes cluster. The installer performs several steps as part of the installation, such as checking for dependencies and performing various configurations. 
+When you invoke the installer, Service Catalog, Anypoint Service Mesh Broker, and ClusterIP Service components are installed in your Kubernetes Cluster. The installer performs several steps as part of the installation, such as checking for dependencies and performing various configurations. 
 
 You can install Anypoint Service Mesh using the following options: 
 
-* <<install-without-proxy,Install Anypoint Service Mesh without Proxy>> 
-* <<install-with-proxy,Install Anypoint Service Mesh with Proxy>> 
+* <<install-without-proxy,Install Anypoint Service Mesh without proxy>> 
+* <<install-with-proxy,Install Anypoint Service Mesh with proxy>> 
 
 
 === Task Prerequisites
@@ -55,7 +55,7 @@ To install Anypoint Service Mesh without a proxy, perform the following steps:
 +
 Anypoint Service Mesh installs within few minutes and displays a status: 
 +
-image::service-mesh-installer-output.png[Example Installation Output]
+image::service-mesh-installer-output.png[Example installation output]
 +
 If an installation error occurs, the installer times out and uninstalls all previously installed Anypoint Service Mesh components.
 . Verify the status of all pods:
@@ -64,7 +64,7 @@ If an installation error occurs, the installer times out and uninstalls all prev
 +
 Anypoint Service Mesh is installed and a status of all pods is displayed:
 +
-image::verified-service-mesh-installer-output.png[]
+image::verified-service-mesh-installer-output.png[Anypoint Service Mesh installer output]
 
 [[install-with-proxy]]
 === Install with Proxy
@@ -92,7 +92,7 @@ If you need to install Anypoint Service Mesh in a proxy environment, provide the
 +
 Anypoint Service Mesh installs within few minutes and displays a status: 
 +
-image::service-mesh-installer-output.png[Example Installation Output]
+image::service-mesh-installer-output.png[Anypoint Service Mesh installation output]
 +
 If an installation error occurs, the installer times out and uninstalls all previously installed Anypoint Service Mesh components.
 . Verify the status of all pods:
@@ -101,7 +101,7 @@ If an installation error occurs, the installer times out and uninstalls all prev
 +
 Anypoint Service Mesh is installed and the status of all pods is displayed:
 +
-image::verified-service-mesh-installer-output.png[]
+image::verified-service-mesh-installer-output.png[Pods displayed]
 
 === Allow Headers for Client Authorization-Based Policies
 

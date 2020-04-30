@@ -7,18 +7,18 @@ endif::[]
 When you begin installing Anypoint Service Mesh, you might encounter issues caused by incorrect credentials, insufficient space on pods, and so on. These texts provide possible causes for your installation issues and describe how to troubleshoot these errors:
 
 * <<credentials-no-permissions,Credentials Do Not Have the Necessary Permissions or Entitlements>>
-* <<invalid-credentials,Invalid Credentials Provided>>
-* <<insufficient-pod-allocation,Insufficient Pod Allocation>>
-* <<service-mesh-not-found, Service Mesh Not Found>>
-* <<failed-webhook-calling,Installation Failed Due to WebHook Calling Error>>
-* <<installation-failed-unkown-reason, Installation Failed Due to Unknown Reason>>
+* <<invalid-credentials,Invalid credentials provided>>
+* <<insufficient-pod-allocation,Insufficient pod allocation>>
+* <<service-mesh-not-found, Service Mesh not found>>
+* <<failed-webhook-calling,Installation failed due to WebHook calling error>>
+* <<installation-failed-unkown-reason, Installation failed due to unknown reason>>
 
 [[credentials-no-permissions]]
 == Credentials Do Not Have the Necessary Permissions or Entitlements
 
 When you start the Anypoint Service Mesh installation, the installer appears to be progressing with dependency checks but an `the given credentials does not have the necessary permissions or entitlements` error is displayed:
 
-image::credentials-permissions-install-issues-service-mesh.png[Credentials no not have permissions or entitlements]
+image::credentials-permissions-install-issues-service-mesh.png[Credentials do not have permissions or entitlements]
 
 === Cause
 

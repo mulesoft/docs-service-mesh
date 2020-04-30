@@ -6,12 +6,12 @@ endif::[]
 
 After you provision the adapter, you must create an API to bind to the service. You can create an API using Anypoint Platform or Anypoint Service Mesh:
 
-* <<create-api-AP, Create an API Using Anypoint Platform>>
+* <<create-api-AP, Create an API using Anypoint Platform>>
 +
 If you want to create REST or SOAP APIs with OAS or WSDL definition, use Anypoint Platform. 
 +
 Note that if you want to upload a REST API or OAS asset type, use a .json or .yaml file. Alternatively, if you want to upload a SOAP API or WSDL asset type, use a .wsdl or .xml file.
-* <<create-api-ASM-CLI, Create an API Using Anypoint Service Mesh Autocreate>>
+* <<create-api-ASM-CLI, Create an API using Anypoint Service Mesh Autocreate>>
 +
 Anypoint Service Mesh enables you to automatically create an HTTP API in Anypoint Platform, with no REST or SOAP definitions. You do not have to manually log in to Anypoint Platform. 
 +
@@ -92,7 +92,7 @@ The API that was created is displayed.
 
 == See Also
 
-* xref::bind-api-configure-service-mesh-CLI.adoc[Bind a service using CLI]
+* xref::bind-api-configure-service-mesh-CLI.adoc[Bind a Service Using CLI]
 * xref::manage-apis-with-service-mesh.adoc[Manage APIs with Anypoint Service Mesh]
 * xref::uninstall-service-mesh.adoc[Uninstall Anypoint Service Mesh]
 * xref:exchange::ex2-to-simulate-api-data.adoc[Simulate Data in REST APIs]

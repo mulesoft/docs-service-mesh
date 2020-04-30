@@ -100,7 +100,7 @@ In the results, the `Type` column displays a value other than "LoadBalancer" and
 
 === Solution
  
-To resolve this issue, verify the service specifications. You must configure the service specification as a load balancer to render it publically available. 
+To resolve this issue, verify the service specifications. You must configure the service specification as a load balancer to render it publicly available. 
 
 If the service is not meant to be public, the endpoint must be used from within the cluster or must be accessed from outside the cluster using the following command: 
 +
