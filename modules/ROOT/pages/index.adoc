@@ -6,34 +6,23 @@ endif::[]
 :keywords: service mesh, microservices, cluster, container
 
 
-Anypoint Service Mesh enables accelerated adoption of microservices by providing discoverability, management, and security for non-MuleSoft microservices. These non-MuleSoft microservices might be written using different languages and platforms, or might be deployed in different environments.
+Anypoint Service Mesh enables you to extend your microservices network by including your non-MuleSoft applications into the Anypoint Platform sphere. You can then manage and secure your application network, including your non-Mule applications, seamlessly from a single pane.
 
-To alleviate issues arising from differences in these microservices, Anypoint Service Mesh ensures the following application management advantages:
+Your non-MuleSoft microservices might be written using different languages and platforms, or might be deployed in different environments. To alleviate issues arising from differences in these microservices, Anypoint Service Mesh ensures the following application management advantages:
 
 * Provides resilient service-to-service communication using zero-trust policies to handle traffic control, fault tolerance and load balancing 
 * Extends MuleSoft API Management capabilities to any non-Mule service, with policies, security and analytics all applied directly from Anypoint Platform
 * Amplifies reuse of services with discovery of non-Mule services within Exchange, available for use in future projects
 
-
-== Business Solution
-
-Growing business demands for diverse deployment environments introduces a need for rapidly deployable and manageable microservices architecture. In a microservice architecture, you build smaller, targeted services instead of large monolithic applications. These services are faster to build, easier to maintain, and help foster agility. 
-
-In a common enterprise setup, numerous teams are engaged in building services that connect and expose functionalities across all sorts of systems: mainframes, SaaS apps, IoT devices, and so on. The result is a siloed environment, with teams managing these applications in different ways. 
-
-With Anypoint Service Mesh, you can connect your non-Mule applications, data, and devices through APIs in an application network. You can manage, govern, and secure your application network using Anypoint Platform.
-
-When your microservices can exist outside of the MuleSoft ecosystem, built using different languages and deployed to different environments. Anypoint Service Mesh enables you to extend your application network to any type of microservice. 
-
-Most importantly, Anypoint Service Mesh can perform these tasks across all services, independent of the technology upon which it is built. You can discover, manage and secure any type of microservice from a central control plane in the Anypoint Platform.
-
 == Anypoint Service Mesh Architecture
 
-A service mesh is an independent architecture layer, which is encapsulated in a Kubernetes Cluster. In a service mesh architecture, instead of the services directly communicating with one another, a sidecar proxy is used to perform the same job. This allows for providing security to your services. The manner in which these sidecar proxies interact is governed by an overall mixer, where a user can apply different policies and security.
+A service mesh is an independent architecture layer, which is encapsulated in a Kubernetes Cluster. In a service mesh architecture, instead of the services directly communicating with one another, a sidecar proxy is used to perform the same job.  
 
-The mixer is a highly modular and extensible component, whose key function is to provide a layer of abstraction over the different policy and telemetry backend systems. Because of this abstraction, applications such as Anypoint Platform, enable the rest of Istio to be agnostic of the backend processing.
+The sidecar proxy enables you to bring your existing non-Mule microservices from the Kubernetes Cluster as APIs into Anypoint Platform. You can then manage these APIs within API Designer, API Manager, and Exchange. Additionally, you can monitor the health of your APIs using API analytics.
 
-The mixer is architected on a general-purpose plug-in model, which provides flexibility in dealing with different infrastructure backend applications. These plug-in applications, known as adapters, enable the mixer to interface with different infrastructure backend applications that deliver core functionality, such as logging, monitoring, enforcing quotas, performing ACL checks, and so on.
+A mixer, whose key function is to provide a layer of abstraction over the different policy and telemetry backend systems, governs the sidecar proxies. Because of this abstraction, applications such as Anypoint Platform, enable the rest of Istio to be agnostic of the backend processing.
+
+The mixer is architected on a general-purpose plug-in model, which provides flexibility in dealing with different infrastructure backend applications. These plug-in applications, known as adapters, enable the mixer to interface with the backend applications that deliver core functionality, such as logging, monitoring, enforcing quotas, performing ACL checks, and so on.
 
 image::anypoint-service-mesh-architecture.png[Anypoint Service Mesh architecture]
 
@@ -58,7 +47,7 @@ image:service-mesh-request-flow.png[]
 . The mixer communicates the outcome of the policy checks to the Envoy proxy.
 . When no policy violations are encountered, the request is routed to the microservice. The microservice runs the service logic and sends the response back to the client.
 . The adapter communicates with Anypoint Platform asynchronously to get the latest policies and contracts.
-. Eventually, the adapter sends back the API analytics information to Anypoint Platform.
+. Finally, the adapter sends back the API analytics information to Anypoint Platform.
 
 
 == See Also
