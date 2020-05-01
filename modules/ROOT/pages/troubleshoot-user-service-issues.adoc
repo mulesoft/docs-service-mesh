@@ -1,4 +1,4 @@
-= Troubleshooting Service Issues
+= Troubleshoot Service Issues
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
