@@ -68,7 +68,7 @@ Note that all object names, such as adapter name, binding name, and service name
 To provision the Anypoint Service Mesh adapter using the CLI:
  
 . Determine the adapter size based on the <<adapter_plan, plan>>.
-. From Anypoint Platform, xref:api-manager::access-client-app-id-task.adoc[obtain the client ID and client secret credentials] for your environment.
+. In API Manager's list, click on _Environment Information_ to obtain the client ID and client secret credentials for your environment.
 . From the Anypoint Service Mesh installer download location in the Command window, type the following command to create the adapter:
 +
 [source,text,linenums]
