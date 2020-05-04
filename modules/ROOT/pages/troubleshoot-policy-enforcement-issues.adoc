@@ -26,7 +26,7 @@ A name for the service port is not specified.
 === Diagnose
 
 To diagnose this issue, verify the definition of the service that exposes the application:
-+
+
 `$ kubectl -n _namespace_ get services -o yaml`
 
 For example, the following service does not have a named port:

@@ -65,9 +65,9 @@ Your requests to specific ports can fail due to various reasons.
 === Diagnose
 
 To diagnose the problem, run the following command:
-+
+
 `$ kubectl -n _namespace_ get deployments`
-+
+
 The ready column shows N/N (100% ready). However, requests to the declared ports fail with an application-unrelated reason, such as "upstream connect error” or “disconnect or reset before headers”.
 
 === Solution
@@ -103,6 +103,6 @@ In the results, the `Type` column displays a value other than "LoadBalancer" and
 To resolve this issue, verify the service specifications. You must configure the service specification as a load balancer to render it publicly available. 
 
 If the service is not meant to be public, the endpoint must be used from within the cluster or must be accessed from outside the cluster using the following command: 
-+
+
 `$ kubectl port-forward or kubectl proxy`
 

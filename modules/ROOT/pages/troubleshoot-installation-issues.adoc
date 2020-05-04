@@ -101,7 +101,7 @@ This issue can be caused by various reasons.
 === Diagnose
 
 Identify the command that caused the error:
-+
+
 `$ sh -x asmctl install`
 
 === Solution
