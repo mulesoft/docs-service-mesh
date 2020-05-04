@@ -58,10 +58,10 @@ asmctl api create
 --name=_Kubernetes API resource name_ \
 --namespace=_namespace name_ \
 --environmentId=_environment ID_ \
---groupId=_group ID of the asset, for example, organization ID_ \
+--groupId=_(Optional) group ID of the asset, for example, organization ID_ \
 --assetId=_asset ID on Exchange_ \
 --version=_Asset version of the instance on exchange_ \
---instanceLabel=_ID of the instance on API Manager_ \ 
+--instanceLabel=_label of the instance on API Manager_ \ 
 --specTags=_list of comma separated tags to be added to the asset on Exchange_ \
 --instanceTags=_list of comma separated tags to be added to the instance on API Manager_ \
 --user=_username of the Anypoint Platform user, creating the API instance_ \
