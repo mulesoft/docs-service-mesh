@@ -25,7 +25,7 @@ To apply policies:
 image::select-policies-for-service-mesh.png[Applying Policies to APIs]
 +
 <1> The page where you specify a policy for your API is displayed.
-<2> Select any one of the policies to apply.
+<2> Select a policy to apply.
 +
 . Select any of the following policies to secure your APIs: 
 * *Client ID Enforcement* 
