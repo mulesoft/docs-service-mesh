@@ -82,7 +82,7 @@ This issue can occur due to either invalid credentials specified in the adapter 
 == Diagnosis
 
 To diagnose the issue, verify the status of the affected pods: 
-+
+
 `$ kubectl -n service-mesh get pods`
 Your pod might appear in either a `ErrImagePull` or a `ImagePullBackOff` state.
 
@@ -132,7 +132,7 @@ In this case, your pod status might be displayed as `CrashLoopBackOff`.
 === Solution
 
 To resolve this issue, update the adapter with a valid license:
-+
+
 `$ asmctl management config license --license=/path/to/license.lic`
 
 
@@ -160,7 +160,7 @@ Output similar to the following is displayed:
 === Solution
 
 To resolve this issue, run the following command to force catalog initialization:
-+
+
 `$ kubectl -n service-mesh patch clusterservicebrokers/service-mesh-incluster-broker --type=json -p='[{"op": "replace", "path": "/spec/relistRequests","value":1}]'`
 
 [[adapter-failed-to-delete]]
@@ -175,9 +175,9 @@ If the adapter that you want to delete has service bindings associated with it, 
 === Diagnosis
 
 To diagnose the issue, verify adapter status:
-+
+
 `$ asmctl adapter list`
-+
+
 If there are bindings associated with the adapter or the service instance, the status is displayed as `DeprovisionBlockedByExistingCredentials`.
 
 === Solution

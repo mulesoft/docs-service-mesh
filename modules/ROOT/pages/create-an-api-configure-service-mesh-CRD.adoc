@@ -42,7 +42,7 @@ Your API is now created.
 
 Use the procedure in this section to automatically create an API using Anypoint Service Mesh. Before you create the API, you must complete the task prerequisite.
 
-*Task Prerequisite*
+*Task Prerequisites*
 
 Ensure that you obtain the environment ID and organization ID. You can perform this task from either API Manager or from Access Management. 
 

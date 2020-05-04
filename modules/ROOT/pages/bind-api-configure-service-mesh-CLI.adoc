@@ -94,6 +94,7 @@ image::api-manager-status-for-service-mesh.png[85%, 85%]
 To create the binding:
 
 . Retrieve from Kubernetes the name of the service with which you want to bind the API:
++
 `kubectl get svc -n _namespace_`
 . Verify that your microservice port is named based on xref:https://istio.io/docs/setup/additional-setup/requirements/[Istio requirements].
 . From the Anypoint Service Mesh installer download location, bind the adapter with an API:

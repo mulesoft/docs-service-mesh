@@ -36,7 +36,7 @@ You can delete an adapter if it is no longer required. However, you must delete 
 When you provision an adapter, or bind the adapter to an application, a message is displayed after you run an adapter command. The message indicates whether the adapter was created, deleted, or modified successfully. 
 
 Additionally, you can verify the adapter status, which provides further details about the adapter. To view the adapter status, type the following command:
-+
+
 `asmctl adapter list`
 
 The status values include:
@@ -51,7 +51,7 @@ Note that you must delete all associated bindings before you delete the adapter.
 == CLI Help for Adapter Commands
 
 After you install Anypoint Service Mesh, you can use the command line interface (CLI) help to learn about the Anypoint Service Mesh commands and their parameters:
-+
+
 `asmctl adapter help`
 
 image::service-mesh-cli-adapter-help.png[CLI help for adapter commands]

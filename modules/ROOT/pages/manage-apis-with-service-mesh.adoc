@@ -21,15 +21,23 @@ To apply policies:
 . Navigate to *API Manager* and select your API instance.
 . From the left navigation, *select Policies > Apply New Policy*:
 +
-image::select-policies-for-service-mesh.png[]
+.The diagram shows how to apply a policy to your API.
+image::select-policies-for-service-mesh.png[Applying Policies to APIs]
++
+<1> The page where you specify a policy for your API is displayed.
+<2> Select a policy to apply.
 +
 . Select any of the following policies to secure your APIs: 
 * *Client ID Enforcement* 
 * *JWT Validation* 
 * *Rate Limit* 
 * *Rate Limit SLA-Based* 
-
-image::apply-client-enforcement-policy-service-mesh.png[]
++
+.The diagram shows how to apply the Client ID Based Policy.
+image::apply-client-enforcement-policy-service-mesh.png[Apply Client ID Based Policy]
++
+<1> The name of the policy is displayed at the top of the policy page.
+<2> Specify the origin of the client credentials.
 
 For more information about how to apply policies, see the specific policy documentation.
 
