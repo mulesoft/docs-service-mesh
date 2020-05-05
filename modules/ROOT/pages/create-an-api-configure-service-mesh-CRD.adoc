@@ -1,4 +1,4 @@
-= Creating an API Using a CRD
+= Create an API Using a CRD
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]

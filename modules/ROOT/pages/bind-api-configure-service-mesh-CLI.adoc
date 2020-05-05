@@ -1,4 +1,4 @@
-= Binding Your Service to an API Using the CLI
+= Bind Your Service to an API Using the CLI
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]

@@ -1,4 +1,4 @@
-= Provisioning the Adapter Using a CRD
+= Provision the Adapter Using a CRD
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]

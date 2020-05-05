@@ -1,4 +1,4 @@
-= Configuring Anypoint Service Mesh Using a CRD
+= Configure Anypoint Service Mesh Using a CRD
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]

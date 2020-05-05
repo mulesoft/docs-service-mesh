@@ -1,4 +1,4 @@
-= Reviewing Prerequisites for Downloading and Installing Anypoint Service Mesh
+= Review Prerequisites for Downloading and Installing Anypoint Service Mesh
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
