@@ -1,4 +1,4 @@
-= Managing APIs with Anypoint Service Mesh
+= Manage APIs with Anypoint Service Mesh
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
