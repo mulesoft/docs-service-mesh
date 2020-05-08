@@ -44,11 +44,13 @@ Use the procedure in this section to automatically create an API using Anypoint 
 
 *Task Prerequisite*
 
-Ensure that you obtain the environment ID and organization ID. You can perform this task from either API Manager or from Access Management. 
+Before you begin, ensure that you obtain the:
 
-*Tip:* To access this information in API Manager, go to *API Manager > Environment Information*.  
-
-You require the Manage APIs Configuration permission for the environment where you are creating the API Instance and Exchange Contributor permission for the Business group where you are creating the asset.
+* Environment ID and organization ID. 
++
+To obtain these details, go to *API Manager > Environment Information*.
+* Manage APIs Configuration permission for the environment where you are creating the API Instance.
+* Exchange Contributor permission for the business group where you are creating the asset.
 
 To create an API using Anypoint Service Mesh, perform the following steps:
 
