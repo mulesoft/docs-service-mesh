@@ -48,7 +48,7 @@ Before you begin, ensure that you obtain the:
 
 * Environment ID and organization ID.
 +
-To obtain these details, go to API Manager > Environment Information.
+To obtain these details, go to *API Manager > Environment Information*.
 * Manage APIs Configuration permission for the environment where you are creating the API Instance.
 * Exchange Contributor permission for the business group where you are creating the asset.
 
