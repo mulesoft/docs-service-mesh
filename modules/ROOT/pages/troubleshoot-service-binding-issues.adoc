@@ -113,7 +113,7 @@ To resolve this error:
 `$ kubectl -n service-mesh patch $(kubectl -n service-mesh get deploy -l namespace=_replace_with_namespace_ -oname) --type=json -p="[{\"op\": \"replace\", \"path\": \"/spec/template/metadata/annotations/kubectl.kubernetes.io~1restartedAt\",\"value\":\"$(date -u +%FT%TZ)\"}]"`
 . Remove the failed bindings and re-create them:
 + 
-`$ asmctl api binding delete --namespace=_replace_with_namespace_ --name=_replace_with_adapter_name_`
+`$ asmctl api binding delete --namespace=_replace_with_namespace_ --name=_replace_with_binding_name_`
 
 
 
