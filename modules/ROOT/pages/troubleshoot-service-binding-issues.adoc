@@ -4,25 +4,25 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: service mesh, microservices, service binding issues, troubleshooting
 
-After you create the API, you then bind your service with the API. This section provides possible causes for issues that might occue when you bind your service, and describes how to troubleshoot these errors:
+After you create the API, you then bind your service with the API. This section provides possible causes for issues that might occur when you bind your service, and describes how to troubleshoot these errors:
 
-* <<dns-name-error,Binding name is not in DNS subdomain standard format>>
+* <<dns-name-error,Binding name not in DNS subdomain standard format>>
 * <<references-non-existent-instance-error,References non-existent instance error>>
 
 [[dns-name-error]]
-== Name is not DNS subdomain standard format
+== Binding Name not in DNS Subdomain Standard Format
 
 If you provide a DNS name that does not comply with the DNS subdomain standard format, an error occurs and the binding fails.
 
 === Diagnose
 
-The output of the binding creation command displays that binding failed. 
+If the binding name you provided does not match the required format when you create the binding, the output of the command displays the binding failed error: 
 
 `The ServiceBinding "customer-API" is invalid: metadata.name: Invalid value: "customer-API": a DNS-1123 subdomain must consist of lower case alphanumeric characters, '-' or '.', and must start and end with an alphanumeric character (e.g. 'example.com', regex used for validation is '[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*')`
 
 === Solution
 
-Ensure that you provide binding name value that follow the DNS subdomain standards.
+Ensure that you provide a binding name value that follows the DNS subdomain standards.
 
 
 [[references-non-existent-instance-error]]
