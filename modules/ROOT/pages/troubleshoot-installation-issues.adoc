@@ -48,11 +48,10 @@ This error can occur due to the following reasons:
 To resolve this error, perform the following steps:
 //Note that steps must be chronological; please confirm that these are, because they do not seem so to me. They definitely are not chronological as a set of five, because there are two separate issues.
 
-. If you are using the correct control plane. 
-. Modify the control plane by setting the SERVICEMESH_PLATFORM_URI variable:
+. If you are not using a US control plane, verify that you have exported the correct variable to point to the correct one. For example, you can provide the flag `--platformUri=https://eu1.anypoint.mulesoft.com`
+. Alternatively, modify the control plane by setting the `SERVICEMESH_PLATFORM_URI` variable:
 +
-`export SERVICEMESH_PLATFORM_URI=https://eu1.anypoint.mulesoft.com`
-. If you are not using a US Control Plane, verify that you have exported the correct variable to point to the correct one. 
+`export `SERVICEMESH_PLATFORM_URI=https://eu1.anypoint.mulesoft.com`
 . Obtain the correct organization or environment credentials.
 . Restart the installer with the correct pair of client ID and client secret credentials.
 //is this correct credentials?
@@ -64,23 +63,23 @@ When you start the Anypoint Service Mesh installation, the installer times out.
 
 === Causes
 
-This issue occurs if the capacity of a pod or the total number of the pods created in the cluster exceeds the limit.
+The issue occurs if the pods do not have enough CPU or Memory resources to start.
 
 
 === Solution
 
 To resolve this error, perform the following steps:
 
-. Verify the status of the pods:
+. Before the installer actually fails, verify the status of the pods:
 +
 `kubectl get pods --all-namespaces`
 +
 All the pods in all namespaces are displayed with their status and additional details.
-. If a pod is `Pending`”, obtain additional information about the pod:
+. If a pod is `Pending`, obtain additional information about the pod:
 +
 `kubectl describe pods _pod_name_ -n service-mesh`
 +
-The result of the command shows that the scheduling of the node has failed.  
+In the `Events` section, the result of the command shows that the scheduling of the node has failed.  
 . Verify that node capacity is not exceeded:
 +
 `kubectl describe nodes`
