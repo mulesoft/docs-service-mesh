@@ -31,7 +31,7 @@ To diagnose the issue:
 `$ asmctl adapter list`
 +
 The status is displayed in a few minutes.
-. If the adapter displays a _Failed_ status, run the following command:
+. If the adapter displays a `Failed` status, run the following command:
 `$ kubectl -n service-mesh get pods`
 . Check the status of the adapter pod: 
 +
@@ -103,12 +103,12 @@ To resolve this issue:
 +
 `$ kubectl -n service-mesh get secret service-mesh-registry-credentials-rotator-env -ogo-template='CLIENT_ID:{{.data.CLIENT_ID|base64decode}} CLIENT_SECRET:{{.data.CLIENT_SECRET|base64decode}}'`
 +
-`$ kubectl -n service-mesh get cm service-mesh-registry-credentials-rotator-env  -ogo-template='PLATFORM_URI:{{.data.PLATFORM_URI}}'`
+`$ kubectl -n service-mesh get cm service-mesh-registry-credentials-rotator-env -ogo-template='PLATFORM_URI:{{.data.PLATFORM_URI}}'`
 
 [[mule-fails-due-to-license-issues]]
 == Mule Runtime Engine Fails to Start Due to Licence Issues
 
-When you attempt to list your adapters, you might receive a _Failed_ status.
+When you attempt to list your adapters, you might receive a `Failed` status.
 
 === Cause
 
