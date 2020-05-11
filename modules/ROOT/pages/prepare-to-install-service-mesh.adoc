@@ -51,16 +51,14 @@ Before you can use Anypoint Service Mesh, you must have the following roles, and
  
 * Organization Administrators role to access the client ID and client secret credentials
 * Client ID and client secret credentials to provision the adapter:
-
++
 *Tip:* To access this information in API Manager, go to *API Manager > Environment Information*. 
-
 ** With organization credentials
-
++
 If you provision the adapter with organization credentials, you can manage APIs on the specific adapter of that organization. 
 ** With environment credentials
-
++
 If you specify environment credentials, you can manage APIs of only that environment. MuleSoft recommends that you use the environment credentials instead of the organization credentials. 
-
 For more information about which permissions to use, see xref:api-manager::org-credentials-config-mule4.adoc#obtaining-credentials[obtaining credentials].
 * Cluster-admin role access to the Kubernetes cluster (only required for installation process)
 * If you have configured an external identity provider for your organization, create a user in Anypoint Platform with Exchange Contributors and Manage APIs Configuration roles. Anypoint Service Mesh does not support users residing on an external identity provider for tasks such as creating and discovering APIs.
