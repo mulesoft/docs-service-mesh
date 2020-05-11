@@ -6,35 +6,29 @@ endif::[]
 
 After you create the API, you then bind your service with the API. This section provides possible causes for issues that might occue when you bind your service, and describes how to troubleshoot these errors:
 
-* <<dns-name-error,DNS name error>>
+* <<dns-name-error,Binding name is not in DNS subdomain standard format>>
 * <<references-non-existent-instance-error,References non-existent instance error>>
-* <<missing-entitlements-in-license,Missing entitlements in license>>
 
 [[dns-name-error]]
-== DNS Name Error
+== Name is not DNS subdomain standard format
 
 If you provide a DNS name that does not comply with the DNS subdomain standard format, an error occurs and the binding fails.
 
 === Diagnose
 
-To diagnose this issue, run one of the following commands:
+The output of the binding creation command displays that binding failed. 
 
-* `$ asmctl api binding list` 
-* `$ asmctl adapter binding list`
-+
-The output displays that a binding failed:
-+
 `The ServiceBinding "customer-API" is invalid: metadata.name: Invalid value: "customer-API": a DNS-1123 subdomain must consist of lower case alphanumeric characters, '-' or '.', and must start and end with an alphanumeric character (e.g. 'example.com', regex used for validation is '[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*')`
 
 === Solution
 
-Ensure that you provide DNS name values that follow the DNS subdomain standards.
+Ensure that you provide binding name value that follow the DNS subdomain standards.
 
 
 [[references-non-existent-instance-error]]
-== References Nonexistent Instance Error
+== References Non-existent Instance Error
 
-When you create a binding, you must include in the binding command a name for the service and the name of the adapter that you created previously. Otherwise, you receive this error message.
+When you create a binding, you must reference an API or an adapter previously by referencing its name. Otherwise, you receive this error message.
 
 == Causes
 
@@ -42,7 +36,6 @@ This error can occur if:
  
 * The adapter name in the binding command is incorrect (adapter binding).
 * The API name in the binding command is incorrect (API binding).
-* The service name in the binding command is incorrect.
 * The Namespace flag was not provided and therefore the service was searched for in the `default` namespace.
 
 
@@ -58,62 +51,4 @@ The status of binding displays as `ReferencesNonexistentInstance`.
 === Solution
 
 Delete the erroneous binding command and re-create it with the correct input.
-
-
-[[missing-entitlements-in-license]]
-== Missing Entitlements in License
-
-To successfully install and use Anypoint Service Mesh, you must have applied a valid license with correct entitlements.
-
-=== Causes
-
-If the license you applied when installing Anypoint Service Mesh does not have the correct entitlements, you encounter errors.
-
-=== Diagnose
-
-To diagnose this issue:
-
-. Check the adapter status:
-+
-`$  asmctl adapter list`
-. If the adapter status is Failed, review the binding logs:
-+
-`$ asmctl api binding logs --namespace=_replace_with_namespace_ --name=_replace_with_binding_name_`
-+
-The command displays an output like this:
-+
-[source,text,linenums]
-----
-DATE                   MESSAGE
-2019-11-26T18:15:00Z   The binding is being created asynchronously
-2019-11-26T18:16:52Z   The binding is being created asynchronously (wait all endpoints health check)
-2019-11-26T18:17:12Z   Bind call failed: endpoints health check failed
-----
-. Obtain the adapter logs and verify the license entitlements:
-+
-`$ kubectl -n service-mesh logs $(kubectl -n service-mesh get pod -l namespace=_replace_with_namespace_ -oname) -c mule | grep license`
-+
-The output must display valid licenses and must have at least the api-gateway and clustering entitlements:
-+
-[source,text,linenums]
-----
-Valid license key --> Evaluation = false, Expiration Date = Thu Dec 30 23:00:00 GMT 2100, Contact Name = Mule, Contact Email Address = support@mulesoft.com, Contact Telephone = 00000, Contact Company = MuleSoft, Contact Country = US, Entitlements = clustering,api-gateway
-----
-
-=== Solution
-
-To resolve this error:
-
-. Replace the licence with a valid one:
-+
-`$ asmctl management config license --license=/path/to/license.lic`
-
-. Redeploy the adapter:
-+
-`$ kubectl -n service-mesh patch $(kubectl -n service-mesh get deploy -l namespace=_replace_with_namespace_ -oname) --type=json -p="[{\"op\": \"replace\", \"path\": \"/spec/template/metadata/annotations/kubectl.kubernetes.io~1restartedAt\",\"value\":\"$(date -u +%FT%TZ)\"}]"`
-. Remove the failed bindings and re-create them:
-+ 
-`$ asmctl api binding delete --namespace=_replace_with_namespace_ --name=_replace_with_binding_name_`
-
-
 
