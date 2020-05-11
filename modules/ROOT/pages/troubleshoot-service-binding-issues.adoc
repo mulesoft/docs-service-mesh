@@ -7,7 +7,7 @@ endif::[]
 After you create the API, you then bind your service with the API. This section provides possible causes for issues that might occur when you bind your service, and describes how to troubleshoot these errors:
 
 * <<dns-name-error,Binding name not in DNS subdomain standard format>>
-* <<references-non-existent-instance-error,References non-existent instance error>>
+* <<references-non-existent-instance-error,References nonexistent instance error>>
 
 [[dns-name-error]]
 == Binding Name not in DNS Subdomain Standard Format
@@ -26,9 +26,9 @@ Ensure that you provide a binding name value that follows the DNS subdomain stan
 
 
 [[references-non-existent-instance-error]]
-== References Non-existent Instance Error
+== References Nonexistent Instance Error
 
-When you create a binding, you must reference an API or an adapter previously by referencing its name. Otherwise, you receive this error message.
+When you create a binding, you must reference an API or an adapter that you previously created using its name. Otherwise, you receive the 'ReferencesNonexistentInstance' error.
 
 == Causes
 
