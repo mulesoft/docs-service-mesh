@@ -51,12 +51,12 @@ Before you can use Anypoint Service Mesh, you must have the following roles, and
  
 * Organization Administrators role to access the client ID and client secret credentials
 * Client ID and client secret credentials to provision the adapter:
-+
+
 *Tip:* To access this information in API Manager, go to *API Manager > Environment Information*. 
+=
 ** With organization credentials
 +
 If you provision the adapter with organization credentials, you can manage APIs on the specific adapter of that organization. 
-
 ** With environment credentials
 +
 If you specify environment credentials, you can manage APIs of only that environment. MuleSoft recommends that you use the environment credentials instead of the organization credentials. 
