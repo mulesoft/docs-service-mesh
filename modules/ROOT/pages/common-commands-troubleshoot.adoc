@@ -44,7 +44,7 @@ When troubleshooting issues with Anypoint Service Mesh, you might need to retrie
 . Execute a dump: 
 +
 `$ asmctl management dump`
-. Information can be found under `_adapter_name_-policies-folder.tar.gz`
+. Information can be found under `_replace_with_adapter_name_-policies-folder.tar.gz`
 
 [[modify-log4j-config]]
 == Modify Log4j Configuration
