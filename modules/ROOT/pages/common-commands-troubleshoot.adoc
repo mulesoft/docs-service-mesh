@@ -19,6 +19,8 @@ To retrieve the adapter logs of a single pod when you are troubleshooting an iss
 
 `$ kubectl -n service-mesh logs $(kubectl -n service-mesh get pod -l namespace=_replace_with_namespace_ -o jsonpath='{.items[0].metadata.name}') -c mule`
 
+If you have multiple replicas, you can change the index on the _items_ array.
+
 [[access-the-adapter]]
 == Access the Adapter
 
@@ -37,14 +39,11 @@ To display information about the adapter pods:
 [[retrieve-policies-and-contracts-info]]
 == Retrieve Policies and Contracts Information from the Adapter
 
-When troubleshooting issues with Anypoint Service Mesh, you might need to retrieve policies and contracts details:
-
-. Display the adapter pod: 
+When troubleshooting issues with Anypoint Service Mesh, you might need to retrieve policies and contracts details. To retrieve the details, obtain an Anypoint Serviesh Mesh management dump file: 
 +
-`$ kubectl get pods -n service-mesh`
-. Download the policy and contract files:
+`$ asmctl management dump`
 +
-`$ kubectl cp service-mesh/$(kubectl -n service-mesh get pod -ocustom-columns='NAME:.metadata.name' --no-headers -l namespace=_replace-with-namespace_):/usr/src/app/policies -c mule ~/Desktop/`
+You can view the information from the `_replace_with_adapter_name_-policies-folder.tar.gz` folder.
 
 [[modify-log4j-config]]
 == Modify Log4j Configuration

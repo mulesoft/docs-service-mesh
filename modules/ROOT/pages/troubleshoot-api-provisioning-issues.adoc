@@ -20,7 +20,7 @@ image::credentials-error-api-prov-service-mesh.png[Credentials error when provis
 
 To diagnose the issue:
 
-. Describe your service instance:
+. Describe your service instance using the `kubectl describe serviceinstance _api_instance_name_` command:
 +
 `$ kubectl describe serviceinstance inventory-resource-api`
 In the `Status` field, a detailed description of the error is displayed:
