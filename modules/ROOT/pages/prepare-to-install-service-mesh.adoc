@@ -62,6 +62,7 @@ If you specify environment credentials, you can manage APIs of only that environ
 +
 For more information about which permissions to use, see xref:api-manager::org-credentials-config-mule4.adoc#obtaining-credentials[obtaining credentials].
 * Cluster-admin role access to the Kubernetes cluster (only required for installation process)
+* Anypoint Service Mesh does not support the usage of users that are stored on an external identity provider for the creation or discovery of APIs. For organizations that have configured an identity provider, you need to create a userin Mulesoft's platform. To be able to fully leverage the product's capabilities, that user will need to have _Exchange Contributors_ and _Manage APIs Configuration_ roles.
 
 == Ports, IPs, and Hostnames Whitelist Requirements
 
