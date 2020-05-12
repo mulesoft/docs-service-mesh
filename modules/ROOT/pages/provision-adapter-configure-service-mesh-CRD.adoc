@@ -81,8 +81,7 @@ spec:
 . Verify the <<adapter_status, adapter status,>> using the following command:
 `asmctl adapter list`
 . Set the label for Istio in the namespace:
-
- `kubectl label ns <namespace> istio-injection=enabled`
+`kubectl label ns <namespace> istio-injection=enabled`
  . Redeploy all your existing applications in the namespace.
 
 == Reference Kubernetes Secret
