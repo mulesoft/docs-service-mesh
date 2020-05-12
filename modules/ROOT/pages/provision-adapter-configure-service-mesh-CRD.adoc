@@ -9,7 +9,8 @@ Before you can start managing your services using Anypoint Service Mesh, you mus
 
 The adapter acts as a policy enforcement component that fetches policies from Anypoint platform, checks whether the policies have been met, and then reports the analytics data back to Anypoint Platform.  
 
-After you provision the adapter, you must redeploy all your existing applications to ensure that the Envoy sidecar is injected within each pod in the Kubernetes Cluster.
+After you provision the adapter, you must set the `istio-injection=enabled` label on the namespace, you can run the following command to add it `kubectl label ns <namespace> istio-injection=enabled`, and redeploy all your existing applications in that namespace to ensure that the Envoy sidecar is injected within each pod in the Kubernetes Cluster.
+
 
 [[adapter_plan]]
 == Adapter Plan
