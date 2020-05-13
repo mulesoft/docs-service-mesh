@@ -15,9 +15,8 @@ Even though you applied policies to your services, the Mule adapter might not se
 
 [[service-port-not-named]]
 == Service Port Is Not Named
-//Tomas is this the actual error name that is generated?
 
-When you create a service, you must provide specifications, such as ports and selectors. Each of these has its own set of parameters that must be defined. When you assign a port to a service, you must also specify a name for that port, such as "http," to avoid an error.
+When you create a service, you must provide specifications, such as ports and selectors. Each of these has its own set of parameters that must be defined. When you assign a port to a service, you must also specify a name for that port, such as "http," to avoid an error. Istio requires you to link:https://istio.io/docs/ops/deployment/requirements/[name every port].
 
 === Causes
 
@@ -60,7 +59,7 @@ items:
 
 === Solution
 
-The Isito platform requires every link:https://istio.io/docs/ops/deployment/requirements/[port to be named]. To resolve this error, re-create the service with a named port:
+Istio requires you to link:https://istio.io/docs/ops/deployment/requirements/[name every port]. To resolve this error, re-create the service with a named port:
 
 [source,text,linenums]
 ----
@@ -99,16 +98,13 @@ If you determine that the rules are still applied, manually delete those rules.
 
 Delete the incorrect rules applied to the service:
 
-`$ kubectl delete rules -l serviceName=_service name_`
-
-A confirmation message is displayed:
-image::policy-not-dis-policy-enforcement-service-mesh.png[Policy not disassociated error when enforcing a policy]
+`$ kubectl delete rules -l serviceName=_service_name_`
 
 
 [[binding-service-name-does-not-match-actual-service-name]]
 == Binding Service Name Does Not Match Actual Service Name
 
-When you create the binding, you must provide a service name. If the service name provided does not match the actual service name, an error occurs.
+When you create the binding, you must provide a service name. If the service name provided does not match the actual service name, policies are not enforced.
 
 === Causes
 
@@ -133,7 +129,14 @@ In the above example, service names must be, for example `customer-service`, and
 
 === Solution
 
-Delete the existing bindings and re-create them to point to the actual services:
+To resolve this issue:
+
+. Delete the existing bindings by running any of the commands:
++
+* `$ asmctl api binding delete --name=_binding_name_ --namespace=_binding_namespace_`
+* `$ asmctl adapter binding delete --name=_binding_name_ --namespace=_binding_namespace_`
++
+. Re-create the bindings to point to the actual services:
 
 image::binding-service-does-not-match-solution-service-mesh.png[Binding service does not match actual service resolution]
 
