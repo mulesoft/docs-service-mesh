@@ -91,7 +91,7 @@ You can install Istio 1.4.x or 1.5.x in your environment to support Anypoint Ser
 
 === Install Istio 1.5.x
 
-Service Mesh has been tested in Istio versions from `1.5.0` to `1.5.2`. To install and configure Istio 1.5.x for Anypoint Service Mesh:
+Anypoint Service Mesh supports Istio versions `1.5.0` through `1.5.2`. To install and configure Istio 1.5.x for Anypoint Service Mesh:
 
 . Download Istio using the https://istio.io/docs/setup/[Istio documentation].
 . Install Istio with the following configurations:
@@ -162,7 +162,7 @@ To install the manifest, run:
 
 === Install Istio 1.4.x
 
-Service Mesh has been tested in Istio versions from `1.4.0` to `1.4.8`. To install and configure Istio 1.4.x for Anypoint Service Mesh:
+Anypoint Service Mesh supports Istio versions `1.4.0` through `1.4.8`. To install and configure Istio 1.4.x for Anypoint Service Mesh:
 
 . Download Istio using the https://istio.io/docs/setup/[Istio Documentation].
 . Install Istio with the policy control flag enabled:
