@@ -74,7 +74,7 @@ Diagnose this issue by running one of the following commands:
 * `$ asmctl api binding list`
 * `$ asmctl adapter binding list`
 +
-The status of binding displays as `ErrorInstanceNotReady`. Check the status of the referenced instance by running one of the following commands (depending if you are using api or adapter binding)
+The status of the binding displays as `ErrorInstanceNotReady`. Check the status of the referenced instance by running one of the following commands (depending if you are using api or adapter binding)
 
 * `$ asmctl api list`
 * `$ asmctl adapter list`
@@ -82,6 +82,7 @@ The status of binding displays as `ErrorInstanceNotReady`. Check the status of t
 === Solution
 
 If the adapter or API provisioning has not finished yet(status is `provisioning`, then wait until the operation finishes. If the status is failed, go to the corresponding troublshooting section:
+
 * xref:troubleshoot-adapter-provisioning-issues.adoc[Adapter provisioning issues]
 * xref:troubleshoot-api-provisioning-issues.adoc[API provisioning issues].
 
