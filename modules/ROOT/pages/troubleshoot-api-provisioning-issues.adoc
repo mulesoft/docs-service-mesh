@@ -61,7 +61,7 @@ To resolve this issue:
 [[provision-call-failed]]
 == Provision call failed
 
-When you create an API, the Asset(in exchange) and/or API(in API Manager) are not successfuly created on the Anypoint Platform
+When you create an API, the Asset(in exchange) and/or API(in API Manager) were not successfuly created on the Anypoint Platform
 
 == Causes
 
