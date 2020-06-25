@@ -28,7 +28,7 @@ image::anypoint-service-mesh-architecture.png[Anypoint Service Mesh architecture
 
 As illustrated in the diagram, at the top of the architecture is Anypoint Platform, which brings complete lifecycle API management capabilities to the microservices built with Mule runtime engine (Mule). These Mule instances might be deployed within CloudHub, or Runtime Fabric at your location. 
 
-Istio, which is installed on a Kubernentes Cluster, uses Envoy to manage the services using a sidecar proxy. The sidecar is responsible for any communication with the service, and resides within the same container as your service. With Anypoint Service Mesh enabled, you can continue to use Istio's native policies for traffic control and security. These policies help ensure reliable and secure service-to-service communication.
+Istio, which is installed on a Kubernetes Cluster, uses Envoy to manage the services using a sidecar proxy. The sidecar is responsible for any communication with the service, and resides within the same container as your service. With Anypoint Service Mesh enabled, you can continue to use Istio's native policies for traffic control and security. These policies help ensure reliable and secure service-to-service communication.
 
 The MuleSoft adapter and broker, which reside within the Istio mixer, connect components to Anypoint Platform. The adapter and broker enable sharing of metadata about all the services that are managed by the mesh. This allows for discovery of your existing microservices from the Kubernetes Cluster as APIs into Anypoint Platform. 
 
