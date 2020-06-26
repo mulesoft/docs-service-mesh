@@ -30,8 +30,11 @@ image::select-policies-for-service-mesh.png[Applying Policies to APIs]
 . Select any of the following policies to secure your APIs: 
 * *Client ID Enforcement* 
 * *JWT Validation* 
-* *Rate Limit* 
-* *Rate Limit SLA-Based* 
+* *Rate Limiting* 
+* *Rate Limiting SLA-Based* 
+* *Basic Authentication: Simple*
+* *Basic Authentication: LDAP*
+* *OpenID Connect OAuth 2.0 Token Enforcement*
 +
 .The diagram shows how to apply the Client ID Based Policy.
 image::apply-client-enforcement-policy-service-mesh.png[Apply Client ID Based Policy]
