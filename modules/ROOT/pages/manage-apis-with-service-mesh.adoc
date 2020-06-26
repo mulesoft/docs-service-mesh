@@ -36,6 +36,8 @@ image::select-policies-for-service-mesh.png[Applying Policies to APIs]
 * *Basic Authentication: LDAP*
 * *OpenID Connect OAuth 2.0 Token Enforcement*
 +
+NOTE: For the OpenID Connect OAuth 2.0 Token Enforcement policy, you must have configured OpenID as your client management provider. 
++
 .The diagram shows how to apply the Client ID Based Policy.
 image::apply-client-enforcement-policy-service-mesh.png[Apply Client ID Based Policy]
 +
