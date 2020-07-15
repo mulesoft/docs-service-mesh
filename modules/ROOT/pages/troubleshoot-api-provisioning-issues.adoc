@@ -4,7 +4,7 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: service mesh, microservices, API provisioning issues, troubleshooting
 
-After you provision an adapter, you must create an API, to which you then bind the service. This section provides possible causes for issues that might occur when try to create your API, and describes how to troubleshoot these errors:
+After you provision an adapter, you must create an API, to which you then bind the service. This section provides possible causes for issues that might occur when you try to create your API, and describes how to troubleshoot these errors:
 
 * <<client-secret-incorrectly-configured,Client Secret is Incorrectly Configured>>
 * <<provision-call-failed,API Provisioning Failure>>
