@@ -7,7 +7,7 @@ endif::[]
 After you provision an adapter, you must create an API, to which you then bind the service. This section provides possible causes for issues that might occur when try to create your API, and describes how to troubleshoot these errors:
 
 * <<client-secret-incorrectly-configured,Client Secret is Incorrectly Configured>>
-* <<provision-call-failed,Provision call failed>>
+* <<provision-call-failed,API Provisioning Failure>>
 
 [[client-secret-incorrectly-configured]]
 == Client Secret is Incorrectly Configured
@@ -59,24 +59,28 @@ To resolve this issue:
 
 
 [[provision-call-failed]]
-== Provision call failed
+== API Provisioning Failure
 
-When you provision an API by using Service Mesh, but the Asset(in Exchange) and/or API instance (in API Manager) were not successfully created on the Anypoint Platform
+When you provision an API by using Anypoint Service Mesh, the asset (in Exchange) and the API instance (in API Manager) are not successfully created in Anypoint Platform.
 
 === Causes
 
-This error can occur if:
+This error can occur if you are attempting to:
  
-* You are trying to re-create an asset on Exchange that existed more than seven days before being deleted.
-* You are trying to provision an API with invalid values.
+* Recreate an asset in Exchange that was more than seven days old before being deleted.
+* Provision an API with invalid values.
 
 
 === Diagnose
 
-Confirm that you have the issue by running the following commands: `$ asmctl api list`. The status of the API displays as `ProvisionCallFailed`. 
+To diagnose this issue, run the following commands: 
 
-
-Run `asmctl api logs --name=<replace_with_api_name> --namespace=<replace_with_namespace>`. The following output shows an exampe when trying to provision an API with an invalid version.
+. `$ asmctl api list`. 
++
+The status of the API is displayed as `ProvisionCallFailed`. 
+. Run `asmctl api logs --name=<replace_with_api_name> --namespace=<replace_with_namespace>` 
++
+The following output illustratates the provisioning an API with an invalid version problem:
 
 [source,text,linenums]
 ----
@@ -84,7 +88,7 @@ DATE                   MESSAGE
 2020-05-29T17:12:36Z   Error provisioning ServiceInstance of ClusterServiceClass (K8S: "1c3b2100-5cdc-49ea-9423-dd7170e674b4" ExternalName: "anypoint-platform-api-instance") at ClusterServiceBroker "service-mesh-incluster-broker": Status: 400; ErrorMessage: Bad Request; Description: version: should match pattern "^\d+\.\d+\.\d+(-.+)?$" (ID: 49724b5d-7fad-4cc3-980e-695c2e47b383); ResponseError: <nil>
 ----
 
-In case there is no information above, you will have to run `kubectl describe serviceinstances <replace_with_api_name> -n <replace_with_namespace>`. In the `status` section of the resource, you will find the error message explaining the issue. For example: 
+If no information is displayed for the previous command, run `kubectl describe serviceinstances <replace_with_api_name> -n <replace_with_namespace>`. In the `status` section of the resource, you will find the error message explaining the issue. For example: 
 
 [source,text,linenums]
 ----
@@ -92,9 +96,14 @@ Error provisioning ServiceInstance of ClusterServiceClass (K8S: "1c3b2100-5cdc-4
 ExternalName: "anypoint-platform-api-instance") at ClusterServiceBroker "service-mesh-incluster-broker": Status: 410; ErrorMessage: Gone; Description: Error from Exchange: There is no asset matching given parameters. (ID: 79d0cc7f-9969-477b-816d-c822916c0290); ResponseError: <nil>' reason: ProvisionCallFailed
 ----
 
-In above case, the error has to do with the fact that you are trying to re-create an asset on Exchange that existed more than seven days before being delete. Exchange doesn't allow that operation, so you need to provide a new `assetId` to create a new asset.
+In this case, the error is caused because you are attempting to recreate an asset in Exchange that was more than seven days old before being deleted. Because Exchange does not allow that operation, you must provide a new `assetId` to create a new asset.
 
 
 === Solution
 
-Delete your API by executing `asmctl api delete --name=<replace_with_api_name> --namespace=<replace_with_namespace>`. Recreate the API once you have fixed the error.
+To resolve this issue, 
+
+. Delete your API: 
++
+`asmctl api delete --name=<replace_with_api_name> --namespace=<replace_with_namespace>`. 
+. After you fix the error, recreate the API.
