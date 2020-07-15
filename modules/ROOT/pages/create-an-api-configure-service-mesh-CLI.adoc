@@ -6,16 +6,16 @@ endif::[]
 
 After you provision the adapter, you must create an API to bind to the service. You can create an API using Anypoint Platform or Anypoint Service Mesh:
 
-* <<create-api-AP, Create an API using Anypoint Platform>>
-+
-If you want to create REST or SOAP APIs with OAS or WSDL definition, use Anypoint Platform. 
-+
-Note that if you want to upload a REST API or OAS asset type, use a .json or .yaml file. Alternatively, if you want to upload a SOAP API or WSDL asset type, use a .wsdl or .xml file.
 * <<create-api-ASM-CLI, Create an API using Anypoint Service Mesh Autocreate>>
 +
-Anypoint Service Mesh enables you to automatically create an HTTP API in Anypoint Platform, with no REST or SOAP definitions. You do not have to manually log in to Anypoint Platform. 
+Anypoint Service Mesh enables you to automatically create an API in Anypoint Platform. You do not have to manually log in to Anypoint Platform. 
 +
-If you automatically create REST or SOAP APIs with Anypoint Service Mesh, the APIs are still managed internally as an HTTP asset without any definition. 
+When creating file-required APIs (REST, SOAP), the specification file needs to be available in your file system for the CLI to upload it. Due to Kubernetes limitations, specification files used in this provisioning approach should not exceed 550KB in size.
+* <<create-api-AP, Create an API using Anypoint Platform>>
++
+You can always create APIs manually using Anypoint Platform. Use this approach when dealing with large API specifications (`> 550KB`).
++
+Note that if you want to upload a REST API or OAS asset type, use a .json or .yaml file. Alternatively, if you want to upload a SOAP API or WSDL asset type, use a .wsdl or .xml file.
 
 [[create-api-AP]]
 == Create an API Using Anypoint Platform
@@ -66,6 +66,9 @@ asmctl api create
 --assetId=_asset ID on Exchange_ \
 --version=_Asset version of the instance on exchange_ \
 --instanceLabel=_label of the instance on API Manager_ \ 
+--classifier=_(Optional) type of API specification, for example, oas_ \
+--mainFile=_(Optional) name of the main file in the API specification_ \
+--specPath=_(Optional) path to the API specification file_ \
 --specTags=_list of comma separated tags to be added to the asset on Exchange_ \
 --instanceTags=_list of comma separated tags to be added to the instance on API Manager_ \
 --user=_username of the Anypoint Platform user, creating the API instance_ \
@@ -82,6 +85,9 @@ asmctl api create
 | `assetId` | The ID of the assets that are a part of an organization. Supports alphanumeric characters without spaces. | Required | Not applicable
 | `version` | The version of the asset on Exchange. The version number must follow the semantic versioning format for major, minor, and patch releases. | Required | Not applicable
 | `instanceLabel` | The ID of the API instances of an Asset within a given environment. Supports alphanumeric characters without spaces. | Required | Not applicable
+| `classifier` | The asset kind of the API to create. Available options include `http`, `oas`, `raml`.  | Optional | `http`
+| `mainFile` | The name of the main file in the API specification file. When uploading a single YAML or JSON file, it should be the same name as the file. When uploading a ZIP file, it must match the primary file. | Required if classifier != `http` | Not applicable
+| `specPath` | The relative or absolute path to the API specification file. | Required if classifier != `http` | Not applicable
 | `specTags` | Tags to add to the asset on Exchange. |  Optional | Not applicable
 | `instanceTags` | Tags to add to the API instance on API Manager. |  Optional | Not applicable
 | `user` | The username credential of the Anypoint Platform user who is creating the API. | Required | Not applicable

@@ -52,3 +52,49 @@ To resolve this issue:
 . Delete the API.
 . Resolve the username and password error.
 . Re-create the API.  
+
+
+== Large API specification files
+
+If provisioning an API with a large specification file (current limit is `550KB`), you should create the API manually through the Anypoint Platform.
+
+=== Cause
+
+If you use a large file, the following errors might show when listing `service-mesh` namespace's pods:
+
+image::large-api-error-oom-pod.png[Pod restarted due to out of memory error]
+image::large-api-error-crashloop-backoff-pod.png[Pod restarted due to crashloop backoff error]
+
+Or when inspecting the Service Catalog logs, an error of this kind:
+
+[source,text,linenums]
+----
+E0605 21:13:58.080886       1 controller_instance.go:1968] ServiceInstance "default/flights-api-v1" v8611662: Failed to update status: rpc error: code = ResourceExhausted desc = trying to send message larger than max (2554151 vs. 2097152)
+I0605 21:13:58.080907       1 controller.go:408] Dropping ServiceInstance "default/flights-api-v1" out of the queue: rpc error: code = ResourceExhausted desc = trying to send message larger than max (2554151 vs. 2097152)
+----
+
+=== Diagnosis
+
+To diagnose the issue:
+
+. Run this command and check the status of the Service Catalog pods:
++
+`$ kubectl get pods -n service-mesh`
++ 
+If the status is different from `Running`, the Service Catalog pods are probably failing because lack of resources. We will need to increment the limits of both pods and delete the service instance afterwards.
+
+. If the pod is running correctly, check the logs for `rpc` errors:
++
+`$ kubectl logs -f deployment/service-mesh-catalog-controller-manager -n service-mesh --tail=250 | grep "rpc error"`
+
+=== Solution
+
+To resolve this issue:
+
+. If Service Catalog pods are failing, first increase their resource limits:
++
+`$ kubectl -n service-mesh set resources deployment service-mesh-catalog-controller-manager --limits=memory=64Mi`
++
+`$ kubectl -n service-mesh set resources deployment service-mesh-catalog-webhook --limits=memory=64Mi`
+. Delete the service instance.
+. Create the API through the Anypoint Platform.

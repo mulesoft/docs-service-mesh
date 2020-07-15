@@ -6,16 +6,16 @@ endif::[]
 
 After you provision the adapter, you must create an API to bind to the service. You can create an API using Anypoint Platform or Anypoint Service Mesh:
 
+* <<create-api-ASM-CRD, Create an API using Anypoint Service Mesh Autocreate>>
++
+Anypoint Service Mesh enables you to automatically create an API in Anypoint Platform. You do not have to manually log in to Anypoint Platform. 
++
+When creating file-required APIs (REST, SOAP), the specification file content needs to be base64 encoded and embedded into the CRD. Due to Kubernetes limitations, specification files used in this provisioning approach should not exceed 550KB in size.
 * <<create-api-AP, Create an API using Anypoint Platform>>
 +
-If you want to create REST or SOAP APIs with OAS or WSDL definition, use Anypoint Platform.
+You can always create APIs manually using Anypoint Platform. Use this approach when dealing with large API specifications (`> 550KB`).
 +
 Note that if you want to upload a REST API or OAS asset type, use a .json or .yaml file. Alternatively, if you want to upload a SOAP API or WSDL asset type, use a .wsdl or .xml file.
-* <<create_api-CRD, Create an API using Anypoint Service Mesh Autocreate>>
-+
-Anypoint Service Mesh enables you to automatically create an HTTP API in Anypoint Platform, with no REST or SOAP definitions. You do not have to manually log in to Anypoint Platform. 
-+
-If you automatically create REST or SOAP APIs with Anypoint Service Mesh, the APIs are still managed internally as an HTTP asset without any definition.
 
 [[create-api-AP]]
 == Create an API Using Anypoint Platform
@@ -74,6 +74,9 @@ spec:
     assetId: _asset ID_ # example: orders-api
     version: _version_ # example: 0.0.1
     instanceLabel: _instance label_ # example: public
+    classifier: _classifier_ # Optional - example: oas
+    mainFile: _main file_ # Optional - example: api.yaml
+    specPath: _spec path_ # Optional - example: /path/to/api.yaml
     tags:
       apiSpec:
       - _tag in Exchange asset_ # example: orders
