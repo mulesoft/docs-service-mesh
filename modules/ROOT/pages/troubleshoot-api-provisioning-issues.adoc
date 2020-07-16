@@ -54,9 +54,9 @@ To resolve this issue:
 . Re-create the API.  
 
 
-== Large API specification files
+== API Spec size exceeds allowed supported size
 
-If provisioning an API with a large specification file (current limit is `550KB`), you should create the API manually through the Anypoint Platform.
+When provisioning an API with a large specification file (current limit is `550KB`) you might face some issues on the provision operation or even the Service Mesh services.
 
 === Cause
 

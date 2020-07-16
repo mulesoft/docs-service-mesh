@@ -10,7 +10,7 @@ After you provision the adapter, you must create an API to bind to the service. 
 +
 Anypoint Service Mesh enables you to automatically create an API in Anypoint Platform. You do not have to manually log in to Anypoint Platform. 
 +
-When creating file-required APIs (REST, SOAP), the specification file needs to be available in your file system for the CLI to upload it. Due to Kubernetes limitations, specification files used in this provisioning approach should not exceed 550KB in size.
+When creating file-required APIs (REST, SOAP), the specification file needs to be available in your file system for the CLI to upload it. Specification files used in this provisioning approach should not exceed 550KB in size.
 * <<create-api-AP, Create an API using Anypoint Platform>>
 +
 You can always create APIs manually using Anypoint Platform. Use this approach when dealing with large API specifications (`> 550KB`).
