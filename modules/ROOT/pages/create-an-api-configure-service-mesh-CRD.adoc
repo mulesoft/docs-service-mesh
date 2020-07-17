@@ -11,11 +11,19 @@ After you provision the adapter, you must create an API to bind to the service. 
 If you want to create REST or SOAP APIs with OAS or WSDL definition, use Anypoint Platform.
 +
 Note that if you want to upload a REST API or OAS asset type, use a .json or .yaml file. Alternatively, if you want to upload a SOAP API or WSDL asset type, use a .wsdl or .xml file.
-* <<create_api-CRD, Create an API using Anypoint Service Mesh Autocreate>>
+* <<create_api-CRD, Create an API using Anypoint Service Mesh Autocreate with user credentials>>
 +
-Anypoint Service Mesh enables you to automatically create an HTTP API in Anypoint Platform, with no REST or SOAP definitions. You do not have to manually log in to Anypoint Platform. 
+Anypoint Service Mesh enables you to automatically create an HTTP API in Anypoint Platform using username and password, with no REST or SOAP definitions. You do not have to manually log in to Anypoint Platform. 
 +
 If you automatically create REST or SOAP APIs with Anypoint Service Mesh, the APIs are still managed internally as an HTTP asset without any definition.
+* <<create-api-CRD-ConnAps, Create an API using Anypoint Service Mesh Autocreate with client credentials>>
++
+Anypoint Service Mesh enables you to automatically create an HTTP API in Anypoint Platform using the credentials you create with xref:access-management::connected-apps-overview.adoc[Connected Apps]. You do not have to manually log in to Anypoint Platform.
++
+Use this option if your users are managed by an external single sign-on (SSO) application or an external identity provider (IdP). When you use a client application for authentication instead of an external IdP, you must use the client ID and client secret.
++
+If you automatically create REST or SOAP APIs with Anypoint Service Mesh, the APIs are still managed internally as an HTTP asset without any definition. 
+
 
 [[create-api-AP]]
 == Create an API Using Anypoint Platform
@@ -38,9 +46,9 @@ The Endpoint Configuration window is displayed.
 Your API is now created.
 
 [[create_api-CRD]]
-== Create an API Using Anypoint Service Mesh
+== Create an API Using Anypoint Service Mesh With User Credentials
 
-Use the procedure in this section to automatically create an API using Anypoint Service Mesh. Before you create the API, you must complete the task prerequisite.
+Use the procedure in this section to automatically create an API using Anypoint Service Mesh with your username and password. Before you create the API, you must complete the task prerequisite.
 
 *Task Prerequisites*
 
@@ -148,12 +156,125 @@ spec:
       - _tag in Exchange asset_ # example: orders
       apiInstance:
       - _tag in API Manager instance_ # example: orders
+    clientId: _ID of the Anypoint Platform connected app_
+    clientSecret: _Secret of the Anypoint Platform connected app_
+----
+
+[[create-api-CRD-ConnAps]]
+== Create an API Using Anypoint Service Mesh With Client Credentials
+
+Use the procedure in this section to automatically create an API using Anypoint Service Mesh using your Conncted App client credentials. Before you create the API, you must complete the task prerequisite.
+
+*Task Prerequisite*
+
+Before you begin, ensure that you:
+
+* You xref:obtain-connected-apps-credentials.adoc[Obtain the client ID and client secret credentials] from  Connected Apps
+* The client credentials has the:
+** Exchange Contributor permission to publish the API to Exchange
+** Manage API Configuration to manage the API in API Manager
+
+To create an API in Anypoint Platform using Anypoint Service Mesh:
+
+. Create your api definition file and save it with a '.yaml' file extension, for example `test-api.yaml`:
++
+[source,text,linenums]
+----
+apiVersion: servicecatalog.k8s.io/v1beta1
+kind: ServiceInstance
+metadata:
+  name: _Kubernetes API resource name_ # example: orders-api
+  namespace: _namespace name_ # example: default
+  labels: 
+    service-mesh.mulesoft.com/kind: api
+spec:
+  clusterServiceClassExternalName: anypoint-platform-api-instance
+  clusterServicePlanExternalName: service-mesh
+  parameters:
+    environmentId: _environment ID_ # example: 7cea45c6-3237-464d-bd34-3122c4abde29
+    groupId: _group ID_ # Optional - example: 350b8164-e809-4091-91f5-079fb30e5a1e
+    assetId: _asset ID_ # example: orders-api
+    version: _version_ # example: 0.0.1
+    instanceLabel: _instance label_ # example: public
+    tags:
+      apiSpec:
+      - _tag in Exchange asset_ # example: orders
+      apiInstance:
+      - _tag in API Manager instance_ # example: orders
+    user: _Username of the Anypoint Platform user_
+    password: _Password of the Anypoint Platform user_
+----
+. Apply the CRD file using the following command:
+`kubectl apply -f test-api.yaml`
+. Verify the API status using the following command:
+`asmctl api list`
++
+The API that was created is displayed.
+. Optionally, you can verify that an asset is created on Exchange and an API is created on API Manager.
+
+== Reference Kubernetes Secret
+
+Anypoint Service Mesh supports the use of Kubernetes secrets to store and manage sensitive information, such as your user credentials.
+
+*Task Prerequisites*
+
+You must have the required permissions to create the Kubernetes secret.
+
+To store your user credentials in Kubernetes secrets:
+
+. In a YAML file, create a secret in which to store the sensitive information, for example, `orders-api-config.yaml`:
++
+[source,text,linenums]
+----
+apiVersion: v1
+kind: Secret
+metadata:
+  name: _secret name_ # example: orders-api-config
+  namespace: _namespace name_ # example: default
+type: Opaque
+stringData:
+  config: |
+    {
+      "user": "_replace-with-anypoint-username_",
+      "password": "_replace-with-anypoint-clientSecret_"
+    }
+----
+. Apply the secret: 
++
+`kubectl apply -f orders-api-config.yaml`
++
+If the secret is correctly applied, a 'secret/orders-api-config created' message is displayed.
++
+. Reference the secret in your API CRD (instead of the user and password parameter), as illustrated in the following example:
++
+[source,text,linenums]
+----
+apiVersion: servicecatalog.k8s.io/v1beta1
+kind: ServiceInstance
+metadata:
+  name: _Kubernetes API resource name_ # example: orders-api
+  namespace: _namespace name_ # example: default
+  labels:
+    service-mesh.mulesoft.com/kind: api
+spec:
+  clusterServiceClassExternalName: anypoint-platform-api-instance
+  clusterServicePlanExternalName: service-mesh
+  parameters:
+    environmentId: _environment ID_ # example: 7cea45c6-3237-464d-bd34-3122c4abde29
+    groupId: _group ID_ # Optional - example: 350b8164-e809-4091-91f5-079fb30e5a1e
+    assetId: _asset ID_ # example: orders-api
+    version: _version_ # example: 0.0.1
+    instanceLabel: _instance label_ # example: public
+    tags:
+      apiSpec:
+      - _tag in Exchange asset_ # example: orders
+      apiInstance:
+      - _tag in API Manager instance_ # example: orders
   parametersFrom: # The element specifies the secret name and configuration required for retrieving the parameters.
     - secretKeyRef:
         name: _secret name_ # example: orders-api-config
         key: config
 ----
-
 
 == See Also
 
