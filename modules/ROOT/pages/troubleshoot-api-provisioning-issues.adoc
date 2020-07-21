@@ -82,6 +82,7 @@ The status of the API is displayed as `ProvisionCallFailed`.
 . Run the `asmctl api logs --name=<replace_with_api_name> --namespace=<replace_with_namespace>` command.
 +
 The following output illustrates provisioning an API with an invalid version:
++
 [source,text,linenums]
 ----
 DATE                   MESSAGE
