@@ -55,7 +55,7 @@ Delete the erroneous binding command and re-create it with the correct input.
 
 
 [[error-instance-not-ready]]
-== Error instance not ready
+== Error Instance Not Ready
 
 Before you create a binding, the API provisioning task must be completed and the referenced API or adapter must be ready. Otherwise, you receive the 'ErrorInstanceNotReady' error.
 
@@ -78,5 +78,7 @@ To resolve this issue:
 * xref:troubleshoot-api-provisioning-issues.adoc[API provisioning issues].
 +
 . To delete the API or adapter, delete the binding first. 
-. Wait for the API or the adapter to be ready (Not Deleting).
+. Wait for the API or the adapter to be ready.
++
+The status of the delete transaction must not be `Deleting`.
 . After the API or the adapter is ready, re-create the binding.
