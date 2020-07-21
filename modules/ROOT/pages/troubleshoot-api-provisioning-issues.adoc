@@ -26,10 +26,10 @@ image::credentials-error-api-prov-service-mesh.png[Credentials error when provis
 To diagnose the issue:
 
 Describe your service instance using the `kubectl describe serviceinstance _api_instance_name_` command:
-+
+
 `$ kubectl describe serviceinstance inventory-resource-api`
 In the `Status` field, a detailed description of the error is displayed:
-+
+
 image::error-with-params-error-display-api-prov-service-mesh.png[Error with parameters when provisioning APIs]
 
 In the following example, an error occurred due to an extra comma in the stringData section that is provided after the password segment:
@@ -87,6 +87,7 @@ The following output illustrates provisioning an API with an invalid version:
 DATE                   MESSAGE
 2020-05-29T17:12:36Z   Error provisioning ServiceInstance of ClusterServiceClass (K8S: "1c3b2100-5cdc-49ea-9423-dd7170e674b4" ExternalName: "anypoint-platform-api-instance") at ClusterServiceBroker "service-mesh-incluster-broker": Status: 400; ErrorMessage: Bad Request; Description: version: should match pattern "^\d+\.\d+\.\d+(-.+)?$" (ID: 49724b5d-7fad-4cc3-980e-695c2e47b383); ResponseError: <nil>
 ----
++
 . If no information is displayed, run the `kubectl describe serviceinstances <replace_with_api_name> -n <replace_with_namespace>` command. 
 +
 The `status` section of the resource displays an error message explaining the issue: 
@@ -107,5 +108,4 @@ To resolve this issue:
 +
 `asmctl api delete --name=<replace_with_api_name> --namespace=<replace_with_namespace>`
 . Fix the error.
-//Do we need to tell them how to fix the error?
 . Re-create the API.
