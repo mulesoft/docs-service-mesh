@@ -53,19 +53,14 @@ To resolve this issue:
 . Resolve the username and password error.
 . Re-create the API.  
 
+[[api-spec-file-size-exceeded]]
+== API Specification File Exceeds Supported Size
 
-== API Specification File Exceeds Supported 
-
-When provisioning an API with a specification file that is greater than 550 KBs, you might encounter issues with the provision operation or the Service Mesh services.
+When provisioning an API with a specification file that is larger than 550 KBs, you might encounter issues with the provision operation or the Service Mesh services.
 
 === Cause
 
-If you use a large file, the following errors might be displayed when listing pods in the `service-mesh` namespace:
-
-image::large-api-error-oom-pod.png[Pod restarted due to out of memory error]
-image::large-api-error-crashloop-backoff-pod.png[Pod restarted due to crashloop backoff error]
-
-Or when inspecting the Service Catalog logs, an error of this kind:
+If you use a large file, the pods might be restarted due to insufficient memory or crashloop errors:
 
 [source,text,linenums]
 ----
@@ -81,8 +76,8 @@ To diagnose the issue:
 +
 `$ kubectl get pods -n service-mesh`
 + 
-If a status is displayed other than `Running`, the Service Catalog pods might be failing due to lack of resources. You must increment the limits of both pods and then delete the service instance afterwards.
-
+If a status other than `Running` is displayed , the Service Catalog pods might be failing due to lack of resources. 
++
 . If the pod is running correctly, check the logs for `rpc` errors:
 +
 `$ kubectl logs -f deployment/service-mesh-catalog-controller-manager -n service-mesh --tail=250 | grep "rpc error"`
@@ -91,10 +86,11 @@ If a status is displayed other than `Running`, the Service Catalog pods might be
 
 To resolve this issue:
 
-. If Service Catalog pods are failing, first increase their resource limits:
+. If Service Catalog pods are failing, increase their resource limits:
 +
 `$ kubectl -n service-mesh set resources deployment service-mesh-catalog-controller-manager --limits=memory=64Mi`
 +
 `$ kubectl -n service-mesh set resources deployment service-mesh-catalog-webhook --limits=memory=64Mi`
 . Delete the service instance.
 . Create the API from Anypoint Platform.
+
