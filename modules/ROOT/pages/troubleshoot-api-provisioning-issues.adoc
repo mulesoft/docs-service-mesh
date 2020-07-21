@@ -54,13 +54,13 @@ To resolve this issue:
 . Re-create the API.  
 
 
-== API Spec size exceeds allowed supported size
+== API Specification File Exceeds Supported 
 
-When provisioning an API with a large specification file (current limit is `550KB`) you might face some issues on the provision operation or even the Service Mesh services.
+When provisioning an API with a specification file that is greater than 550 KBs, you might encounter issues with the provision operation or the Service Mesh services.
 
 === Cause
 
-If you use a large file, the following errors might show when listing `service-mesh` namespace's pods:
+If you use a large file, the following errors might be displayed when listing pods in the `service-mesh` namespace:
 
 image::large-api-error-oom-pod.png[Pod restarted due to out of memory error]
 image::large-api-error-crashloop-backoff-pod.png[Pod restarted due to crashloop backoff error]
@@ -77,11 +77,11 @@ I0605 21:13:58.080907       1 controller.go:408] Dropping ServiceInstance "defau
 
 To diagnose the issue:
 
-. Run this command and check the status of the Service Catalog pods:
+. Check the status of the Service Catalog pods:
 +
 `$ kubectl get pods -n service-mesh`
 + 
-If the status is different from `Running`, the Service Catalog pods are probably failing because lack of resources. We will need to increment the limits of both pods and delete the service instance afterwards.
+If a status is displayed other than `Running`, the Service Catalog pods might be failing due to lack of resources. You must increment the limits of both pods and then delete the service instance afterwards.
 
 . If the pod is running correctly, check the logs for `rpc` errors:
 +
@@ -97,4 +97,4 @@ To resolve this issue:
 +
 `$ kubectl -n service-mesh set resources deployment service-mesh-catalog-webhook --limits=memory=64Mi`
 . Delete the service instance.
-. Create the API through the Anypoint Platform.
+. Create the API from Anypoint Platform.
