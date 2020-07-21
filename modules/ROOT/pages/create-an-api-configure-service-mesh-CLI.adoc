@@ -13,7 +13,8 @@ Anypoint Service Mesh enables you to automatically create an API in Anypoint Pla
 When creating APIs that require specification files, such as REST and SOAP, ensure that the specification file is available in your file system for the CLI to upload it. Specification files used in this provisioning approach must not exceed 550 KBs in size.
 * <<create-api-AP, Create an API using Anypoint Platform>>
 +
-You can manually create APIs using Anypoint Platform. Use this approach when dealing with large API specifications that are greater than 550 KBs.
+You can manually create APIs using Anypoint Platform. Use this approach for API specification files that are greater than 550 KBs.
+
 +
 If you want to upload a REST API or OAS asset type, use a .json or .yaml file. Alternatively, if you want to upload a SOAP API or WSDL asset type, use a .wsdl or .xml file.
 
