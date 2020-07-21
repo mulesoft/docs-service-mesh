@@ -108,5 +108,5 @@ To resolve this issue:
 . Delete your API: 
 +
 `asmctl api delete --name=<replace_with_api_name> --namespace=<replace_with_namespace>`
-. Fix the error.
+. Fix the error by privding a new asset ID.
 . Re-create the API.
