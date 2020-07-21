@@ -88,7 +88,7 @@ The following output illustrates provisioning an API with an invalid version:
 DATE                   MESSAGE
 2020-05-29T17:12:36Z   Error provisioning ServiceInstance of ClusterServiceClass (K8S: "1c3b2100-5cdc-49ea-9423-dd7170e674b4" ExternalName: "anypoint-platform-api-instance") at ClusterServiceBroker "service-mesh-incluster-broker": Status: 400; ErrorMessage: Bad Request; Description: version: should match pattern "^\d+\.\d+\.\d+(-.+)?$" (ID: 49724b5d-7fad-4cc3-980e-695c2e47b383); ResponseError: <nil>
 ----
-
++
 . If no information is displayed, run the `kubectl describe serviceinstances <replace_with_api_name> -n <replace_with_namespace>` command. 
 +
 The `status` section of the resource displays an error message explaining the issue: 
