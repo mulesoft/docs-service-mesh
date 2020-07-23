@@ -13,14 +13,14 @@ If you want to create REST or SOAP APIs with OAS or WSDL definition, use Anypoin
 Note that if you want to upload a REST API or OAS asset type, use a .json or .yaml file. Alternatively, if you want to upload a SOAP API or WSDL asset type, use a .wsdl or .xml file.
 * <<create-api-ASM-CLI, Create an API using Anypoint Service Mesh Autocreate with user credentials>>
 +
-Anypoint Service Mesh enables you to automatically create an HTTP API in Anypoint Platform using username and password, with no REST or SOAP definitions. You do not have to manually log in to Anypoint Platform. 
+Anypoint Service Mesh enables you to automatically create an HTTP API in Anypoint Platform using username and password, with no REST or SOAP definitions. You do not have to manually log in to Anypoint Platform. Use this option if your users are managed by Anypoint Platform. 
 +
 If you automatically create REST or SOAP APIs with Anypoint Service Mesh, the APIs are still managed internally as an HTTP asset without any definition. 
-* <<create-api-ASM-CLI-ConnAps, Create an API using Anypoint Service Mesh Autocreate with client credentials>>
+* <<create-api-ASM-CLI-ConnAps, Create an API using Anypoint Service Mesh Autocreate with Connected Apps>>
 +
-Anypoint Service Mesh enables you to automatically create an HTTP API in Anypoint Platform using the credentials you create with xref:access-management::connected-apps-overview.adoc[Connected Apps]. You do not have to manually log in to Anypoint Platform.
+Anypoint Service Mesh enables you to automatically create an HTTP API in Anypoint Platform using the xref:access-management::connected-apps-overview.adoc[Connected Apps] credentials. You do not have to manually log in to Anypoint Platform.
 +
-Use this option if your users are managed by an external single sign-on (SSO) application or an external identity provider (IdP). When you use a client application for authentication instead of an external IdP, you must use the client ID and client secret.
+Use this option if your users are managed by an external identity provider (IdP).
 +
 If you automatically create REST or SOAP APIs with Anypoint Service Mesh, the APIs are still managed internally as an HTTP asset without any definition. 
 
@@ -102,9 +102,9 @@ The API that was created is displayed.
 . Optionally, you can verify that an asset is created on Exchange and an API is created on API Manager.
 
 [[create-api-ASM-CLI-ConnAps]]
-== Create an API Using Anypoint Service Mesh With Client Credentials
+== Create an API Using Anypoint Service Mesh With Connected Apps
 
-Use the procedure in this section to automatically create an API using Anypoint Service Mesh using your Connected Apps client credentials. Before you create the API, you must complete the task prerequisite.
+Use the procedure in this section to automatically create an API using Anypoint Service Mesh with your Connected App credentials. Before you create the API, you must complete the task prerequisite.
 
 *Task Prerequisite*
 
@@ -115,7 +115,7 @@ Before you begin, ensure that:
 ** Exchange Contributor permission to publish the API to Exchange
 ** Manage API Configuration to manage the API in API Manager
 
-To create an API using Anypoint Service Mesh with client credentials, perform the following steps:
+To create an API using Anypoint Service Mesh with Connected Apps, perform the following steps:
 
 . Using Anypoint Service Mesh, type the following command to create the API:
 +

@@ -13,14 +13,14 @@ If you want to create REST or SOAP APIs with OAS or WSDL definition, use Anypoin
 Note that if you want to upload a REST API or OAS asset type, use a .json or .yaml file. Alternatively, if you want to upload a SOAP API or WSDL asset type, use a .wsdl or .xml file.
 * <<create_api-CRD, Create an API using Anypoint Service Mesh Autocreate with user credentials>>
 +
-Anypoint Service Mesh enables you to automatically create an HTTP API in Anypoint Platform using username and password, with no REST or SOAP definitions. You do not have to manually log in to Anypoint Platform. 
+Anypoint Service Mesh enables you to automatically create an HTTP API in Anypoint Platform using username and password, with no REST or SOAP definitions. You do not have to manually log in to Anypoint Platform. Use this option if your users are managed by Anypoint Platform. 
 +
 If you automatically create REST or SOAP APIs with Anypoint Service Mesh, the APIs are still managed internally as an HTTP asset without any definition.
-* <<create-api-CRD-ConnAps, Create an API using Anypoint Service Mesh Autocreate with client credentials>>
+* <<create-api-CRD-ConnAps, Create an API using Anypoint Service Mesh Autocreate with Connected Apps>>
 +
-Anypoint Service Mesh enables you to automatically create an HTTP API in Anypoint Platform using the credentials you create with xref:access-management::connected-apps-overview.adoc[Connected Apps]. You do not have to manually log in to Anypoint Platform.
+Anypoint Service Mesh enables you to automatically create an HTTP API in Anypoint Platform using the xref:access-management::connected-apps-overview.adoc[Connected Apps] credentials. You do not have to manually log in to Anypoint Platform.
 +
-Use this option if your users are managed by an external single sign-on (SSO) application or an external identity provider (IdP). When you use a client application for authentication instead of an external IdP, you must use the client ID and client secret.
+Use this option if your users are managed by Anypoint Platform or an external identity provider (IdP).
 +
 If you automatically create REST or SOAP APIs with Anypoint Service Mesh, the APIs are still managed internally as an HTTP asset without any definition. 
 
@@ -122,7 +122,7 @@ stringData:
   config: |
     {
       "user": "_replace-with-anypoint-username_",
-      "password": "_replace-with-anypoint-clientSecret_"
+      "password": "_replace-with-anypoint-password_"
     }
 ----
 . Apply the secret: 
@@ -156,25 +156,27 @@ spec:
       - _tag in Exchange asset_ # example: orders
       apiInstance:
       - _tag in API Manager instance_ # example: orders
-    clientId: _ID of the Anypoint Platform connected app_
-    clientSecret: _Secret of the Anypoint Platform connected app_
+    parametersFrom: # The element specifies the secret name and configuration required for retrieving the parameters.
+    - secretKeyRef:
+        name: _secret name_ # example: orders-api-config
+        key: config
 ----
 
 [[create-api-CRD-ConnAps]]
-== Create an API Using Anypoint Service Mesh With Client Credentials
+== Create an API Using Anypoint Service Mesh With Connected Apps
 
-Use the procedure in this section to automatically create an API using Anypoint Service Mesh using your Conncted App client credentials. Before you create the API, you must complete the task prerequisite.
+Use the procedure in this section to automatically create an API using Anypoint Service Mesh with your Connected App credentials. Before you create the API, you must complete the task prerequisite.
 
 *Task Prerequisite*
 
 Before you begin, ensure that you:
 
-* You xref:obtain-connected-apps-credentials.adoc[Obtain the client ID and client secret credentials] from  Connected Apps
+* You xref:obtain-connected-apps-credentials.adoc[Obtain the client ID and client secret credentials] from Connected Apps
 * The client credentials has the:
 ** Exchange Contributor permission to publish the API to Exchange
 ** Manage API Configuration to manage the API in API Manager
 
-To create an API in Anypoint Platform using Anypoint Service Mesh:
+To create an API in Anypoint Platform using Anypoint Service Mesh with Connected Apps:
 
 . Create your api definition file and save it with a '.yaml' file extension, for example `test-api.yaml`:
 +
@@ -201,8 +203,8 @@ spec:
       - _tag in Exchange asset_ # example: orders
       apiInstance:
       - _tag in API Manager instance_ # example: orders
-    user: _Username of the Anypoint Platform user_
-    password: _Password of the Anypoint Platform user_
+    clientId: _ID of the Anypoint Platform connected app_
+    clientSecret: _Secret of the Anypoint Platform connected app_
 ----
 . Apply the CRD file using the following command:
 `kubectl apply -f test-api.yaml`
@@ -214,7 +216,7 @@ The API that was created is displayed.
 
 == Reference Kubernetes Secret
 
-Anypoint Service Mesh supports the use of Kubernetes secrets to store and manage sensitive information, such as your user credentials.
+Anypoint Service Mesh supports the use of Kubernetes secrets to store and manage sensitive information, such as your Connected App credentials.
 
 *Task Prerequisites*
 
@@ -235,8 +237,8 @@ type: Opaque
 stringData:
   config: |
     {
-      "user": "_replace-with-anypoint-username_",
-      "password": "_replace-with-anypoint-clientSecret_"
+      "clientId": "_replace-with-connected-app-id_",
+      "clientSecret": "_replace-with-connected-app-secret_"
     }
 ----
 . Apply the secret: 
