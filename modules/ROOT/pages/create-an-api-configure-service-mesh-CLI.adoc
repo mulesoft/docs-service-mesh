@@ -18,7 +18,7 @@ Anypoint Service Mesh enables you to automatically create an API in Anypoint Pla
 When creating APIs that require specification files, such as REST and SOAP, ensure that the specification file is available in your file system for the CLI to upload it. Specification files used in this provisioning approach must not exceed 550 KBs in size.
 * <<create-api-ASM-CLI-ConnAps, Create an API using Anypoint Service Mesh Autocreate with Connected Apps>>
 +
-Anypoint Service Mesh enables you to automatically create an HTTP API in Anypoint Platform using the xref:access-management::connected-apps-overview.adoc[Connected Apps] credentials. You do not have to manually log in to Anypoint Platform.
+Anypoint Service Mesh enables you to automatically create an API in Anypoint Platform using the xref:access-management::connected-apps-overview.adoc[Connected Apps] credentials. You do not have to manually log in to Anypoint Platform.
 +
 Use this option if your users are managed by an external identity provider (IdP).
 
