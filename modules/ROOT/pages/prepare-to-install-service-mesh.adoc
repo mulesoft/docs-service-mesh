@@ -87,7 +87,7 @@ You can install Istio 1.4.x, 1.5.x or 1.6.x in your environment to support Anypo
 
 === Install Istio 1.6.x
 
-Anypoint Service Mesh supports Istio versions `1.6.0` through `1.6.6`. To install and configure Istio 1.5.x for Anypoint Service Mesh:
+Anypoint Service Mesh supports Istio versions `1.6.0` through `1.6.6`. To install and configure Istio 1.6.x for Anypoint Service Mesh:
 
 . Download Istio using the https://istio.io/docs/setup/[Istio documentation].
 . Install Istio with the following configurations:
