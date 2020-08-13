@@ -11,20 +11,24 @@ After you provision the adapter, you must create an API to bind to the service. 
 You can create APIs using Anypoint Platform. Use this approach for API specification files that are greater than 550 KBs.
 +
 If you want to upload a REST API or OAS asset type, use a .json or .yaml file. Alternatively, if you want to upload a SOAP API or WSDL asset type, use a .wsdl or .xml file.
-* <<create_api-CRD, Create an API using Anypoint Service Mesh Autocreate with user credentials>>
+* <<create-api-autocreate,Create an API using the Anypoint Service Mesh autocreate feature>>
 +
-Anypoint Service Mesh enables you to automatically create an API in Anypoint Platform using username and password, with no REST or SOAP definitions. You do not have to manually log in to Anypoint Platform. Use this option if your users are managed by Anypoint Platform. 
+You can configure Anypoint Service Mesh to automatically create an API in Anypoint Platform (no manual logging required).
 +
 When creating APIs that require specification files, such as REST and SOAP, ensure that the specification file is base64 encoded and embedded into the CRD. Specification files used in this provisioning approach must not exceed 550 KBs in size.
-* <<create-api-CRD-ConnAps, Create an API using Anypoint Service Mesh Autocreate with Connected Apps>>
 +
-Anypoint Service Mesh enables you to automatically create an API in Anypoint Platform using the xref:access-management::connected-apps-overview.adoc[Connected Apps] credentials. You do not have to manually log in to Anypoint Platform.
+You can use any of the following options for authenticating the Anypoint Service Mesh autocreate feature:
+
+** Using <<create_api-CRD, user credentials>>
 +
-Use this option if your users are managed by Anypoint Platform or an external identity provider (IdP).
+Use the username and password authentication option if your users are managed by Anypoint Platform.  
+** Using <<create-api-CRD-ConnAps, Connected Apps credentials>>
++
+Use the xref:access-management::connected-apps-overview.adoc[Connected Apps] authentication option if your users are managed by Anypoint Platform or an external identity provider (IdP).
 
 
 [[create-api-AP]]
-== Create an API Using Anypoint Platform
+== Create an API by Using Anypoint Platform
 
 To create an API using Anypoint Platform, perform the following steps:
 
@@ -43,24 +47,27 @@ The Endpoint Configuration window is displayed.
 +
 Your API is now created.
 
+[[create-api-autocreate]]
+== Create an API Using the Anypoint Service Mesh Autocreate Feature
+
+When you configure the Anypoint Service Mesh autocreate feature, an API is automatically created for you. How you authenticate your user for the create transaction depends on whether your users are managed by Anypoint Platform or an external IdP.
+
 [[create_api-CRD]]
-== Create an API Using Anypoint Service Mesh With User Credentials
+=== Autocreate By Using Your User Credentials
 
-Use the procedure in this section to automatically create an API using Anypoint Service Mesh with your username and password. Before you create the API, you must complete the task prerequisite.
+If your users are managed by Anypoint Platform, use the username and password credentials for authentication. 
 
-*Task Prerequisites*
+Before you configure the Anypoint Service Mesh autocreate feature, ensure that you obtain the:
 
-Before you begin, ensure that you obtain the:
-
-* Environment ID and organization ID.
+* Environment ID and organization ID information.
 +
 To obtain these details, go to *API Manager > Environment Information*.
 * Manage APIs Configuration permission for the environment where you are creating the API Instance.
 * Exchange Contributor permission for the business group where you are creating the asset.
 
-To create an API in Anypoint Platform using Anypoint Service Mesh:
+To autocreate using user credentials:
 
-. Create your api definition file and save it with a '.yaml' file extension, for example `test-api.yaml`:
+. Create your API definition file and save it with a '.yaml' file extension:
 +
 [source,text,linenums]
 ----
@@ -91,21 +98,19 @@ spec:
     user: _Username of the Anypoint Platform user_
     password: _Password of the Anypoint Platform user_
 ----
-. Apply the CRD file using the following command:
+. Apply the CRD file:
 `kubectl apply -f test-api.yaml`
-. Verify the API status using the following command:
+. Verify the API status:
 `asmctl api list`
 +
-The API that was created is displayed.
-. Optionally, you can verify that an asset is created on Exchange and an API is created on API Manager.
+The new API is displayed.
+. Optionally, verify that an asset is created on Exchange and an API is created on API Manager.
 
-== Reference Kubernetes Secret
+=== Reference Kubernetes Secret
 
-Anypoint Service Mesh supports the use of Kubernetes secrets to store and manage sensitive information, such as your user credentials.
+Anypoint Service Mesh supports the use of Kubernetes secrets to store and manage sensitive information, such as your user credentials. 
 
-*Task Prerequisites*
-
-You must have the required permissions to create the Kubernetes secret.
+Before you configure your Kubernetes secrets, ensure that you have the required permissions.
 
 To store your user credentials in Kubernetes secrets:
 
@@ -159,25 +164,23 @@ spec:
       - _tag in API Manager instance_ # example: orders
     parametersFrom: # The element specifies the secret name and configuration required for retrieving the parameters.
     - secretKeyRef:
-        name: _secret name_ # example: orders-api-config
-        key: config
+      name: _secret name_ # example: orders-api-config
+      key: config
 ----
 
 [[create-api-CRD-ConnAps]]
-== Create an API Using Anypoint Service Mesh With Connected Apps
+=== Autocreate by Using Your Connected Apps Credentials
 
-Use the procedure in this section to automatically create an API using Anypoint Service Mesh with your Connected App credentials. Before you create the API, you must complete the task prerequisite.
+If your users are managed by an external IdP, use the Connected App credentials for authentication. 
 
-*Task Prerequisite*
+Before you configure the autocreate feature:
 
-Before you begin, ensure that you:
+* xref:obtain-connected-apps-credentials.adoc[Obtain the client ID and client secret] from Connected Apps
+* Verify that these client credentials include:
+** Exchange Contributor permission for publishing the API to Exchange
+** Manage API Configuration permission for managing the API in API Manager
 
-* You xref:obtain-connected-apps-credentials.adoc[Obtain the client ID and client secret credentials] from Connected Apps
-* The client credentials has the:
-** Exchange Contributor permission to publish the API to Exchange
-** Manage API Configuration to manage the API in API Manager
-
-To create an API in Anypoint Platform using Anypoint Service Mesh with Connected Apps:
+To autocreate using Connected Apps:
 
 . Create your api definition file and save it with a '.yaml' file extension, for example `test-api.yaml`:
 +
@@ -212,16 +215,14 @@ spec:
 . Verify the API status using the following command:
 `asmctl api list`
 +
-The API that was created is displayed.
-. Optionally, you can verify that an asset is created on Exchange and an API is created on API Manager.
+The new API is displayed.
+. Optionally, verify that an Exchange asset is created on Exchange and an API is created on API Manager.
 
-== Reference Kubernetes Secret
+=== Reference Kubernetes Secret
 
-Anypoint Service Mesh supports the use of Kubernetes secrets to store and manage sensitive information, such as your Connected App credentials.
+Anypoint Service Mesh supports the use of Kubernetes secrets to store and manage sensitive information, such as your Connected App credentials. With Kubernetes secrets, you do not have to specify the username and password credentials every time you create an API.
 
-*Task Prerequisites*
-
-You must have the required permissions to create the Kubernetes secret.
+Before you configure your Kubernetes secrets, ensure that you have the required permissions.
 
 To store your user credentials in Kubernetes secrets:
 
@@ -273,10 +274,10 @@ spec:
       - _tag in Exchange asset_ # example: orders
       apiInstance:
       - _tag in API Manager instance_ # example: orders
-  parametersFrom: # The element specifies the secret name and configuration required for retrieving the parameters.
+    parametersFrom: # The element specifies the secret name and configuration required for retrieving the parameters.
     - secretKeyRef:
-        name: _secret name_ # example: orders-api-config
-        key: config
+      name: _secret name_ # example: orders-api-config
+      key: config
 ----
 
 == See Also
