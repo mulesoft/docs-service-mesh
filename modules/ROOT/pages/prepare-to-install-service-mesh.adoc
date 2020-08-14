@@ -83,11 +83,11 @@ In your network, you might need to whitelist the hostnames and ports of external
 [[install_Istio]]
 == Installing Istio
 
-You can install Istio 1.4.x, 1.5.x or 1.6.x in your environment to support Anypoint Service Mesh. However, the Istio configuration for Anypoint Service Mesh differs based on the Istio version that you installed.
+You can install Istio 1.6.x, 1.5.x or 1.4.x in your environment to support Anypoint Service Mesh. However, the Istio configuration for Anypoint Service Mesh differs based on the Istio version that you installed.
 
 === Install Istio 1.6.x
 
-Anypoint Service Mesh supports Istio versions `1.6.0` through `1.6.6`. To install and configure Istio 1.6.x for Anypoint Service Mesh:
+Anypoint Service Mesh supports Istio versions `1.6.0` through `1.6.8`. To install and configure Istio 1.6.x for Anypoint Service Mesh:
 
 . Download Istio using the https://istio.io/docs/setup/[Istio documentation].
 . Install Istio with the following configurations:
@@ -107,8 +107,6 @@ values:
 [source,text,linenums]
 ----
 values:
-  prometheus:
-    enabled: true
   telemetry:
     v1:
       enabled: true
@@ -135,9 +133,6 @@ spec:
       enabled: true
     ingressGateways:
     - enabled: false
-  addonComponents:
-    prometheus:
-      enabled: false
   meshConfig:
     disablePolicyChecks: false
   values:
@@ -154,7 +149,7 @@ To install the manifest, run:
 
 === Install Istio 1.5.x
 
-Anypoint Service Mesh supports Istio versions `1.5.0` through `1.5.8`. To install and configure Istio 1.5.x for Anypoint Service Mesh:
+Anypoint Service Mesh supports Istio versions `1.5.0` through `1.5.9`. To install and configure Istio 1.5.x for Anypoint Service Mesh:
 
 . Download Istio using the https://istio.io/docs/setup/[Istio documentation].
 . Install Istio with the following configurations:
