@@ -89,20 +89,20 @@ asmctl api create
 [%header%autowidth.spread]
 |===
 | Parameter Name | Description | Required or Optional | Default Value
-| `name` | The name of the Kubernetes API resource that you want to provision, for example, `orders-api`. | Required | Not applicable
-| `namespace` | The namespace in which you want to create the adapter, for example, `mulesoft-apps`. | Optional | default
-| `environmentId` | The ID of the environment where you want to create your API instance. | Required | Not applicable
-| `groupId` | The ID of the group of assets on Exchange, for example, the organization ID. You can find the organization ID on the API Manager landing page or in Access Management. | Optional | Organization ID of the organization that contains the environment. 
-| `assetId` | The ID of the assets that are a part of an organization. Supports alphanumeric characters without spaces. | Required | Not applicable
-| `version` | The version of the asset on Exchange. The version number must follow the semantic versioning format for major, minor, and patch releases. | Required | Not applicable
-| `instanceLabel` | The ID of the API instances of an Asset within a given environment. Supports alphanumeric characters without spaces. | Required | Not applicable
-| `classifier` | The asset kind of the API to create. Available options include `http`, `oas`, `raml`.  | Optional | `http`
-| `mainFile` | The name of the main file in the API specification file. When uploading a single YAML or JSON file, it should be the same name as the file. When uploading a ZIP file, it must match the primary file. | Required if classifier != `http` | Not applicable
-| `specPath` | The relative or absolute path to the API specification file. | Required if classifier != `http` | Not applicable
-| `specTags` | Tags to add to the asset on Exchange. |  Optional | Not applicable
-| `instanceTags` | Tags to add to the API instance on API Manager. |  Optional | Not applicable
-| `user` | The username credential of the Anypoint Platform user who is creating the API. | Required | Not applicable
-| `password` | The password of the Anypoint Platform user who is creating the API. | Required | Not applicable
+| `name` | The name of the Kubernetes API resource that you want to provision, for example, `orders-api` | Required | Not applicable
+| `namespace` | The namespace in which you want to create the adapter, for example, `mulesoft-apps` | Optional | default
+| `environmentId` | The ID of the environment where you want to create your API instance | Required | Not applicable
+| `groupId` | The ID of the group of assets on Exchange, for example, the organization ID (available from the API Manager landing page or from Access Management) | Optional | Organization ID of the organization that contains the environment. 
+| `assetId` | The ID (supports alphanumeric characters without spaces) of the assets that are a part of an organization | Required | Not applicable
+| `version` | The version, with the semantic versioning format for major, minor, and patch releases, of the asset on Exchange | Required | Not applicable
+| `instanceLabel` | The ID (supports alphanumeric characters without spaces) of the API instances of an asset within a given environment | Required | Not applicable
+| `classifier` | The type of API asset to create: `http`, `oas`, or `raml`  | Optional | `http`
+| `mainFile` | The name of the main file in the API specification file: YAML or JSON files must match the filename with the specification file and ZIP files must match the filename with the primary file | Specifiy this option for all classifers, exluding `http`. | Not applicable
+| `specPath` | The relative or absolute path to the API specification file | Required if classifier != `http` | Not applicable
+| `specTags` | Tags to add to the asset on Exchange |  Optional | Not applicable
+| `instanceTags` | Tags to add to the API instance on API Manager |  Optional | Not applicable
+| `user` | The username credential of the Anypoint Platform user who is creating the API | Required | Not applicable
+| `password` | The password of the Anypoint Platform user who is creating the API | Required | Not applicable
 |===
 +
 . Verify the API status using the following command:
