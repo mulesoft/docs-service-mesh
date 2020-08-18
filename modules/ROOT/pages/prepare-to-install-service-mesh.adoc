@@ -83,7 +83,7 @@ In your network, you might need to whitelist the hostnames and ports of external
 [[install_Istio]]
 == Installing Istio
 
-You can install Istio 1.6.x, 1.5.x or 1.4.x in your environment to support Anypoint Service Mesh. However, the Istio configuration for Anypoint Service Mesh differs based on the Istio version that you installed.
+You can install Istio 1.6.x, 1.5.x, or 1.4.x in your environment to support Anypoint Service Mesh. However, the Istio configuration for Anypoint Service Mesh differs based on the Istio version that you installed.
 
 === Install Istio 1.6.x
 
@@ -143,6 +143,7 @@ spec:
         enabled: false
 ----  
 When using the full manifest, ensure that you choose the correct profile. In the example, the `default` profile is used. 
+
 To install the manifest, run:
 +
 `istioctl manifest apply -f <manifest-file.yaml>`
