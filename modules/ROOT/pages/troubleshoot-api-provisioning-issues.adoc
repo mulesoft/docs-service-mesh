@@ -60,7 +60,7 @@ When provisioning an API with a specification file that is larger than 550 KBs, 
 
 === Cause
 
-If you use a large file, the pods might be restarted due to insufficient memory or crashloop errors:
+If you use a large file, the pods might be restarted due to Service Catalog limitations:
 
 [source,text,linenums]
 ----
@@ -86,7 +86,7 @@ If a status other than `Running` is displayed , the Service Catalog pods might b
 
 To resolve this issue:
 
-. If Service Catalog pods are failing, increase their resource limits:
+. If the Service Catalog pods are failing, increase their resource limits:
 +
 `$ kubectl -n service-mesh set resources deployment service-mesh-catalog-controller-manager --limits=memory=64Mi`
 +
