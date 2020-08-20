@@ -8,14 +8,14 @@ After you provision the adapter, you must create an API to bind to the service. 
 
 * <<create-api-AP, Create an API using Anypoint Platform>>
 +
-You can create APIs using Anypoint Platform. Use this approach for API specification files that are greater than 550 KBs.
+Create APIs using Anypoint Platform when your API specification files are larger than 550 KB.
 +
-If you want to upload a REST API or OAS asset type, use a .json or .yaml file. Alternatively, if you want to upload a SOAP API or WSDL asset type, use a .wsdl or .xml file.
+If you want to upload a REST API or an OAS asset type, use a `.json` or `.yaml` file. If you want to upload a SOAP API or WSDL asset type, use a `.wsdl` or `.xml` file.
 * <<create-api-autocreate,Create an API using the Anypoint Service Mesh autocreate feature>>
 +
 You can configure Anypoint Service Mesh to automatically create an API in Anypoint Platform (no manual logging required). 
 +
-When creating APIs that require specification files, such as REST and SOAP, ensure that the specification file is available in your file system for the CLI to upload it. Specification files used in this provisioning approach must not exceed 550 KBs in size.
+When creating APIs that require specification files, such as REST and SOAP APIs, ensure that the specification file is not larger than 550 KB and is available in your file system for the CLI to upload.
 +
 You can use any of the following options for authenticating the Anypoint Service Mesh autocreate feature:
 
@@ -92,17 +92,17 @@ asmctl api create
 | `name` | The name of the Kubernetes API resource that you want to provision, for example, `orders-api` | Required | Not applicable
 | `namespace` | The namespace in which you want to create the adapter, for example, `mulesoft-apps` | Optional | default
 | `environmentId` | The ID of the environment where you want to create your API instance | Required | Not applicable
-| `groupId` | The ID of the group of assets on Exchange, for example, the organization ID (available from the API Manager landing page or from Access Management) | Optional | Organization ID of the organization that contains the environment. 
-| `assetId` | The ID (supports alphanumeric characters without spaces) of the assets that are a part of an organization | Required | Not applicable
-| `version` | The version, with the semantic versioning format for major, minor, and patch releases, of the asset on Exchange | Required | Not applicable
-| `instanceLabel` | The ID (supports alphanumeric characters without spaces) of the API instances of an asset within a given environment | Required | Not applicable
+| `groupId` | The ID of the group of assets on Exchange, for example, the organization ID  | Optional | ID of the organization that contains the environment
+| `assetId` | The ID, in alphanumeric characters without spaces, of the assets that are a part of an organization | Required | Not applicable
+| `version` | The version of the asset on Exchange, including the semantic versioning format for major, minor, and patch releases  | Required | Not applicable
+| `instanceLabel` | The ID, in alphanumeric characters without spaces, of the API instances of an asset within a given environment | Required | Not applicable
 | `classifier` | The type of API asset to create: `http`, `oas`, or `raml`  | Optional | `http`
-| `mainFile` | The name of the main file in the API specification file: YAML or JSON files must match the filename with the specification file and ZIP files must match the filename with the primary file | Specifiy this option for all classifers, exluding `http`. | Not applicable
+| `mainFile` | The name of the main file in the API specification file, compliant with the requirement that YAML or JSON files are named the same as the specification file, while the mainFile should match the primary file name when working with ZIP files | Specified for all classifiers except `http` | Not applicable
 | `specPath` | The relative or absolute path to the API specification file | Required if classifier != `http` | Not applicable
-| `specTags` | Tags to add to the asset on Exchange |  Optional | Not applicable
-| `instanceTags` | Tags to add to the API instance on API Manager |  Optional | Not applicable
-| `user` | The username credential of the Anypoint Platform user who is creating the API | Required | Not applicable
-| `password` | The password of the Anypoint Platform user who is creating the API | Required | Not applicable
+| `specTags` | The tags to add to the asset on Exchange |  Optional | Not applicable
+| `instanceTags` | The tags to add to the API instance on API Manager |  Optional | Not applicable
+| `user` | The username credential of the Anypoint Platform user who creates the API | Required | Not applicable
+| `password` | The password of the Anypoint Platform user who creates the API | Required | Not applicable
 |===
 +
 . Verify the API status using the following command:

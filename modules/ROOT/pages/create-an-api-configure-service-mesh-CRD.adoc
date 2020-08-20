@@ -8,14 +8,14 @@ After you provision the adapter, you must create an API to bind to the service. 
 
 * <<create-api-AP, Create an API using Anypoint Platform>>
 +
-You can create APIs using Anypoint Platform. Use this approach for API specification files that are greater than 550 KBs.
+Create APIs using Anypoint Platform when your API specification files are larger than 550 KB.
 +
-If you want to upload a REST API or OAS asset type, use a .json or .yaml file. Alternatively, if you want to upload a SOAP API or WSDL asset type, use a .wsdl or .xml file.
+If you want to upload a REST API or an OAS asset type, use a `.json` or `.yaml` file. If you want to upload a SOAP API or WSDL asset type, use a `.wsdl` or `.xml` file.
 * <<create-api-autocreate,Create an API using the Anypoint Service Mesh autocreate feature>>
 +
 You can configure Anypoint Service Mesh to automatically create an API in Anypoint Platform (no manual logging required).
 +
-When creating APIs that require specification files, such as REST and SOAP, ensure that the specification file is base64 encoded and embedded into the CRD. Specification files used in this provisioning approach must not exceed 550 KBs in size.
+When creating APIs that require specification files, such as REST and SOAP APIs, ensure that the specification file is not larger than 550 KB and is available in your file system for the CLI to upload.
 +
 You can use any of the following options for authenticating the Anypoint Service Mesh autocreate feature:
 
