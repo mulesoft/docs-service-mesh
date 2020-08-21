@@ -1,0 +1,139 @@
+= Update an API Using the CLI
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+:keywords: service mesh, microservices, updating, installing
+
+APIs in the Platform can be updated -both assets and API instances-, from creating a whole new version (maintaining the product version) or just their tags. You can update an API using Anypoint Platform or Anypoint Service Mesh:
+
+* <<update-api-AP, Update an API using Anypoint Platform>>
++
+New versions of an API asset can be created via Exchange. Then, API instances can be updated to use this new version of the asset.
++
+Tags are updated by accesing the asset in Exchange or the API instance in API Manager, and modifying their tags through the corresponding UI.
+* <<update-api-cli,Update an API using Anypoint Service Mesh>>
++
+If the API resource exists in the cluster, it can be updated so it triggers changes in the Anypoint Platform, creating or modificating asset versions and API instances.
+
+
+[[update-api-AP]]
+== Update an API using Anypoint Platform
+
+=== Update API asset in Exchange
+To update an existing asset or create a new version of it using Anypoint Platform, perform the following steps:
+
+. Go to *Anypoint Platform > Exchange* and select the desired asset.
++
+The asset page is displayed. Now you can perform the following actions:
+. If you wish to upload a new version, click on *Add new version* on the right-side table.
+. If you wish to change the tags of a version, you can do it in the *Tags* section on the right-side panel.  
+
+=== Update API instance in API Manager
+To update an existing API instance, perform the following steps:
+
+. Go to *Anypoint Platform > API Manager*
+. Search and select your API instance in the table. 
++
+Once inside the API details page, you can perform the following actions:
+. Update the instance tags, at the *API Configuration* section.
+. Update the asset version it points to. Note that you can only update if there is a newer version of the asset, that belongs to the same product version.
+image::update-api-asset.png[Display asset update]
+
+
+[[update-api-cli]]
+== Update an API using the ASM CLI
+
+When you configured the API using the Anypoint Service Mesh autocreate feature, you can update it from the cluster as well. The update will reuse the environment information and credentials introduced in the provisioning. 
+
+To update, perform the following steps:
+
+. Using Anypoint Service Mesh, type the following command to create the API:
++
+[source,text,linenums]
+----
+asmctl api update  
+--name=_Kubernetes API resource name_ \
+--namespace=_namespace name_ \
+--version=_(Optional) new asset version for the API_ \
+--mainFile=_(Optional) name of the main file in the API specification_ \
+--specPath=_(Optional) path to the API specification file_ \
+--specTags=_list of comma separated tags to be added to the asset on Exchange_ \
+--instanceTags=_list of comma separated tags to be added to the instance on API Manager_ 
+----
++
+[%header%autowidth.spread]
+|===
+| Parameter Name | Description | Required or Optional | Default Value
+| `name` | The name of the Kubernetes API resource that you want to provision, for example, `orders-api`. | Required | Not applicable
+| `namespace` | The namespace in which you want to create the adapter, for example, `mulesoft-apps`. | Optional | default
+| `environmentId` | The ID of the environment where you want to create your API instance. | Required | Not applicable
+| `groupId` | The ID of the group of assets on Exchange, for example, the organization ID. You can find the organization ID on the API Manager landing page or in Access Management. | Optional | Organization ID of the organization that contains the environment. 
+| `assetId` | The ID of the assets that are a part of an organization. Supports alphanumeric characters without spaces. | Required | Not applicable
+| `version` | The version of the asset on Exchange. The version number must follow the semantic versioning format for major, minor, and patch releases. | Required | Not applicable
+| `instanceLabel` | The ID of the API instances of an Asset within a given environment. Supports alphanumeric characters without spaces. | Required | Not applicable
+| `specTags` | Tags to add to the asset on Exchange. |  Optional | Not applicable
+| `instanceTags` | Tags to add to the API instance on API Manager. |  Optional | Not applicable
+| `user` | The username credential of the Anypoint Platform user who is creating the API. | Required | Not applicable
+| `password` | The password of the Anypoint Platform user who is creating the API. | Required | Not applicable
+|===
++
+. Verify the API status using the following command:
+`asmctl api list`
++
+The API that was created is displayed.
+. Optionally, you can verify that an asset is created on Exchange and an API is created on API Manager.
+
+[[create-api-ASM-CLI-ConnAps]]
+=== Autocreate by Using Your Connected Apps Credentials
+
+If your users are managed by Anypoint Platform or an external IdP, use the Connected App credentials for authentication. Before you configure the autocreate feature, ensure that:
+
+* You xref:obtain-connected-apps-credentials.adoc[Obtain the client ID and client secret credentials] from Connected Apps
+* The ID of the group of assets on Exchange, for example, the organization ID
+* The client credentials has the:
+** Exchange Contributor permission for publishing the API to Exchange
+** Manage API Configuration permission for managing the API in API Manager
+
+To autocreate using Connected Apps, perform the following steps:
+
+. Using Anypoint Service Mesh, type the following command to create the API:
++
+[source,text,linenums]
+----
+asmctl api create
+--name=_Kubernetes API resource name_ \
+--namespace=_namespace name_ \
+--environmentId=_environment ID_ \
+--groupId=_(Optional) group ID of the asset, for example, organization ID_ \
+--assetId=_asset ID on Exchange_ \
+--version=_asset version of the instance on exchange_ \
+--instanceLabel=_label of the instance on API Manager_ \
+--specTags=_list of comma separated tags to be added to the asset on Exchange_ \
+--instanceTags=_list of comma separated tags to be added to the instance on API Manager_ \
+--clientId=_ID of the Anypoint Platform Connected Apps, using which to create the API instance_ \
+--clientSecret=_client secret of the Anypoint Platform Connected Apps, using which to create the API instance_
+----
++
+[%header%autowidth.spread]
+|===
+| Parameter Name | Description | Required or Optional | Default Value
+| `name` | The name of the existing Kubernetes API resource, for example, `orders-api` | Required | Not applicable
+| `namespace` | The namespace in which you created you API resource, for example, `mulesoft-apps` | Required | Not applicable
+| `version` | The version of the new asset on Exchange, including the semantic versioning format for major, minor, and patch releases  | Optional | Not applicable
+| `mainFile` | The name of the main file in the API specification file, compliant with the requirement that YAML or JSON files are named the same as the specification file, while the mainFile should match the primary file name when working with ZIP files | Required for `oas`, `raml` or `wsdl` APIs if `version` field is set | Not applicable
+| `specPath` | The relative or absolute path to the API specification file | Required for `oas`, `raml` or `wsdl` APIs if `version` field is set | Not applicable
+| `specTags` | The tags to add to the asset on Exchange |  Optional | Not applicable
+| `instanceTags` | The tags to add to the API instance on API Manager |  Optional | Not applicable
+|===
++
+. Verify the API status:
+`asmctl api list`
++
+The new API is shown as `Ready`.
+. Optionally, verify the changes in the Exchange asset and in the API instance in API Manager.
+
+== See Also
+
+* xref::create-an-api-configure-service-mesh-CLI.adoc[Create an API using the CLI]
+* xref::manage-apis-with-service-mesh.adoc[Manage APIs with Anypoint Service Mesh]
+* xref::uninstall-service-mesh.adoc[Uninstall Anypoint Service Mesh]
