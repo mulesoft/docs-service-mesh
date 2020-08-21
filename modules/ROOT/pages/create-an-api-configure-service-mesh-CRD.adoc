@@ -155,16 +155,16 @@ spec:
       - _tag in Exchange asset_ # example: orders
       apiInstance:
       - _tag in API Manager instance_ # example: orders
-    parametersFrom: # The element specifies the secret name and configuration required for retrieving the parameters.
-    - secretKeyRef:
-      name: _secret name_ # example: orders-api-config
-      key: config
+  parametersFrom: # The element specifies the secret name and configuration required for retrieving the parameters.
+  - secretKeyRef:
+    name: _secret name_ # example: orders-api-config
+    key: config
 ----
 
 [[create-api-CRD-ConnAps]]
 === Autocreate APIs for Users Managed by an IdP
 
-If your users are managed by an external IdP, use the Connected App credentials for authentication. 
+If your users are managed by Anypoint Platform or an external IdP, use the Connected App credentials for authentication. 
 
 Before you configure the autocreate feature, ensure that:
 
@@ -267,10 +267,10 @@ spec:
       - _tag in Exchange asset_ # example: orders
       apiInstance:
       - _tag in API Manager instance_ # example: orders
-    parametersFrom: # The element specifies the secret name and configuration required for retrieving the parameters.
-    - secretKeyRef:
-      name: _secret name_ # example: orders-api-config
-      key: config
+  parametersFrom: # The element specifies the secret name and configuration required for retrieving the parameters.
+  - secretKeyRef:
+    name: _secret name_ # example: orders-api-config
+    key: config
 ----
 
 == See Also
