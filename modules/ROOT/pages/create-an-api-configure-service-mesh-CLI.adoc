@@ -17,10 +17,10 @@ You can configure Anypoint Service Mesh to automatically create an API in Anypoi
 +
 When creating APIs that require specification files, such as REST and SOAP APIs, ensure that the specification file is not larger than 550 KB and is available in your file system for the CLI to upload.
 +
-You can use any of the following options for authentication when creating an API using the Anypoint Service Mesh autocreate feature:
+You can use any of the following options for authentication and authorization when creating an API using the Anypoint Service Mesh autocreate feature:
 
-** Using <<create-api-ASM-CLI, user credentials>> (username and password), if your users are managed by Anypoint Platform
-** Using <<create-api-ASM-CLI-ConnAps, Connected Apps credentials>>, if your users are managed by an external identity provider (IdP) 
+** Using <<create-api-ASM-CLI, user credentials>> (username and password). This option only supports users managed by Anypoint Platform.
+** Using <<create-api-ASM-CLI-ConnAps, Connected Apps credentials>> regardless of the identity provider used for your users, Anypoint Platform or an external one. We strongly recommend you to use this option over user credentials.
 
 //xref:access-management::connected-apps-overview.adoc[Connected Apps])
 
@@ -53,7 +53,7 @@ Enabling the Anypoint Service Mesh autocreate feature automatically creates APIs
 [[create-api-ASM-CLI]]
 === Autocreate APIs by Using Your User Credentials
 
-If your users are managed by Anypoint Platform, use their username and password credentials for authentication. Before you configure the Anypoint Service Mesh autocreate feature, ensure that you obtain the:
+Before you configure the Anypoint Service Mesh autocreate feature, ensure that you obtain the:
 
 * Environment ID and organization ID
 +
@@ -112,7 +112,7 @@ The API that was created is displayed.
 [[create-api-ASM-CLI-ConnAps]]
 === Autocreate APIs for Users Managed by an IdP
 
-If your users are managed by Anypoint Platform or an external IdP, use the Connected App credentials for authentication. Before you configure the autocreate feature, ensure that:
+Before you configure the Anypoint Service Mesh autocreate feature, ensure that:
 
 * You obtain the:
 ** xref:obtain-connected-apps-credentials.adoc[Client ID and client secret credentials] from Connected Apps

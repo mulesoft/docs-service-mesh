@@ -19,8 +19,8 @@ When creating APIs that require specification files, such as REST and SOAP APIs,
 +
 You can use any of the following options for authentication when creating an API using the Anypoint Service Mesh autocreate feature:
 
-** Using <<create_api-CRD, user credentials>> (username and password), if your users are managed by Anypoint Platform  
-** Using <<create-api-CRD-ConnAps, Connected Apps credentials>>, if your users are managed by Anypoint Platform or an external identity provider (IdP) 
+** Using <<create_api-CRD, user credentials>> (username and password). This option only supports users managed by Anypoint Platform.
+** Using <<create-api-CRD-ConnAps, Connected Apps credentials>> regardless of the identity provider used for your users, Anypoint Platform or an external one. We strongly recommend you to use this option over user credentials.
 
 
 [[create-api-AP]]
@@ -52,7 +52,7 @@ Enabling the Anypoint Service Mesh autocreate feature automatically creates APIs
 [[create_api-CRD]]
 === Autocreate APIs by Using Your User Credentials
 
-If your users are managed by Anypoint Platform, use their username and password credentials for authentication. Before you configure the Anypoint Service Mesh autocreate feature, ensure that you obtain the:
+Before you configure the Anypoint Service Mesh autocreate feature, ensure that you obtain the:
 
 * Environment ID and organization ID information
 +
@@ -166,7 +166,7 @@ spec:
 
 If your users are managed by Anypoint Platform or an external IdP, use the Connected App credentials for authentication. 
 
-Before you configure the autocreate feature, ensure that:
+Before you configure the Anypoint Service Mesh autocreate feature, ensure that:
 
 * You obtain the:
 ** xref:obtain-connected-apps-credentials.adoc[Client ID and client secret] from Connected Apps
