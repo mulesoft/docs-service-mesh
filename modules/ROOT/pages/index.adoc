@@ -20,7 +20,7 @@ A service mesh is an independent architecture layer, which is encapsulated in a 
 
 The sidecar proxy enables you to bring your existing non-Mule microservices from the Kubernetes Cluster as APIs into Anypoint Platform. You can then manage these APIs within API Designer, API Manager, and Exchange. Additionally, you can monitor the health of your APIs using API analytics.
 
-With Anypoint Service Mesh 1.1, the mixer component is removed and its functionality is performed by the Anypoint Service Mesh Envoy filter. With the Envoy filter, requests are directly sent to the adapter, thereby minimizing additional processing.
+Because the mixer component is deprecated with Istio v1.5, the authorization mechanism aspect of the mixer  is now implemented by leveraging Anypoint Service Mesh Envoy filters. With the Envoy filter, requests are directly sent to the adapter, thereby minimizing additional processing.
 
 image::anypoint-service-mesh-architecture.png[Anypoint Service Mesh architecture]
 
@@ -40,11 +40,10 @@ image:service-mesh-request-flow.png[]
 
 . The client, which might be another microservice or any Kubernetes Ingress component, sends a request to the service.
 . Envoy captures the request and redirects it to the Mule adapter using the Envoy filter.
-. The adapter then sends the request to Anypoint Platform.
-to perform policy checks and verifications.
-. When no policy violations are encountered, the request is routed to the microservice. 
 +
-The microservice runs the service logic and sends the response back to the client.
+The adapter then performs policy checks and verifications.
+. When no policy violations are encountered, the request is routed to the microservice. 
+. The microservice runs the service logic and sends the response back to the client.
 . Periodically, the adapter communicates with Anypoint Platform asynchronously to get the latest policies and contracts.
 . Periodically, the adapter sends back the API analytics information to Anypoint Platform.
 
