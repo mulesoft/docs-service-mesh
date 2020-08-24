@@ -77,7 +77,7 @@ To create an API using Anypoint Service Mesh, perform the following steps:
 |===
 | Parameter Name | Description | Required/Optional | Default Value
 | `name` | The name of the API that you want to provision, for example, `orders-api`. | Required | Not applicable
-| `namespace` | The namespace in which you want to create the adapter, for example, `mulesoft-apps`. | Optional | default
+| `namespace` | The namespace in which you want to create the adapter, for example, `mulesoft-apps`. | Required | Not applicable
 | `environmentId` | The ID of the environment where you want to create your API instance. | Required | Not applicable
 | `groupId` | The ID of the group of assets on Exchange, for example, the organization ID. You can find the organization ID on the API Manager landing page or in Access Management. | Optional | Organization ID of the organization that contains the environment. 
 | `assetId` | The ID of the assets that are a part of an organization. Supports alphanumeric characters without spaces. | Required | Not applicable

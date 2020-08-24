@@ -87,7 +87,7 @@ To provision the Anypoint Service Mesh adapter using the CLI:
 |===
 | Parameter Name | Description | Required/Optional | Default Value
 | `name` | The name of the adapter that you want to create, for example, “service-mesh-test-adapter”. | Required | Not applicable
-| `namespace` | The namespace in which you want to create the adapter, for example, “mulesoft-apps”. | Optional | default
+| `namespace` | The namespace in which you want to create the adapter, for example, “mulesoft-apps”. | Required | Not applicable
 | `size`| The size of the adapter based on the number of CPUs and memory to use | Optional | medium
 | `replicas` | The number of replicas you want to spin for the mule adapter. For high availability it is recommended not to have less than two. | Optional | 2
 | `clientId` | The client ID of the environment (recommended) or the organization. Use the client ID that you obtained as part of the permission and roles prerequisites as explained in this document. | Required | Not applicable
