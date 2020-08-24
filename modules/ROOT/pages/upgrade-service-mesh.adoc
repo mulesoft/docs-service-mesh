@@ -1,0 +1,60 @@
+= Upgrade Service Mesh
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+:keywords: service mesh, microservices, upgrading
+
+
+Anypoint Service Mesh v1.1 includes improvements, such as the removal of the Istio Mixer requirement. Because of this change, upgrading from Anypoint Service Mesh v1.0 to v1.1 introduces some downtime due to the new architecture.
+
+== Prerequisites
+
+Before you upgrade, ensure that you meet the following requirements:
+
+. Ensure that the current Istio version in your environment is at least 1.6.0 (control plane and data plane):
+[source,text,linenum]
+----
+$ istioctl version
+client version: 1.6.0
+control plane version: 1.6.0
+data plane version: 1.6.0 (5 proxies)
+----
+. Download the latest Anypoint Service Mesh command line interface (CLI) version:
++
+`curl -Ls http://anypoint.mulesoft.com/servicemesh/xapi/v1/install > asmctl && chmod +x asmctl`
+. Verify that you have the correct Anypoint Service Mesh and command line interface (CLI) versions  installed in your environment:
++
+`$ asmctl version`
++
+The CLI version must be v1.1.x and the Anypoint Service Mesh version must be v1.0.x.
+
+== Upgrade to Anypoint Service Mesh v1.1
+
+When you upgrade from Anypoint Service Mesh v1.1, the process first creates a back up of adapters, APIs, and bindings.
+//or should I say backs up adapters, APIs, and bindings--kim?
+Any request to protected services is denied and the Anypoint Service Mesh downtime begins. The upgrade process then upgrades Anypoint Service Mesh to v1.1, during which the adapters, APIs and bindings are also upgraded. Finally, the traffic to protected services is resumed, and this denotes the end of downtime.
+
+
+To upgrade to Anypoint Service Mesh v1.1, run the following command:
+
+`$ asmctl upgrade`
+
+== Post-upgrade Cleanup
+
+When you upgrade to Anypoint Service Mesh v1.1, certain backups are created your inside cluster as part of the migration process. Additionally, certain jobs are during the migration process. These jobs details are retained for debugging purposes. 
+
+After successfully completing the migration process as part of the upgrade, these resource are not required and can be safely removed.
+
+To perform the post-upgrade cleanup:
+
+. Delete the backups of adapters, APIs, and bindings:
++
+`$ kubectl delete configmap -A -l 'service-mesh.mulesoft.com/backup'`
+. Delete the pre-upgrade jobs:
++
+`$ kubectl delete job service-mesh-pre-upgrade -n service-mesh`
+`$ kubectl delete job service-mesh-post-upgrade -n service-mesh`
+
+
+
+
