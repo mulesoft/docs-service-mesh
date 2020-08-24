@@ -85,7 +85,7 @@ In your network, you might need to whitelist the hostnames and ports of external
 
 You can install Istio 1.6.x, 1.5.x, or 1.4.x in your environment to support Anypoint Service Mesh. However, the Istio configuration for Anypoint Service Mesh differs based on the Istio version that you installed.
 
-=== Task Prerequisites
+=== Prerequisites
 
 Before you begin, ensure that you download Istio using the https://istio.io/docs/setup/[Istio Documentation].
 
