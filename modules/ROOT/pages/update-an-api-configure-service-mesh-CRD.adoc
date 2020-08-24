@@ -40,8 +40,8 @@ Once inside the API details page, you can perform the following actions:
 image::update-api-asset.png[Display asset update]
 
 
-[[create-api-CRD]]
-== Create an API using the Anypoint Service Mesh
+[[update-api-CRD]]
+== Update an API using the Anypoint Service Mesh
 
 When you configured the API using the Anypoint Service Mesh autocreate feature, you can update it from the cluster as well. The update will reuse the environment information and credentials introduced in the provisioning. With the CRD approach, however, you can change the credentials used and the operation will be performed with the new credentials in the resource. 
 
