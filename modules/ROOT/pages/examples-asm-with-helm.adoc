@@ -1,0 +1,171 @@
+= Anypoint Service Mesh with Helm
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+:keywords: service mesh, microservices, examples, helm
+
+
+Helm can be used along Anypoint Service Mesh, to boost a CI/CD pipeline and automatize installation processes. Here is an small example of a usage with Helm:
+
+. <<scenario,Scenario>>
+. <<chart_structure,Chart Structure>>
+. <<templates,Templates>>
+.. <<template_namespace,Namespace>>
+.. <<template_secrets,Secrets>>
+.. <<template_adapter,Adapter>>
+.. <<template_services,Services>>
+
+
+[[scenario]]
+== Scenario
+The company MeshPotatoes, as part of his pipeline, needs to install its services in a cluster as a first step for their testing process. Later on, if everything works correctly, the new version of the services should be released in production. Some of the services are protected with Anypoint Service Mesh policies, so those resources must be created as well in both stages.
+
+To make their work a lot easier, MeshPotatoes decided to use Helm, in order to package their resources into a Chart, and reduce a lot of the effort writing long scripts that could lead to failure.
+
+Up next, we will see a small example of how to use Helm to package and configure resources, having the potential to perform releases, rollbacks and purges when needed.
+
+
+[[chart_structure]]
+== Chart Structure
+
+One recommended Helm Chart structure for small projects is:
+[source,text,linenums]
+----
+project/
+  |-api_specs/
+  |-env/
+  |  |-secrets/
+  |  |-context/
+  |-templates/
+  | Chart.yaml     # A YAML containing information about the chart
+  | LICENSE        # OPTIONAL: The license file for the chart
+  | README.md      # OPTIONAL: A human-readable README file
+  | values.yaml    # The default configuration values for this chart
+----
+
+* `api-specs`: Directory where API specifications will be stored. This is recommended when working with OAS, RAML or WSDL APIs.
+* `env`: This folder contains files with particular configuration of where the Chart will be installed, such as credentials or environment related variables.
+* `templates`: The Helm required directory of templates that, when combined with values, will generate valid Kubernetes manifest files.
+* The rest of the files, proper of Helm Charts.
+
+[[templates]]
+== Templates
+For this small chart, we have the following files in the templates folder:
+
+[source,text,linenums]
+----
+templates/
+  | _helpers.tpl
+  | adapter.yaml
+  | namespace.yaml
+  | secrets.yaml
+  | service.yaml
+----
+Each one will have a parameterized resource manifest, which Helm will resolve and apply to our Kubernetes cluster.
+
+[[template_namespace]]
+=== Namespace
+Creates the namespace for our service resources.
+
+[source,YAML,linenums]
+----
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ .Values.namespace }}
+  labels:
+    istio-injection: enabled
+  annotations:
+    "helm.sh/hook": pre-install
+    "helm.sh/hook-weight": "8"
+----
+
+[[template_secrets]]
+=== Secrets
+Creates the secrets that will be needed to interact with the Anypoint Platform. Can be used with both user-password and client credentials, depending on the use case you may need one or the other.
+
+[source,YAML,linenums]
+----
+apiVersion: v1
+kind: Secret
+metadata:
+  name: anypoint-credentials
+  namespace: {{ .Values.namespace }}
+  annotations:
+    "helm.sh/hook": pre-install
+    "helm.sh/hook-weight": "10"
+type: Opaque
+stringData:
+  prod-env-credentials:
+    "{
+      \"clientId\": \"{{ .Values.clientId }}\",
+      \"clientSecret\": \"{{ .Values.clientSecret }}\"
+    }"
+  prod-user-credentials:
+    "{
+      \"user\": \"{{ .Values.user }}\",
+      \"password\": \"{{ .Values.password }}\"
+    }"
+----
+
+[[template_adapter]]
+=== Adapter
+Instantiates an Adapter, so we can bind APIs with services.
+
+[source,YAML,linenums]
+----
+apiVersion: servicecatalog.k8s.io/v1beta1
+kind: ServiceInstance
+metadata:
+  name: {{ .Values.adapter.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    service-mesh.mulesoft.com/kind: adapter
+spec:
+  clusterServiceClassExternalName: anypoint-service-mesh-adapter
+  clusterServicePlanExternalName: small
+  parameters:
+    replication:
+      replicas: {{ .Values.adapter.replicas }}
+  parametersFrom:
+    - secretKeyRef:
+        name: anypoint-credentials
+        key: prod-env-credentials
+----
+
+[[template_services]]
+=== Services
+Here we have all the information needed to create our service and bind it with an API Manager API, so we can then manage it through the platform.
+
+[source,YAML,linenums]
+----
+{{ $values := set .Values.petst "environmentId" .Values.environmentId }}
+{{ $values := set $values "specFile" (tpl (.Files.Get $values.api.specPath) . | b64enc) }}
+
+{{ template "service" $values }}
+---
+{{ template "deployment" $values }}
+---
+{{- template "api-instance" $values -}}
+----
+
+In this case, we have the manifest templatized with Go template and Sprig functions. Going line by line:
+
+. Sets a new key “environmentId” and value to a dictionary, obtained from the field petst in our values.yaml file. 
+. Reads the content of the file in the defined ‘specPath’, encodes it in base64, and sets the result as the value for the new key “specFile” in the dictionary.
+. Resolves the template defined as “service”, by replacing its placeholders with the matching values in the dictionary. This will generate our Service manifest, with our service’s information.
+. Resolves the template defined as “deployment”, by replacing its placeholders with the matching values in the dictionary. This will generate the manifests for the service’s Deployment and Service Account.
+. Resolves the template defined as “api-instance”, by replacing its placeholders with the matching values in the dictionary. This will generate both the API and Binding manifests, to link it with the Platform.
+
+For better modularization, the templates are defined in the `_helpers.tpl` file, so they can be reused if needed. This is very useful when having multiple services.
+
+
+NOTE: To view the full Chart example, see the Github repository for https://github.com/mulesoft/service-mesh-helm-examples[Helm examples using ASM].
+
+
+== See Also
+
+* xref::prepare-to-install-service-mesh.adoc[Prerequisites for Downloading and Installing Anypoint Service Mesh]
+* xref::provision-adapter-configure-service-mesh-CRD.adoc[Provision an Adapter Using CRD]
+* xref::create-an-api-configure-service-mesh-CRD.adoc[Create an API Using CRD]
+* xref::bind-api-configure-service-mesh-CRD.adoc[Bind a Service Using CRD]
