@@ -56,7 +56,7 @@ To resolve this issue:
 [[api-spec-file-size-exceeded]]
 == API Specification File Exceeds Supported Size
 
-When provisioning an API with a specification file that is larger than 550 KBs, you might encounter issues with the provision operation or the Service Mesh services.
+When provisioning an API with a specification file that is larger than 550 KB, you might encounter issues with the provision operation or the Service Mesh services.
 
 === Cause
 
