@@ -5,7 +5,9 @@ endif::[]
 :keywords: service mesh, microservices, upgrading
 
 
-Anypoint Service Mesh v1.1 includes improvements, such as the removal of the Istio Mixer requirement. Because of this change, upgrading from Anypoint Service Mesh v1.0 to v1.1 introduces some downtime due to the new architecture.
+Anypoint Service Mesh v1.1 includes new features and architecture enhancements, such as bypassing the Istio Mixer when sending requests from clients to Anypoint Platform. This change caused an Anypoint Service Mesh architecture updates, and therefore, introduces a downtime for the Anypoint Service Mesh upgrade to v1.1.
+
+Anypoint Service Mesh v1.1 includes new features and architecture enhancements, such as stopping using Istio Mixer. Because of this change, upgrading from Anypoint Service Mesh v1.0 to v1.1 introduces downtime during the c
 
 == Prerequisites
 
@@ -30,22 +32,20 @@ The CLI version must be v1.1.x and the Anypoint Service Mesh version must be v1.
 
 == Upgrade to Anypoint Service Mesh v1.1
 
-When you upgrade from Anypoint Service Mesh v1.1, the process first creates a back up of adapters, APIs, and bindings.
-//or should I say backs up adapters, APIs, and bindings--kim?
-Any request to protected services is denied and the Anypoint Service Mesh downtime begins. The upgrade process then upgrades Anypoint Service Mesh to v1.1, during which the adapters, APIs and bindings are also upgraded. Finally, the traffic to protected services is resumed, and this denotes the end of downtime.
-
-
+When you upgrade from Anypoint Service Mesh v1.1, the process first creates a backup of the necessary files. Any request to protected services is denied and the Anypoint Service Mesh downtime begins. The adapters, APIs, and bindings are then upgraded, and finally requests to protected services are resumed, thereby ending the Anypoint Service Mesh downtime. 
+ 
 To upgrade to Anypoint Service Mesh v1.1, run the following command:
 
 `$ asmctl upgrade`
 
-== Post-upgrade Cleanup
+[NOTE] If you are using the EU control plane, you must specify the correct `--platformUri` flag.
 
-When you upgrade to Anypoint Service Mesh v1.1, certain backups are created your inside cluster as part of the migration process. Additionally, certain jobs are during the migration process. These jobs details are retained for debugging purposes. 
 
-After successfully completing the migration process as part of the upgrade, these resource are not required and can be safely removed.
+== Clean Up Post-Upgrade
 
-To perform the post-upgrade cleanup:
+After the upgrade process is successfully completed, the resources that were backed up for debugging purpose are no longer required and can be safely removed.
+
+To perform the post-upgrade clean up:
 
 . Delete the backups of adapters, APIs, and bindings:
 +
