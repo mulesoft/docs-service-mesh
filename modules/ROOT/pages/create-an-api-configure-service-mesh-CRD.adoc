@@ -16,11 +16,6 @@ If you want to upload a REST API or an OAS asset type, use a `.json` or `.yaml` 
 You can configure Anypoint Service Mesh to automatically create an API in Anypoint Platform (no manual logging required).
 +
 When creating APIs that require specification files, such as REST and SOAP APIs, ensure that the specification file is not larger than 550 KB and is available in your file system for the CLI to upload.
-+
-You can use any of the following options for authentication when creating an API using the Anypoint Service Mesh autocreate feature:
-
-** Using <<create_api-CRD, user credentials>> (username and password). This option only supports users managed by Anypoint Platform.
-** Using <<create-api-CRD-ConnAps, Connected Apps credentials>> regardless of the identity provider used for your users, Anypoint Platform or an external one. We strongly recommend you to use this option over user credentials.
 
 
 [[create-api-AP]]
@@ -46,7 +41,10 @@ Your API is now created.
 [[create-api-autocreate]]
 == Create an API Using the Anypoint Service Mesh Autocreate Feature
 
-Enabling the Anypoint Service Mesh autocreate feature automatically creates APIs for your users if they are properly authenticated. How you authenticate these users depends on whether they are managed by Anypoint Platform or by an external IdP.
+You can use any of the following options for authentication and authorization when creating an API using the Anypoint Service Mesh autocreate feature:
+
+** Using <<create_api-CRD, user credentials>> (username and password). This option only supports users managed by Anypoint Platform.
+** Using <<create-api-CRD-ConnAps, Connected Apps credentials>> regardless of the identity provider used for your users, Anypoint Platform or an external one. We strongly recommend you to use this option over user credentials.
 
 
 [[create_api-CRD]]
@@ -162,9 +160,7 @@ spec:
 ----
 
 [[create-api-CRD-ConnAps]]
-=== Autocreate APIs for Users Managed by an IdP
-
-If your users are managed by Anypoint Platform or an external IdP, use the Connected App credentials for authentication. 
+=== Autocreate APIs by Using Your Connected Apps Credentials
 
 Before you configure the Anypoint Service Mesh autocreate feature, ensure that:
 
