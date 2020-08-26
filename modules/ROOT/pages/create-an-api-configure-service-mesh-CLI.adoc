@@ -15,14 +15,12 @@ If you want to upload a REST API or OAS asset type, you must use a .json or .yam
 +
 You can configure Anypoint Service Mesh to automatically create an HTTP API in Anypoint Platform (no manual logging required). When the REST or SOAP APIs are automatically created with Anypoint Service Mesh, the APIs are still managed internally as an HTTP asset without any definition. 
 +
-You can use any of the following options for authenticating the Anypoint Service Mesh autocreate feature:
+You can use any of the following options for authentication when creating an API using the Anypoint Service Mesh autocreate feature:
 
-** Using <<create-api-ASM-CLI, user credentials>>
-+
-Use the username and password authentication option if your users are managed by Anypoint Platform.  
-** Using <<create-api-ASM-CLI-ConnAps, Connected Apps credentials>>
-+
-Use the xref:access-management::connected-apps-overview.adoc[Connected Apps] authentication option if your users are managed by an external identity provider (IdP).
+** Using <<create-api-ASM-CLI, user credentials>> (username and password), if your users are managed by Anypoint Platform
+** Using <<create-api-ASM-CLI-ConnAps, Connected Apps credentials>>, if your users are managed by an external identity provider (IdP) 
+
+//xref:access-management::connected-apps-overview.adoc[Connected Apps])
 
 
 [[create-api-AP]]
@@ -48,20 +46,20 @@ Your API is now created.
 [[create-api-autocreate]]
 == Create an API Using the Anypoint Service Mesh Autocreate Feature
 
-When you configure the Anypoint Service Mesh autocreate feature, an API is automatically created for you. How you authenticate your user for the create transaction depends on whether your users are managed by Anypoint Platform or an external IdP.
+Enabling the Anypoint Service Mesh autocreate feature automatically creates APIs for your users if they are properly authenticated. How you authenticate these users depends on whether they are managed by Anypoint Platform or by an external IdP.
 
 [[create-api-ASM-CLI]]
-=== Autocreate by Using Your User Credentials
+=== Autocreate APIs by Using Your User Credentials
 
-If your users are managed by Anypoint Platform, use the username and password credentials for authentication. Before you configure the Anypoint Service Mesh autocreate feature, ensure that you obtain the:
+If your users are managed by Anypoint Platform, use their username and password credentials for authentication. Before you configure the Anypoint Service Mesh autocreate feature, ensure that you obtain the:
 
-* Environment ID and organization ID. 
+* Environment ID and organization ID
 +
 To obtain these details, go to *API Manager > Environment Information*.
-* Manage APIs Configuration permission for the environment where you are creating the API Instance.
-* Exchange Contributor permission for the business group where you are creating the asset.
+* Manage APIs Configuration permission for the environment where you are creating the API instance
+* Exchange Contributor permission for the business group in which you are creating the asset
 
-To autocreate using user credentials, perform the following steps:
+To autocreate APIs using user credentials, perform the following steps:
 
 . Using Anypoint Service Mesh, type the following command to create the API:
 +
@@ -101,20 +99,21 @@ asmctl api create
 `asmctl api list`
 +
 The API that was created is displayed.
-. Optionally, you can verify that an asset is created on Exchange and an API is created on API Manager.
+. Optionally, verify that an asset is created on Exchange and an API is created on API Manager.
 
 [[create-api-ASM-CLI-ConnAps]]
-=== Autocreate by Using Your Connected Apps Credentials
+=== Autocreate APIs for Users Managed by an IdP
 
 If your users are managed by Anypoint Platform or an external IdP, use the Connected App credentials for authentication. Before you configure the autocreate feature, ensure that:
 
-* You xref:obtain-connected-apps-credentials.adoc[Obtain the client ID and client secret credentials] from Connected Apps
-* The ID of the group of assets on Exchange, for example, the organization ID
-* The client credentials has the:
+* You obtain the:
+** xref:obtain-connected-apps-credentials.adoc[Client ID and client secret credentials] from Connected Apps
+** ID of the group of assets on Exchange, for example, the organization ID
+* The client credentials have the:
 ** Exchange Contributor permission for publishing the API to Exchange
 ** Manage API Configuration permission for managing the API in API Manager
 
-To autocreate using Connected Apps, perform the following steps:
+To autocreate APIs using Connected Apps, perform the following steps:
 
 . Using Anypoint Service Mesh, type the following command to create the API:
 +
@@ -150,10 +149,8 @@ asmctl api create
 | `clientSecret` | The client secret of the Anypoint Platform Connected App used to create the API | Required | Not applicable
 |===
 +
-. Verify the API status:
+. Verify that the API was successfully created:
 `asmctl api list`
-+
-The new API is displayed.
 . Optionally, verify that an Exchange asset is created on Exchange and an API is created on API Manager.
 
 == See Also

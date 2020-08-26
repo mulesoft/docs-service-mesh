@@ -15,14 +15,10 @@ If you want to upload a REST API or OAS asset type, you must use a .json or .yam
 +
 You can configure Anypoint Service Mesh to automatically create an HTTP API in Anypoint Platform (no manual logging required). When the REST or SOAP APIs are automatically created with Anypoint Service Mesh, the APIs are still managed internally as an HTTP asset without any definition. 
 +
-You can use any of the following options for authenticating the Anypoint Service Mesh autocreate feature:
+You can use any of the following options for authentication when creating an API using the Anypoint Service Mesh autocreate feature:
 
-** Using <<create_api-CRD, user credentials>>
-+
-Use the username and password authentication option if your users are managed by Anypoint Platform.  
-** Using <<create-api-CRD-ConnAps, Connected Apps credentials>>
-+
-Use the xref:access-management::connected-apps-overview.adoc[Connected Apps] authentication option if your users are managed by Anypoint Platform or an external identity provider (IdP).
+** Using <<create_api-CRD, user credentials>> (username and password), if your users are managed by Anypoint Platform  
+** Using <<create-api-CRD-ConnAps, Connected Apps credentials>>, if your users are managed by Anypoint Platform or an external identity provider (IdP) 
 
 
 [[create-api-AP]]
@@ -48,22 +44,21 @@ Your API is now created.
 [[create-api-autocreate]]
 == Create an API Using the Anypoint Service Mesh Autocreate Feature
 
-When you configure the Anypoint Service Mesh autocreate feature, an API is automatically created for you. How you authenticate your user for the create transaction depends on whether your users are managed by Anypoint Platform or an external IdP.
+Enabling the Anypoint Service Mesh autocreate feature automatically creates APIs for your users if they are properly authenticated. How you authenticate these users depends on whether they are managed by Anypoint Platform or by an external IdP.
+
 
 [[create_api-CRD]]
-=== Autocreate By Using Your User Credentials
+=== Autocreate APIs by Using Your User Credentials
 
-If your users are managed by Anypoint Platform, use the username and password credentials for authentication. 
+If your users are managed by Anypoint Platform, use their username and password credentials for authentication. Before you configure the Anypoint Service Mesh autocreate feature, ensure that you obtain the:
 
-Before you configure the Anypoint Service Mesh autocreate feature, ensure that you obtain the:
-
-* Environment ID and organization ID information.
+* Environment ID and organization ID information
 +
 To obtain these details, go to *API Manager > Environment Information*.
-* Manage APIs Configuration permission for the environment where you are creating the API Instance.
-* Exchange Contributor permission for the business group where you are creating the asset.
+* Manage APIs Configuration permission for the environment where you are creating the API instance
+* Exchange Contributor permission for the business group in which you are creating the asset
 
-To autocreate using user credentials:
+To autocreate APIs using user credentials, perform the following steps:
 
 . Create your API definition file and save it with a '.yaml' file extension:
 +
@@ -95,7 +90,7 @@ spec:
 ----
 . Apply the CRD file:
 `kubectl apply -f test-api.yaml`
-. Verify the API status:
+. Verify that the API was successfully created:
 `asmctl api list`
 +
 The new API is displayed.
@@ -103,9 +98,7 @@ The new API is displayed.
 
 === Reference Kubernetes Secret
 
-Anypoint Service Mesh supports the use of Kubernetes secrets to store and manage sensitive information, such as your user credentials. 
-
-Before you configure your Kubernetes secrets, ensure that you have the required permissions.
+Anypoint Service Mesh supports the use of Kubernetes secrets to store and manage sensitive information, such as your user credentials Before you configure your Kubernetes secrets, ensure that you have the required permissions.
 
 To store your user credentials in Kubernetes secrets:
 
@@ -164,18 +157,20 @@ spec:
 ----
 
 [[create-api-CRD-ConnAps]]
-=== Autocreate by Using Your Connected Apps Credentials
+=== Autocreate APIs for Users Managed by an IdP
 
 If your users are managed by an external IdP, use the Connected App credentials for authentication. 
 
-Before you configure the autocreate feature:
+Before you configure the autocreate feature, ensure that:
 
-* xref:obtain-connected-apps-credentials.adoc[Obtain the client ID and client secret] from Connected Apps
+* You obtain the:
+** xref:obtain-connected-apps-credentials.adoc[Client ID and client secret] from Connected Apps
+** ID of the group of assets on Exchange, for example, the organization ID
 * Verify that these client credentials include:
 ** Exchange Contributor permission for publishing the API to Exchange
 ** Manage API Configuration permission for managing the API in API Manager
 
-To autocreate using Connected Apps:
+To autocreate APIs using Connected Apps, perform the following steps:
 
 . Create your api definition file and save it with a '.yaml' file extension, for example `test-api.yaml`:
 +
@@ -205,15 +200,13 @@ spec:
     clientId: _ID of the Anypoint Platform connected app_
     clientSecret: _Secret of the Anypoint Platform connected app_
 ----
-. Apply the CRD file using the following command:
+. Apply the CRD file:
 `kubectl apply -f test-api.yaml`
-. Verify the API status using the following command:
+. Verify that the API was successfully created:
 `asmctl api list`
-+
-The new API is displayed.
 . Optionally, verify that an Exchange asset is created on Exchange and an API is created on API Manager.
 
-=== Reference Kubernetes Secret
+=== Reference Kubernetes Secrets
 
 Anypoint Service Mesh supports the use of Kubernetes secrets to store and manage sensitive information, such as your Connected App credentials. With Kubernetes secrets, you do not have to specify the username and password credentials every time you create an API.
 
@@ -244,7 +237,7 @@ stringData:
 +
 If the secret is correctly applied, a 'secret/orders-api-config created' message is displayed.
 +
-. Reference the secret in your API CRD (instead of the user and password parameter), as illustrated in the following example:
+. Reference the secrets in your API CRD (instead of the user and password parameter), as illustrated in the following example:
 +
 [source,text,linenums]
 ----
