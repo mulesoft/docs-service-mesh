@@ -2,13 +2,13 @@
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
-:keywords: service mesh, microservices, updating, installing
+:keywords: service mesh, microservices, updating
 
-APIs in the Platform can be updated -both assets and API instances-, from creating a whole new version (maintaining the product version) or just their tags. You can update an API using Anypoint Platform or Anypoint Service Mesh:
+APIs are constantly evolving. Anypoint Service Mesh allows you to update the specification of your API. You can update an API using Anypoint Platform or Anypoint Service Mesh:
 
 * <<update-api-AP, Update an API using Anypoint Platform>>
 +
-New versions of an API asset can be created via Exchange. Then, API instances can be updated to use this new version of the asset.
+Once a new version of an API is published to Exchange, the API instances associated with the asset can be updated to use this new version of the asset. API instances updates are allowed within the same major version (just minor and patch bumps allowed).
 +
 Tags are updated by accesing the asset in Exchange or the API instance in API Manager, and modifying their tags through the corresponding UI.
 * <<update-api-CRD,Update an API using Anypoint Service Mesh>>
