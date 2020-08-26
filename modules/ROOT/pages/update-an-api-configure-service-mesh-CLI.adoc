@@ -16,30 +16,6 @@ Tags are updated by accesing the asset in Exchange or the API instance in API Ma
 If the API resource exists in the cluster, it can be updated so it triggers changes in the Anypoint Platform, creating or modificating asset versions and API instances.
 
 
-[[update-api-AP]]
-== Update an API using Anypoint Platform
-
-=== Update API asset in Exchange
-To update an existing asset or create a new version of it using Anypoint Platform, perform the following steps:
-
-. Go to *Anypoint Platform > Exchange* and select the desired asset.
-+
-The asset page is displayed. Now you can perform the following actions:
-. If you wish to upload a new version, click on *Add new version* on the right-side table.
-. If you wish to change the tags of a version, you can do it in the *Tags* section on the right-side panel.  
-
-=== Update API instance in API Manager
-To update an existing API instance, perform the following steps:
-
-. Go to *Anypoint Platform > API Manager*
-. Search and select your API instance in the table. 
-+
-Once inside the API details page, you can perform the following actions:
-. Update the instance tags, at the *API Configuration* section.
-. Update the asset version it points to.
-image::update-api-asset.png[Display asset update]
-
-
 [[update-api-cli]]
 == Update an API using the ASM CLI
 
@@ -78,6 +54,31 @@ asmctl api update
 +
 The new API is shown as `Ready`.
 . Optionally, verify the changes in the Exchange asset and in the API instance in API Manager.
+
+
+[[update-api-AP]]
+== Update an API using Anypoint Platform
+
+=== Update API asset in Exchange
+To update an existing asset or create a new version of it using Anypoint Platform, perform the following steps:
+
+. Go to *Anypoint Platform > Exchange* and select the desired asset.
++
+The asset page is displayed. Now you can perform the following actions:
+. If you wish to upload a new version, click on *Add new version* on the right-side table.
+. If you wish to change the tags of a version, you can do it in the *Tags* section on the right-side panel.  
+
+=== Update API instance in API Manager
+To update an existing API instance, perform the following steps:
+
+. Go to *Anypoint Platform > API Manager*
+. Search and select your API instance in the table. 
++
+Once inside the API details page, you can perform the following actions:
+. Update the instance tags, at the *API Configuration* section.
+. Update the asset version it points to.
+image::update-api-asset.png[Display asset update]
+
 
 == See Also
 

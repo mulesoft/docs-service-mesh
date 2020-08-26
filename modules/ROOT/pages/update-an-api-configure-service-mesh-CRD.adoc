@@ -16,6 +16,25 @@ Tags are updated by accesing the asset in Exchange or the API instance in API Ma
 If the API resource exists in the cluster, it can be updated so it triggers changes in the Anypoint Platform, creating or modificating asset versions and API instances.
 
 
+[[update-api-CRD]]
+== Update an API using the Anypoint Service Mesh
+
+When you configured the API using the Anypoint Service Mesh autocreate feature, you can update it from the cluster as well. The update will reuse the environment information and credentials introduced in the provisioning. With the CRD approach, however, you can change the credentials used and the operation will be performed with the new credentials in the resource. 
+
+To update the API CRD, follow this steps:
+
+. Edit the API resource. You can edit the original YAML manifest and apply the changes:
+`kubectl apply -f test-api-edited.yaml`
++
+Optionally, you can directly edit the resource through the command-line editor:
+`kubectl edit serviceinstance/<name> -n <namespace>`
+. Verify the API status:
+`asmctl api list`
++
+The new API is shown as `Ready`.
+. Optionally, verify the changes in the Exchange asset and in the API instance in API Manager.
+
+
 [[update-api-AP]]
 == Update an API using Anypoint Platform
 
@@ -38,25 +57,6 @@ Once inside the API details page, you can perform the following actions:
 . Update the instance tags, at the *API Configuration* section.
 . Update the asset version it points to. Note that you can only update if there is a newer version of the asset, that belongs to the same product version.
 image::update-api-asset.png[Display asset update]
-
-
-[[update-api-CRD]]
-== Update an API using the Anypoint Service Mesh
-
-When you configured the API using the Anypoint Service Mesh autocreate feature, you can update it from the cluster as well. The update will reuse the environment information and credentials introduced in the provisioning. With the CRD approach, however, you can change the credentials used and the operation will be performed with the new credentials in the resource. 
-
-To update the API CRD, follow this steps:
-
-. Edit the API resource. You can edit the original YAML manifest and apply the changes:
-`kubectl apply -f test-api-edited.yaml`
-+
-Optionally, you can directly edit the resource through the command-line editor:
-`kubectl edit serviceinstance/<name> -n <namespace>`
-. Verify the API status:
-`asmctl api list`
-+
-The new API is shown as `Ready`.
-. Optionally, verify the changes in the Exchange asset and in the API instance in API Manager.
 
 
 == See Also
