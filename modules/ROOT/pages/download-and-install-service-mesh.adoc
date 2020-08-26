@@ -103,27 +103,3 @@ Anypoint Service Mesh is installed and the status of all pods is displayed:
 +
 image::verified-service-mesh-installer-output.png[Pods displayed]
 
-=== Allow Headers for Client Authorization-Based Policies
-
-Anypoint Service Mesh is configured with minimal allowed headers for client-based policies:
-
-- jwt
-- authorization
-- client_id
-- client-id
-- client_secret
-- client-secret
-
-Before using a custom header, you must allow it. Because headers are allowed at the cluster level, you do not need to allow headers for every managed API.
-
-To allow a header, run the following command:
-
-`asmctl management config policy-headers allow --name=_header-name_`
-
-For example, if you want to allow the use of the header `x-client-secret`, run:
-
-`asmctl management config policy-headers allow --name=x-client-secret`
-
-To list existing allowed headers, run the following command:
-
-`asmctl management config policy-headers list`
