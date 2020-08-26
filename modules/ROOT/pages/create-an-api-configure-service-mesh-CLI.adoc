@@ -8,21 +8,21 @@ After you provision the adapter, you must create an API to bind to the service. 
 
 * <<create-api-AP, Create an API using Anypoint Platform>>
 +
-If you want to create REST or SOAP APIs with OAS or WSDL definition, use Anypoint Platform. 
+Create APIs using Anypoint Platform when your API specification files are larger than 550 KB.
 +
-If you want to upload a REST API or OAS asset type, you must use a .json or .yaml file. Alternatively, if you want to upload a SOAP API or WSDL asset type, use a .wsdl or .xml file.
+If you want to upload a REST API or an OAS asset type, use a `.json` or `.yaml` file. If you want to upload a SOAP API or WSDL asset type, use a `.wsdl` or `.xml` file.
 * <<create-api-autocreate,Create an API using the Anypoint Service Mesh autocreate feature>>
 +
-You can configure Anypoint Service Mesh to automatically create an HTTP API in Anypoint Platform (no manual logging required). When the REST or SOAP APIs are automatically created with Anypoint Service Mesh, the APIs are still managed internally as an HTTP asset without any definition. 
+You can configure Anypoint Service Mesh to automatically create an API in Anypoint Platform (no manual logging required). 
 +
-You can use any of the following options for authenticating the Anypoint Service Mesh autocreate feature:
+When creating APIs that require specification files, such as REST and SOAP APIs, ensure that the specification file is not larger than 550 KB and is available in your file system for the CLI to upload.
++
+You can use any of the following options for authentication when creating an API using the Anypoint Service Mesh autocreate feature:
 
-** Using <<create-api-ASM-CLI, user credentials>>
-+
-Use the username and password authentication option if your users are managed by Anypoint Platform.  
-** Using <<create-api-ASM-CLI-ConnAps, Connected Apps credentials>>
-+
-Use the xref:access-management::connected-apps-overview.adoc[Connected Apps] authentication option if your users are managed by an external identity provider (IdP).
+** Using <<create-api-ASM-CLI, user credentials>> (username and password), if your users are managed by Anypoint Platform
+** Using <<create-api-ASM-CLI-ConnAps, Connected Apps credentials>>, if your users are managed by an external identity provider (IdP) 
+
+//xref:access-management::connected-apps-overview.adoc[Connected Apps])
 
 
 [[create-api-AP]]
@@ -48,20 +48,20 @@ Your API is now created.
 [[create-api-autocreate]]
 == Create an API Using the Anypoint Service Mesh Autocreate Feature
 
-When you configure the Anypoint Service Mesh autocreate feature, an API is automatically created for you. How you authenticate your user for the create transaction depends on whether your users are managed by Anypoint Platform or an external IdP.
+Enabling the Anypoint Service Mesh autocreate feature automatically creates APIs for your users if they are properly authenticated. How you authenticate these users depends on whether they are managed by Anypoint Platform or by an external IdP.
 
 [[create-api-ASM-CLI]]
-=== Autocreate by Using Your User Credentials
+=== Autocreate APIs by Using Your User Credentials
 
-If your users are managed by Anypoint Platform, use the username and password credentials for authentication. Before you configure the Anypoint Service Mesh autocreate feature, ensure that you obtain the:
+If your users are managed by Anypoint Platform, use their username and password credentials for authentication. Before you configure the Anypoint Service Mesh autocreate feature, ensure that you obtain the:
 
-* Environment ID and organization ID. 
+* Environment ID and organization ID
 +
 To obtain these details, go to *API Manager > Environment Information*.
-* Manage APIs Configuration permission for the environment where you are creating the API Instance.
-* Exchange Contributor permission for the business group where you are creating the asset.
+* Manage APIs Configuration permission for the environment where you are creating the API instance
+* Exchange Contributor permission for the business group in which you are creating the asset
 
-To autocreate using user credentials, perform the following steps:
+To autocreate APIs using user credentials, perform the following steps:
 
 . Using Anypoint Service Mesh, type the following command to create the API:
 +
@@ -75,6 +75,9 @@ asmctl api create
 --assetId=_asset ID on Exchange_ \
 --version=_Asset version of the instance on exchange_ \
 --instanceLabel=_label of the instance on API Manager_ \ 
+--classifier=_(Optional) type of API specification, for example, oas_ \
+--mainFile=_(Optional) name of the main file in the API specification_ \
+--specPath=_(Optional) path to the API specification file_ \
 --specTags=_list of comma separated tags to be added to the asset on Exchange_ \
 --instanceTags=_list of comma separated tags to be added to the instance on API Manager_ \
 --user=_username of the Anypoint Platform user, creating the API instance_ \
@@ -87,34 +90,38 @@ asmctl api create
 | `name` | The name of the Kubernetes API resource that you want to provision, for example, `orders-api`. | Required | Not applicable
 | `namespace` | The namespace in which you want to create the adapter, for example, `mulesoft-apps`. | Required | Not applicable
 | `environmentId` | The ID of the environment where you want to create your API instance. | Required | Not applicable
-| `groupId` | The ID of the group of assets on Exchange, for example, the organization ID. You can find the organization ID on the API Manager landing page or in Access Management. | Optional | Organization ID of the organization that contains the environment. 
-| `assetId` | The ID of the assets that are a part of an organization. Supports alphanumeric characters without spaces. | Required | Not applicable
-| `version` | The version of the asset on Exchange. The version number must follow the semantic versioning format for major, minor, and patch releases. | Required | Not applicable
-| `instanceLabel` | The ID of the API instances of an Asset within a given environment. Supports alphanumeric characters without spaces. | Required | Not applicable
-| `specTags` | Tags to add to the asset on Exchange. |  Optional | Not applicable
-| `instanceTags` | Tags to add to the API instance on API Manager. |  Optional | Not applicable
-| `user` | The username credential of the Anypoint Platform user who is creating the API. | Required | Not applicable
-| `password` | The password of the Anypoint Platform user who is creating the API. | Required | Not applicable
+| `groupId` | The ID of the group of assets on Exchange, for example, the organization ID. | Optional | ID of the organization that contains the environment
+| `assetId` | The ID, in alphanumeric characters without spaces, of the assets that are a part of an organization. | Required | Not applicable
+| `version` | The version of the asset on Exchange, including the semantic versioning format for major, minor, and patch releases. | Required | Not applicable
+| `instanceLabel` | The ID, in alphanumeric characters without spaces, of the API instances of an asset within a given environment. | Required | Not applicable
+| `classifier` | The type of API asset to create: `http`, `oas`, or `raml`. | Optional | `http`
+| `mainFile` | The name of the main file in the API specification file, compliant with the requirement that YAML or JSON files are named the same as the specification file, while the mainFile should match the primary file name when working with ZIP files. | Specified for all classifiers except `http` | Not applicable
+| `specPath` | The relative or absolute path to the API specification file. | Required if classifier != `http` | Not applicable
+| `specTags` | The tags to add to the asset on Exchange. |  Optional | Not applicable
+| `instanceTags` | The tags to add to the API instance on API Manager. |  Optional | Not applicable
+| `user` | The username credential of the Anypoint Platform user who creates the API. | Required | Not applicable
+| `password` | The password of the Anypoint Platform user who creates the API. | Required | Not applicable
 |===
 +
 . Verify the API status using the following command:
 `asmctl api list`
 +
 The API that was created is displayed.
-. Optionally, you can verify that an asset is created on Exchange and an API is created on API Manager.
+. Optionally, verify that an asset is created on Exchange and an API is created on API Manager.
 
 [[create-api-ASM-CLI-ConnAps]]
-=== Autocreate by Using Your Connected Apps Credentials
+=== Autocreate APIs for Users Managed by an IdP
 
 If your users are managed by Anypoint Platform or an external IdP, use the Connected App credentials for authentication. Before you configure the autocreate feature, ensure that:
 
-* You xref:obtain-connected-apps-credentials.adoc[Obtain the client ID and client secret credentials] from Connected Apps
-* The ID of the group of assets on Exchange, for example, the organization ID
-* The client credentials has the:
+* You obtain the:
+** xref:obtain-connected-apps-credentials.adoc[Client ID and client secret credentials] from Connected Apps
+** ID of the group of assets on Exchange, for example, the organization ID
+* The client credentials have the:
 ** Exchange Contributor permission for publishing the API to Exchange
 ** Manage API Configuration permission for managing the API in API Manager
 
-To autocreate using Connected Apps, perform the following steps:
+To autocreate APIs using Connected Apps, perform the following steps:
 
 . Using Anypoint Service Mesh, type the following command to create the API:
 +
@@ -150,10 +157,8 @@ asmctl api create
 | `clientSecret` | The client secret of the Anypoint Platform Connected App used to create the API | Required | Not applicable
 |===
 +
-. Verify the API status:
+. Verify that the API was successfully created:
 `asmctl api list`
-+
-The new API is displayed.
 . Optionally, verify that an Exchange asset is created on Exchange and an API is created on API Manager.
 
 == See Also

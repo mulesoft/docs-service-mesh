@@ -52,3 +52,45 @@ To resolve this issue:
 . Delete the API.
 . Resolve the username and password error.
 . Re-create the API.  
+
+[[api-spec-file-size-exceeded]]
+== API Specification File Exceeds Supported Size
+
+When provisioning an API with a specification file that is larger than 550 KB, you might encounter issues with the provision operation or the Service Mesh services.
+
+=== Cause
+
+If you use a large file, the pods might be restarted due to Service Catalog limitations:
+
+[source,text,linenums]
+----
+E0605 21:13:58.080886       1 controller_instance.go:1968] ServiceInstance "default/flights-api-v1" v8611662: Failed to update status: rpc error: code = ResourceExhausted desc = trying to send message larger than max (2554151 vs. 2097152)
+I0605 21:13:58.080907       1 controller.go:408] Dropping ServiceInstance "default/flights-api-v1" out of the queue: rpc error: code = ResourceExhausted desc = trying to send message larger than max (2554151 vs. 2097152)
+----
+
+=== Diagnosis
+
+To diagnose the issue:
+
+. Check the status of the Service Catalog pods:
++
+`$ kubectl get pods -n service-mesh`
++ 
+If a status other than `Running` is displayed , the Service Catalog pods might be failing due to lack of resources. 
++
+. If the pod is running correctly, check the logs for `rpc` errors:
++
+`$ kubectl logs -f deployment/service-mesh-catalog-controller-manager -n service-mesh --tail=250 | grep "rpc error"`
+
+=== Solution
+
+To resolve this issue:
+
+. If the Service Catalog pods are failing, increase their resource limits:
++
+`$ kubectl -n service-mesh set resources deployment service-mesh-catalog-controller-manager --limits=memory=64Mi`
++
+`$ kubectl -n service-mesh set resources deployment service-mesh-catalog-webhook --limits=memory=64Mi`
+. Delete the service instance.
+. Create the API from Anypoint Platform.
+
