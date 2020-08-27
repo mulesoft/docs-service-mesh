@@ -10,7 +10,7 @@ After you provision the adapter, you must create an API to bind to the service. 
 +
 If you want to create REST or SOAP APIs with OAS or WSDL definition, use Anypoint Platform. 
 +
-If you want to upload a REST API or OAS asset type, you must use a .json or .yaml file. Alternatively, if you want to upload a SOAP API or WSDL asset type, use a .wsdl or .xml file.
+If you want to upload a REST API or OAS asset type, use a .json or .yaml file. Alternatively, if you want to upload a SOAP API or WSDL asset type, use a .wsdl or .xml file.
 * <<create-api-autocreate,Create an API using the Anypoint Service Mesh autocreate feature>>
 +
 You can configure Anypoint Service Mesh to automatically create an HTTP API in Anypoint Platform (no manual logging required). When the REST or SOAP APIs are automatically created with Anypoint Service Mesh, the APIs are still managed internally as an HTTP asset without any definition. 
@@ -82,17 +82,17 @@ asmctl api create
 [%header%autowidth.spread]
 |===
 | Parameter Name | Description | Required or Optional | Default Value
-| `name` | The name of the Kubernetes API resource that you want to provision, for example, `orders-api`. | Required | Not applicable
-| `namespace` | The namespace in which you want to create the adapter, for example, `mulesoft-apps`. | Optional | default
+| `name` | The name of the Kubernetes API resource that you want to provision, for example, `orders-api` | Required | Not applicable
+| `namespace` | The namespace in which you want to create the adapter, for example, `mulesoft-apps` | Optional | default
 | `environmentId` | The ID of the environment where you want to create your API instance. | Required | Not applicable
-| `groupId` | The ID of the group of assets on Exchange, for example, the organization ID. You can find the organization ID on the API Manager landing page or in Access Management. | Optional | Organization ID of the organization that contains the environment. 
-| `assetId` | The ID of the assets that are a part of an organization. Supports alphanumeric characters without spaces. | Required | Not applicable
+| `groupId` | The ID of the group of assets on Exchange, for example, the organization ID, which you can obtain from the API Manager landing page or in Access Management | Optional | Organization ID of the organization that contains the environment 
+| `assetId` | The ID (alphanumeric characters without spaces) of the assets that are a part of an organization | Required | Not applicable
 | `version` | The version of the asset on Exchange. The version number must follow the semantic versioning format for major, minor, and patch releases. | Required | Not applicable
-| `instanceLabel` | The ID of the API instances of an Asset within a given environment. Supports alphanumeric characters without spaces. | Required | Not applicable
-| `specTags` | Tags to add to the asset on Exchange. |  Optional | Not applicable
-| `instanceTags` | Tags to add to the API instance on API Manager. |  Optional | Not applicable
-| `user` | The username credential of the Anypoint Platform user who is creating the API. | Required | Not applicable
-| `password` | The password of the Anypoint Platform user who is creating the API. | Required | Not applicable
+| `instanceLabel` | The ID (alphanumeric characters without spaces) of the API instances of an Asset within a given environment | Required | Not applicable
+| `specTags` | Tags to add to the asset on Exchange |  Optional | Not applicable
+| `instanceTags` | Tags to add to the API instance on API Manager |  Optional | Not applicable
+| `user` | The username credential of the Anypoint Platform user who is creating the API | Required | Not applicable
+| `password` | The password of the Anypoint Platform user who is creating the API | Required | Not applicable
 |===
 +
 . Verify the API status using the following command:
