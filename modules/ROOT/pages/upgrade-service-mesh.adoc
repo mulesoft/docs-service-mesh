@@ -1,51 +1,44 @@
-= Upgrade Service Mesh
+= Upgrade to Anypoint Service Mesh 1.1
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 :keywords: service mesh, microservices, upgrading
 
 
-Anypoint Service Mesh v1.1 includes new features and architecture enhancements, such as bypassing the Istio Mixer when sending requests from clients to Anypoint Platform. This change caused an Anypoint Service Mesh architecture updates, and therefore, introduces a downtime for the Anypoint Service Mesh upgrade to v1.1.
+Anypoint Service Mesh v1.1 includes new features and architecture enhancements, such as bypassing Istio Mixer when sending requests from clients to Anypoint Platform. Note that architectural changes in the upgrade require some downtime.
 
-Anypoint Service Mesh v1.1 includes new features and architecture enhancements, such as stopping using Istio Mixer. Because of this change, upgrading from Anypoint Service Mesh v1.0 to v1.1 introduces downtime during the c
+When you upgrade from Anypoint Service Mesh v1.1, the process first creates a backup of the necessary files. Any request to protected services is denied and the Anypoint Service Mesh downtime begins. 
+
+The adapters, APIs, and bindings are then upgraded, and finally requests to protected services are resumed, thereby ending the Anypoint Service Mesh downtime. 
+
 
 == Prerequisites
-
-Before you upgrade, ensure that you meet the following requirements:
-
-. Ensure that the current Istio version in your environment is at least 1.6.0 (control plane and data plane):
-[source,text,linenum]
-----
-$ istioctl version
-client version: 1.6.0
-control plane version: 1.6.0
-data plane version: 1.6.0 (5 proxies)
-----
-. Download the latest Anypoint Service Mesh command line interface (CLI) version:
 +
-`curl -Ls http://anypoint.mulesoft.com/servicemesh/xapi/v1/install > asmctl && chmod +x asmctl`
-. Verify that you have the correct Anypoint Service Mesh and command line interface (CLI) versions  installed in your environment:
-+
-`$ asmctl version`
+Before you upgrade, ensure that your environment uses:
+* Anypoint Service Mesh v1.0.x.
+* The most recent version of the Anypoint Service Mesh command line interface (CLI)
 +
 The CLI version must be v1.1.x and the Anypoint Service Mesh version must be v1.0.x.
+* Istio 1.6.0 or later for both control plane and data plane
 
-== Upgrade to Anypoint Service Mesh v1.1
 
-When you upgrade from Anypoint Service Mesh v1.1, the process first creates a backup of the necessary files. Any request to protected services is denied and the Anypoint Service Mesh downtime begins. The adapters, APIs, and bindings are then upgraded, and finally requests to protected services are resumed, thereby ending the Anypoint Service Mesh downtime. 
- 
-To upgrade to Anypoint Service Mesh v1.1, run the following command:
+== Steps
 
+To upgrade to Anypoint Service Mesh v1.1:
+
+. If you have not already done so, download the latest Anypoint Service Mesh command line interface (CLI) version:
++
+`curl -Ls http://anypoint.mulesoft.com/servicemesh/xapi/v1/install > asmctl && chmod +x asmctl`
+. Upgrade Anypoint service Mesh
++
 `$ asmctl upgrade`
-
++
 [NOTE] If you are using the EU control plane, you must specify the correct `--platformUri` flag.
 
 
 == Clean Up Post-Upgrade
 
-After the upgrade process is successfully completed, the resources that were backed up for debugging purpose are no longer required and can be safely removed.
-
-To perform the post-upgrade clean up:
+After the upgrade process is successfully completed, you can remove the backup copies of the previous version's files:
 
 . Delete the backups of adapters, APIs, and bindings:
 +
