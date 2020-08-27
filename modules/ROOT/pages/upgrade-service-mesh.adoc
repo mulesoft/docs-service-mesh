@@ -33,7 +33,7 @@ To upgrade to Anypoint Service Mesh v1.1:
 +
 `$ asmctl upgrade`
 +
-[NOTE] If you are using the EU control plane, you must specify the correct `--platformUri` flag.
+[NOTE] If you are using the EU control plane, you must specify the correct `--platformUri` flag for the upgrade.
 
 
 == Clean Up Post-Upgrade
