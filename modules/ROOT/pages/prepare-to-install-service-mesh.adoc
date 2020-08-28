@@ -83,75 +83,15 @@ In your network, you might need to whitelist the hostnames and ports of external
 [[install_Istio]]
 == Download, Install, and Configure Istio
 
-You can install Istio 1.6.x in your environment to support Anypoint Service Mesh. However, the Istio configuration for Anypoint Service Mesh differs based on the Istio version that you installed.
+You can install Istio 1.6.x (`1.6.0` to `1.6.8`) or 1.7.x in your environment to support Anypoint Service Mesh.
 
 === Prerequisites
 
 Before you begin, ensure that you download Istio using the https://istio.io/docs/setup/[Istio Documentation].
 
-=== Install and Configure Istio 1.6.x
+=== Install and Configure Istio
 
-Anypoint Service Mesh supports Istio 1.6.x versions `1.6.0` through `1.6.8`. To install and configure Istio 1.6.x for Anypoint Service Mesh:
-
-. Install Istio with the following flags enabled:
-.. Enable the policy control flag:
-+
-[source,text,linenums]
-----
-values:
-  meshConfig:
-    disablePolicyChecks: false
-  components:
-    policy:
-      enabled: true    
-----
-.. Enable the telemetry flag:
-+
-[source,text,linenums]
-----
-values:
-  telemetry:
-    v1:
-      enabled: true
-    v2:
-      enabled: false
-components:
-  citadel:
-    enabled: true
-  telemetry:
-    enabled: true
-----
-The following example illustrates a full manifest: 
-+
-[source,text,linenums]
-----
-apiVersion: install.istio.io/v1alpha1
-kind: IstioOperator
-spec:
-  profile: default
-  components:
-    policy:
-      enabled: true
-    telemetry:
-      enabled: true
-    ingressGateways:
-    - enabled: false
-  meshConfig:
-    disablePolicyChecks: false
-  values:
-    telemetry:
-      v1:
-        enabled: true
-      v2:
-        enabled: false
-----  
-When using the full manifest, ensure that you choose the correct profile. In the example, the `default` profile is used. 
-
-To install the manifest, run:
-+
-`istioctl manifest apply -f <manifest-file.yaml>`
-
-//So...doesn't configuration begin with specifying the correct profile? Profile is the first component of the install process, so it should be described first, shouldn't it?
+To install and configure Istio for Anypoint Service Mesh, run the following command from your CLI:`$ istioctl install`.
 
 
 == See Also
