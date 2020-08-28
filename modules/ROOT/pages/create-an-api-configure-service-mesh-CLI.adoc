@@ -95,7 +95,7 @@ asmctl api create
 | `version` | The version of the asset on Exchange, including the semantic versioning format for major, minor, and patch releases. | Required | Not applicable
 | `instanceLabel` | The ID, in alphanumeric characters without spaces, of the API instances of an asset within a given environment. | Required | Not applicable
 | `classifier` | The type of API asset to create: `http`, `oas`, or `raml`. | Optional | `http`
-| `mainFile` | The name of the main file in the API specification file, compliant with the requirement that YAML or JSON files are named the same as the specification file, while the mainFile should match the primary file name when working with ZIP files. | Specified for all classifiers except `http` | Not applicable
+| `mainFile` | The name of the main file in the API specification file (compliant with YAML or JSON file naming requirements), matching the primary file name for ZIP files. | Specified for all classifiers except `http` | Not applicable
 | `specPath` | The relative or absolute path to the API specification file. | Required if classifier != `http` | Not applicable
 | `specTags` | The tags to add to the asset on Exchange. |  Optional | Not applicable
 | `instanceTags` | The tags to add to the API instance on API Manager. |  Optional | Not applicable
@@ -152,7 +152,7 @@ asmctl api create
 | `version` | The version of the asset on Exchange, in the semantic versioning format for major, minor, and patch releases | Required | Not applicable
 | `instanceLabel` | The ID of the API instances of an asset within a given environment, in alphanumeric characters without spaces | Required | Not applicable
 | `classifier` | The type of API asset to create: `http`, `oas`, or `raml`. | Optional | `http`
-| `mainFile` | The name of the main file in the API specification file, compliant with the requirement that YAML or JSON files are named the same as the specification file, while the mainFile should match the primary file name when working with ZIP files. | Specified for all classifiers except `http` | Not applicable
+| `mainFile` | The name of the main file in the API specification file (compliant with YAML or JSON file naming requirements), matching the primary file name for ZIP files. | Specified for all classifiers except `http` | Not applicable
 | `specPath` | The relative or absolute path to the API specification file. | Required if classifier != `http` | Not applicable
 | `specTags` | Tags to add to the asset on Exchange |  Optional | Not applicable
 | `instanceTags` | Tags to add to the API instance on API Manager |  Optional | Not applicable
