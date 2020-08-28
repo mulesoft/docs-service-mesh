@@ -1,4 +1,4 @@
-= Anypoint Service Mesh 1.0
+= Anypoint Service Mesh 1.1
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
