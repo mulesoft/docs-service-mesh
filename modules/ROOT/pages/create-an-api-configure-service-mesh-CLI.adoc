@@ -8,19 +8,10 @@ After you provision the adapter, you must create an API to bind to the service. 
 
 * <<create-api-AP, Create an API using Anypoint Platform>>
 +
-Create APIs using Anypoint Platform when your API specification files are larger than 550 KB.
-+
-If you want to upload a REST API or an OAS asset type, use a `.json` or `.yaml` file. If you want to upload a SOAP API or WSDL asset type, use a `.wsdl` or `.xml` file.
+Create APIs using Anypoint Platform when your API specification files are larger than 550 KB. If you want to upload a REST API or an OAS asset type, use a `.json` or `.yaml` file. If you want to upload a SOAP API or WSDL asset type, use a `.wsdl` or `.xml` file.
 * <<create-api-autocreate,Create an API using the Anypoint Service Mesh autocreate feature>>
 +
-You can configure Anypoint Service Mesh to automatically create an API in Anypoint Platform (no manual logging required). 
-+
-When creating APIs that require specification files, such as REST and SOAP APIs, ensure that the specification file is not larger than 550 KB and is available in your file system for the CLI to upload.
-+
-You can use any of the following options for authentication when creating an API using the Anypoint Service Mesh autocreate feature:
-
-** Using <<create-api-ASM-CLI, user credentials>> (username and password), if your users are managed by Anypoint Platform
-** Using <<create-api-ASM-CLI-ConnAps, Connected Apps credentials>>, if your users are managed by an external identity provider (IdP) 
+You can configure Anypoint Service Mesh to automatically create an API in Anypoint Platform (no manual logging required). When creating APIs that require specification files, such as REST and SOAP APIs, ensure that the specification file is not larger than 550 KB and is available in your file system for the CLI to upload.
 
 //xref:access-management::connected-apps-overview.adoc[Connected Apps])
 
@@ -48,12 +39,19 @@ Your API is now created.
 [[create-api-autocreate]]
 == Create an API Using the Anypoint Service Mesh Autocreate Feature
 
-Enabling the Anypoint Service Mesh autocreate feature automatically creates APIs for your users if they are properly authenticated. How you authenticate these users depends on whether they are managed by Anypoint Platform or by an external IdP.
+You can use any of the following options for authentication and authorization when creating an API using the Anypoint Service Mesh autocreate feature:
+
+** Using <<create-api-ASM-CLI, user credentials>> (username and password)
++
+This option supports only those users that are managed by Anypoint Platform.
+** Using <<create-api-ASM-CLI-ConnAps, Connected Apps credentials>> 
++
+(Recommended) This option supports users regardless of where they are managed--Anypoint Platform or an external IdP.
 
 [[create-api-ASM-CLI]]
 === Autocreate APIs by Using Your User Credentials
 
-If your users are managed by Anypoint Platform, use their username and password credentials for authentication. Before you configure the Anypoint Service Mesh autocreate feature, ensure that you obtain the:
+Before you configure the Anypoint Service Mesh autocreate feature, ensure that you obtain the:
 
 * Environment ID and organization ID
 +
@@ -110,9 +108,9 @@ The API that was created is displayed.
 . Optionally, verify that an asset is created on Exchange and an API is created on API Manager.
 
 [[create-api-ASM-CLI-ConnAps]]
-=== Autocreate APIs for Users Managed by an IdP
+=== Autocreate APIs by Using Your Connected Apps Credentials
 
-If your users are managed by Anypoint Platform or an external IdP, use the Connected App credentials for authentication. Before you configure the autocreate feature, ensure that:
+Before you configure the Anypoint Service Mesh autocreate feature, ensure that:
 
 * You obtain the:
 ** xref:obtain-connected-apps-credentials.adoc[Client ID and client secret credentials] from Connected Apps
