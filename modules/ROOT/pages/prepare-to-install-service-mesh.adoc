@@ -57,7 +57,7 @@ MuleSoft recommends that you use the environment credentials instead of the orga
 +
 For more information about which permissions to use, see xref:api-manager::org-credentials-config-mule4.adoc#obtaining-credentials[obtaining credentials].
 * Obtain the Cluster Administrator role to access the Kubernetes cluster (only required for installation process).
-* If you have configured an external identity provider for your organization, create a Connected App in Anypoint Platform with Exchange Contributors and Manage APIs Configuration roles. Anypoint Service Mesh does not support users residing on an external identity provider for tasks such as creating and discovering APIs.
+* If you have configured an external identity provider for your organization, create a xref:obtain-connected-apps-credentials.adoc[Connected App] in Anypoint Platform with Exchange Contributors and Manage APIs Configuration roles. Anypoint Service Mesh does not support users residing on an external identity provider for tasks such as creating and discovering APIs.
 
 == Ports, IPs, and Hostnames Whitelist Requirements
 
