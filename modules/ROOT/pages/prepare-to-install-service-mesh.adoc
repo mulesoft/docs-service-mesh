@@ -81,36 +81,35 @@ In your network, you might need to whitelist the hostnames and ports of external
 |===
 
 [[install_Istio]]
-== Installing Istio
+== Download, Install, and Configure Istio
 
-You can install Istio 1.4.x or 1.5.x in your environment to support Anypoint Service Mesh. However, the Istio configuration for Anypoint Service Mesh differs based on the Istio version that you installed.
+You can install Istio 1.6.x in your environment to support Anypoint Service Mesh. However, the Istio configuration for Anypoint Service Mesh differs based on the Istio version that you installed.
 
-=== Install Istio 1.5.x
+=== Prerequisites
 
-Anypoint Service Mesh supports Istio versions `1.5.0` through `1.5.2`. To install and configure Istio 1.5.x for Anypoint Service Mesh:
+Before you begin, ensure that you download Istio using the https://istio.io/docs/setup/[Istio Documentation].
 
-. Download Istio using the https://istio.io/docs/setup/[Istio documentation].
-. Install Istio with the following configurations:
+=== Install and Configure Istio 1.6.x
+
+Anypoint Service Mesh supports Istio 1.6.x versions `1.6.0` through `1.6.8`. To install and configure Istio 1.6.x for Anypoint Service Mesh:
+
+. Install Istio with the following flags enabled:
 .. Enable the policy control flag:
 +
 [source,text,linenums]
 ----
 values:
-  global:
+  meshConfig:
     disablePolicyChecks: false
   components:
     policy:
-      enabled: true
-    sidecarInjector:
-      enabled: true
+      enabled: true    
 ----
-.. Enable telemetry:
+.. Enable the telemetry flag:
 +
 [source,text,linenums]
 ----
 values:
-  prometheus:
-    enabled: true
   telemetry:
     v1:
       enabled: true
@@ -133,18 +132,13 @@ spec:
   components:
     policy:
       enabled: true
-    sidecarInjector:
-      enabled: true
-    citadel:
-      enabled: true
     telemetry:
       enabled: true
-  addonComponents:
-    prometheus:
-      enabled: false
+    ingressGateways:
+    - enabled: false
+  meshConfig:
+    disablePolicyChecks: false
   values:
-    global:
-      disablePolicyChecks: false
     telemetry:
       v1:
         enabled: true
@@ -152,20 +146,13 @@ spec:
         enabled: false
 ----  
 When using the full manifest, ensure that you choose the correct profile. In the example, the `default` profile is used. 
+
 To install the manifest, run:
 +
 `istioctl manifest apply -f <manifest-file.yaml>`
 
-=== Install Istio 1.4.x
+//So...doesn't configuration begin with specifying the correct profile? Profile is the first component of the install process, so it should be described first, shouldn't it?
 
-Anypoint Service Mesh supports Istio versions `1.4.0` through `1.4.8`. To install and configure Istio 1.4.x for Anypoint Service Mesh:
-
-. Download Istio using the https://istio.io/docs/setup/[Istio Documentation].
-. Install Istio with the policy control flag enabled:
-+
-`--set values.global.disablePolicyChecks=false`
-+
-For more information about this flag, see https://archive.istio.io/v1.4/docs/tasks/policy-enforcement/enabling-policy/[Policy Enforcement].
 
 == See Also
 
