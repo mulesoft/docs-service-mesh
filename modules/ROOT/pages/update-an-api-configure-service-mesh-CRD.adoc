@@ -4,58 +4,62 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: service mesh, microservices, updating
 
-APIs are constantly evolving. Anypoint Service Mesh allows you to update the specification of your API within the same major version (just minor and patch bumps allowed). You can update an API using Anypoint Platform or Anypoint Service Mesh:
+Because APIs constantly change, Anypoint Service Mesh allows you to update the specification of your API within the same major version (only minor and patch bumps allowed). You can update an API using Anypoint Platform or Anypoint Service Mesh:
 
-* <<update-api-AP, Update an API using Anypoint Platform>>
-+
-Once a new version of an API is published to Exchange, the API instances associated with the asset can be updated to use this new version of the asset.
-+
-Tags are updated by accesing the asset in Exchange or the API instance in API Manager, and modifying their tags through the corresponding UI.
 * <<update-api-CRD,Update an API using Anypoint Service Mesh>>
 +
-If the API resource exists in the cluster, it can be updated so it triggers changes in the Anypoint Platform, creating or modificating asset versions and API instances.
+If your API resource exists in the cluster, you can update it to trigger changes in Anypoint Platform, such as creating or modifying asset versions and API instances.
+* <<update-api-AP, Update an API using Anypoint Platform>>
++
+After a new version of an API is published to Anypoint Exchange (Exchange), you can update the API instances associated with it to use this new version of the asset.
++
+You can update the asset tags from Exchange and the API instance tags in API Manager.
 
 
 [[update-api-CRD]]
-== Update an API using the Anypoint Service Mesh
+== Update an API Using Anypoint Service Mesh
 
-When you configured the API using the Anypoint Service Mesh autocreate feature, you can update it from the cluster as well. The update will reuse the environment information and credentials introduced in the provisioning. With the CRD approach, however, you can change the credentials used and the operation will be performed with the new credentials in the resource. 
+If you configured the API using the Anypoint Service Mesh autocreate feature, you can update the API from the cluster when required. The update reuses the environment details and credentials introduced when provisioning the API. 
 
-To update the API CRD, follow this steps:
+However, with the CRD approach, the operation is be performed with the modified credentials in the resource. 
 
-. Edit the API resource. You can edit the original YAML manifest and apply the changes:
+To update the API using CRD:
+
+. Edit the original YAML manifest to update the API resource: 
++
 `kubectl apply -f test-api-edited.yaml`
+. Optionally, you can directly edit the resource through the command-line editor:
 +
-Optionally, you can directly edit the resource through the command-line editor:
 `kubectl edit serviceinstance/<name> -n <namespace>`
-. Verify the API status:
-`asmctl api list`
+. Verify that the API was successfully created:
 +
-The new API is shown as `Ready`.
-. Optionally, verify the changes in the Exchange asset and in the API instance in API Manager.
+`asmctl api list`
+. Optionally, verify the asset changes in Exchange and the API instance changes in API Manager.
 
 
 [[update-api-AP]]
 == Update an API using Anypoint Platform
 
-=== Update API asset in Exchange
-To update an existing asset or create a new version of it using Anypoint Platform, perform the following steps:
+When updating an API from Anypoint Platform, you can update the asset from Exchange or update the APIn instance from API Manager.
 
-. Go to *Anypoint Platform > Exchange* and select the desired asset.
-+
-The asset page is displayed. Now you can perform the following actions:
-. If you wish to upload a new version, click on *Add new version* on the right-side table.
-. If you wish to change the tags of a version, you can do it in the *Tags* section on the right-side panel.  
+=== Update the API Asset in Exchange
 
-=== Update API instance in API Manager
+To update an existing asset or create a new version using Anypoint Platform, perform the following steps:
+
+. Go to *Anypoint Platform* > *Exchange* and select the asset that you want to modify.
+. Based on what you want to changes, perform the following actions:
+.. If you want to upload a new version, from the right-side table, click *Add new version*.
+.. If you want to change the tags of a version, from the right-side panel, click *Tags*.  
+
+=== Update API Instances in API Manager
+
 To update an existing API instance, perform the following steps:
 
-. Go to *Anypoint Platform > API Manager*
-. Search and select your API instance in the table. 
+. Go to *Anypoint Platform* > *API Manager*
+. Search for and select your API instance from the results table. 
+. In the *API Configuration* section, update the tags for your API instance.
+. Update the asset version:
 +
-Once inside the API details page, you can perform the following actions:
-. Update the instance tags, at the *API Configuration* section.
-. Update the asset version it points to. Note that you can only update if there is a newer version of the asset, that belongs to the same product version.
 image::update-api-asset.png[Display asset update]
 
 
