@@ -21,9 +21,7 @@ Your Anypoint Service Mesh installation requires the following applications and 
 ** Google Kubernetes Engine (GKE)
 ** Amazon EKS
 ** Azure Kubernetes Service (AKS)
-* Install a supported version of Istio.
-+
-For more information about how to install, see <<install_Istio,Installing Istio>>.
+* <<install_Istio,Istio>> (currently supported versions include 1.6x or 1.7x)
 
 == Hardware Requirements
 
@@ -61,7 +59,7 @@ For more information about which permissions to use, see xref:api-manager::org-c
 
 == Ports, IPs, and Hostnames Allow list Requirements
 
-In your network, you might need to add to the allow list the hostnames and ports of external resources to enable Anypoint Service Mesh to communicate with the MuleSoft-managed online Anypoint Platform APIs and services.
+In your network, you might need to add to the allow list of hostnames and ports of external resources to enable Anypoint Service Mesh to communicate with the MuleSoft-managed online Anypoint Platform APIs and services.
 
 [%header%autowidth.spread,cols="3+a"]
 |===
@@ -91,12 +89,10 @@ Before you begin, ensure that you download Istio using the https://istio.io/docs
 
 === Install and Configure Istio
 
-To install and configure Istio for Anypoint Service Mesh, run the following command from your terminal.
+To install and configure Istio for Anypoint Service Mesh, run the following command from your terminal:
 
-[source,text,linenums]	
-----	
-$ istioctl install	
-----
+`$ istioctl install`
+
 
 
 == See Also
