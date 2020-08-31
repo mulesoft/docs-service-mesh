@@ -5,7 +5,7 @@ endif::[]
 :keywords: service mesh, microservices, installation prerequisites
 
 
-Before you can start managing your services using Anypoint Service Mesh, you must prepare your namespace by provisioning a Anypoint Service Mesh adapter. Provisioning prepares the namespace for the Anypoint Service Mesh configuration. As a best practice, you must create one namespace per adapter.
+Before you can start managing your services using Anypoint Service Mesh, you must prepare your namespace by provisioning a Anypoint Service Mesh adapter. Provisioning prepares the namespace for the Anypoint Service Mesh configuration. On every namespace where you want to protect your APIs with Anypoint Service Mesh, you must provision an adapter.
 
 The adapter behaves as the policy enforcement component, which fetches policies from Anypoint platform, checks whether the policies have been met, and then reports the analytics data back to Anypoint Platform.  
 
