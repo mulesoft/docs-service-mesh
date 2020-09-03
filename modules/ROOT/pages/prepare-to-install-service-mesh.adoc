@@ -59,7 +59,7 @@ For more information about which permissions to use, see xref:api-manager::org-c
 
 == Ports, IPs, and Hostnames Allow list Requirements
 
-You might need to allow a list of hostnames and ports of external resources in your network. This helps you to enable Anypoint Service Mesh to communicate with the MuleSoft-managed online Anypoint Platform APIs and services:
+In your network, you might need to add to the allow list of hostnames and ports of external resources to enable Anypoint Service Mesh to communicate with the MuleSoft-managed online Anypoint Platform APIs and services.
 
 [%header%autowidth.spread,cols="3+a"]
 |===
@@ -81,7 +81,7 @@ You might need to allow a list of hostnames and ports of external resources in y
 [[install_Istio]]
 == Download, Install, and Configure Istio
 
-Anypoint Service Mesh supports Istio versions 1.6.0 through 1.6.8 and 1.7.0. You can install any of these Istio versions in your environment.
+Although Anypoint Service Mesh supports Istio versions `1.6.x` and Istio `1.7.x`, only Istio versions 1.6.0 through 1.6.8, and 1.7.0 are currently tested to work with Aynpoint Service Mesh. You can install any one of these Istio versions in your environment to work with Anypoint Service Mesh.
 
 === Prerequisites
 
