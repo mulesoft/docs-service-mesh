@@ -6,8 +6,6 @@ endif::[]
 
 When you create the binding, Anypoint Service Mesh creates a three-way association of the service in Kubernetes, the API that you created in Anypoint Platform to represent the service, and the adapter that you created for the service. The adapter uses the unique API ID to fetch policies and apply them to your services that are running in the cluster.
 
-If you created the API in the previous procedure using Anypoint Platform, you use the API ID to bind the service. However, if you you used Anypoint Service Mesh to create the API, you must use the API name to bind the service.
-
 After the binding is created, Anypoint Service Mesh takes a few seconds to complete the binding procedure and update the status. After the binding is completed, you can view the status using the `list` command. The status values include:
 
 * Ready: The binding is now ready to be used. 
@@ -25,13 +23,13 @@ nto-payments   customers   anypoint-service-mesh-adapter   1234    customers    
 
 == Methods for Binding an API
 
-You can bind an API to a service using Anypoint Platform or Anypoint Service Mesh, based on your preference:
+You can bind an API to a service using API ID or Anypoint Service Mesh API name, based on your preference:
 
-* <<bind_the_service, Bind an API created using Anypoint Platform>>: If you created your API using Anypoint Platform, use this procedure.
-* <<bind_using_ASM, Bind an API created using Anypoint Service Mesh>> : If you created your API using Anypoint Service Mesh, use this procedure.
+* <<bind_the_service, Bind an API referencing an API ID>>:  Use this procedure if you want to bind to the API using the API ID. This way is recommended if you created your API using Anypoint Platform.
+* <<bind_using_ASM, Bind an API created using Anypoint Service Mesh API name>>: Use this procedure if you want to bind to the API using the Service Mesh API name. This way is recommended if you created your API using Anypoint Service Mesh.
 
 [[bind_the_service]]
-== Bind an API Created Using Anypoint Platform
+== Bind an API referencing an API ID
 
 Before you bind the service, ensure that you complete the task prerequisite.
 
@@ -85,7 +83,7 @@ image::api-manager-status-for-service-mesh.png[85%, 85%]
 
 [[bind_using_ASM]]
 
-== Bind an API Created Using Anypoint Service Mesh
+== Bind an API created using Anypoint Service Mesh API name.
 
 Before you bind the service, ensure that you complete the task prerequisite.
 
