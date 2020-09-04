@@ -1,0 +1,87 @@
+= Update an API Using the CLI
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+:keywords: service mesh, microservices, updating
+
+Because APIs constantly change, Anypoint Service Mesh allows you to update the specification of your API within the same major version (only minor and patch bumps allowed). You can update an API using Anypoint Platform or Anypoint Service Mesh:
+
+* <<update-api-cli,Update an API using Anypoint Service Mesh>>
++
+If your API resource exists in the cluster, you can update it to trigger changes in Anypoint Platform, such as creating or modifying asset versions and API instances.
+* <<update-api-AP, Update an API using Anypoint Platform>>
++
+After a new version of an API is published to Anypoint Exchange (Exchange), you can update the API instances associated with it to use this new version of the asset.
++
+You can update the asset tags from Exchange and the API instance tags in API Manager.
+
+
+[[update-api-cli]]
+== Update an API Using the Aypoint Service Mesh Command Line Interface
+
+If you configured the API using the Anypoint Service Mesh autocreate feature, you can update the API from the cluster when required. The update reuses the environment details and credentials introduced when provisioning the API. 
+
+To update the API:
+
+. From the Anypoint Service Mesh CLI, run the following command:
++
+[source,text,linenums]
+----
+asmctl api update  
+--name=_Kubernetes API resource name_ \
+--namespace=_namespace name_ \
+--version=_(Optional) new asset version for the API_ \
+--mainFile=_(Optional) name of the main file in the API specification_ \
+--specPath=_(Optional) path to the API specification file_ \
+--specTags=_(Optional) list of comma separated tags to be added to the asset on Exchange_ \
+--instanceTags=_(Optional) list of comma separated tags to be added to the instance on API Manager_ 
+----
++
+[%header%autowidth.spread]
+|===
+| Parameter Name | Description | Required or Optional | Default Value
+| `name` | The name of the existing Kubernetes API resource, for example, `orders-api` | Required | Not applicable
+| `namespace` | The namespace in which you created you API resource, for example, `mulesoft-apps` | Required | Not applicable
+| `version` | The version of the new asset on Exchange, including the semantic versioning format for major, minor, and patch releases  | Optional | Not applicable
+| `mainFile` | The name of the main file in the API specification file, compliant with the requirement that YAML or JSON files are named the same as the specification file, while the mainFile should match the primary file name when working with ZIP files | Required for `oas`, `raml` or `wsdl` APIs if `version` field is set | Not applicable
+| `specPath` | The relative or absolute path to the API specification file | Required for `oas`, `raml` or `wsdl` APIs if `version` field is set | Not applicable
+| `specTags` | The tags to add to the asset on Exchange |  Optional | Not applicable
+| `instanceTags` | The tags to add to the API instance on API Manager |  Optional | Not applicable
+|===
++
+. Verify that the was successfuly API updated:
+`asmctl api list`
+. Optionally, verify the asset changes in Exchange and the API instance changes in API Manager.
+
+
+[[update-api-AP]]
+== Update an API using Anypoint Platform
+
+When updating an API from Anypoint Platform, you can update the asset from Exchange or update the APIn instance from API Manager.
+
+=== Update the API Asset in Exchange
+
+To update an existing asset or create a new version using Anypoint Platform, perform the following steps:
+
+. Go to *Anypoint Platform* > *Exchange* and select the asset that you want to modify.
+. Based on what you want to changes, perform the following actions:
+.. If you want to upload a new version, from the right-side table, click *Add new version*.
+.. If you want to change the tags of a version, from the right-side panel, click *Tags*.  
+
+=== Update API Instances in API Manager
+
+To update an existing API instance, perform the following steps:
+
+. Go to *Anypoint Platform* > *API Manager*
+. Search for and select your API instance from the results table. 
+. In the *API Configuration* section, update the tags for your API instance.
+. Update the asset version:
++
+image::update-api-asset.png[Display asset update]
+
+
+== See Also
+
+* xref::create-an-api-configure-service-mesh-CLI.adoc[Create an API using the CLI]
+* xref::manage-apis-with-service-mesh.adoc[Manage APIs with Anypoint Service Mesh]
+* xref::uninstall-service-mesh.adoc[Uninstall Anypoint Service Mesh]
