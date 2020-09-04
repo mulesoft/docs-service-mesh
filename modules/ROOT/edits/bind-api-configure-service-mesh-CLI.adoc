@@ -25,11 +25,11 @@ nto-payments   customers   anypoint-service-mesh-adapter   1234    customers    
 
 You can bind an API to a service using the API ID or Anypoint Service Mesh API name, based on your preference:
 
-* <<bind_the_service, Bind an API referencing an API ID>>:  Use this procedure if you want to bind to the API using the API ID. This method is recommended if you created your API using Anypoint Platform.
-* <<bind_using_ASM, Bind an API created using Anypoint Service Mesh API name>>: Use this procedure if you want to bind to the API using the Service Mesh API name. This method is recommended if you created your API using Anypoint Service Mesh.
+* <<bind_the_service, Bind an API usinf an API ID>>:  Use this procedure if you want to bind to the API using the API ID. This method is recommended if you created your API using Anypoint Platform.
+* <<bind_using_ASM, Bind an API using an API name>>: Use this procedure if you want to bind to the API using the Service Mesh API name. This method is recommended if you created your API using Anypoint Service Mesh.
 
 [[bind_the_service]]
-== Bind an API Created Using Anypoint Platform
+== Bind an API Using API ID (Anypoint Platform)
 
 Before you bind the service, ensure that you complete the task prerequisite.
 
@@ -83,7 +83,7 @@ image::api-manager-status-for-service-mesh.png[85%, 85%]
 
 [[bind_using_ASM]]
 
-== Bind an API Created Using Anypoint Service Mesh API Name
+== Bind an API Using API Name (Anypoint Service Mesh)
 
 Before you bind the service, ensure that you complete the task prerequisite.
 
