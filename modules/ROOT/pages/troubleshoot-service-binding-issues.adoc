@@ -8,6 +8,7 @@ After you create the API, you then bind your service with the API. This section 
 
 * <<dns-name-error,Binding name not in DNS subdomain standard format>>
 * <<references-non-existent-instance-error,References nonexistent instance error>>
+* <<error-instance-not-ready,Error instance is not ready>>
 
 [[dns-name-error]]
 == Binding Name not in DNS Subdomain Standard Format
@@ -30,7 +31,7 @@ Ensure that you provide a binding name value that follows the DNS subdomain stan
 
 When you create a binding, you must reference an API or an adapter that you previously created using its name. Otherwise, you receive the 'ReferencesNonexistentInstance' error.
 
-== Causes
+=== Causes
 
 This error can occur if:
  
@@ -52,3 +53,30 @@ The status of binding displays as `ReferencesNonexistentInstance`.
 
 Delete the erroneous binding command and re-create it with the correct input.
 
+[[error-instance-not-ready]]
+== Error Instance is Not Ready
+
+Before you create a binding, the API provisioning task must be completed and the referenced API or adapter must be ready. Otherwise, you receive the 'ErrorInstanceNotReady' error.
+
+=== Diagnose
+
+To diagnose this issue, check the status of the referenced instance by using either of the following commands, depending on whether you are using an API or an adapter binding:
+
+* `$ asmctl api list`
+* `$ asmctl adapter list`
+
+=== Solution
+
+To resolve this issue:
+
+. If the adapter or API provisioning has not yet completed (`Provisioning` status), wait until the operation completes. 
+. If the status is `Failed`, review the corresponding troubleshooting section:
+
+* xref:troubleshoot-adapter-provisioning-issues.adoc[Adapter provisioning issues]
+* xref:troubleshoot-api-provisioning-issues.adoc[API provisioning issues].
++
+. To delete the API or adapter, delete the binding first. 
+. Wait for the API or the adapter to be ready.
++
+The status of the delete transaction must not be `Deleting`.
+. After the API or the adapter is ready, re-create the binding.
