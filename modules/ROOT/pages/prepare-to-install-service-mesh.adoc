@@ -81,7 +81,7 @@ In your network, you might need to add to the allow list of hostnames and ports 
 [[install_Istio]]
 == Download, Install, and Configure Istio
 
-Although Anypoint Service Mesh supports Istio versions `1.6.x` and Istio `1.7.x`, only Istio versions 1.6.0 through 1.6.8, and 1.7.0 are currently tested to work with Aynpoint Service Mesh. You can install any one of these Istio versions in your environment to work with Anypoint Service Mesh.
+Anypoint Service Mesh supports Istio versions 1.6.0 through 1.6.8 and version 1.7.0. You can install any of these Istio versions in your environment.
 
 === Prerequisites
 
