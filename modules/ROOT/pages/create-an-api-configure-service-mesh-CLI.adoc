@@ -65,7 +65,7 @@ To autocreate APIs using user credentials, perform the following steps:
 +
 [source,text,linenums]
 ----
-asmctl api create  
+asmctl api create \
 --name=_Kubernetes API resource name_ \
 --namespace=_namespace name_ \
 --environmentId=_environment ID_ \
@@ -125,7 +125,7 @@ To autocreate APIs using Connected Apps, perform the following steps:
 +
 [source,text,linenums]
 ----
-asmctl api create
+asmctl api create \
 --name=_Kubernetes API resource name_ \
 --namespace=_namespace name_ \
 --environmentId=_environment ID_ \
