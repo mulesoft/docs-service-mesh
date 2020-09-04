@@ -30,7 +30,7 @@ Istio, which is installed on a Kubernetes cluster, uses Envoy to manage services
 
 The MuleSoft adapter connects components to Anypoint Platform. Along with a broker, the adapter enables all services that are managed by the mesh to share metadata, which in turn enables your existing microservices in the Kubernetes cluster to be recognized as APIs by Anypoint Platform. 
 
-After the services are discovered, Anypoint Exchange uses the metadata to automatically discover and create HTTP APIs for each service. These APIs can then be managed within API Manager. Similarly, Anypoint Monitoring uses the metadata to get information from the sidecar proxy and makes it available for API Analytics.
+After the services are discovered, Anypoint Exchange uses the metadata to automatically discover and create APIs (HTTP, REST, or SOAP) for each service. These APIs can then be managed within API Manager. Similarly, Anypoint Monitoring uses the metadata to get information from the sidecar proxy and makes it available for API Analytics.
 
 == Service Request Flow
 
