@@ -75,7 +75,7 @@ INFO:   --size=SIZE                   Adapter Size. See 'asmctl adapter sizes' [
 INFO:
 INFO: Examples:
 INFO:   # Create a new Adapter
-INFO:   asmctl adapter create --namespace=nto-payment --name=adapter --clientId=1234abc1234abc1234abc1234abc1234 --clientSecret=<OMMITED> --size=small --replicas=1
+INFO:   asmctl adapter create --namespace=nto-payment --name=adapter --clientId=1234abc1234abc1234abc1234abc1234 --clientSecret=<OMITTED> --size=small --replicas=1
 INFO:
 INFO:   # Show Adapter logs
 INFO:   asmctl adapter logs --namespace=nto-payment --name=adapter
