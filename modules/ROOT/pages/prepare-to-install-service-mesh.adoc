@@ -66,7 +66,7 @@ In your network, you might need to add to the allow list the hostnames and ports
 [%header%autowidth.spread]
 |===
 |Plane |Host |Port| Explanation
-|*US*|*anypoint.mulesoft.com* | 443| Anypoint
+|*US*|*anypoint.mulesoft.com* | 443| Required to connect with the control plane
 |*US*|*analytics-ingest.anypoint.mulesoft.com* |  443| Required to send analytics to the control plane
 |*US*|**.dkr.ecr.us-east-1.amazonaws.com* |  443| Required to download the docker images that make up the Anypoint Service Mesh product
 |*US*|*exchange-files.anypoint.mulesoft.com* |  443| Required to download the docker images that make up the Anypoint Service Mesh product
