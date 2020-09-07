@@ -63,16 +63,16 @@ For more information about which permissions to use, see xref:api-manager::org-c
 
 In your network, you might need to add to the allow list the hostnames and ports of external resources to enable Anypoint Service Mesh to communicate with the MuleSoft-managed online Anypoint Platform APIs and services.
 
-[%header%autowidth.spread,cols="4+a"]
+[%header%autowidth.spread]
 |===
 |Plane |Host |Port| Explanation
 |*US*|*anypoint.mulesoft.com* | 443| Anypoint
-|*US*|*analytics-ingest.anypoint.mulesoft.com* |  443| Required to send analytics to the control plane.
-|*US*|**.dkr.ecr.us-east-1.amazonaws.com* |  443| Explanation| Required to download the docker images that make up the Anypoint Service Mesh product
+|*US*|*analytics-ingest.anypoint.mulesoft.com* |  443| Required to send analytics to the control plane
+|*US*|**.dkr.ecr.us-east-1.amazonaws.com* |  443| Required to download the docker images that make up the Anypoint Service Mesh product
 |*US*|*exchange-files.anypoint.mulesoft.com* |  443| Required to download the docker images that make up the Anypoint Service Mesh product
 |*US*|*exchange2-asset-manager-kprod.s3.amazonaws.com* |  443| Required to download policies
 |*EU*|*eu1.anypoint.mulesoft.com* | 443| Anypoint
-|*EU*|*analytics-ingest.eu1.anypoint.mulesoft.com* |  443| Required to send analytics to the control plane.
+|*EU*|*analytics-ingest.eu1.anypoint.mulesoft.com* |  443| Required to send analytics to the control plane
 |*EU*|**.dkr.ecr.eu-central-1.amazonaws.com* |  443| Required to download the docker images that make up the Anypoint Service Mesh product
 |*EU*|*exchange-files.eu1.anypoint.mulesoft.com* |  443| Required to download policies
 |*EU*|*exchange2-asset-manager-kprod-eu.s3.eu-central-1.amazonaws.com* |  443| Required to download policies
