@@ -77,7 +77,7 @@ In your network, you might need to add to the allow list the hostnames and ports
 |*EU*|*exchange-files.eu1.anypoint.mulesoft.com* |  443| Required to download policies
 |*EU*|*exchange2-asset-manager-kprod-eu.s3.eu-central-1.amazonaws.com* |  443| Required to download policies
 |*ALL*|*get.helm.sh* | 443| Required to retrieve and install Helm on the computer from where the user is installing the product
-|*ALL*|*storage.googleapis.com* | 443| Required to retrieve and install kubectl on the computer from where the user is installing the product
+|*ALL*|*storage.googleapis.com* | 443| Required to retrieve and install Kubectl on the computer from where the user is installing the product
 |===
 
 [[install_Istio]]
