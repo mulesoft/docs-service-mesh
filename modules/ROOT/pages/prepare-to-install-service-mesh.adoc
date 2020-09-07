@@ -69,15 +69,15 @@ In your network, you might need to add to the allow list the hostnames and ports
 |*US*|*anypoint.mulesoft.com* | 443| Required to connect with the control plane
 |*US*|*analytics-ingest.anypoint.mulesoft.com* |  443| Required to send analytics to the control plane
 |*US*|**.dkr.ecr.us-east-1.amazonaws.com* |  443| Required to download the docker images that make up the Anypoint Service Mesh product
-|*US*|*exchange-files.anypoint.mulesoft.com* |  443| Required to download the docker images that make up the Anypoint Service Mesh product
+|*US*|*exchange-files.anypoint.mulesoft.com* |  443| Required to download policies
 |*US*|*exchange2-asset-manager-kprod.s3.amazonaws.com* |  443| Required to download policies
-|*EU*|*eu1.anypoint.mulesoft.com* | 443| Anypoint
+|*EU*|*eu1.anypoint.mulesoft.com* | 443| Required to connect with the control plane
 |*EU*|*analytics-ingest.eu1.anypoint.mulesoft.com* |  443| Required to send analytics to the control plane
 |*EU*|**.dkr.ecr.eu-central-1.amazonaws.com* |  443| Required to download the docker images that make up the Anypoint Service Mesh product
 |*EU*|*exchange-files.eu1.anypoint.mulesoft.com* |  443| Required to download policies
 |*EU*|*exchange2-asset-manager-kprod-eu.s3.eu-central-1.amazonaws.com* |  443| Required to download policies
-|*ALL*|*get.helm.sh* | 443| Required to retrieve and install Helm on the Kubernetes clusters.
-|*ALL*|*storage.googleapis.com* | 443| Required to retrieve and install kubectl on the Kubernetes clusters.
+|*ALL*|*get.helm.sh* | 443| Required to retrieve and install Helm on the computer from where the user is installing the product
+|*ALL*|*storage.googleapis.com* | 443| Required to retrieve and install kubectl on the computer from where the user is installing the product
 |===
 
 [[install_Istio]]
