@@ -53,7 +53,7 @@ Note that you must delete all associated bindings before you delete the adapter.
 After you install Anypoint Service Mesh, you can use the command line interface (CLI) help to learn about the Anypoint Service Mesh commands and their parameters:
 
 `asmctl adapter help`
-+
+
 [source,text,linenums]
 ----
 $ asmctl adapter help
@@ -86,7 +86,6 @@ INFO:
 INFO:   # List all created Adapters
 INFO:   asmctl adapter list
 ----
-+
 
 [[provision_the_adapter]]
 == Provision the Adapter Using the CLI
