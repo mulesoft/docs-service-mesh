@@ -59,25 +59,25 @@ For more information about which permissions to use, see xref:api-manager::org-c
 * Obtain the Cluster Administrator role to access the Kubernetes cluster (only required for installation process).
 * If you have configured an external identity provider for your organization, create a user in Anypoint Platform with Exchange Contributors and Manage APIs Configuration roles. Anypoint Service Mesh does not support users residing on an external identity provider for tasks such as creating and discovering APIs.
 
-== Ports, IPs, and Hostnames allow list Requirements
+== Ports, IPs, and Hostname Allow List Requirements
 
-In your network, you might need to add to the allow list the hostnames and ports of external resources to enable Anypoint Service Mesh to communicate with the MuleSoft-managed online Anypoint Platform APIs and services.
+To enable Anypoint Service Mesh to communicate with the MuleSoft-managed online Anypoint Platform APIs and services, you must add the following hostnames and ports of external resources to the allow list:
 
 [%header%autowidth.spread]
 |===
-|Plane |Host |Port| Explanation
+|Plane |Host |Port| Description
 |*US*|*anypoint.mulesoft.com* | 443| Required to connect with the control plane
-|*US*|*analytics-ingest.anypoint.mulesoft.com* |  443| Required to send analytics to the control plane
-|*US*|**.dkr.ecr.us-east-1.amazonaws.com* |  443| Required to download the docker images that make up the Anypoint Service Mesh product
+|*US*|*analytics-ingest.anypoint.mulesoft.com* |  443| Required to send analytics data to the control plane
+|*US*|**.dkr.ecr.us-east-1.amazonaws.com* |  443| Required to download the docker images that constitute the Anypoint Service Mesh product
 |*US*|*exchange-files.anypoint.mulesoft.com* |  443| Required to download policies
 |*US*|*exchange2-asset-manager-kprod.s3.amazonaws.com* |  443| Required to download policies
 |*EU*|*eu1.anypoint.mulesoft.com* | 443| Required to connect with the control plane
-|*EU*|*analytics-ingest.eu1.anypoint.mulesoft.com* |  443| Required to send analytics to the control plane
-|*EU*|**.dkr.ecr.eu-central-1.amazonaws.com* |  443| Required to download the docker images that make up the Anypoint Service Mesh product
+|*EU*|*analytics-ingest.eu1.anypoint.mulesoft.com* |  443| Required to send analytics data to the control plane
+|*EU*|**.dkr.ecr.eu-central-1.amazonaws.com* |  443| Required to download the docker images that constitute the Anypoint Service Mesh product
 |*EU*|*exchange-files.eu1.anypoint.mulesoft.com* |  443| Required to download policies
 |*EU*|*exchange2-asset-manager-kprod-eu.s3.eu-central-1.amazonaws.com* |  443| Required to download policies
-|*ALL*|*get.helm.sh* | 443| Required to retrieve and install Helm on the computer from where the user is installing the product
-|*ALL*|*storage.googleapis.com* | 443| Required to retrieve and install Kubectl on the computer from where the user is installing the product
+|*ALL*|*get.helm.sh* | 443| Required to retrieve and install Helm on the computer from where you are installing the product
+|*ALL*|*storage.googleapis.com* | 443| Required to retrieve and install Kubectl on the computer from where you are installing the product
 |===
 
 [[install_Istio]]
