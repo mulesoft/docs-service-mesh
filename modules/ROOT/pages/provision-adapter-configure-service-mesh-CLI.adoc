@@ -54,7 +54,38 @@ After you install Anypoint Service Mesh, you can use the command line interface 
 
 `asmctl adapter help`
 
-image::service-mesh-cli-adapter-help.png[CLI help for adapter commands]
+[source,text,linenums]
+----
+$ asmctl adapter help
+INFO: Usage:
+INFO:   asmctl adapter list
+INFO:   asmctl adapter sizes
+INFO:   asmctl adapter binding
+INFO:   asmctl adapter create --namespace=NAMESPACE --name=NAME --clientId=CLIENT_ID --clientSecret=CLIENT_SECRET --size=SIZE --replicas=REPLICAS
+INFO:   asmctl adapter delete --namespace=NAMESPACE --name=NAME
+INFO:   asmctl adapter logs --namespace=NAMESPACE --name=NAME
+INFO:
+INFO: Options:
+INFO:   --clientId=CLIENT_ID          Client Id.
+INFO:   --clientSecret=CLIENT_SECRET  Client Secret.
+INFO:   --name=NAME                   Adapter name.
+INFO:   --namespace=NAMESPACE         Kubernetes Namespace.
+INFO:   --replicas=REPLICAS           Number of replicas [1..8] [default: 2].
+INFO:   --size=SIZE                   Adapter Size. See 'asmctl adapter sizes' [default: medium].
+INFO:
+INFO: Examples:
+INFO:   # Create a new Adapter
+INFO:   asmctl adapter create --namespace=nto-payment --name=adapter --clientId=1234abc1234abc1234abc1234abc1234 --clientSecret=<OMITTED> --size=small --replicas=1
+INFO:
+INFO:   # Show Adapter logs
+INFO:   asmctl adapter logs --namespace=nto-payment --name=adapter
+INFO:
+INFO:   # Delete an Adapter
+INFO:   asmctl adapter delete --namespace=nto-payment --name=adapter
+INFO:
+INFO:   # List all created Adapters
+INFO:   asmctl adapter list
+----
 
 [[provision_the_adapter]]
 == Provision the Adapter Using the CLI
