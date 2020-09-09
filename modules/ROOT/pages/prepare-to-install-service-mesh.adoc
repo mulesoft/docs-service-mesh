@@ -21,7 +21,7 @@ Your Anypoint Service Mesh installation requires the following applications and 
 ** Google Kubernetes Engine (GKE)
 ** Amazon EKS
 ** Azure Kubernetes Service (AKS)
-* Kubernetes version of 1.12, 1.13, 1.14, 1.15, 1.16 or 1.17
+* Kubernetes (version 1.12, 1.13, 1.14, 1.15, 1.16, or 1.17)
 * <<install_Istio,Istio>> (currently supported versions include 1.6x or 1.7x)
 
 == Hardware Requirements
