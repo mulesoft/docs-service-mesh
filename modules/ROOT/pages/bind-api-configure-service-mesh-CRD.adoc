@@ -44,7 +44,7 @@ To bind the service with an API, perform the following steps:
 Ensure that you save this API ID somewhere that you can access readily.
 +
 .The diagram shows the location where the API ID is displayed on the API version window.
-image::bind-api-id.png[Display API ID]
+image::bind-api-id.png[Display API ID,80%,90%]
 +
 <1> API name and API instance version.
 <2> API ID.
@@ -80,7 +80,7 @@ The binding is activated within a few seconds and the API is successfully regist
 After you bind your API, the API in API Manager is marked as Active. You are now ready to apply policies to protect your APIs.
 +
 .The diagram shows the location where the status of the service is displayed.
-image::api-manager-status-for-service-mesh.png[95%, 95%]
+image::api-manager-status-for-service-mesh.png[85%, 85%]
 +
 <1> API name and API instance version.
 <2> Service status.

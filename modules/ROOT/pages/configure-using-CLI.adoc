@@ -10,7 +10,7 @@ The Anypoint Service Mesh command line interface (CLI) is a unified tool that en
 
 You can use the CLI in an interactive mode from the command prompt, or in an non-interactive mode for automating scripts. The following diagram illustrates the flow for configuring Anypoint Service Mesh using the CLI:
  
-image::configure-service-mesh-CLI-flowchart.png[90%,120%]
+image::configure-service-mesh-CLI-flowchart.png[80%,90%]
 
 == See Also
 

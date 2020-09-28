@@ -22,7 +22,7 @@ The sidecar proxy enables you to bring your existing non-Mule microservices from
 
 Because the mixer component is deprecated in Istio v1.5 and later, the authorization mechanism aspect of the mixer is now implemented by leveraging Anypoint Service Mesh Envoy filters. With the Envoy filter, requests are sent directly to the adapter, thereby minimizing additional processing.
 
-image::anypoint-service-mesh-architecture.png[Anypoint Service Mesh architecture]
+image::anypoint-service-mesh-architecture.png[Anypoint Service Mesh architecture,85%,95%]
 
 As illustrated in the diagram, at the top of the architecture is Anypoint Platform, which brings complete lifecycle API management capabilities to the microservices built with Mule runtime engine (Mule). These Mule instances might be deployed within CloudHub, or Runtime Fabric at your location. 
 
@@ -36,7 +36,7 @@ After the services are discovered, Anypoint Exchange uses the metadata to automa
 
 When a service is called, Anypoint Service Mesh ensures a smooth request flow and security checks as shown in the following diagram:
 
-image:service-mesh-request-flow.png[]
+image:service-mesh-request-flow.png[70%,85%]
 
 . The client, which might be another microservice or any Kubernetes Ingress component, sends a request to the service.
 . Envoy captures the request and redirects it to the MuleSoft adapter using the Envoy filter.

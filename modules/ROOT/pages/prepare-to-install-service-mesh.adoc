@@ -62,21 +62,21 @@ For more information about which permissions to use, see xref:api-manager::org-c
 
 To enable Anypoint Service Mesh to communicate with the MuleSoft-managed online Anypoint Platform APIs and services, you must add the following hostnames and ports of external resources to the allow list:
 
-[%header%autowidth.spread,cols="3+a"]
+[%header%autowidth.spread]
 |===
-|Plane |Host |Port
-|*US*|*anypoint.mulesoft.com* | 443
-|*US*|*analytics-ingest.anypoint.mulesoft.com* |  443
-|*US*|**.dkr.ecr.us-east-1.amazonaws.com* |  443
-|*US*|*exchange-files.anypoint.mulesoft.com* |  443
-|*US*|*exchange2-asset-manager-kprod.s3.amazonaws.com* |  443
-|*EU*|*eu1.anypoint.mulesoft.com* | 443
-|*EU*|*analytics-ingest.eu1.anypoint.mulesoft.com* |  443
-|*EU*|**.dkr.ecr.eu-central-1.amazonaws.com* |  443
-|*EU*|*exchange-files.eu1.anypoint.mulesoft.com* |  443
-|*EU*|*exchange2-asset-manager-kprod-eu.s3.eu-central-1.amazonaws.com* |  443
-|*ALL*|*get.helm.sh* | 443
-|*ALL*|*storage.googleapis.com* | 443
+|Plane |Host |Port| Description
+|*US*|*anypoint.mulesoft.com* | 443| Required to connect with the control plane
+|*US*|*analytics-ingest.anypoint.mulesoft.com* |  443| Required to send analytics data to the control plane
+|*US*|**.dkr.ecr.us-east-1.amazonaws.com* |  443| Required to download the docker images that constitute the Anypoint Service Mesh product
+|*US*|*exchange-files.anypoint.mulesoft.com* |  443| Required to download policies
+|*US*|*exchange2-asset-manager-kprod.s3.amazonaws.com* |  443| Required to download policies
+|*EU*|*eu1.anypoint.mulesoft.com* | 443| Required to connect with the control plane
+|*EU*|*analytics-ingest.eu1.anypoint.mulesoft.com* |  443| Required to send analytics data to the control plane
+|*EU*|**.dkr.ecr.eu-central-1.amazonaws.com* |  443| Required to download the docker images that constitute the Anypoint Service Mesh product
+|*EU*|*exchange-files.eu1.anypoint.mulesoft.com* |  443| Required to download policies
+|*EU*|*exchange2-asset-manager-kprod-eu.s3.eu-central-1.amazonaws.com* |  443| Required to download policies
+|*ALL*|*get.helm.sh* | 443| Required to retrieve and install Helm on the computer from where you are installing the product
+|*ALL*|*storage.googleapis.com* | 443| Required to retrieve and install Kubectl on the computer from where you are installing the product
 |===
 
 [[install_Istio]]

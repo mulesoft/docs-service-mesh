@@ -77,7 +77,7 @@ To update an existing API instance, perform the following steps:
 . In the *API Configuration* section, update the tags for your API instance.
 . Update the asset version:
 +
-image::update-api-asset.png[Display asset update]
+image::update-api-asset.png[Display asset update,60%,60%]
 
 
 == See Also
