@@ -60,7 +60,7 @@ To obtain these details, go to *API Manager > Environment Information*.
 
 To autocreate APIs using user credentials, perform the following steps:
 
-. Create your API definition file and save it with a '.yaml' file extension:
+. Create your API definition file and save it with a `.yaml` file extension:
 +
 [source,text,linenums]
 ----

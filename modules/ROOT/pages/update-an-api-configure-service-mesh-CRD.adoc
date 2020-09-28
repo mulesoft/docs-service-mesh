@@ -40,7 +40,7 @@ To update the API using CRD:
 [[update-api-AP]]
 == Update an API using Anypoint Platform
 
-When updating an API from Anypoint Platform, you can update the asset from Exchange or update the APIn instance from API Manager.
+When updating an API from Anypoint Platform, you can update the asset from Exchange or update the API instance from API Manager.
 
 === Update the API Asset in Exchange
 
