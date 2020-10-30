@@ -110,8 +110,7 @@ asmctl adapter create \
 --size=<adapter plan size> \
 --replicas=<amount of replicas for the adapter> \
 --clientId=<clientId of the environment or organization> \
---clientSecret=<client secret of the environment or organization> \
---platformUri=<URL of Anypoint Platform>
+--clientSecret=<client secret of the environment or organization>
 ----
 +
 [%header%autowidth.spread]

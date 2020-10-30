@@ -72,7 +72,6 @@ spec:
   parameters:
     clientId: <client id> # example: 4bc55ee4cfc84a2ddddbb2c1109d1123c5c4
     clientSecret: <client secret> # example: 8E5ae17BbB664Eddd9ab32A5fA869874Be7
-    platformUri: <platform uri> # example: https://eu1.anypoint.mulesoft.com
     replication: 
       replicas: <amount of replicas> # example: 2
 ----
