@@ -41,11 +41,14 @@ You can use any of the following options for authentication when creating an API
 
 ** Using <<create_api-CRD, user credentials>> (username and password). 
 +
-This option supports only those users that are managed by Anypoint Platform.
+This option supports only those users that:
+*** Are managed by Anypoint Platform.
+*** Are not configured with Multi-Factor authentication.
 ** Using <<create-api-CRD-ConnAps, Connected Apps credentials>> 
 +
-(Recommended) This option supports users regardless of where they are managed--Anypoint Platform or an external IdP.
-
+(Recommended) This option supports users regardless of
+*** Where they are managed--Anypoint Platform or an external IdP.
+*** The use of Multi-Factor authentication.
 
 [[create_api-CRD]]
 === Autocreate APIs by Using Your User Credentials
