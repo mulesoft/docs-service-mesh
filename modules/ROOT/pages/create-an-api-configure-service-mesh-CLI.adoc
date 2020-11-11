@@ -43,16 +43,16 @@ You can use any of the following options for authentication and authorization wh
 
 ** Using <<create-api-ASM-CLI, user credentials>> (username and password)
 +
-This option supports only those users that:
+This option supports only those users that are:
 
-*** Are managed by Anypoint Platform.
-*** Are not configured with Multi-Factor authentication.
+*** Managed by Anypoint Platform.
+*** Not configured with Multi-Factor authentication.
 ** Using <<create-api-ASM-CLI-ConnAps, Connected Apps credentials>> 
 +
-(Recommended) This option supports users regardless of
+(Recommended) This option supports users irrespective of
 
-*** Where they are managed--Anypoint Platform or an external IdP.
-*** The use of Multi-Factor authentication.
+*** Where the users are managed--Anypoint Platform or an external IdP
+*** Whether a multi-factor authentication is used
 
 [[create-api-ASM-CLI]]
 === Autocreate APIs by Using Your User Credentials
