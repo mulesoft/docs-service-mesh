@@ -44,7 +44,7 @@ You can use any of the following options for authentication when creating an API
 This option supports only those users who:
 
 *** Are managed by Anypoint Platform
-*** Have not enabled with multi-factor authentication
+*** Have not enabled multi-factor authentication
 ** Using <<create-api-CRD-ConnAps, Connected Apps credentials>> 
 +
 (Recommended) This option supports users:
