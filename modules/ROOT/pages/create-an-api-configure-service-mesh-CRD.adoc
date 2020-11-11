@@ -49,7 +49,7 @@ This option supports only those users that are:
 +
 (Recommended) This option supports users irrespective of
 
-*** Where the uses are managed--Anypoint Platform or an external IdP
+*** Where the users are managed--Anypoint Platform or an external IdP
 *** Whether a multi-factor authentication is used
 
 [[create_api-CRD]]
