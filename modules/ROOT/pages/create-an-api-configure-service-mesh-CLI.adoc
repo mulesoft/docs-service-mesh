@@ -43,9 +43,9 @@ You can use any of the following options for authentication and authorization wh
 
 ** Using <<create-api-ASM-CLI, user credentials>> (username and password)
 +
-This option supports only those users who are:
+This option supports only those users who:
 
-*** Managed by Anypoint Platform
+*** Are managed by Anypoint Platform
 *** Have not enabled multi-factor authentication
 ** Using <<create-api-ASM-CLI-ConnAps, Connected Apps credentials>> 
 +
