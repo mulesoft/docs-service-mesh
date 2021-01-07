@@ -11,6 +11,8 @@ The adapter acts as a policy enforcement component that fetches policies from An
 
 After you provision the adapter, you must set the `istio-injection` label on the namespace and redeploy all your existing applications in that namespace to ensure that the Envoy sidecar is injected within each pod in the Kubernetes Cluster.
 
+If you have installed Anypoint Service Mesh with Red Hat OpenShift, you must set the `istio-cni` network-attachment-definition on the namespace where you are running the applications.
+
 
 [[adapter_plan]]
 == Adapter Plan
@@ -81,7 +83,22 @@ spec:
 `asmctl adapter list`
 . Set the label for Istio in the namespace:
 `kubectl label ns <namespace> istio-injection=enabled`
- . Redeploy all your existing applications in the namespace.
+. If have installed Anypoint Service Mesh with Red Hat OpenShift, run the following command on the namespace where your applications are running :
++
+[source,text,linenums]
+----
+kubectl -n <namespace> apply -f - <<EOF
+
+apiVersion: "k8s.cni.cncf.io/v1"
+kind: NetworkAttachmentDefinition
+metadata:
+  name: istio-cni
+EOF
+----
++
+This command creates the resource to enable the Istio cni plugin in the application namespace.
+. Redeploy all your existing applications in the namespace.
+
 
 == Reference Kubernetes Secret
 
