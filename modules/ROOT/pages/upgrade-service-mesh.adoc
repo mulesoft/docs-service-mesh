@@ -36,7 +36,7 @@ To upgrade to Anypoint Service Mesh v1.2:
 +
 [NOTE] If you are using the EU control plane, you must specify the correct `--platformUri` flag for the upgrade.
 
-//Rodri to check whether we need the clean up post-upgrade steps
+
 // == Clean Up Post-Upgrade
 
 // After the upgrade process is successfully completed, you can remove the backup copies of the previous version's files:
