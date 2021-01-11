@@ -5,7 +5,7 @@ endif::[]
 :keywords: service mesh, microservices, upgrading
 
 
-Anypoint Service Mesh v1.2 includes new features and architecture enhancements, such as the authorization mechanism aspect of the mixer is now implemented by leveraging Anypoint Service Mesh Envoy filters. Note that the architectural changes in the upgrade require some downtime.
+Anypoint Service Mesh v1.2 includes new features and architecture enhancements, such as leveraging Anypoint Service Mesh Envoy filters to implement the mixer authorization mechanism. Note that implementing these changes requires some downtime.
 
 When you upgrade from Anypoint Service Mesh v1.1, the process first creates a backup of the necessary files. Any request to protected services is denied and the Anypoint Service Mesh downtime begins. 
 

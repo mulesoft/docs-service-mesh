@@ -83,7 +83,7 @@ spec:
 `asmctl adapter list`
 . Set the label for Istio in the namespace:
 `kubectl label ns <namespace> istio-injection=enabled`
-. If have installed Anypoint Service Mesh with Red Hat OpenShift, run the following command on the namespace where your applications are running :
+. If have installed Anypoint Service Mesh with Red Hat OpenShift, run the following command in the namespace where your applications are running:
 +
 [source,text,linenums]
 ----
@@ -96,7 +96,7 @@ metadata:
 EOF
 ----
 +
-This command creates the resource to enable the Istio cni plugin in the application namespace.
+This command creates the resources that enable the Istio CNI plugin in the namespace.
 . Redeploy all your existing applications in the namespace.
 
 
