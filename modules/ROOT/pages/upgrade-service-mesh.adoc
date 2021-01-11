@@ -1,11 +1,11 @@
-= Upgrade to Anypoint Service Mesh 1.1
+= Upgrade to Anypoint Service Mesh 1.2
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 :keywords: service mesh, microservices, upgrading
 
 
-Anypoint Service Mesh v1.1 includes new features and architecture enhancements, such as the authorization mechanism aspect of the mixer is now implemented by leveraging Anypoint Service Mesh Envoy filters. Note that the architectural changes in the upgrade require some downtime.
+Anypoint Service Mesh v1.2 includes new features and architecture enhancements, such as leveraging Anypoint Service Mesh Envoy filters to implement the mixer authorization mechanism. Note that implementing these changes requires some downtime.
 
 When you upgrade from Anypoint Service Mesh v1.1, the process first creates a backup of the necessary files. Any request to protected services is denied and the Anypoint Service Mesh downtime begins. 
 
@@ -16,16 +16,16 @@ The adapters, APIs, and bindings are then upgraded, and finally requests to prot
 
 Before you upgrade, ensure that your environment uses:
 
-* Anypoint Service Mesh v1.0.x
+* Anypoint Service Mesh v1.1.x
 * The most recent version of the Anypoint Service Mesh command line interface (CLI)
 +
-The CLI version must be v1.1.x and the Anypoint Service Mesh version must be v1.0.x.
-* Istio 1.6.0 or later for both control plane and data plane
+The CLI version must be v1.2.x and the Anypoint Service Mesh version must be v1.1.x.
+* Istio 1.7.x or 1.8.x or later for both control plane and data plane
 
 
 == Steps
 
-To upgrade to Anypoint Service Mesh v1.1:
+To upgrade to Anypoint Service Mesh v1.2:
 
 . If you have not already done so, download the latest Anypoint Service Mesh command line interface (CLI) version:
 +
@@ -37,18 +37,18 @@ To upgrade to Anypoint Service Mesh v1.1:
 [NOTE] If you are using the EU control plane, you must specify the correct `--platformUri` flag for the upgrade.
 
 
-== Clean Up Post-Upgrade
+// == Clean Up Post-Upgrade
 
-After the upgrade process is successfully completed, you can remove the backup copies of the previous version's files:
+// After the upgrade process is successfully completed, you can remove the backup copies of the previous version's files:
 
-. Delete the backups of adapters, APIs, and bindings:
-+
-`$ kubectl delete configmap -A -l 'service-mesh.mulesoft.com/backup'`
-. Delete the pre-upgrade jobs:
-+
-`$ kubectl delete job service-mesh-pre-upgrade -n service-mesh`
-+
-`$ kubectl delete job service-mesh-post-upgrade -n service-mesh`
+// . Delete the backups of adapters, APIs, and bindings:
+// +
+// `$ kubectl delete configmap -A -l 'service-mesh.mulesoft.com/backup'`
+// . Delete the pre-upgrade jobs:
+// +
+// `$ kubectl delete job service-mesh-pre-upgrade -n service-mesh`
+// +
+// `$ kubectl delete job service-mesh-post-upgrade -n service-mesh`
 
 
 

@@ -21,8 +21,10 @@ Your Anypoint Service Mesh installation requires the following applications and 
 ** Google Kubernetes Engine (GKE)
 ** Amazon EKS
 ** Azure Kubernetes Service (AKS)
-* Kubernetes (version 1.12, 1.13, 1.14, 1.15, 1.16, or 1.17)
-* <<install_Istio,Istio>> (currently supported versions include 1.6x or 1.7x)
+** Red Hat OpenShift
+* Kubernetes (versions 1.12 through 1.19) or Red Hat OpenShift (version 4.x)
+
+* <<install_Istio,Istio>> (currently supported versions include 1.7.x and 1.8.x)
 
 == Hardware Requirements
 
@@ -82,7 +84,9 @@ To enable Anypoint Service Mesh to communicate with the MuleSoft-managed online 
 [[install_Istio]]
 == Download, Install, and Configure Istio
 
-Anypoint Service Mesh supports Istio versions 1.6.0 through 1.6.8 and version 1.7.0. You can install any of these Istio versions in your environment.
+Anypoint Service Mesh supports Istio versions 1.7.x and 1.8.x. You can install any of these Istio versions in your environment within your Kubernetes or OpenShift cluster.
+
+Anypoint Service Mesh supports Istio versions 1.7.x and 1.8.x. You can install either of these Istio versions in your environment within your Kubernetes or OpenShift cluster.
 
 === Prerequisites
 
@@ -90,9 +94,18 @@ Before you begin, ensure that you download Istio using the https://istio.io/docs
 
 === Install and Configure Istio
 
-To install and configure Istio for Anypoint Service Mesh, run the following command from your terminal:
+To install and configure Istio for Anypoint Service Mesh, run the command most appropriate for the container platform that you have installed in your environment:
 
+* Kubernetes
++
 `$ istioctl install`
+* OpenShift
+[source,text,linenums]
+----
+`oc adm policy add-scc-to-group anyuid system:serviceaccounts:istio-system`
++
+`$ istioctl install --set components.cni.enabled=true --set addonComponents.prometheus.enabled=false --set components.cni.namespace=kube-system --set values.cni.cniBinDir=/opt/multus/bin --set values.cni.cniConfDir=/etc/cni/multus/net.d --set values.cni.chained=false --set values.cni.cniConfFileName="istio-cni.conf" --set values.sidecarInjectorWebhook.injectedAnnotations."k8s\.v1\.cni\.cncf\.io/networks"=istio-cni`
+----
 
 
 

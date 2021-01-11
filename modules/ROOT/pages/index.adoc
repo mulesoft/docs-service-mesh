@@ -1,4 +1,4 @@
-= Anypoint Service Mesh 1.1
+= Anypoint Service Mesh 1.2
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
@@ -16,7 +16,7 @@ Your non-MuleSoft microservices might be written using different languages and p
 
 == Anypoint Service Mesh Architecture
 
-A service mesh is an independent architecture layer, which is encapsulated in a Kubernetes Cluster. In a service mesh architecture, instead of the services directly communicating with one another, a sidecar proxy is used to perform the same job.  
+Anypoint Service Mesh is an independent architecture layer encapsulated in a Kubernetes or a Red Hat OpenShift cluster. In the Anypoint Service Mesh architecture, instead of the services directly communicating with one another, a sidecar proxy is used to perform the same job.  
 
 The sidecar proxy enables you to bring your existing non-Mule microservices from the Kubernetes Cluster as APIs into Anypoint Platform. You can then manage these APIs within API Designer, API Manager, and Exchange. Additionally, you can monitor the health of your APIs using API analytics.
 
