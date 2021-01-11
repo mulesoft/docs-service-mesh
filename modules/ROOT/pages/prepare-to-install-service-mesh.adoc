@@ -86,8 +86,6 @@ To enable Anypoint Service Mesh to communicate with the MuleSoft-managed online 
 
 Anypoint Service Mesh supports Istio versions 1.7.x and 1.8.x. You can install any of these Istio versions in your environment within your Kubernetes or OpenShift cluster.
 
-Anypoint Service Mesh supports Istio versions 1.7.x and 1.8.x. You can install either of these Istio versions in your environment within your Kubernetes or OpenShift cluster.
-
 === Prerequisites
 
 Before you begin, ensure that you download Istio using the https://istio.io/docs/setup/[Istio Documentation].
