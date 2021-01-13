@@ -98,11 +98,12 @@ To install and configure Istio for Anypoint Service Mesh, run the command most a
 +
 `$ istioctl install`
 * OpenShift
+
 [source,text,linenums]
 ----
-`oc adm policy add-scc-to-group anyuid system:serviceaccounts:istio-system`
-+
-`$ istioctl install --set components.cni.enabled=true --set addonComponents.prometheus.enabled=false --set components.cni.namespace=kube-system --set values.cni.cniBinDir=/opt/multus/bin --set values.cni.cniConfDir=/etc/cni/multus/net.d --set values.cni.chained=false --set values.cni.cniConfFileName="istio-cni.conf" --set values.sidecarInjectorWebhook.injectedAnnotations."k8s\.v1\.cni\.cncf\.io/networks"=istio-cni`
+$ oc adm policy add-scc-to-group anyuid system:serviceaccounts:istio-system
+
+$ istioctl install --set components.cni.enabled=true --set components.cni.namespace=kube-system --set values.cni.cniBinDir=/opt/multus/bin --set values.cni.cniConfDir=/etc/cni/multus/net.d --set values.cni.chained=false --set values.cni.cniConfFileName="istio-cni.conf" --set values.sidecarInjectorWebhook.injectedAnnotations."k8s\.v1\.cni\.cncf\.io/networks"=istio-cni
 ----
 
 
