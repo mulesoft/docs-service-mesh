@@ -143,19 +143,9 @@ image::provision-service-mesh-adapter-output.png[Example output]
 .. Using the deployment name from the previous command, restart all your services that need to be managed by Anypoint Service Mesh to inject the sidecar in the pod:
 +
 `kubectl -n <adapter-namespace> patch deploy <deployname> --type=json -p='[{"op": "replace", "path": "/spec/template/metadata/labels/service-mesh.mulesoft.com","value":"enable"}]'`
-. To verify that the the applications are redeployed, run the following command:
+. To verify that the applications are redeployed, run the following command:
 +
 `kubectl get pods -n <namespace>`.
-.. If you are running Anypoint Service Mesh on OpenShift, run the following command in the namespace where you are running the applications:
-+
-[source,text,linenums]
-kubectl -n default apply -f - <<EOF
----
-apiVersion: "k8s.cni.cncf.io/v1"
-kind: NetworkAttachmentDefinition
-metadata:
-  name: istio-cni
-EOF
 
 
 == See Also
