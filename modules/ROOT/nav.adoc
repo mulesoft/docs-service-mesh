@@ -15,6 +15,7 @@
         *** xref:bind-api-configure-service-mesh-CRD.adoc[Bind APIs with Services]
         *** xref:update-an-api-configure-service-mesh-CRD.adoc[Update APIs]
     ** xref:obtain-connected-apps-credentials.adoc[Configure Connected Apps]
+* xref:manage-apis-with-service-mesh.adoc[Manage APIs with Service Mesh]
 * xref:upgrade-service-mesh.adoc[Upgrade Service Mesh]
 * xref:uninstall-service-mesh.adoc[Uninstall Service Mesh]
 * xref:troubleshoot-service-mesh.adoc[Troubleshoot Service Mesh]
