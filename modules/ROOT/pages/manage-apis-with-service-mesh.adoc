@@ -14,7 +14,6 @@ Not all policies available in Anypoint Platform are applicable to Anypoint Servi
 
 For example, you can apply the Rate Limiting policy to define the number of requests that you want your service to receive within a specified period of time.
 
-//How is this an example of the configuration applicability difference: of the sentence directly above?
 
 To apply policies:
 
