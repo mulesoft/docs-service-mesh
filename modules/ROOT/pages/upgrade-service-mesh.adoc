@@ -5,7 +5,7 @@ endif::[]
 :keywords: service mesh, microservices, upgrading
 
 
-Anypoint Service Mesh v1.2 introduces support for Red Hat OpenShift. Note that implementing these changes may require some downtime.
+Anypoint Service Mesh v1.2 introduces support for Red Hat OpenShift. Note that implementing these changes might require some downtime.
 
 
 == Prerequisites
