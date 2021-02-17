@@ -5,7 +5,7 @@ endif::[]
 :keywords: service mesh, microservices, upgrading
 
 
-Anypoint Service Mesh v1.2 introduces support for Red Hat OpenShift. Note that implementing these changes may require some downtime.
+Anypoint Service Mesh v1.2 introduces support for Red Hat OpenShift. Note that implementing these changes might require some downtime.
 
 
 == Prerequisites
@@ -33,18 +33,6 @@ To upgrade to Anypoint Service Mesh v1.2:
 [NOTE] If you are using the EU control plane, you must specify the correct `--platformUri` flag for the upgrade.
 
 
-// == Clean Up Post-Upgrade
-
-// After the upgrade process is successfully completed, you can remove the backup copies of the previous version's files:
-
-// . Delete the backups of adapters, APIs, and bindings:
-// +
-// `$ kubectl delete configmap -A -l 'service-mesh.mulesoft.com/backup'`
-// . Delete the pre-upgrade jobs:
-// +
-// `$ kubectl delete job service-mesh-pre-upgrade -n service-mesh`
-// +
-// `$ kubectl delete job service-mesh-post-upgrade -n service-mesh`
 
 
 
