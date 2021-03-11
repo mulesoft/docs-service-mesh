@@ -50,7 +50,6 @@ The adapter then performs policy checks and verifications.
 
 == See Also
 
-* link:https://istio.io/docs/reference/config/policy-and-telemetry/mixer-overview/#adapters[Adapter Overview]
 * link:https://istio.io/docs/concepts/what-is-istio/[Istio Documentation]
 
 
