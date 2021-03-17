@@ -22,9 +22,9 @@ Your Anypoint Service Mesh installation requires the following applications and 
 ** Amazon EKS
 ** Azure Kubernetes Service (AKS)
 ** Red Hat OpenShift
-* Kubernetes (versions 1.12 through 1.19) or Red Hat OpenShift (version 4.x)
+* Kubernetes (versions 1.12 through 1.20) or Red Hat OpenShift (version 4.x)
 
-* <<install_Istio,Istio>> (currently supported versions include 1.7.x and 1.8.x)
+* <<install_Istio,Istio>> (currently supported versions include 1.7.x, 1.8.x, and 1.9.x)
 
 == Hardware Requirements
 
