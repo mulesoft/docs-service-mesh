@@ -182,7 +182,5 @@ If there are bindings associated with the adapter or the service instance, the s
 
 To resolve this issue, delete all the bindings associated with the adapter. When every binding is successfully deleted, the adapter is also deleted. 
 
-For more information, see https://github.com/GoogleCloudPlatform/kubernetes-engine-samples/tree/master/service-catalog#instance-has-remaining-bindings[Kubernetes] help. 
-
 
 
