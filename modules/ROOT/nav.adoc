@@ -18,6 +18,8 @@
 * xref:manage-apis-with-service-mesh.adoc[Manage APIs with Service Mesh]
 * xref:upgrade-service-mesh.adoc[Upgrade Service Mesh]
 * xref:uninstall-service-mesh.adoc[Uninstall Service Mesh]
+* xref:asm-examples.adoc[Examples]
+    ** xref:examples-asm-with-helm.adoc[ASM with Helm]
 * xref:troubleshoot-service-mesh.adoc[Troubleshoot Service Mesh]
     ** xref:troubleshoot-installation-issues.adoc[Installation Issues]
     ** xref:troubleshoot-user-service-issues.adoc[Service Issues]
