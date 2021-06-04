@@ -12,7 +12,7 @@ Before you download and install Anypoint Service Mesh, ensure that you review an
 
 Anypoint Service Mesh is developed using Istio and Kubernetes. Therefore, you must have a working knowledge of Istio and Kubernetes to install and use Anypoint Service Mesh.
 
-
+[[supported_versions]]
 == Software Requirements
 
 Your Anypoint Service Mesh installation requires the following applications and Kubernetes environments:
@@ -84,7 +84,7 @@ To enable Anypoint Service Mesh to communicate with the MuleSoft-managed online 
 [[install_Istio]]
 == Download, Install, and Configure Istio
 
-Anypoint Service Mesh supports Istio versions 1.7.x and 1.8.x. You can install any of these Istio versions in your environment within your Kubernetes or OpenShift cluster.
+Anypoint Service Mesh supports specific Istio <<supported_versions,versions>>. You can install any of these Istio versions in your environment within your Kubernetes or OpenShift cluster.
 
 === Prerequisites
 
