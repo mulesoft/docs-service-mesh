@@ -50,6 +50,7 @@ The adapter then performs policy checks and verifications.
 
 == See Also
 
+* link:https://docs.mulesoft.com/release-notes/service-mesh/anypoint-service-mesh[Anypoint Service Mesh - Release Notes]
 * link:https://istio.io/docs/concepts/what-is-istio/[Istio Documentation]
 
 
