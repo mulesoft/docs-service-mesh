@@ -16,7 +16,7 @@ Before you upgrade, ensure that your environment uses:
 * The most recent version of the Anypoint Service Mesh command line interface (CLI)
 +
 The CLI version must be v1.2.x and the Anypoint Service Mesh version must be v1.1.x.
-* Istio 1.7.x or 1.8.x or later for both control plane and data plane
+* Kubernetes and Istio xref:prepare-to-install-service-mesh.adoc#supported_versions[versions supported by 1.2.x].
 
 
 == Steps
