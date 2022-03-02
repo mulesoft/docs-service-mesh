@@ -1,4 +1,4 @@
-= MuleSoft Documentation Contributor’s Agreement
+# MuleSoft Documentation Contributor’s Agreement
 
 In consideration for the potential acceptance of Your Contributions in the MuleSoft Product you agree to the following terms and conditions (the “Agreement”):
 
