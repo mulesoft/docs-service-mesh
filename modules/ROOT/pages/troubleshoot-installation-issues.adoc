@@ -11,7 +11,7 @@ When you begin installing Anypoint Service Mesh, you might encounter issues caus
 * <<insufficient-pod-allocation,Insufficient pod allocation>>
 * <<service-mesh-not-found, Service Mesh not found>>
 * <<failed-webhook-calling,Installation failed due to WebHook calling error>>
-* <<installation-failed-unkown-reason, Installation failed due to unknown reason>>
+* <<installation-failed-unknown-reason, Installation failed due to unknown reason>>
 
 [[credentials-no-permissions]]
 == Credentials Do Not Have the Necessary Permissions or Entitlements
@@ -85,7 +85,7 @@ In the `Events` section, the result of the command shows that the scheduling of 
 `kubectl describe nodes`
 . Increase the capacity of the node or add nodes.
 +
-*Tip:* If you are using Aamzon EKS, this node capacity is calculated from the instance type. Therefore if you increase the instance type, the number of pods is increased.
+*Tip:* If you are using Amazon EKS, this node capacity is calculated from the instance type. Therefore if you increase the instance type, the number of pods is increased.
 . Restart the Anypoint Service Mesh installer to complete the installation.
 
 [[service-mesh-not-found]]
@@ -140,7 +140,7 @@ To resolve this issue:
 * `$ kubectl delete ns service-mesh`
 * `$ kubectl get clusterservicebrokers,clusterrole,psp,clusterrolebinding,mutatingwebhookconfigurations,validatingwebhookconfigurations -oname | awk '/(service-mesh|istio|catalog)/' | xargs kubectl delete`
 
-[[installation-failed-unkown-reason]]
+[[installation-failed-unknown-reason]]
 == Installation Failed Due to Unknown Reasons
 
 Your installation might fail due to an unknown error.
