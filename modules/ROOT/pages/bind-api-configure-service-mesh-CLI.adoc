@@ -92,7 +92,6 @@ image::api-manager-status-for-service-mesh.png[75%, 75%]
 . Service status.
 
 [[bind_using_ASM]]
-
 == Bind an API Created Using Anypoint Service Mesh
 
 To create the binding:
