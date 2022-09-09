@@ -39,7 +39,7 @@ To display information about the adapter pods:
 [[retrieve-policies-and-contracts-info]]
 == Retrieve Policies and Contracts Information from the Adapter
 
-When troubleshooting issues with Anypoint Service Mesh, you might need to retrieve policies and contracts details. To retrieve the details, obtain an Anypoint Serviesh Mesh management dump file: 
+When troubleshooting issues with Anypoint Service Mesh, you might need to retrieve policies and contracts details. To retrieve the details, obtain an Anypoint Service Mesh management dump file: 
 +
 `$ asmctl management dump`
 +
@@ -67,7 +67,7 @@ Because the `log4j` configuration file checks for changes every 60 seconds, you 
 
 When troubleshooting Anypoint Service Mesh, you might need to update the license:
 
-. Update the existing licence with one that you know is valid:
+. Update the existing license with one that you know is valid:
 +
 `$ asmctl management config license --license=/path/to/license.lic`
 . Redeploy the adapter:

@@ -43,10 +43,12 @@ To bind the service with an API, perform the following steps:
 +
 .The diagram shows the location where the API ID is displayed on the API version window.
 image::bind-api-id.png[Display API ID,75%,75%]
-+
-<1> API name and API instance version.
-<2> API ID.
-+
+
+[calloutlist]
+. API name and API instance version.
+. API ID.
+
+[start=4]
 . Retrieve from Kubernetes the name of the service with which you want to bind the API:
 +
 `kubectl get svc -n _namespace_`
@@ -84,9 +86,11 @@ After you bind your API, the API in API Manager is marked as Active. You are now
 +
 .The diagram shows the location where the status of the service is displayed.
 image::api-manager-status-for-service-mesh.png[75%, 75%]
-+
-<1> API name and API instance version.
-<2> Service status.
+
+[calloutlist]
+. API name and API instance version.
+. Service status.
+
 [[bind_using_ASM]]
 
 == Bind an API Created Using Anypoint Service Mesh
