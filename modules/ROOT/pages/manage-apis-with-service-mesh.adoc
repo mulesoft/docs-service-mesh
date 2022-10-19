@@ -22,10 +22,12 @@ To apply policies:
 +
 .The diagram shows how to apply a policy to your API.
 image::select-policies-for-service-mesh.png[Applying Policies to APIs]
-+
-<1> The page where you specify a policy for your API is displayed.
-<2> Select a policy to apply.
-+
+
+[calloutlist]
+. The page where you specify a policy for your API is displayed.
+. Select a policy to apply.
+
+[start=3]
 . Select any of the following policies to secure your APIs: 
 * *Client ID Enforcement* 
 * *JWT Validation* 
@@ -39,9 +41,10 @@ NOTE: For the OpenID Connect OAuth 2.0 Token Enforcement policy, you must have c
 +
 .The diagram shows how to apply the Client ID Based Policy.
 image::apply-client-enforcement-policy-service-mesh.png[Apply Client ID Based Policy]
-+
-<1> The name of the policy is displayed at the top of the policy page.
-<2> Specify the origin of the client credentials.
+
+[calloutlist]
+. The name of the policy is displayed at the top of the policy page.
+. Specify the origin of the client credentials.
 
 For more information about how to apply policies, see the specific policy documentation.
 
