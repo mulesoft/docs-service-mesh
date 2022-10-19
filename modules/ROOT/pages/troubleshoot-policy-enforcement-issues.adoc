@@ -193,6 +193,7 @@ image::internal-500-error-msg-service-mesh.png[Internal 500 error message]
 To resolve this issue: 
 
 . Replace the existing License with a valid one:
+
 +
 `$ asmctl management config license --license=/path/to/license.lic`
 
