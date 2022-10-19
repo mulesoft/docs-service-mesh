@@ -17,7 +17,9 @@ You can update the asset tags from Exchange and the API instance tags in API Man
 
 
 [[update-api-cli]]
+
 == Update an API Using the Anypoint Service Mesh Command Line Interface
+
 
 If you configured the API using the Anypoint Service Mesh autocreate feature, you can update the API from the cluster when required. The update reuses the environment details and credentials introduced when provisioning the API. 
 

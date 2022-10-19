@@ -68,6 +68,7 @@ Because the `log4j` configuration file checks for changes every 60 seconds, you 
 When troubleshooting Anypoint Service Mesh, you might need to update the license:
 
 . Update the existing License with one that you know is valid:
+
 +
 `$ asmctl management config license --license=/path/to/license.lic`
 . Redeploy the adapter:
