@@ -33,7 +33,7 @@ In the `Status` field, a detailed description of the error is displayed:
 +
 image::error-with-params-error-display-api-prov-service-mesh.png[Error with parameters when provisioning APIs]
 
-In the following example, an error occurred due to an extra comma in the stringData section that is provided after the password segment:
+In the following example, an error occurred due to an extra comma in the stringData section that is provided after the client secret segment:
 
 [source,text,linenums]
 ----
@@ -46,8 +46,8 @@ type: Opaque
 stringData:
   user-pass:
     '{
-      "user": "<user>",
-      "password": "<password>",
+      "clientId": "<id>",
+      "clientSecret": "<secret>",
     }'
 ----
 
@@ -56,7 +56,7 @@ stringData:
 To resolve this issue:
 
 . Delete the API.
-. Resolve the username and password error.
+. Resolve the credentials error.
 . Re-create the API.  
 
 [[api-spec-file-size-exceeded]]

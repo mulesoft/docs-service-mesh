@@ -97,7 +97,7 @@ Anypoint Service Mesh supports the use of Kubernetes secrets to store and manage
 
 Before you configure your Kubernetes secrets, ensure that you have the required permissions.
 
-To store your user credentials in Kubernetes secrets:
+To store your client credentials in Kubernetes secrets:
 
 . In a YAML file, create a secret in which to store the sensitive information, for example, `orders-api-config.yaml`:
 +
@@ -122,7 +122,7 @@ stringData:
 +
 If the secret is correctly applied, a 'secret/orders-api-config created' message is displayed.
 +
-. Reference the secrets in your API CRD (instead of the user and password parameter), as illustrated in the following example:
+. Reference the secrets in your API CRD, as illustrated in the following example:
 +
 [source,text,linenums]
 ----

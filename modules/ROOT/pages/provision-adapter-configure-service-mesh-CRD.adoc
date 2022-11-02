@@ -108,7 +108,7 @@ Anypoint Service Mesh supports the use of Kubernetes secrets to store and manage
 
 You must have the required permission to create the Kubernetes secret.
 
-To store your user credentials in Kubernetes secrets:
+To store your client credentials in Kubernetes secrets:
 
 . In a YAML file, create a secret in which to store the sensitive information, for example, `bookinfo-service-mesh-adapter-config.yaml`:
 +
