@@ -39,7 +39,7 @@ Your API is now created.
 [[create-api-autocreate]]
 == Create an API Using the Anypoint Service Mesh Autocreate Feature
 
-IMPORTANT: Since October 29th of 2022, the user credentials option for API autocreate feature is no longer supported. Migration to the Connected Apps approach is required. For more information, read the section below and the xref:obtain-connected-apps-credentials.adoc[Obtain Connected Apps credentials page].
+IMPORTANT: As of October 29th of 2022, the user credentials option for API autocreate feature is no longer supported. Migration to the Connected Apps approach is required. For more information, read the following section and the xref:obtain-connected-apps-credentials.adoc[Obtain Connected Apps credentials page].
 
 You can use <<create-api-ASM-CLI-ConnAps, Connected Apps credentials>> for authentication and authorization when creating an API using the Anypoint Service Mesh autocreate feature. This option supports users:
 
