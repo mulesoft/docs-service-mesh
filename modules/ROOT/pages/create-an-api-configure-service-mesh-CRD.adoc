@@ -36,133 +36,12 @@ Your API is now created.
 
 [[create-api-autocreate]]
 == Create an API Using the Anypoint Service Mesh Autocreate Feature
+IMPORTANT: Since October 29th of 2022, the user credentials option for API autocreate feature is no longer supported. Migration to the Connected Apps approach is required. For more information, read the section below and the xref:obtain-connected-apps-credentials.adoc[Obtain Connected Apps credentials page].
 
-You can use any of the following options for authentication when creating an API using the Anypoint Service Mesh autocreate feature:
-
-** Using <<create_api-CRD, user credentials>> (username and password). 
-+
-This option supports only those users who:
-
-*** Are managed by Anypoint Platform
-*** Have not enabled multi-factor authentication
-** Using <<create-api-CRD-ConnAps, Connected Apps credentials>> 
-+
-(Recommended) This option supports users:
+You can use <<create-api-CRD-ConnAps, Connected Apps credentials>> for authentication when creating an API using the Anypoint Service Mesh autocreate feature. This option supports users:
 
 *** Managed by Anypoint Platform or an external IdP
 *** Whether or not they have enabled multi-factor authentication
-
-[[create_api-CRD]]
-=== Autocreate APIs by Using Your User Credentials
-
-Before you configure the Anypoint Service Mesh autocreate feature, ensure that you obtain the:
-
-* Environment ID and organization ID information
-+
-To obtain these details, go to *API Manager > Environment Information*.
-* Manage APIs Configuration permission for the environment where you are creating the API instance
-* Exchange Contributor permission for the business group in which you are creating the asset
-
-To autocreate APIs using user credentials, perform the following steps:
-
-. Create your API definition file and save it with a `.yaml` file extension:
-+
-[source,text,linenums]
-----
-apiVersion: servicecatalog.k8s.io/v1beta1
-kind: ServiceInstance
-metadata:
-  name: _Kubernetes API resource name_ # example: orders-api
-  namespace: _namespace name_ # example: default
-  labels: 
-    service-mesh.mulesoft.com/kind: api
-spec:
-  clusterServiceClassExternalName: anypoint-platform-api-instance
-  clusterServicePlanExternalName: service-mesh
-  parameters:
-    environmentId: _environment ID_ # example: 7cea45c6-3237-464d-bd34-3122c4abde29
-    groupId: _group ID_ # Optional - example: 350b8164-e809-4091-91f5-079fb30e5a1e
-    assetId: _asset ID_ # example: orders-api
-    version: _version_ # example: 0.0.1
-    instanceLabel: _instance label_ # example: public
-    classifier: _classifier_ # Optional - example: oas
-    mainFile: _main file_ # Optional - example: api.yaml
-    specFile: _base64 encoded spec file content_ # Optional - example: dGhpcyBpcyBhIGJhc2U2NCBlbmNvZGVkIHRleHQsIEkgc2VlIHlvdSBhcmUgY3VyaW91cyEK
-    tags:
-      apiSpec:
-      - _tag in Exchange asset_ # example: orders
-      apiInstance:
-      - _tag in API Manager instance_ # example: orders
-    user: _Username of the Anypoint Platform user_
-    password: _Password of the Anypoint Platform user_
-----
-. Apply the CRD file:
-`kubectl apply -f test-api.yaml`
-. Verify that the API was successfully created:
-`asmctl api list`
-+
-The new API is displayed.
-. Optionally, verify that an asset is created on Exchange and an API is created on API Manager.
-
-=== Reference Kubernetes Secret
-
-Anypoint Service Mesh supports the use of Kubernetes secrets to store and manage sensitive information, such as your user credentials. Before you configure your Kubernetes secrets, ensure that you have the required permissions.
-
-To store your user credentials in Kubernetes secrets:
-
-. In a YAML file, create a secret in which to store the sensitive information, for example, `orders-api-config.yaml`:
-+
-[source,text,linenums]
-----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: _secret name_ # example: orders-api-config
-  namespace: _namespace name_ # example: default
-type: Opaque
-stringData:
-  config: |
-    {
-      "user": "_replace-with-anypoint-username_",
-      "password": "_replace-with-anypoint-password_"
-    }
-----
-. Apply the secret: 
-+
-`kubectl apply -f orders-api-config.yaml`
-+
-If the secret is correctly applied, a 'secret/orders-api-config created' message is displayed.
-+
-. Reference the secret in your API CRD (instead of the user and password parameter), as illustrated in the following example:
-+
-[source,text,linenums]
-----
-apiVersion: servicecatalog.k8s.io/v1beta1
-kind: ServiceInstance
-metadata:
-  name: _Kubernetes API resource name_ # example: orders-api
-  namespace: _namespace name_ # example: default
-  labels:
-    service-mesh.mulesoft.com/kind: api
-spec:
-  clusterServiceClassExternalName: anypoint-platform-api-instance
-  clusterServicePlanExternalName: service-mesh
-  parameters:
-    environmentId: _environment ID_ # example: 7cea45c6-3237-464d-bd34-3122c4abde29
-    groupId: _group ID_ # Optional - example: 350b8164-e809-4091-91f5-079fb30e5a1e
-    assetId: _asset ID_ # example: orders-api
-    version: _version_ # example: 0.0.1
-    instanceLabel: _instance label_ # example: public
-    tags:
-      apiSpec:
-      - _tag in Exchange asset_ # example: orders
-      apiInstance:
-      - _tag in API Manager instance_ # example: orders
-  parametersFrom: # The element specifies the secret name and configuration required for retrieving the parameters.
-  - secretKeyRef:
-      name: _secret name_ # example: orders-api-config
-      key: config
-----
 
 [[create-api-CRD-ConnAps]]
 === Autocreate APIs by Using Your Connected Apps Credentials
@@ -218,7 +97,7 @@ Anypoint Service Mesh supports the use of Kubernetes secrets to store and manage
 
 Before you configure your Kubernetes secrets, ensure that you have the required permissions.
 
-To store your user credentials in Kubernetes secrets:
+To store your client credentials in Kubernetes secrets:
 
 . In a YAML file, create a secret in which to store the sensitive information, for example, `orders-api-config.yaml`:
 +
@@ -243,7 +122,7 @@ stringData:
 +
 If the secret is correctly applied, a 'secret/orders-api-config created' message is displayed.
 +
-. Reference the secrets in your API CRD (instead of the user and password parameter), as illustrated in the following example:
+. Reference the secrets in your API CRD, as illustrated in the following example:
 +
 [source,text,linenums]
 ----
