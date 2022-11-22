@@ -123,7 +123,7 @@ FATAL: Installing 'service-mesh' Helm Chart!!!
 
 To diagnose the issue:
 
-. Verify that the master nodes have access to port 443 in worker nodes. 
+. Verify that the main nodes have access to port 443 in worker nodes. 
 . Verify that no orphan resources remain from a previous installation or uninstallation:
 +
 `kubectl get clusterservicebrokers,clusterrole,psp,clusterrolebinding,mutatingwebhookconfigurations,validatingwebhookconfigurations -oname | awk '/(service-mesh|istio|catalog)/'`
@@ -134,7 +134,7 @@ Any existing orphan resource are displayed.
 
 To resolve this issue:
 
-. If your master node does not have access to port 442 in worker nodes, modify security groups based on the provider. 
+. If your main node does not have access to port 442 in worker nodes, modify security groups based on the provider. 
 . If you find orphan resources, delete them and then reinstall Anypoint Service Mesh. Depending on the resources, run one of the following commands:
 +
 * `$ kubectl delete ns service-mesh`
