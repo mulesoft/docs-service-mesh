@@ -40,7 +40,7 @@ The status is displayed in a few minutes.
 If the status is Pending, describe the pod:
 +
 `$ kubectl -n service-mesh describe pods -l namespace=_namespace_`
-. If you do not see the `grpmule-_namespace_` pod, run the same command immediately after creating the adapter, while it is being provisioned but before it has failed:
+. If you do not see the `grpcmule-_namespace_` pod, run the same command immediately after creating the adapter, while it is being provisioned but before it has failed:
 +
 `$ kubectl -n service-mesh describe pods -l namespace=_namespace_`
 . Perform one of the following actions: 
@@ -122,7 +122,7 @@ To diagnose the issue:
 +
 `$ asmctl adapter list`
 +
-. If the adapter status is `Failed`, verify the status of the (grpmule-<namespace>) adapter pod:
+. If the adapter status is `Failed`, verify the status of the (grpcmule-<namespace>) adapter pod:
 +
 `$ kubectl -n service-mesh get pods`
 In this case, your pod status might be displayed as `CrashLoopBackOff`.
