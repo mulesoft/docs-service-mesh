@@ -11,7 +11,7 @@ When you begin installing Anypoint Service Mesh, you might encounter issues caus
 * <<insufficient-pod-allocation,Insufficient pod allocation>>
 * <<service-mesh-not-found, Service Mesh not found>>
 * <<failed-webhook-calling,Installation failed due to WebHook calling error>>
-* <<installation-failed-unkown-reason, Installation failed due to unknown reason>>
+* <<installation-failed-unknown-reason, Installation failed due to unknown reason>>
 
 [[credentials-no-permissions]]
 == Credentials Do Not Have the Necessary Permissions or Entitlements
@@ -85,7 +85,7 @@ In the `Events` section, the result of the command shows that the scheduling of 
 `kubectl describe nodes`
 . Increase the capacity of the node or add nodes.
 +
-*Tip:* If you are using Aamzon EKS, this node capacity is calculated from the instance type. Therefore if you increase the instance type, the number of pods is increased.
+*Tip:* If you are using Amazon EKS, this node capacity is calculated from the instance type. Therefore if you increase the instance type, the number of pods is increased.
 . Restart the Anypoint Service Mesh installer to complete the installation.
 
 [[service-mesh-not-found]]
@@ -123,7 +123,7 @@ FATAL: Installing 'service-mesh' Helm Chart!!!
 
 To diagnose the issue:
 
-. Verify that the master nodes have access to port 443 in worker nodes. 
+. Verify that the main nodes have access to port 443 in worker nodes. 
 . Verify that no orphan resources remain from a previous installation or uninstallation:
 +
 `kubectl get clusterservicebrokers,clusterrole,psp,clusterrolebinding,mutatingwebhookconfigurations,validatingwebhookconfigurations -oname | awk '/(service-mesh|istio|catalog)/'`
@@ -134,13 +134,13 @@ Any existing orphan resource are displayed.
 
 To resolve this issue:
 
-. If your master node does not have access to port 442 in worker nodes, modify security groups based on the provider. 
+. If your main node does not have access to port 442 in worker nodes, modify security groups based on the provider. 
 . If you find orphan resources, delete them and then reinstall Anypoint Service Mesh. Depending on the resources, run one of the following commands:
 +
 * `$ kubectl delete ns service-mesh`
 * `$ kubectl get clusterservicebrokers,clusterrole,psp,clusterrolebinding,mutatingwebhookconfigurations,validatingwebhookconfigurations -oname | awk '/(service-mesh|istio|catalog)/' | xargs kubectl delete`
 
-[[installation-failed-unkown-reason]]
+[[installation-failed-unknown-reason]]
 == Installation Failed Due to Unknown Reasons
 
 Your installation might fail due to an unknown error.

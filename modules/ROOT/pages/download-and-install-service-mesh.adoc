@@ -13,7 +13,7 @@ You install, manage, and troubleshoot your Anypoint Service Mesh instance by usi
 
 To download the Anypoint Service Mesh client, type the following command at the command prompt:
 
-`curl -Ls http://anypoint.mulesoft.com/servicemesh/xapi/v1/install > asmctl && chmod +x asmctl`
+`curl -Ls http://anypoint.mulesoft.com/servicemesh/xapi/v1/install?version=v1.1.1 > asmctl && chmod +x asmctl`
 
 == Configure Your Environment Variable on Unix-like Systems
 
@@ -103,4 +103,3 @@ If an installation error occurs, the installer times out and uninstalls all prev
 Anypoint Service Mesh is installed and the status of all pods is displayed:
 +
 image::verified-service-mesh-installer-output.png[Pods displayed]
-
