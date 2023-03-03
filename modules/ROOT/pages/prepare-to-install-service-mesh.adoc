@@ -26,8 +26,8 @@ Your Anypoint Service Mesh installation requires you to:
 ** Install Kubernetes (versions 1.12 through 1.20) or Red Hat OpenShift (version 4.x)
 ** Install <<install_Istio,Istio>> (versions 1.7.x through 1.11.x)
 * If installing Anypoint Service Mesh 1.2.1 or above:
-** Install Kubernetes (versions 1.22 through 1.24)
-** Install <<install_Istio,Istio>> (versions 1.11.x through 1.14.x)
+** Install Kubernetes (versions 1.22 through 1.25)
+** Install <<install_Istio,Istio>> (versions 1.11.x through 1.16.x)
 * Not install https://svc-cat.io/[Service Catalog^] in the target cluster
 +
 Because Service Catalog is installed with Anypoint Service Mesh as part of the install process, uninstall Service Catalog if previously installed. 
