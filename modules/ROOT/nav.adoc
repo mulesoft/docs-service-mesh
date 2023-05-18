@@ -1,6 +1,6 @@
 .xref:index.adoc[Anypoint Service Mesh]
 * xref:index.adoc[Overview]
-* xref:index.adoc[Release Notes]
+* xref:release-notes.adoc[Release Notes]
 * xref:getting-started-service-mesh.adoc[Get started with Service Mesh]
 * xref:prepare-to-install-service-mesh.adoc[Review Prerequisites]
 * xref:download-and-install-service-mesh.adoc[Download and Install Service Mesh]
