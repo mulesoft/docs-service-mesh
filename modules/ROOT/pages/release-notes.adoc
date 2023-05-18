@@ -4,7 +4,7 @@ include::_attributes.adoc[]
 endif::[] 
 :keywords: release notes, anypoint service mesh, service mesh
 
-The latest version of Anypoint Service Mesh becomes available for download as soon as it's released. To upgrade your Anypoint Service Mesh version, see xref:upgrade-service-mesh.adoc[Upgrade Service Mesh]. 
+The latest version of Anypoint Service Mesh is available for download as soon as it's released. To upgrade your Anypoint Service Mesh version, see xref:upgrade-service-mesh.adoc[Upgrade Service Mesh]. 
 
 The following release notes are provided for Anypoint Service Mesh:
 
