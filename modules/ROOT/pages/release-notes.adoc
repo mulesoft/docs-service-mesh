@@ -1,10 +1,1 @@
-= Anypoint Service Mesh Release Notes
-ifndef::env-site,env-github[]
-include::_attributes.adoc[]
-endif::[]
-
-:keywords: service mesh, microservices, cluster, container
-
-The latest version of Anypoint Service Mesh becomes available for download as soon as it's released. To upgrade your Service Mesh version, see xref:1.2@service-mesh::upgrade-service-mesh.adoc[Upgrade Service Mesh]. 
-
-The following release notes are provided for Service Mesh:
+include::release-notes::service-mesh/anypoint-service-mesh.adoc[]
