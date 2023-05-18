@@ -5,8 +5,6 @@ endif::[]
 
 :keywords: service mesh, microservices, cluster, container
 
-The latest version of Anypoint Service Mesh  becomes available for download as soon as it's released. To upgrade your Service Mesh version, see xref:
+The latest version of Anypoint Service Mesh becomes available for download as soon as it's released. To upgrade your Service Mesh version, see xref:1.2@service-mesh::upgrade-service-mesh.adoc[Upgrade Service Mesh]. 
 
-You must manually update them on your local environment.
-
-To take advantage of all new features, improvements, and bug fixes, ensure that you are using the latest version of each RPA application.
+The following release notes are provided for Service Mesh:
