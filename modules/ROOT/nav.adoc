@@ -1,5 +1,6 @@
 .xref:index.adoc[Anypoint Service Mesh]
 * xref:index.adoc[Overview]
+* xref:release-notes.adoc[Release Notes]
 * xref:getting-started-service-mesh.adoc[Get started with Service Mesh]
 * xref:prepare-to-install-service-mesh.adoc[Review Prerequisites]
 * xref:download-and-install-service-mesh.adoc[Download and Install Service Mesh]
@@ -25,5 +26,3 @@
     ** xref:troubleshoot-service-binding-issues.adoc[Service Binding Issues]
     ** xref:troubleshoot-policy-enforcement-issues.adoc[Policy Enforcement Issues]
     ** xref:common-commands-troubleshoot.adoc[Common Commands Used for Troubleshooting]
-
-
