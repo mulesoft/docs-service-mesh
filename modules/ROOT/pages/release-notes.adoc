@@ -1,1 +1,10 @@
-include::release-notes::service-mesh/anypoint-service-mesh.adoc[]
+= Anypoint Service Mesh Release Notes
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[] 
+:keywords: release notes, anypoint service mesh, service mesh
+
+The latest version of Anypoint Service Mesh becomes available for download as soon as it's released. To upgrade your Service Mesh version, see xref:upgrade-service-mesh.adoc[Upgrade Service Mesh]. 
+
+The following release notes are provided for Service Mesh:
+* xref:release-notes::service-mesh-1.2-release-notes.adoc[Anypoint Service Mesh 1.2 Release Notes]
