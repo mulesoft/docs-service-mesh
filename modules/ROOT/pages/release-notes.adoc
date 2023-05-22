@@ -1,1 +1,1 @@
-include::release-notes::partial$service-mesh/service-mesh-rn-landing-page.adoc[tags=rn-landing-page-intro;v1.2;v1.1;v1.0]
+include::release-notes::partial$service-mesh/service-mesh-rn-landing-page.adoc[tags=rn-landing-page-intro;v1.2]
