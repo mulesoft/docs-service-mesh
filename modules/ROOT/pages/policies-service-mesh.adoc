@@ -1,0 +1,9 @@
+= Anypoint Service Mesh Policies
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+:keywords: service mesh, microservices, Connected Apps credential, policies
+
+To find the policies available for Anypoint Service Mesh, refer to xref:gateway::policies/policies-availability-by-gateway.adoc[].
+
+To find policy documentation and apply policies, refer to xref:gateway::mule-gateway/policies-policy-overview.adoc[].
