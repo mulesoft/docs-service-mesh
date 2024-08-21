@@ -5,6 +5,8 @@ endif::[]
 
 :keywords: service mesh, microservices, cluster, container
 
+include::reuse::partial$eol-banner.adoc[tag=asmEolScheduled]
+
 [IMPORTANT] 
 ====
 Anypoint Service Mesh is scheduled for EOL. To integrate your micro services with Anypoint Platform, use xref:gateway::index.adoc[Flex Gateway]. 
