@@ -5,6 +5,7 @@ endif::[]
 
 :keywords: service mesh, microservices, cluster, container
 
+
 Anypoint Service Mesh enables you to extend your microservices network by including your non-MuleSoft applications into the Anypoint Platform sphere. You can then manage and secure your application network, including your non-Mule applications, seamlessly from a single pane.
 
 Your non-MuleSoft microservices might be written using different languages and platforms, or might be deployed in different environments. To alleviate issues arising from differences in these microservices, Anypoint Service Mesh ensures the following application management advantages:
