@@ -5,19 +5,6 @@ endif::[]
 
 :keywords: service mesh, microservices, cluster, container
 
-include::reuse::partial$eol-banner.adoc[tag=asmEolScheduled]
-
-[IMPORTANT] 
-====
-Anypoint Service Mesh is scheduled for EOL. To integrate your micro services with Anypoint Platform, use xref:gateway::index.adoc[Flex Gateway]. 
-
-
-Integrating Flex Gateway enables you to leverage the xref:gateway::policies-included-directory.adoc[Flex Gateway included policies], xref:pdk::policies-pdk-overview.adoc[Flex Gateway Policy Development Kit (PDK)], Anypoint Platform, Flex Gateway monitoring and logging, and much more.
-
-To learn how to integrate Flex Gateway with Istio Service Mesh, see xref:gateway::flex-gateway-istio.adoc[].
-
-====
-
 Anypoint Service Mesh enables you to extend your microservices network by including your non-MuleSoft applications into the Anypoint Platform sphere. You can then manage and secure your application network, including your non-Mule applications, seamlessly from a single pane.
 
 Your non-MuleSoft microservices might be written using different languages and platforms, or might be deployed in different environments. To alleviate issues arising from differences in these microservices, Anypoint Service Mesh ensures the following application management advantages:
